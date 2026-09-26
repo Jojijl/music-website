@@ -1,2331 +1,1439 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>JOJIFY — Music & Radio</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>JOJIFY</title><style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at top,#242424 0,#101010 42%,#050505 85%);
-    color:#fff;
-    min-height:100vh;
-    padding-bottom:160px;
+body {
+  background: #0b0b0b;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 105px;
 }
 
-/* HEADER */
-
-header{
-    text-align:center;
-    padding:25px 15px 17px;
+header {
+  padding: 22px 18px 14px;
+  text-align: center;
 }
 
-.logo{
-    font-size:36px;
-    font-weight:900;
-    letter-spacing:3px;
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
 }
 
-.logo span{
-    color:#1ed760;
+.logo span {
+  color: #1ed760;
 }
 
-.subtitle{
-    color:#888;
-    font-size:12px;
-    margin-top:5px;
+.subtitle {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
-/* MAIN NAV */
-
-.nav{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    padding:5px 15px 18px;
-    flex-wrap:wrap;
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  overflow-x: auto;
 }
 
-.nav button{
-    border:1px solid #303030;
-    background:#181818;
-    color:#aaa;
-    border-radius:22px;
-    padding:10px 17px;
-    cursor:pointer;
-    font-weight:bold;
+.tab {
+  flex: 1;
+  min-width: 110px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 10px;
+  background: #181818;
+  color: #aaa;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.nav button.active{
-    background:#1ed760;
-    color:#000;
-    border-color:#1ed760;
+.tab.active {
+  background: #1ed760;
+  color: #000;
 }
 
-/* SEARCH */
-
-.search-area{
-    padding:0 15px 14px;
+.section {
+  padding: 12px;
 }
 
-.search-box{
-    width:100%;
-    padding:16px 19px;
-    border-radius:30px;
-    border:1px solid #292929;
-    background:#181818;
-    color:#fff;
-    outline:none;
-    font-size:15px;
+.search {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 15px;
 }
 
-.search-box:focus{
-    border-color:#1ed760;
+.search::placeholder {
+  color: #777;
 }
 
-.hidden{
-    display:none !important;
+.status {
+  color: #888;
+  text-align: center;
+  padding: 20px 5px;
+  font-size: 14px;
 }
 
-/* CATEGORY BUTTONS */
-
-.categories{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    scrollbar-width:none;
-    padding:0 15px 18px;
+.song {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #151515;
+  border-radius: 13px;
+  padding: 10px;
+  margin-bottom: 9px;
+  cursor: pointer;
 }
 
-.categories::-webkit-scrollbar{
-    display:none;
+.song:hover {
+  background: #202020;
 }
 
-.category{
-    white-space:nowrap;
-    border:1px solid #292929;
-    background:#181818;
-    color:#aaa;
-    padding:9px 15px;
-    border-radius:20px;
-    cursor:pointer;
-    font-size:13px;
+.cover {
+  width: 58px;
+  height: 58px;
+  border-radius: 9px;
+  background: #242424;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.category.active{
-    background:#1ed760;
-    border-color:#1ed760;
-    color:#000;
-    font-weight:bold;
+.songInfo {
+  flex: 1;
+  min-width: 0;
 }
 
-/* RADIO TYPES */
-
-.radio-types{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    scrollbar-width:none;
-    padding:0 15px 18px;
+.songTitle {
+  font-weight: bold;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.radio-types::-webkit-scrollbar{
-    display:none;
+.artist {
+  color: #888;
+  font-size: 13px;
+  margin-top: 5px;
 }
 
-.radio-type{
-    white-space:nowrap;
-    border:1px solid #292929;
-    background:#181818;
-    color:#aaa;
-    padding:9px 15px;
-    border-radius:20px;
-    cursor:pointer;
-    font-size:13px;
+.playSmall {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #1ed760;
+  color: #000;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-.radio-type.active{
-    background:#1ed760;
-    color:#000;
+.radioCard {
+  background: #151515;
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 
-/* CONTENT */
-
-.heading{
-    padding:8px 17px 8px;
-    font-size:21px;
-    font-weight:800;
+.radioName {
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
-.status{
-    padding:0 18px 12px;
-    color:#888;
-    font-size:12px;
+.radioDetails {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
-.list{
-    padding:0 12px;
+.live {
+  color: #ff3b30;
+  font-weight: bold;
 }
 
-/* ITEMS */
-
-.item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px;
-    margin-bottom:7px;
-    border-radius:13px;
-    background:rgba(255,255,255,.035);
-    cursor:pointer;
-    transition:.15s;
+.radioButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1ed760;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.item:hover{
-    background:rgba(255,255,255,.08);
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(18,18,18,.98);
+  border-top: 1px solid #292929;
+  padding: 10px 12px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
 }
 
-.item.playing{
-    background:rgba(30,215,96,.12);
-    border:1px solid rgba(30,215,96,.25);
+.playerTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cover{
-    width:58px;
-    height:58px;
-    border-radius:9px;
-    object-fit:cover;
-    background:#222;
-    flex-shrink:0;
+.playerCover {
+  width: 45px;
+  height: 45px;
+  border-radius: 7px;
+  background: #222;
+  object-fit: cover;
 }
 
-.item-info{
-    min-width:0;
-    flex:1;
+.playerInfo {
+  flex: 1;
+  min-width: 0;
 }
 
-.item-title{
-    font-size:15px;
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.playerTitle {
+  font-weight: bold;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.item-sub{
-    color:#999;
-    font-size:12px;
-    margin-top:5px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.playerArtist {
+  color: #888;
+  font-size: 11px;
+  margin-top: 3px;
 }
 
-.item-meta{
-    color:#666;
-    font-size:10px;
-    margin-top:4px;
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.play-small{
-    width:40px;
-    height:40px;
-    border:0;
-    border-radius:50%;
-    background:#1ed760;
-    color:#000;
-    cursor:pointer;
-    flex-shrink:0;
+.control {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 19px;
+  cursor: pointer;
 }
 
-/* LIVE */
-
-.live{
-    color:#ff3838;
-    font-size:10px;
-    font-weight:bold;
+.mainPlay {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-/* EMPTY */
-
-.empty{
-    text-align:center;
-    color:#777;
-    padding:45px 20px;
-    line-height:1.7;
+.progressArea {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
 }
 
-/* LOADING */
-
-.loading{
-    text-align:center;
-    color:#aaa;
-    padding:35px 20px;
+.time {
+  color: #888;
+  font-size: 10px;
+  width: 32px;
 }
 
-.spinner{
-    width:28px;
-    height:28px;
-    border:3px solid #333;
-    border-top-color:#1ed760;
-    border-radius:50%;
-    margin:0 auto 12px;
-    animation:spin .8s linear infinite;
+.progress {
+  flex: 1;
+  height: 4px;
+  accent-color: #1ed760;
 }
 
-@keyframes spin{
-    to{transform:rotate(360deg)}
+.volume {
+  width: 80px;
+  accent-color: #1ed760;
 }
 
-/* PLAYER */
-
-.player{
-    position:fixed;
-    z-index:100;
-    left:0;
-    right:0;
-    bottom:0;
-    background:rgba(10,10,10,.97);
-    backdrop-filter:blur(18px);
-    border-top:1px solid #292929;
-    padding:10px 14px 14px;
+.preview {
+  color: #1ed760;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 4px;
 }
 
-.now{
-    display:flex;
-    align-items:center;
-    gap:11px;
+.hidden {
+  display: none !important;
 }
 
-.now-cover{
-    width:48px;
-    height:48px;
-    border-radius:8px;
-    object-fit:cover;
-    background:#222;
-    flex-shrink:0;
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 40px 15px;
 }
 
-.now-info{
-    min-width:0;
-    flex:1;
+footer {
+  text-align: center;
+  color: #555;
+  font-size: 11px;
+  padding: 25px 10px;
 }
+</style></head><body><header>
+  <div class="logo">JOJI<span>FY</span></div>
+  <div class="subtitle">MUSIC • RADIO • YOUR SOUND</div>
+</header><div class="tabs">
+  <button class="tab active" id="songsTab">🎵 Songs</button>
+  <button class="tab" id="malayalamTab">🇮🇳 Malayalam Radio</button>
+  <button class="tab" id="worldTab">🌍 World Radio</button>
+</div><!-- SONGS --><section id="songsSection" class="section"><input
+id="songSearch"
+class="search"
+type="search"
+placeholder="🔎 Search songs or artists..."
+autocomplete="off"
 
-.now-title{
-    font-size:14px;
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
+«»
 
-.now-sub{
-    color:#999;
-    font-size:11px;
-    margin-top:4px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
+  <div id="songStatus" class="status">
+    Loading JOJIFY music...
+  </div>  <div id="songList"></div></section><!-- MALAYALAM RADIO --><section id="malayalamSection" class="section hidden"><input
+id="malayalamSearch"
+class="search"
+type="search"
+placeholder="🔎 Search Malayalam radio..."
+autocomplete="off"
 
-.favorite{
-    border:0;
-    background:none;
-    color:#aaa;
-    font-size:23px;
-    cursor:pointer;
-}
+«»
 
-.favorite.active{
-    color:#ff477e;
-}
+  <div id="malayalamStatus" class="status">
+    Loading Malayalam radio...
+  </div>  <div id="malayalamList"></div></section><!-- WORLD RADIO --><section id="worldSection" class="section hidden"><input
+id="worldSearch"
+class="search"
+type="search"
+placeholder="🔎 Search radio stations..."
+autocomplete="off"
 
-/* PROGRESS */
+«»
 
-.progress-row{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-top:8px;
-}
+  <div id="worldStatus" class="status">
+    Loading world radio...
+  </div>  <div id="worldList"></div></section><footer>
+  JOJIFY © 2026
+</footer><!-- PLAYER --><div class="player">  <div class="playerTop"><img
+  id="playerCover"
+  class="playerCover"
+  src=""
+  alt=""
+>
 
-.time{
-    width:35px;
-    text-align:center;
-    color:#888;
-    font-size:10px;
-}
+<div class="playerInfo">
+  <div id="playerTitle" class="playerTitle">
+    Nothing playing
+  </div>
 
-.progress{
-    flex:1;
-    accent-color:#1ed760;
-}
+  <div id="playerArtist" class="playerArtist">
+    JOJIFY
+  </div>
+</div>
 
-/* CONTROLS */
+<div class="controls">
 
-.controls{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-    margin-top:7px;
-}
+  <button
+    id="previousButton"
+    class="control"
+    title="Previous"
+  >⏮</button>
 
-.control{
-    border:0;
-    background:none;
-    color:#fff;
-    font-size:20px;
-    cursor:pointer;
-}
+  <button
+    id="playButton"
+    class="mainPlay"
+    title="Play"
+  >▶</button>
 
-.play-main{
-    width:47px;
-    height:47px;
-    border:0;
-    border-radius:50%;
-    background:#fff;
-    color:#000;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.volume{
-    position:absolute;
-    right:16px;
-    bottom:20px;
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.volume input{
-    width:75px;
-    accent-color:#1ed760;
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-    .volume{
-        display:none;
-    }
-
-    .logo{
-        font-size:31px;
-    }
-
-    .controls{
-        gap:28px;
-    }
-
-}
-</style>
-</head>
-
-<body>
-
-<header>
-
-    <div class="logo">
-        JOJI<span>FY</span>
-    </div>
-
-    <div class="subtitle">
-        Music • Malayalam Radio • Worldwide Radio
-    </div>
-
-</header>
-
-
-<!-- MAIN NAVIGATION -->
-
-<div class="nav">
-
-    <button
-        id="musicTab"
-        class="active"
-        onclick="showMusic()">
-        🎵 Music
-    </button>
-
-    <button
-        id="malayalamTab"
-        onclick="showMalayalamRadio()">
-        🇮🇳 Malayalam Radio
-    </button>
-
-    <button
-        id="worldRadioTab"
-        onclick="showWorldRadio()">
-        🌍 World Radio
-    </button>
+  <button
+    id="nextButton"
+    class="control"
+    title="Next"
+  >⏭</button>
 
 </div>
 
+  </div>  <div class="progressArea"><span id="currentTime" class="time">
+  0:00
+</span>
 
-<!-- MUSIC SEARCH -->
+<input
+  id="progress"
+  class="progress"
+  type="range"
+  min="0"
+  max="100"
+  value="0"
+>
 
-<div
-    id="musicSearchArea"
-    class="search-area">
+<span id="duration" class="time">
+  0:00
+</span>
 
+  </div>  <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:5px;">
+    🔊
     <input
-        id="musicSearch"
-        class="search-box"
-        type="search"
-        placeholder="Search songs, artists, genres..."
-        autocomplete="off">
-
-</div>
-
-
-<!-- RADIO SEARCH -->
-
-<div
-    id="radioSearchArea"
-    class="search-area hidden">
-
-    <input
-        id="radioSearch"
-        class="search-box"
-        type="search"
-        placeholder="Search radio stations..."
-        autocomplete="off">
-
-</div>
-
-
-<!-- MUSIC CATEGORIES -->
-
-<div
-    id="musicCategories"
-    class="categories">
-
-    <button
-        class="category active"
-        data-query="">
-        🌍 All
-    </button>
-
-    <button
-        class="category"
-        data-query="chillout">
-        🌙 Chill
-    </button>
-
-    <button
-        class="category"
-        data-query="sad">
-        💔 Sad
-    </button>
-
-    <button
-        class="category"
-        data-query="happy">
-        😊 Happy
-    </button>
-
-    <button
-        class="category"
-        data-query="romance">
-        ❤️ Romantic
-    </button>
-
-    <button
-        class="category"
-        data-query="pop">
-        🎵 Melody
-    </button>
-
-    <button
-        class="category"
-        data-query="energetic">
-        ✨ Feel Good
-    </button>
-
-</div>
-
-
-<!-- MALAYALAM RADIO QUICK FILTERS -->
-
-<div
-    id="malayalamTypes"
-    class="radio-types hidden">
-
-    <button
-        class="radio-type active"
-        onclick="loadMalayalamRadio('')">
-        🇮🇳 All Malayalam
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadMalayalamRadio('India')">
-        🇮🇳 Kerala / India
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadMalayalamRadio('United Arab Emirates')">
-        🇦🇪 UAE
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadMalayalamRadio('Saudi Arabia')">
-        🇸🇦 Saudi Arabia
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadMalayalamRadio('Qatar')">
-        🇶🇦 Qatar
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadMalayalamRadio('Kuwait')">
-        🇰🇼 Kuwait
-    </button>
-
-</div>
-
-
-<div
-    id="worldRadioTypes"
-    class="radio-types hidden">
-
-    <button
-        class="radio-type active"
-        onclick="loadWorldRadio('')">
-        🌍 Worldwide
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadWorldRadio('India')">
-        🇮🇳 India
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadWorldRadio('United Kingdom')">
-        🇬🇧 UK
-    </button>
-
-    <button
-        class="radio-type"
-        onclick="loadWorldRadio('United States')">
-        🇺🇸 USA
-    </button>
-
-</div>
-
-
-<div
-    id="heading"
-    class="heading">
-    Discover Music
-</div>
-
-
-<div
-    id="status"
-    class="status">
-    Search for music or choose a category.
-</div>
-
-
-<div
-    id="list"
-    class="list">
-
-    <div class="empty">
-        🎵 Search for music to begin
-    </div>
-
-</div>
-
-
-<!-- PLAYER -->
-
-<div class="player">
-
-    <div class="now">
-
-        <img
-            id="nowCover"
-            class="now-cover"
-            src=""
-            alt="">
-
-        <div class="now-info">
-
-            <div
-                id="nowTitle"
-                class="now-title">
-                Nothing playing
-            </div>
-
-            <div
-                id="nowSub"
-                class="now-sub">
-                Choose music or radio
-            </div>
-
-        </div>
-
-        <button
-            id="favorite"
-            class="favorite"
-            onclick="toggleFavorite()">
-            ♡
-        </button>
-
-    </div>
-
-
-    <div class="progress-row">
-
-        <span
-            id="currentTime"
-            class="time">
-            0:00
-        </span>
-
-        <input
-            id="progress"
-            class="progress"
-            type="range"
-            min="0"
-            max="100"
-            value="0">
-
-        <span
-            id="duration"
-            class="time">
-            0:00
-        </span>
-
-    </div>
-
-
-    <div class="controls">
-
-        <button
-            class="control"
-            onclick="previousItem()">
-            ⏮
-        </button>
-
-        <button
-            id="playButton"
-            class="play-main"
-            onclick="togglePlay()">
-            ▶
-        </button>
-
-        <button
-            class="control"
-            onclick="nextItem()">
-            ⏭
-        </button>
-
-    </div>
-
-
-    <div class="volume">
-
-        🔊
-
-        <input
-            id="volume"
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value="0.8">
-
-    </div>
-
-</div>
-
-
-<audio
-    id="audio"
-    preload="none">
-</audio>
-
+      id="volume"
+      class="volume"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.8"
+    >
+  </div>  <div id="previewMessage" class="preview hidden">
+    30-second preview
+  </div></div><audio id="audio" preload="metadata"></audio>
 
 <script>
 
-/* =====================================================
+/* =========================================================
    JOJIFY CONFIG
-===================================================== */
+   ========================================================= */
 
-const JAMENDO_CLIENT_ID = "55c894cf";
-
-const JAMENDO_API =
-    "https://api.jamendo.com/v3.0/tracks/";
+const SONG_API = "songs.json";
 
 const RADIO_API =
-    "https://de1.api.radio-browser.info/json/stations/search";
+  "https://de1.api.radio-browser.info/json/stations/search";
+
+const PREVIEW_SECONDS = 30;
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-===================================================== */
+   ========================================================= */
 
-const audio =
-    document.getElementById("audio");
+const audio = document.getElementById("audio");
 
-const list =
-    document.getElementById("list");
+const songList =
+  document.getElementById("songList");
 
-const statusText =
-    document.getElementById("status");
+const songStatus =
+  document.getElementById("songStatus");
 
-const heading =
-    document.getElementById("heading");
+const songSearch =
+  document.getElementById("songSearch");
 
-const musicSearch =
-    document.getElementById("musicSearch");
+const malayalamList =
+  document.getElementById("malayalamList");
 
-const radioSearch =
-    document.getElementById("radioSearch");
+const malayalamStatus =
+  document.getElementById("malayalamStatus");
 
-const musicSearchArea =
-    document.getElementById("musicSearchArea");
+const malayalamSearch =
+  document.getElementById("malayalamSearch");
 
-const radioSearchArea =
-    document.getElementById("radioSearchArea");
+const worldList =
+  document.getElementById("worldList");
 
-const musicCategories =
-    document.getElementById("musicCategories");
+const worldStatus =
+  document.getElementById("worldStatus");
 
-const malayalamTypes =
-    document.getElementById("malayalamTypes");
+const worldSearch =
+  document.getElementById("worldSearch");
 
-const worldRadioTypes =
-    document.getElementById("worldRadioTypes");
+const playerCover =
+  document.getElementById("playerCover");
+
+const playerTitle =
+  document.getElementById("playerTitle");
+
+const playerArtist =
+  document.getElementById("playerArtist");
 
 const playButton =
-    document.getElementById("playButton");
+  document.getElementById("playButton");
+
+const previousButton =
+  document.getElementById("previousButton");
+
+const nextButton =
+  document.getElementById("nextButton");
 
 const progress =
-    document.getElementById("progress");
-
-const volume =
-    document.getElementById("volume");
-
-const nowTitle =
-    document.getElementById("nowTitle");
-
-const nowSub =
-    document.getElementById("nowSub");
-
-const nowCover =
-    document.getElementById("nowCover");
+  document.getElementById("progress");
 
 const currentTime =
-    document.getElementById("currentTime");
+  document.getElementById("currentTime");
 
 const duration =
-    document.getElementById("duration");
+  document.getElementById("duration");
 
-const favoriteButton =
-    document.getElementById("favorite");
+const volume =
+  document.getElementById("volume");
+
+const previewMessage =
+  document.getElementById("previewMessage");
 
 
-/* =====================================================
+/* =========================================================
    STATE
-===================================================== */
+   ========================================================= */
 
-let currentMode = "music";
-
-let items = [];
+let songs = [];
+let filteredSongs = [];
 
 let currentIndex = -1;
 
-let currentItem = null;
+let currentType = "song";
 
-let favorite = false;
+let currentRadioList = [];
 
-let searchTimer;
+let currentRadioIndex = -1;
 
-
-/* =====================================================
-   VOLUME
-===================================================== */
-
-audio.volume = 0.8;
+let previewTimer = null;
 
 
-/* =====================================================
-   FORMAT TIME
-===================================================== */
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
-function formatTime(seconds){
+function escapeHTML(value) {
 
-    if(!isFinite(seconds)){
-        return "0:00";
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function formatTime(seconds) {
+
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+  const secs =
+    Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+
+  return minutes + ":" + secs;
+
+}
+
+
+function setDefaultCover() {
+
+  return "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="300"
+           height="300">
+        <rect width="100%" height="100%" fill="#202020"/>
+        <text x="50%" y="52%"
+              text-anchor="middle"
+              fill="#1ed760"
+              font-size="45"
+              font-family="Arial"
+              font-weight="bold">
+          JOJIFY
+        </text>
+      </svg>
+    `);
+
+}
+
+
+/* =========================================================
+   LOAD SONG API
+   ========================================================= */
+
+async function loadSongs() {
+
+  try {
+
+    const response =
+      await fetch(SONG_API + "?v=" + Date.now());
+
+    if (!response.ok) {
+      throw new Error("API error");
     }
 
-    const minutes =
-        Math.floor(seconds / 60);
+    const data =
+      await response.json();
 
-    const secondsPart =
-        Math.floor(seconds % 60)
-        .toString()
-        .padStart(2,"0");
+    songs =
+      Array.isArray(data.songs)
+        ? data.songs.filter(song => song.audio)
+        : [];
 
-    return minutes + ":" + secondsPart;
-}
+    filteredSongs = [...songs];
 
+    renderSongs();
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+  } catch (error) {
 
-function escapeHtml(value){
+    songStatus.textContent =
+      "Could not load JOJIFY music.";
 
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    console.error(error);
+
+  }
 
 }
 
 
-/* =====================================================
-   RESET FILTER BUTTONS
-===================================================== */
+/* =========================================================
+   RENDER SONGS
+   ========================================================= */
 
-function resetRadioButtons(container){
+function renderSongs() {
 
-    container
-    .querySelectorAll(".radio-type")
-    .forEach(
-        button =>
-        button.classList.remove("active")
-    );
+  songList.innerHTML = "";
 
-}
+  if (!filteredSongs.length) {
 
+    songStatus.textContent =
+      "No songs found.";
 
-/* =====================================================
-   SHOW MUSIC
-===================================================== */
+    return;
 
-function showMusic(){
+  }
 
-    currentMode = "music";
+  songStatus.textContent =
+    filteredSongs.length +
+    " song" +
+    (filteredSongs.length === 1 ? "" : "s");
 
-    document
-    .getElementById("musicTab")
-    .classList.add("active");
+  filteredSongs.forEach((song, index) => {
 
-    document
-    .getElementById("malayalamTab")
-    .classList.remove("active");
+    const originalIndex =
+      songs.indexOf(song);
 
-    document
-    .getElementById("worldRadioTab")
-    .classList.remove("active");
+    const card =
+      document.createElement("div");
 
+    card.className = "song";
 
-    musicSearchArea
-    .classList.remove("hidden");
+    const cover =
+      song.cover || setDefaultCover();
 
-    radioSearchArea
-    .classList.add("hidden");
+    card.innerHTML = `
 
-    musicCategories.style.display =
-        "flex";
+      <img
+        class="cover"
+        src="${escapeHTML(cover)}"
+        alt=""
+        onerror="this.src='${setDefaultCover()}'"
+      >
 
-    malayalamTypes
-    .classList.add("hidden");
+      <div class="songInfo">
 
-    worldRadioTypes
-    .classList.add("hidden");
+        <div class="songTitle">
+          ${escapeHTML(song.title)}
+        </div>
 
+        <div class="artist">
+          ${escapeHTML(song.artist)}
+        </div>
 
-    heading.textContent =
-        "Discover Music";
+      </div>
 
-    statusText.textContent =
-        "Search for music or choose a category.";
+      <button class="playSmall">
+        ▶
+      </button>
 
-    list.innerHTML =
-        '<div class="empty">🎵 Search for music to begin</div>';
+    `;
 
-    items = [];
+    card.addEventListener("click", () => {
 
-}
+      playSong(originalIndex);
 
+    });
 
-/* =====================================================
-   SHOW MALAYALAM RADIO
-===================================================== */
+    songList.appendChild(card);
 
-function showMalayalamRadio(){
-
-    currentMode = "malayalam";
-
-    document
-    .getElementById("musicTab")
-    .classList.remove("active");
-
-    document
-    .getElementById("malayalamTab")
-    .classList.add("active");
-
-    document
-    .getElementById("worldRadioTab")
-    .classList.remove("active");
-
-
-    musicSearchArea
-    .classList.add("hidden");
-
-    radioSearchArea
-    .classList.remove("hidden");
-
-    musicCategories.style.display =
-        "none";
-
-    malayalamTypes
-    .classList.remove("hidden");
-
-    worldRadioTypes
-    .classList.add("hidden");
-
-
-    heading.textContent =
-        "🇮🇳 Malayalam Radio";
-
-    statusText.textContent =
-        "Finding Malayalam radio stations...";
-
-    radioSearch.value = "";
-
-
-    loadMalayalamRadio("");
+  });
 
 }
 
 
-/* =====================================================
-   SHOW WORLD RADIO
-===================================================== */
+/* =========================================================
+   SONG SEARCH
+   ========================================================= */
 
-function showWorldRadio(){
+songSearch.addEventListener("input", () => {
 
-    currentMode = "world";
+  const query =
+    songSearch.value
+      .trim()
+      .toLowerCase();
 
-    document
-    .getElementById("musicTab")
-    .classList.remove("active");
+  if (!query) {
 
-    document
-    .getElementById("malayalamTab")
-    .classList.remove("active");
+    filteredSongs = [...songs];
 
-    document
-    .getElementById("worldRadioTab")
-    .classList.add("active");
+  } else {
 
+    filteredSongs =
+      songs.filter(song => {
 
-    musicSearchArea
-    .classList.add("hidden");
+        const title =
+          String(song.title || "")
+            .toLowerCase();
 
-    radioSearchArea
-    .classList.remove("hidden");
+        const artist =
+          String(song.artist || "")
+            .toLowerCase();
 
-    musicCategories.style.display =
-        "none";
+        const album =
+          String(song.album || "")
+            .toLowerCase();
 
-    malayalamTypes
-    .classList.add("hidden");
+        return (
+          title.includes(query) ||
+          artist.includes(query) ||
+          album.includes(query)
+        );
 
-    worldRadioTypes
-    .classList.remove("hidden");
+      });
 
+  }
 
-    heading.textContent =
-        "🌍 World Radio";
-
-    statusText.textContent =
-        "Search worldwide radio stations.";
-
-    radioSearch.value = "";
-
-
-    loadWorldRadio("");
-
-}
-
-
-/* =====================================================
-   MUSIC SEARCH
-===================================================== */
-
-musicSearch.addEventListener(
-    "input",
-    function(){
-
-        clearTimeout(searchTimer);
-
-        searchTimer =
-            setTimeout(
-                () => {
-
-                    const query =
-                        musicSearch.value.trim();
-
-                    if(query){
-                        searchMusic(query);
-                    }
-
-                },
-                500
-            );
-
-    }
-);
-
-
-musicSearch.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            const query =
-                musicSearch.value.trim();
-
-            if(query){
-                searchMusic(query);
-            }
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   MUSIC CATEGORIES
-===================================================== */
-
-document
-.querySelectorAll(".category")
-.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        function(){
-
-            document
-            .querySelectorAll(".category")
-            .forEach(
-                btn =>
-                btn.classList.remove("active")
-            );
-
-            this.classList.add("active");
-
-            const query =
-                this.dataset.query;
-
-
-            if(!query){
-
-                musicSearch.value = "";
-
-                list.innerHTML =
-                    '<div class="empty">🎵 Search for music to begin</div>';
-
-                statusText.textContent =
-                    "Search for music or choose a category.";
-
-                return;
-
-            }
-
-
-            musicSearch.value =
-                query;
-
-            searchMusic(query);
-
-        }
-    );
+  renderSongs();
 
 });
 
 
-/* =====================================================
-   JAMENDO MUSIC SEARCH
-===================================================== */
+/* =========================================================
+   PLAY SONG
+   ========================================================= */
 
-async function searchMusic(query){
+function playSong(index) {
 
-    currentMode = "music";
+  if (!songs[index]) {
+    return;
+  }
 
-    heading.textContent =
-        "Music Results";
+  clearPreviewTimer();
 
-    statusText.textContent =
-        "Searching Jamendo...";
+  currentType = "song";
 
+  currentIndex = index;
 
-    list.innerHTML = `
-        <div class="loading">
-            <div class="spinner"></div>
-            Searching music...
-        </div>
-    `;
+  const song =
+    songs[index];
 
+  audio.src = song.audio;
 
-    try{
+  audio.load();
 
-        const url =
-            JAMENDO_API +
-            "?client_id=" +
-            encodeURIComponent(JAMENDO_CLIENT_ID) +
-            "&format=json" +
-            "&limit=25" +
-            "&search=" +
-            encodeURIComponent(query) +
-            "&audioformat=mp32" +
-            "&imagesize=200" +
-            "&type=single+albumtrack";
+  playerTitle.textContent =
+    song.title || "Unknown Song";
 
+  playerArtist.textContent =
+    song.artist || "Unknown Artist";
 
-        const response =
-            await fetch(url);
+  playerCover.src =
+    song.cover || setDefaultCover();
 
+  previewMessage.classList.remove("hidden");
 
-        if(!response.ok){
-            throw new Error(
-                "Jamendo HTTP " +
-                response.status
-            );
-        }
+  previewMessage.textContent =
+    "30-second preview";
 
+  audio.play()
+    .then(() => {
 
-        const data =
-            await response.json();
+      playButton.textContent = "⏸";
 
+      startPreviewTimer();
 
-        if(
-            !data.results ||
-            data.results.length === 0
-        ){
+    })
+    .catch(error => {
 
-            items = [];
+      console.error(error);
 
-            list.innerHTML = `
-                <div class="empty">
-                    😕 No matching tracks found.<br><br>
-                    Try another song, artist or genre.
-                </div>
-            `;
+      playerTitle.textContent =
+        "Playback unavailable";
 
-            statusText.textContent =
-                "No results.";
-
-            return;
-
-        }
-
-
-        items =
-            data.results.filter(
-                track => track.audio
-            );
-
-
-        statusText.textContent =
-            items.length +
-            " tracks found";
-
-
-        renderMusic();
-
-
-    }catch(error){
-
-        console.error(error);
-
-        list.innerHTML = `
-            <div class="empty">
-                ⚠️ Could not connect to Jamendo.<br><br>
-                Check your internet connection
-                and Client ID.
-            </div>
-        `;
-
-        statusText.textContent =
-            "Music search failed.";
-
-    }
+    });
 
 }
 
 
-/* =====================================================
-   RENDER MUSIC
-===================================================== */
+/* =========================================================
+   30 SECOND PREVIEW
+   ========================================================= */
 
-function renderMusic(){
+function startPreviewTimer() {
 
-    list.innerHTML = "";
+  clearPreviewTimer();
 
+  previewTimer =
+    setTimeout(() => {
 
-    if(!items.length){
-
-        list.innerHTML =
-            '<div class="empty">No music found.</div>';
-
+      if (currentType !== "song") {
         return;
+      }
 
-    }
+      audio.pause();
 
+      audio.currentTime = 0;
 
-    items.forEach(
-        (track,index) => {
+      playButton.textContent = "▶";
 
-            const row =
-                document.createElement("div");
+      previewMessage.textContent =
+        "30-second preview finished";
 
-            row.className =
-                "item";
-
-
-            if(
-                currentItem &&
-                currentItem.id === track.id
-            ){
-
-                row.classList.add("playing");
-
-            }
-
-
-            const image =
-                track.image ||
-                track.album_image ||
-                "";
-
-
-            row.innerHTML = `
-
-                <img
-                    class="cover"
-                    src="${escapeHtml(image)}"
-                    alt=""
-                    onerror="this.style.display='none'">
-
-                <div class="item-info">
-
-                    <div class="item-title">
-                        ${escapeHtml(track.name)}
-                    </div>
-
-                    <div class="item-sub">
-                        ${escapeHtml(
-                            track.artist_name ||
-                            "Unknown artist"
-                        )}
-                    </div>
-
-                    <div class="item-meta">
-                        ${formatTime(
-                            Number(track.duration)
-                        )}
-                    </div>
-
-                </div>
-
-                <button
-                    class="play-small"
-                    type="button">
-                    ▶
-                </button>
-
-            `;
-
-
-            row
-            .querySelector(".play-small")
-            .addEventListener(
-                "click",
-                function(event){
-
-                    event.stopPropagation();
-
-                    playItem(index);
-
-                }
-            );
-
-
-            row.addEventListener(
-                "click",
-                () => playItem(index)
-            );
-
-
-            list.appendChild(row);
-
-        }
-    );
+    }, PREVIEW_SECONDS * 1000);
 
 }
 
 
-/* =====================================================
-   RADIO SEARCH INPUT
-===================================================== */
+function clearPreviewTimer() {
 
-radioSearch.addEventListener(
-    "input",
-    function(){
+  if (previewTimer) {
 
-        clearTimeout(searchTimer);
+    clearTimeout(previewTimer);
 
-        searchTimer =
-            setTimeout(
-                () => {
+    previewTimer = null;
 
-                    const query =
-                        radioSearch.value.trim();
-
-                    if(query.length >= 2){
-
-                        searchRadio(
-                            query,
-                            currentMode === "malayalam"
-                        );
-
-                    }
-
-                },
-                500
-            );
-
-    }
-);
-
-
-radioSearch.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            const query =
-                radioSearch.value.trim();
-
-            if(query.length >= 2){
-
-                searchRadio(
-                    query,
-                    currentMode === "malayalam"
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   MALAYALAM RADIO
-===================================================== */
-
-async function loadMalayalamRadio(country){
-
-    currentMode = "malayalam";
-
-    heading.textContent =
-        "🇮🇳 Malayalam Radio";
-
-    statusText.textContent =
-        "Finding Malayalam stations...";
-
-
-    list.innerHTML = `
-        <div class="loading">
-            <div class="spinner"></div>
-            Loading Malayalam radio...
-        </div>
-    `;
-
-
-    try{
-
-        let url =
-            RADIO_API +
-            "?language=malayalam" +
-            "&hidebroken=true" +
-            "&limit=50" +
-            "&order=votes" +
-            "&reverse=true";
-
-
-        if(country){
-            url +=
-                "&country=" +
-                encodeURIComponent(country);
-        }
-
-
-        const response =
-            await fetch(url);
-
-
-        if(!response.ok){
-            throw new Error(
-                "Radio API HTTP " +
-                response.status
-            );
-        }
-
-
-        const data =
-            await response.json();
-
-
-        items =
-            data.filter(
-                station =>
-                    station.url_resolved
-            );
-
-
-        if(!items.length){
-
-            list.innerHTML = `
-                <div class="empty">
-                    📻 No Malayalam stations found.<br><br>
-                    Try the search box above.
-                </div>
-            `;
-
-            statusText.textContent =
-                "No Malayalam stations found.";
-
-            return;
-
-        }
-
-
-        statusText.textContent =
-            items.length +
-            " Malayalam stations";
-
-
-        renderRadio();
-
-
-    }catch(error){
-
-        console.error(error);
-
-        list.innerHTML = `
-            <div class="empty">
-                ⚠️ Malayalam radio could not be loaded.<br><br>
-                Try again in a moment.
-            </div>
-        `;
-
-        statusText.textContent =
-            "Radio loading failed.";
-
-    }
+  }
 
 }
 
 
-/* =====================================================
-   WORLD RADIO
-===================================================== */
+/* =========================================================
+   PLAYER BUTTONS
+   ========================================================= */
 
-async function loadWorldRadio(country){
+playButton.addEventListener("click", () => {
 
-    currentMode = "world";
+  if (!audio.src) {
+    return;
+  }
 
-    heading.textContent =
-        "🌍 World Radio";
+  if (audio.paused) {
 
-    statusText.textContent =
-        "Loading radio stations...";
+    audio.play()
+      .then(() => {
 
+        playButton.textContent = "⏸";
 
-    list.innerHTML = `
-        <div class="loading">
-            <div class="spinner"></div>
-            Loading radio...
-        </div>
-    `;
-
-
-    try{
-
-        let url =
-            RADIO_API +
-            "?hidebroken=true" +
-            "&limit=50" +
-            "&order=votes" +
-            "&reverse=true";
-
-
-        if(country){
-
-            url +=
-                "&country=" +
-                encodeURIComponent(country);
-
+        if (currentType === "song") {
+          startPreviewTimer();
         }
 
+      })
+      .catch(console.error);
 
-        const response =
-            await fetch(url);
-
-
-        if(!response.ok){
-            throw new Error(
-                "Radio API HTTP " +
-                response.status
-            );
-        }
-
-
-        const data =
-            await response.json();
-
-
-        items =
-            data.filter(
-                station =>
-                    station.url_resolved
-            );
-
-
-        statusText.textContent =
-            items.length +
-            " stations found";
-
-
-        renderRadio();
-
-
-    }catch(error){
-
-        console.error(error);
-
-        list.innerHTML = `
-            <div class="empty">
-                ⚠️ Radio could not be loaded.<br><br>
-                Try again later.
-            </div>
-        `;
-
-    }
-
-}
-
-
-/* =====================================================
-   SEARCH RADIO
-===================================================== */
-
-async function searchRadio(
-    query,
-    malayalamOnly
-){
-
-    heading.textContent =
-        malayalamOnly
-        ? "🇮🇳 Malayalam Radio"
-        : "🌍 Radio Search";
-
-
-    statusText.textContent =
-        "Searching radio stations...";
-
-
-    list.innerHTML = `
-        <div class="loading">
-            <div class="spinner"></div>
-            Searching radio...
-        </div>
-    `;
-
-
-    try{
-
-        let url =
-            RADIO_API +
-            "?name=" +
-            encodeURIComponent(query) +
-            "&hidebroken=true" +
-            "&limit=50" +
-            "&order=votes" +
-            "&reverse=true";
-
-
-        if(malayalamOnly){
-
-            url +=
-                "&language=malayalam";
-
-        }
-
-
-        const response =
-            await fetch(url);
-
-
-        if(!response.ok){
-            throw new Error(
-                "Radio search failed"
-            );
-        }
-
-
-        const data =
-            await response.json();
-
-
-        items =
-            data.filter(
-                station =>
-                    station.url_resolved
-            );
-
-
-        if(!items.length){
-
-            list.innerHTML = `
-                <div class="empty">
-                    😕 No matching radio stations.<br><br>
-                    Try another station name.
-                </div>
-            `;
-
-            statusText.textContent =
-                "No stations found.";
-
-            return;
-
-        }
-
-
-        statusText.textContent =
-            items.length +
-            " stations found";
-
-
-        renderRadio();
-
-
-    }catch(error){
-
-        console.error(error);
-
-        list.innerHTML = `
-            <div class="empty">
-                ⚠️ Radio search failed.<br><br>
-                Please try again.
-            </div>
-        `;
-
-    }
-
-}
-
-
-/* =====================================================
-   RENDER RADIO
-===================================================== */
-
-function renderRadio(){
-
-    list.innerHTML = "";
-
-
-    items.forEach(
-        (station,index) => {
-
-            const row =
-                document.createElement("div");
-
-            row.className =
-                "item";
-
-
-            if(
-                currentItem &&
-                currentItem.stationuuid ===
-                station.stationuuid
-            ){
-
-                row.classList.add("playing");
-
-            }
-
-
-            const image =
-                station.favicon || "";
-
-
-            row.innerHTML = `
-
-                <img
-                    class="cover"
-                    src="${escapeHtml(image)}"
-                    alt=""
-                    onerror="this.style.display='none'">
-
-                <div class="item-info">
-
-                    <div class="item-title">
-                        ${escapeHtml(
-                            station.name ||
-                            "Radio Station"
-                        )}
-                    </div>
-
-                    <div class="item-sub">
-
-                        <span class="live">
-                            ● LIVE
-                        </span>
-
-                        &nbsp;
-
-                        ${escapeHtml(
-                            station.country ||
-                            "Worldwide"
-                        )}
-
-                    </div>
-
-                    <div class="item-meta">
-
-                        ${escapeHtml(
-                            station.language ||
-                            "Radio"
-                        )}
-
-                        ${station.codec
-                        ? " • " +
-                          escapeHtml(
-                              station.codec
-                          )
-                        : ""}
-
-                        ${station.bitrate
-                        ? " • " +
-                          station.bitrate +
-                          " kbps"
-                        : ""}
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="play-small"
-                    type="button">
-                    ▶
-                </button>
-
-            `;
-
-
-            row
-            .querySelector(".play-small")
-            .addEventListener(
-                "click",
-                function(event){
-
-                    event.stopPropagation();
-
-                    playItem(index);
-
-                }
-            );
-
-
-            row.addEventListener(
-                "click",
-                () => playItem(index)
-            );
-
-
-            list.appendChild(row);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   PLAY ITEM
-===================================================== */
-
-async function playItem(index){
-
-    if(
-        index < 0 ||
-        index >= items.length
-    ){
-        return;
-    }
-
-
-    const item =
-        items[index];
-
-
-    currentIndex =
-        index;
-
-    currentItem =
-        item;
-
-    favorite =
-        false;
-
-    updateFavorite();
-
+  } else {
 
     audio.pause();
 
+    playButton.textContent = "▶";
 
-    /* MUSIC */
+    clearPreviewTimer();
 
-    if(currentMode === "music"){
+  }
 
-        nowTitle.textContent =
-            item.name ||
-            "Unknown song";
-
-
-        nowSub.textContent =
-            (
-                item.artist_name ||
-                "Unknown artist"
-            ) +
-            " • Jamendo";
+});
 
 
-        nowCover.src =
-            item.image ||
-            item.album_image ||
-            "";
+previousButton.addEventListener("click", () => {
 
+  if (currentType === "song") {
 
-        audio.src =
-            item.audio;
-
-
-        progress.value =
-            0;
-
-        currentTime.textContent =
-            "0:00";
-
-        duration.textContent =
-            formatTime(
-                Number(item.duration)
-            );
-
+    if (!songs.length) {
+      return;
     }
 
+    let index =
+      currentIndex - 1;
 
-    /* RADIO */
-
-    else{
-
-        nowTitle.textContent =
-            item.name ||
-            "Radio Station";
-
-
-        nowSub.textContent =
-            "🔴 LIVE • " +
-            (
-                item.country ||
-                "Worldwide"
-            );
-
-
-        nowCover.src =
-            item.favicon ||
-            "";
-
-
-        audio.src =
-            item.url_resolved;
-
-
-        progress.value =
-            0;
-
-        currentTime.textContent =
-            "LIVE";
-
-        duration.textContent =
-            "LIVE";
-
-
-        /* Radio Browser click counter */
-
-        if(item.stationuuid){
-
-            fetch(
-                "https://de1.api.radio-browser.info/json/url/" +
-                encodeURIComponent(
-                    item.stationuuid
-                )
-            ).catch(
-                () => {}
-            );
-
-        }
-
+    if (index < 0) {
+      index = songs.length - 1;
     }
 
+    playSong(index);
 
-    renderCurrentList();
+  }
 
+  else {
 
-    try{
-
-        await audio.play();
-
-        playButton.textContent =
-            "❚❚";
-
-    }catch(error){
-
-        console.error(error);
-
-        playButton.textContent =
-            "▶";
-
-        alert(
-            "This stream could not be played. Try another station or track."
-        );
-
+    if (!currentRadioList.length) {
+      return;
     }
 
-}
+    let index =
+      currentRadioIndex - 1;
 
-
-/* =====================================================
-   RENDER CURRENT LIST
-===================================================== */
-
-function renderCurrentList(){
-
-    if(currentMode === "music"){
-        renderMusic();
-    }else{
-        renderRadio();
+    if (index < 0) {
+      index = currentRadioList.length - 1;
     }
 
-}
-
-
-/* =====================================================
-   PLAY / PAUSE
-===================================================== */
-
-function togglePlay(){
-
-    if(!currentItem){
-
-        if(items.length){
-            playItem(0);
-        }
-
-        return;
-
-    }
-
-
-    if(audio.paused){
-
-        audio.play();
-
-    }else{
-
-        audio.pause();
-
-    }
-
-}
-
-
-/* =====================================================
-   NEXT
-===================================================== */
-
-function nextItem(){
-
-    if(!items.length){
-        return;
-    }
-
-
-    const next =
-        (currentIndex + 1)
-        % items.length;
-
-
-    playItem(next);
-
-}
-
-
-/* =====================================================
-   PREVIOUS
-===================================================== */
-
-function previousItem(){
-
-    if(!items.length){
-        return;
-    }
-
-
-    const previous =
-        (
-            currentIndex -
-            1 +
-            items.length
-        )
-        % items.length;
-
-
-    playItem(previous);
-
-}
-
-
-/* =====================================================
-   AUDIO PLAY
-===================================================== */
-
-audio.addEventListener(
-    "play",
-    function(){
-
-        playButton.textContent =
-            "❚❚";
-
-    }
-);
-
-
-/* =====================================================
-   AUDIO PAUSE
-===================================================== */
-
-audio.addEventListener(
-    "pause",
-    function(){
-
-        playButton.textContent =
-            "▶";
-
-    }
-);
-
-
-/* =====================================================
-   MUSIC PROGRESS
-===================================================== */
-
-audio.addEventListener(
-    "timeupdate",
-    function(){
-
-        if(
-            currentMode !== "music" ||
-            !audio.duration
-        ){
-            return;
-        }
-
-
-        progress.value =
-            (
-                audio.currentTime /
-                audio.duration
-            ) * 100;
-
-
-        currentTime.textContent =
-            formatTime(
-                audio.currentTime
-            );
-
-
-        duration.textContent =
-            formatTime(
-                audio.duration
-            );
-
-    }
-);
-
-
-/* =====================================================
-   LOADED METADATA
-===================================================== */
-
-audio.addEventListener(
-    "loadedmetadata",
-    function(){
-
-        if(currentMode === "music"){
-
-            duration.textContent =
-                formatTime(
-                    audio.duration
-                );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   NEXT AFTER MUSIC ENDS
-===================================================== */
-
-audio.addEventListener(
-    "ended",
-    function(){
-
-        if(currentMode === "music"){
-            nextItem();
-        }
-
-    }
-);
-
-
-/* =====================================================
-   SEEK
-===================================================== */
-
-progress.addEventListener(
-    "input",
-    function(){
-
-        if(
-            currentMode !== "music" ||
-            !audio.duration
-        ){
-            return;
-        }
-
-
-        audio.currentTime =
-            (
-                Number(progress.value) /
-                100
-            ) *
-            audio.duration;
-
-    }
-);
-
-
-/* =====================================================
-   VOLUME
-===================================================== */
-
-volume.addEventListener(
-    "input",
-    function(){
-
-        audio.volume =
-            Number(volume.value);
-
-    }
-);
-
-
-/* =====================================================
-   FAVORITE
-===================================================== */
-
-function toggleFavorite(){
-
-    if(!currentItem){
-        return;
-    }
-
-
-    favorite =
-        !favorite;
-
-
-    updateFavorite();
-
-}
-
-
-function updateFavorite(){
-
-    favoriteButton.textContent =
-        favorite
-        ? "♥"
-        : "♡";
-
-
-    favoriteButton.classList.toggle(
-        "active",
-        favorite
+    playRadio(
+      currentRadioList,
+      index
     );
 
+  }
+
+});
+
+
+nextButton.addEventListener("click", () => {
+
+  if (currentType === "song") {
+
+    if (!songs.length) {
+      return;
+    }
+
+    let index =
+      currentIndex + 1;
+
+    if (index >= songs.length) {
+      index = 0;
+    }
+
+    playSong(index);
+
+  }
+
+  else {
+
+    if (!currentRadioList.length) {
+      return;
+    }
+
+    let index =
+      currentRadioIndex + 1;
+
+    if (index >= currentRadioList.length) {
+      index = 0;
+    }
+
+    playRadio(
+      currentRadioList,
+      index
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   AUDIO EVENTS
+   ========================================================= */
+
+audio.addEventListener("play", () => {
+
+  playButton.textContent = "⏸";
+
+});
+
+
+audio.addEventListener("pause", () => {
+
+  playButton.textContent = "▶";
+
+});
+
+
+audio.addEventListener("ended", () => {
+
+  clearPreviewTimer();
+
+  if (currentType === "song") {
+
+    let next =
+      currentIndex + 1;
+
+    if (next >= songs.length) {
+      next = 0;
+    }
+
+    playSong(next);
+
+  }
+
+});
+
+
+audio.addEventListener("loadedmetadata", () => {
+
+  duration.textContent =
+    formatTime(audio.duration);
+
+});
+
+
+audio.addEventListener("timeupdate", () => {
+
+  if (
+    currentType !== "song" ||
+    !Number.isFinite(audio.duration)
+  ) {
+    return;
+  }
+
+  currentTime.textContent =
+    formatTime(audio.currentTime);
+
+  progress.value =
+    (audio.currentTime / audio.duration) * 100;
+
+});
+
+
+progress.addEventListener("input", () => {
+
+  if (
+    currentType !== "song" ||
+    !Number.isFinite(audio.duration)
+  ) {
+    return;
+  }
+
+  audio.currentTime =
+    (Number(progress.value) / 100) *
+    audio.duration;
+
+});
+
+
+volume.addEventListener("input", () => {
+
+  audio.volume =
+    Number(volume.value);
+
+});
+
+audio.volume =
+  Number(volume.value);
+
+
+/* =========================================================
+   RADIO
+   ========================================================= */
+
+async function loadMalayalamRadio(query = "") {
+
+  malayalamStatus.textContent =
+    "Searching Malayalam radio...";
+
+  malayalamList.innerHTML = "";
+
+  try {
+
+    let url =
+      RADIO_API +
+      "?language=malayalam" +
+      "&hidebroken=true" +
+      "&limit=50" +
+      "&order=votes" +
+      "&reverse=true";
+
+    if (query) {
+
+      url +=
+        "&name=" +
+        encodeURIComponent(query);
+
+    }
+
+    const response =
+      await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Radio API error");
+    }
+
+    const stations =
+      await response.json();
+
+    const valid =
+      stations.filter(
+        station => station.url_resolved
+      );
+
+    renderRadio(
+      valid,
+      malayalamList,
+      malayalamStatus
+    );
+
+  } catch (error) {
+
+    malayalamStatus.textContent =
+      "Could not load radio stations.";
+
+    console.error(error);
+
+  }
+
 }
 
 
-/* =====================================================
-   START JOJIFY
-===================================================== */
+async function loadWorldRadio(query = "") {
 
-showMusic();
+  worldStatus.textContent =
+    "Searching world radio...";
 
-</script>
+  worldList.innerHTML = "";
 
-</body>
+  try {
+
+    let url =
+      RADIO_API +
+      "?hidebroken=true" +
+      "&limit=50" +
+      "&order=votes" +
+      "&reverse=true";
+
+    if (query) {
+
+      url +=
+        "&name=" +
+        encodeURIComponent(query);
+
+    }
+
+    const response =
+      await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Radio API error");
+    }
+
+    const stations =
+      await response.json();
+
+    const valid =
+      stations.filter(
+        station => station.url_resolved
+      );
+
+    renderRadio(
+      valid,
+      worldList,
+      worldStatus
+    );
+
+  } catch (error) {
+
+    worldStatus.textContent =
+      "Could not load world radio.";
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =========================================================
+   RENDER RADIO
+   ========================================================= */
+
+function renderRadio(
+  stations,
+  container,
+  status
+) {
+
+  container.innerHTML = "";
+
+  if (!stations.length) {
+
+    status.textContent =
+      "No stations found.";
+
+    return;
+
+  }
+
+  status.textContent =
+    stations.length +
+    " live station" +
+    (stations.length === 1 ? "" : "s");
+
+  stations.forEach((station, index) => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "radioCard";
+
+    const name =
+      station.name ||
+      "Unknown Station";
+
+    const country =
+      station.country ||
+      "Unknown country";
+
+    const codec =
+      station.codec ||
+      "LIVE";
+
+    card.innerHTML = `
+
+      <div class="radioName">
+        ${escapeHTML(name)}
+      </div>
+
+      <div class="radioDetails">
+        <span class="live">● LIVE</span>
+        &nbsp; ${escapeHTML(country)}
+        &nbsp; • &nbsp; ${escapeHTML(codec)}
+      </div>
+
+      <button class="radioButton">
+        ▶ PLAY LIVE
+      </button>
+
+    `;
+
+    card
+      .querySelector(".radioButton")
+      .addEventListener("click", () => {
+
+        const list =
+          Array.from(
+            container.querySelectorAll(".radioCard")
+          ).map(() => station);
+
+        playRadio(
+          stations,
+          index
+        );
+
+      });
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================================
+   PLAY RADIO
+   ========================================================= */
+
+function playRadio(
+  stations,
+  index
+) {
+
+  const station =
+    stations[index];
+
+  if (!station || !station.url_resolved) {
+    return;
+  }
+
+  clearPreviewTimer();
+
+  currentType = "radio";
+
+  currentRadioList =
+    stations;
+
+  currentRadioIndex =
+    index;
+
+  audio.src =
+    station.url_resolved;
+
+  audio.load();
+
+  playerTitle.textContent =
+    station.name || "Live Radio";
+
+  playerArtist.textContent =
+    "🔴 LIVE • " +
+    (station.country || "Radio");
+
+  playerCover.src =
+    station.favicon ||
+    setDefaultCover();
+
+  progress.value = 0;
+
+  currentTime.textContent =
+    "LIVE";
+
+  duration.textContent =
+    "LIVE";
+
+  previewMessage.classList.add("hidden");
+
+  audio.play()
+    .then(() => {
+
+      playButton.textContent = "⏸";
+
+    })
+    .catch(error => {
+
+      console.error(error);
+
+      playerTitle.textContent =
+        "This station cannot play here";
+
+    });
+
+}
+
+
+/* =========================================================
+   RADIO SEARCH
+   ========================================================= */
+
+let malayalamSearchTimer;
+
+malayalamSearch.addEventListener("input", () => {
+
+  clearTimeout(malayalamSearchTimer);
+
+  malayalamSearchTimer =
+    setTimeout(() => {
+
+      loadMalayalamRadio(
+        malayalamSearch.value.trim()
+      );
+
+    }, 400);
+
+});
+
+
+let worldSearchTimer;
+
+worldSearch.addEventListener("input", () => {
+
+  clearTimeout(worldSearchTimer);
+
+  worldSearchTimer =
+    setTimeout(() => {
+
+      loadWorldRadio(
+        worldSearch.value.trim()
+      );
+
+    }, 400);
+
+});
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+const songsTab =
+  document.getElementById("songsTab");
+
+const malayalamTab =
+  document.getElementById("malayalamTab");
+
+const worldTab =
+  document.getElementById("worldTab");
+
+const songsSection =
+  document.getElementById("songsSection");
+
+const malayalamSection =
+  document.getElementById("malayalamSection");
+
+const worldSection =
+  document.getElementById("worldSection");
+
+
+function activateTab(tab) {
+
+  [songsTab, malayalamTab, worldTab]
+    .forEach(button =>
+      button.classList.remove("active")
+    );
+
+  [songsSection, malayalamSection, worldSection]
+    .forEach(section =>
+      section.classList.add("hidden")
+    );
+
+  tab.button.classList.add("active");
+
+  tab.section.classList.remove("hidden");
+
+}
+
+
+songsTab.addEventListener("click", () => {
+
+  activateTab({
+    button: songsTab,
+    section: songsSection
+  });
+
+});
+
+
+malayalamTab.addEventListener("click", () => {
+
+  activateTab({
+    button: malayalamTab,
+    section: malayalamSection
+  });
+
+  if (!malayalamList.children.length) {
+    loadMalayalamRadio();
+  }
+
+});
+
+
+worldTab.addEventListener("click", () => {
+
+  activateTab({
+    button: worldTab,
+    section: worldSection
+  });
+
+  if (!worldList.children.length) {
+    loadWorldRadio();
+  }
+
+});
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+loadSongs();
+
+</script></body>
 </html>
