@@ -17,15 +17,15 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     background: #111;
-    background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
-                      url("background.jpg");
+    background-image:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
+        url("background.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 .container {
-    width: 100%;
     max-width: 700px;
     margin: auto;
     padding: 25px 15px 100px;
@@ -35,22 +35,42 @@ h1 {
     text-align: center;
     color: #ff3333;
     font-size: 36px;
-    margin-bottom: 8px;
 }
 
 .subtitle {
     text-align: center;
-    color: #ddd;
-    margin-bottom: 25px;
+    color: #ccc;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    margin: 25px 0;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box button {
+    padding: 15px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #ff3333;
+    color: white;
+    font-weight: bold;
 }
 
 .player {
-    background: rgba(20,20,20,.85);
-    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(20,20,20,.88);
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 20px;
-    backdrop-filter: blur(10px);
 }
 
 .cover {
@@ -64,79 +84,69 @@ h1 {
 
 .song-title {
     text-align: center;
-    font-size: 24px;
-    margin: 18px 0 5px;
+    font-size: 23px;
+    margin-top: 15px;
 }
 
 .artist {
     text-align: center;
-    color: #bbb;
-    margin-bottom: 15px;
+    color: #aaa;
+    margin: 7px 0 15px;
 }
 
 audio {
     width: 100%;
 }
 
-.song-list {
-    background: rgba(20,20,20,.85);
+.results {
+    background: rgba(20,20,20,.88);
     border-radius: 20px;
-    padding: 15px;
+    padding: 10px;
 }
 
-.song {
+.result {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px;
+    padding: 12px;
     border-bottom: 1px solid rgba(255,255,255,.12);
-    cursor: pointer;
 }
 
-.song:last-child {
-    border-bottom: none;
+.result img {
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
-.song:hover {
-    background: rgba(255,255,255,.1);
-    border-radius: 12px;
-}
-
-.number {
-    color: #ff3333;
-    font-weight: bold;
-    width: 25px;
-}
-
-.song-info {
+.info {
     flex: 1;
 }
 
-.song-name {
+.name {
     font-weight: bold;
 }
 
-.song-artist {
+.artist-name {
     color: #aaa;
-    font-size: 13px;
-    margin-top: 4px;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.play-button {
+.play {
+    border: none;
     background: #ff3333;
     color: white;
-    border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
 }
 
-.footer {
+.message {
     text-align: center;
-    margin-top: 25px;
     color: #aaa;
-    font-size: 13px;
+    padding: 20px;
 }
 </style>
 </head>
@@ -146,11 +156,30 @@ audio {
 <div class="container">
 
     <h1>🎵 MY MUSIC</h1>
-    <div class="subtitle">Listen to your favourite songs</div>
+
+    <div class="subtitle">
+        Search for songs and listen to previews
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search songs or artists..."
+        >
+
+        <button onclick="searchSongs()">
+            Search
+        </button>
+    </div>
 
     <div class="player">
 
-        <img src="background.jpg" class="cover" id="cover">
+        <img
+            src="background.jpg"
+            class="cover"
+            id="cover"
+        >
 
         <div class="song-title" id="title">
             Select a song
@@ -166,67 +195,134 @@ audio {
 
     </div>
 
-    <div class="song-list">
+    <div class="results" id="results">
 
-        <div class="song" onclick="playSong('song1.mp3','Song One','Artist One')">
-            <div class="number">01</div>
-
-            <div class="song-info">
-                <div class="song-name">Song One</div>
-                <div class="song-artist">Artist One</div>
-            </div>
-
-            <button class="play-button">▶</button>
+        <div class="message">
+            Search for a song above 🎵
         </div>
 
-
-        <div class="song" onclick="playSong('song2.mp3','Song Two','Artist Two')">
-            <div class="number">02</div>
-
-            <div class="song-info">
-                <div class="song-name">Song Two</div>
-                <div class="song-artist">Artist Two</div>
-            </div>
-
-            <button class="play-button">▶</button>
-        </div>
-
-
-        <div class="song" onclick="playSong('song3.mp3','Song Three','Artist Three')">
-            <div class="number">03</div>
-
-            <div class="song-info">
-                <div class="song-name">Song Three</div>
-                <div class="song-artist">Artist Three</div>
-            </div>
-
-            <button class="play-button">▶</button>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        © 2026 My Music
     </div>
 
 </div>
-
 
 <script>
 
 const audio = document.getElementById("audio");
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
+const cover = document.getElementById("cover");
+const results = document.getElementById("results");
+const searchInput = document.getElementById("searchInput");
 
-function playSong(file, songTitle, songArtist) {
+async function searchSongs() {
 
-    audio.src = file;
+    const term = searchInput.value.trim();
 
-    title.innerText = songTitle;
-    artist.innerText = songArtist;
+    if (!term) {
+        results.innerHTML =
+            '<div class="message">Type a song or artist name.</div>';
+        return;
+    }
 
-    audio.play();
+    results.innerHTML =
+        '<div class="message">Searching... 🔎</div>';
+
+    try {
+
+        const url =
+            "https://itunes.apple.com/search?term=" +
+            encodeURIComponent(term) +
+            "&media=music&entity=song&limit=20&country=IN";
+
+        const response = await fetch(url);
+
+        const data = await response.json();
+
+        if (!data.results || data.results.length === 0) {
+
+            results.innerHTML =
+                '<div class="message">No songs found.</div>';
+
+            return;
+        }
+
+        results.innerHTML = "";
+
+        data.results.forEach(song => {
+
+            const div = document.createElement("div");
+
+            div.className = "result";
+
+            div.innerHTML = `
+
+                <img src="${song.artworkUrl100 || 'background.jpg'}">
+
+                <div class="info">
+
+                    <div class="name">
+                        ${escapeHTML(song.trackName)}
+                    </div>
+
+                    <div class="artist-name">
+                        ${escapeHTML(song.artistName)}
+                    </div>
+
+                </div>
+
+                <button class="play">
+                    ▶
+                </button>
+            `;
+
+            div.querySelector(".play").onclick = () => {
+
+                if (!song.previewUrl) {
+                    alert("Preview not available for this song.");
+                    return;
+                }
+
+                audio.src = song.previewUrl;
+
+                title.textContent = song.trackName;
+
+                artist.textContent = song.artistName;
+
+                cover.src =
+                    song.artworkUrl100 || "background.jpg";
+
+                audio.play();
+            };
+
+            results.appendChild(div);
+
+        });
+
+    } catch (error) {
+
+        results.innerHTML =
+            '<div class="message">Search failed. Please try again.</div>';
+
+        console.error(error);
+    }
 }
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+searchInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        searchSongs();
+    }
+
+});
 
 </script>
 
