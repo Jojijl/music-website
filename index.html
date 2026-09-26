@@ -249,6 +249,218 @@ line-height:1.5;
 margin:12px 3px
 }
 
+/* =========================
+   GAMES
+========================= */
+
+.games-title{
+text-align:center;
+margin:5px 0 5px;
+font-size:24px
+}
+
+.games-subtitle{
+text-align:center;
+color:#777;
+font-size:13px;
+margin-bottom:15px
+}
+
+.game-menu{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:15px
+}
+
+.game-select{
+background:#151515;
+border:1px solid #292929;
+color:#fff;
+padding:16px 8px;
+border-radius:15px;
+cursor:pointer;
+font-size:14px;
+font-weight:bold
+}
+
+.game-select.active{
+background:#1db954;
+color:#000;
+border-color:#1db954
+}
+
+.game-box{
+background:#111;
+border:1px solid #292929;
+border-radius:18px;
+padding:15px;
+min-height:300px
+}
+
+.game-heading{
+text-align:center;
+font-size:21px;
+margin-bottom:5px
+}
+
+.game-score{
+text-align:center;
+color:#1db954;
+font-size:17px;
+font-weight:bold;
+margin-bottom:12px
+}
+
+.game-start{
+display:block;
+margin:10px auto;
+border:0;
+background:#1db954;
+color:#000;
+padding:12px 20px;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer
+}
+
+/* SNAKE */
+
+#snakeCanvas{
+display:block;
+width:100%;
+max-width:360px;
+height:auto;
+aspect-ratio:1;
+background:#050505;
+border:1px solid #333;
+border-radius:12px;
+margin:auto
+}
+
+.snake-controls{
+display:grid;
+grid-template-columns:repeat(3,55px);
+justify-content:center;
+gap:7px;
+margin-top:12px
+}
+
+.snake-controls button{
+height:45px;
+border:0;
+border-radius:10px;
+background:#222;
+color:#fff;
+font-size:18px
+}
+
+.snake-controls button:nth-child(1){
+grid-column:2
+}
+
+/* TAP */
+
+.tap-area{
+height:220px;
+background:#171717;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+cursor:pointer;
+user-select:none
+}
+
+.tap-area.running{
+background:#152415
+}
+
+/* COIN */
+
+.coin-area{
+position:relative;
+height:300px;
+background:#080808;
+border-radius:15px;
+overflow:hidden;
+border:1px solid #222
+}
+
+.coin-item{
+position:absolute;
+font-size:30px;
+cursor:pointer;
+user-select:none
+}
+
+/* MEMORY */
+
+.memory-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+max-width:360px;
+margin:auto
+}
+
+.memory-card{
+aspect-ratio:1;
+border:0;
+border-radius:12px;
+background:#222;
+color:#fff;
+font-size:25px;
+cursor:pointer
+}
+
+.memory-card.open{
+background:#1db954;
+color:#000
+}
+
+/* TRAFFIC */
+
+.traffic-road{
+position:relative;
+width:260px;
+height:360px;
+margin:auto;
+background:#222;
+border-left:5px solid #ddd;
+border-right:5px solid #ddd;
+overflow:hidden;
+border-radius:10px
+}
+
+.road-line{
+position:absolute;
+width:5px;
+height:55px;
+background:#ddd;
+left:50%;
+transform:translateX(-50%)
+}
+
+.car{
+position:absolute;
+font-size:35px;
+user-select:none
+}
+
+.player-car{
+bottom:10px;
+left:108px
+}
+
+.enemy-car{
+top:-50px;
+left:50px
+}
+
 /* PLAYER */
 
 .player{
@@ -361,6 +573,7 @@ cursor:pointer
 }
 
 @media(max-width:600px){
+
 .logo{font-size:26px}
 
 .search-box button{
@@ -371,9 +584,14 @@ padding:0 14px
 height:230px
 }
 
+.game-menu{
+grid-template-columns:repeat(2,1fr)
+}
+
 .player{
 bottom:6px
 }
+
 }
 </style>
 </head>
@@ -421,6 +639,11 @@ onclick="showTab('world',this)">
 <button class="tab"
 onclick="showTab('movies',this)">
 🎬 Malayalam Movies
+</button>
+
+<button class="tab"
+onclick="showTab('games',this)">
+🎮 Games
 </button>
 
 </div>
@@ -473,7 +696,7 @@ Open World Radio to load stations 🌍
 </section>
 
 
-<!-- MALAYALAM MOVIES -->
+<!-- MOVIES -->
 
 <section id="movies" style="display:none">
 
@@ -491,7 +714,6 @@ Select a movie
 
 </div>
 
-
 <div class="movie-search">
 
 <input
@@ -505,7 +727,6 @@ Search
 
 </div>
 
-
 <div id="movieResults">
 
 <div class="message">
@@ -514,11 +735,265 @@ Loading Malayalam movies... 🎬
 
 </div>
 
-
 <div class="movie-note">
-🎬 Movies are loaded from Internet Archive's
-embeddable player. Availability and rights can
-vary by individual title.
+🎬 Free movies are loaded from sources that provide an embeddable player.
+Availability depends on the individual title.
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section id="games" style="display:none">
+
+<div class="games-title">
+🎮 JOJIFY GAMES
+</div>
+
+<div class="games-subtitle">
+No download. Just play 😂
+</div>
+
+
+<div class="game-menu">
+
+<button
+class="game-select active"
+onclick="openGame('snake',this)">
+🐍 Snake
+</button>
+
+<button
+class="game-select"
+onclick="openGame('tap',this)">
+🎯 Tap
+</button>
+
+<button
+class="game-select"
+onclick="openGame('coin',this)">
+🪙 Coins
+</button>
+
+<button
+class="game-select"
+onclick="openGame('memory',this)">
+🧠 Memory
+</button>
+
+<button
+class="game-select"
+onclick="openGame('traffic',this)">
+🚗 Traffic
+</button>
+
+</div>
+
+
+<div class="game-box">
+
+
+<!-- SNAKE -->
+
+<div id="snakeGame">
+
+<div class="game-heading">
+🐍 Snake
+</div>
+
+<div class="game-score">
+Score: <span id="snakeScore">0</span>
+</div>
+
+<canvas
+id="snakeCanvas"
+width="300"
+height="300">
+</canvas>
+
+<button
+class="game-start"
+onclick="startSnake()">
+▶ Start Snake
+</button>
+
+<div class="snake-controls">
+
+<button onclick="changeDirection('up')">
+⬆️
+</button>
+
+<button onclick="changeDirection('left')">
+⬅️
+</button>
+
+<button onclick="changeDirection('down')">
+⬇️
+</button>
+
+<button onclick="changeDirection('right')">
+➡️
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TAP -->
+
+<div id="tapGame" style="display:none">
+
+<div class="game-heading">
+🎯 Tap Challenge
+</div>
+
+<div class="game-score">
+Time: <span id="tapTime">10</span>s |
+Score: <span id="tapScore">0</span>
+</div>
+
+<button
+class="game-start"
+onclick="startTapGame()">
+▶ Start Challenge
+</button>
+
+<div
+id="tapArea"
+class="tap-area">
+TAP START<br>
+THEN TAP HERE!
+</div>
+
+</div>
+
+
+<!-- COIN -->
+
+<div id="coinGame" style="display:none">
+
+<div class="game-heading">
+🪙 Coin Catcher
+</div>
+
+<div class="game-score">
+Score: <span id="coinScore">0</span>
+</div>
+
+<button
+class="game-start"
+onclick="startCoinGame()">
+▶ Start Game
+</button>
+
+<div
+id="coinArea"
+class="coin-area">
+
+<div class="message">
+Catch 🪙<br>
+Avoid 💣
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MEMORY -->
+
+<div id="memoryGame" style="display:none">
+
+<div class="game-heading">
+🧠 Memory Match
+</div>
+
+<div class="game-score">
+Moves: <span id="memoryMoves">0</span>
+</div>
+
+<div
+id="memoryGrid"
+class="memory-grid">
+</div>
+
+<button
+class="game-start"
+onclick="startMemoryGame()">
+🔄 New Game
+</button>
+
+</div>
+
+
+<!-- TRAFFIC -->
+
+<div id="trafficGame" style="display:none">
+
+<div class="game-heading">
+🚗 Traffic Dodge
+</div>
+
+<div class="game-score">
+Score: <span id="trafficScore">0</span>
+</div>
+
+<div class="traffic-road"
+id="trafficRoad">
+
+<div class="road-line"
+style="top:20px">
+</div>
+
+<div class="road-line"
+style="top:120px">
+</div>
+
+<div class="road-line"
+style="top:220px">
+</div>
+
+<div class="road-line"
+style="top:320px">
+</div>
+
+<div
+id="playerCar"
+class="car player-car">
+🚗
+</div>
+
+<div
+id="enemyCar"
+class="car enemy-car">
+🚙
+</div>
+
+</div>
+
+<button
+class="game-start"
+onclick="startTraffic()">
+▶ Start Traffic
+</button>
+
+<div class="snake-controls">
+
+<button onclick="moveTraffic('left')">
+⬅️
+</button>
+
+<button onclick="moveTraffic('right')">
+➡️
+</button>
+
+</div>
+
+</div>
+
+
 </div>
 
 </section>
@@ -615,69 +1090,51 @@ onclick="downloadCurrent()">
 </div>
 
 
-<audio id="audio" preload="none"></audio>
+<audio
+id="audio"
+preload="none">
+</audio>
 
 
 <script>
 
 /* =========================
-   MUSIC PLAYER
+   MUSIC
 ========================= */
 
-const audio =
-document.getElementById("audio");
-
-const title =
-document.getElementById("title");
-
-const artist =
-document.getElementById("artist");
-
-const cover =
-document.getElementById("cover");
-
-const playButton =
-document.getElementById("playButton");
-
-const progress =
-document.getElementById("progress");
-
-const volume =
-document.getElementById("volume");
-
-const liveIndicator =
-document.getElementById("live");
+const audio=document.getElementById("audio");
+const title=document.getElementById("title");
+const artist=document.getElementById("artist");
+const cover=document.getElementById("cover");
+const playButton=document.getElementById("playButton");
+const progress=document.getElementById("progress");
+const volume=document.getElementById("volume");
+const liveIndicator=document.getElementById("live");
 
 let currentMode="song";
-
 let currentTrackIndex=-1;
-
 let songQueue=[];
-
 let radioQueue=[];
-
 let radioIndex=-1;
+let previewEnded=false;
 
 audio.volume=.8;
 
 
-/* =========================
-   TABS
-========================= */
+/* TABS */
 
 function showTab(tab,button){
 
-document.getElementById("songs")
+[
+"songs",
+"malayalam",
+"world",
+"movies",
+"games"
+].forEach(id=>{
+document.getElementById(id)
 .style.display="none";
-
-document.getElementById("malayalam")
-.style.display="none";
-
-document.getElementById("world")
-.style.display="none";
-
-document.getElementById("movies")
-.style.display="none";
+});
 
 document.querySelectorAll(".tab")
 .forEach(btn=>{
@@ -698,23 +1155,19 @@ loadWorldRadio();
 if(tab==="movies")
 loadMovies();
 
+if(tab==="games")
+startMemoryGame();
+
 }
 
 
-/* =========================
-   SONG SEARCH
-========================= */
+/* SEARCH SONGS */
 
 function searchSongs(){
 
-const input=
-document.getElementById("searchInput");
-
-const results=
-document.getElementById("results");
-
-const term=
-input.value.trim();
+const input=document.getElementById("searchInput");
+const results=document.getElementById("results");
+const term=input.value.trim();
 
 if(!term){
 
@@ -727,15 +1180,13 @@ return;
 results.innerHTML=
 '<div class="message">Searching... 🔎</div>';
 
-const callback=
-"itunes_"+Date.now();
+const callback="itunes_"+Date.now();
 
 window[callback]=function(data){
 
 delete window[callback];
 
-if(!data.results||
-!data.results.length){
+if(!data.results||!data.results.length){
 
 results.innerHTML=
 '<div class="message">No songs found.</div>';
@@ -743,8 +1194,7 @@ results.innerHTML=
 return;
 }
 
-songQueue=
-data.results.filter(
+songQueue=data.results.filter(
 x=>x.trackName&&x.previewUrl
 );
 
@@ -754,15 +1204,11 @@ data.results.forEach(song=>{
 
 if(!song.trackName)return;
 
-const div=
-document.createElement("div");
-
+const div=document.createElement("div");
 div.className="result";
 
-const artwork=
-song.artworkUrl100
-?song.artworkUrl100
-.replace(/^http:/,"https:")
+const artwork=song.artworkUrl100
+?song.artworkUrl100.replace(/^http:/,"https:")
 :"";
 
 div.innerHTML=`
@@ -776,21 +1222,15 @@ ${escapeHTML(song.trackName)}
 </div>
 
 <div class="artist-name">
-${escapeHTML(
-song.artistName||
-"Unknown Artist"
-)}
+${escapeHTML(song.artistName||"Unknown Artist")}
 </div>
 
 </div>
 
-<button class="play">
-▶
-</button>
+<button class="play">▶</button>
 `;
 
-div.querySelector(".play")
-.onclick=()=>{
+div.querySelector(".play").onclick=()=>{
 playSong(song);
 };
 
@@ -798,15 +1238,13 @@ results.appendChild(div);
 
 });
 
-const script=
-document.getElementById(callback);
+const script=document.getElementById(callback);
 
 if(script)script.remove();
 
 };
 
-const script=
-document.createElement("script");
+const script=document.createElement("script");
 
 script.id=callback;
 
@@ -824,40 +1262,29 @@ document.body.appendChild(script);
 }
 
 
-/* =========================
-   PLAY SONG
-========================= */
+/* PLAY SONG */
 
 function playSong(song){
 
 if(!song.previewUrl)return;
 
 currentMode="song";
-
-currentTrackIndex=
-songQueue.indexOf(song);
+currentTrackIndex=songQueue.indexOf(song);
+previewEnded=false;
 
 liveIndicator.style.display="none";
 
 audio.src=
-song.previewUrl
-.replace(/^http:/,"https:");
+song.previewUrl.replace(/^http:/,"https:");
 
-title.textContent=
-song.trackName;
+title.textContent=song.trackName;
+artist.textContent=song.artistName||"Unknown Artist";
 
-artist.textContent=
-song.artistName||
-"Unknown Artist";
-
-cover.src=
-song.artworkUrl100
-?song.artworkUrl100
-.replace(/^http:/,"https:")
+cover.src=song.artworkUrl100
+?song.artworkUrl100.replace(/^http:/,"https:")
 :"";
 
 progress.max=30;
-
 audio.currentTime=0;
 
 audio.play().catch(()=>{});
@@ -867,23 +1294,16 @@ updateButton();
 }
 
 
-/* =========================
-   PLAY / PAUSE
-========================= */
+/* PLAY */
 
 function togglePlay(){
 
 if(!audio.src)return;
 
-if(audio.paused){
-
+if(audio.paused)
 audio.play().catch(()=>{});
-
-}else{
-
+else
 audio.pause();
-
-}
 
 }
 
@@ -895,56 +1315,13 @@ audio.paused?"▶":"⏸";
 }
 
 
-/* =========================
-   AUTO NEXT
-========================= */
-
-audio.addEventListener(
-"timeupdate",
-()=>{
-
-if(currentMode==="song"){
-
-progress.value=
-Math.min(
-audio.currentTime,
-30
-);
-
-if(audio.currentTime>=30){
-
-nextTrack();
-
-}
-
-}else{
-
-progress.value=0;
-
-}
-
-});
-
-
-audio.addEventListener(
-"ended",
-()=>{
-
-if(currentMode==="song")
-nextTrack();
-
-if(currentMode==="radio")
-playNextRadio();
-
-});
-
+/* NEXT */
 
 function nextTrack(){
 
 if(!songQueue.length)return;
 
-let next=
-currentTrackIndex+1;
+let next=currentTrackIndex+1;
 
 if(next>=songQueue.length)
 next=0;
@@ -958,8 +1335,7 @@ function previousTrack(){
 
 if(!songQueue.length)return;
 
-let previous=
-currentTrackIndex-1;
+let previous=currentTrackIndex-1;
 
 if(previous<0)
 previous=songQueue.length-1;
@@ -969,36 +1345,54 @@ playSong(songQueue[previous]);
 }
 
 
-/* =========================
-   PROGRESS
-========================= */
+/* AUDIO EVENTS */
 
-progress.addEventListener(
-"input",
-()=>{
+audio.addEventListener("play",updateButton);
+audio.addEventListener("pause",updateButton);
+
+audio.addEventListener("timeupdate",()=>{
+
+if(currentMode==="song"){
+
+progress.value=
+Math.min(audio.currentTime,30);
+
+if(audio.currentTime>=30&&!previewEnded){
+
+previewEnded=true;
+
+nextTrack();
+
+}
+
+}
+
+});
+
+
+audio.addEventListener("ended",()=>{
 
 if(currentMode==="song")
-audio.currentTime=
-Number(progress.value);
+nextTrack();
+
+if(currentMode==="radio")
+playNextRadio();
 
 });
 
 
-/* =========================
-   VOLUME
-========================= */
+progress.addEventListener("input",()=>{
 
-volume.addEventListener(
-"input",
-()=>{
-audio.volume=
-Number(volume.value);
+if(currentMode==="song")
+audio.currentTime=Number(progress.value);
+
 });
 
 
-/* =========================
-   DOWNLOAD
-========================= */
+volume.addEventListener("input",()=>{
+audio.volume=Number(volume.value);
+});
+
 
 function downloadCurrent(){
 
@@ -1009,24 +1403,16 @@ alert(
 }
 
 
-/* =========================
-   RADIO
-========================= */
+/* RADIO */
 
 const RADIO_APIS=[
-
 "https://de1.api.radio-browser.info",
-
 "https://at1.api.radio-browser.info",
-
 "https://nl1.api.radio-browser.info"
-
 ];
 
 let loadedMalayalam=false;
-
 let loadedWorld=false;
-
 
 async function loadMalayalamRadio(){
 
@@ -1034,25 +1420,16 @@ if(loadedMalayalam)return;
 
 loadedMalayalam=true;
 
-const box=
-document.getElementById(
-"malayalamResults"
-);
+const box=document.getElementById("malayalamResults");
 
 box.innerHTML=
 '<div class="message">Loading Malayalam stations... 📻</div>';
 
-const stations=
-await getRadioStations(
-"malayalam"
-);
+const stations=await getRadioStations("malayalam");
 
 radioQueue=stations;
 
-renderRadio(
-stations,
-box
-);
+renderRadio(stations,box);
 
 }
 
@@ -1063,23 +1440,16 @@ if(loadedWorld)return;
 
 loadedWorld=true;
 
-const box=
-document.getElementById(
-"worldResults"
-);
+const box=document.getElementById("worldResults");
 
 box.innerHTML=
 '<div class="message">Loading world stations... 🌍</div>';
 
-const stations=
-await getRadioStations("");
+const stations=await getRadioStations("");
 
 radioQueue=stations;
 
-renderRadio(
-stations,
-box
-);
+renderRadio(stations,box);
 
 }
 
@@ -1100,24 +1470,18 @@ api+
 
 if(language){
 
-url+=
-"&language="+
+url+="&language="+
 encodeURIComponent(language);
 
 }
 
-const response=
-await fetch(url);
+const response=await fetch(url);
 
-if(!response.ok)
-continue;
+if(!response.ok)continue;
 
-const data=
-await response.json();
+const data=await response.json();
 
-return data.filter(
-x=>x.url_resolved
-);
+return data.filter(x=>x.url_resolved);
 
 }catch(error){}
 
@@ -1128,10 +1492,7 @@ return[];
 }
 
 
-function renderRadio(
-stations,
-container
-){
+function renderRadio(stations,container){
 
 container.innerHTML="";
 
@@ -1145,8 +1506,7 @@ return;
 
 stations.forEach(station=>{
 
-const div=
-document.createElement("div");
+const div=document.createElement("div");
 
 div.className="station";
 
@@ -1155,17 +1515,11 @@ div.innerHTML=`
 <div class="station-info">
 
 <div class="station-name">
-${escapeHTML(
-station.name||
-"Unknown Station"
-)}
+${escapeHTML(station.name||"Unknown Station")}
 </div>
 
 <div class="station-country">
-${escapeHTML(
-station.country||
-"Radio"
-)}
+${escapeHTML(station.country||"Radio")}
 </div>
 
 </div>
@@ -1175,9 +1529,7 @@ station.country||
 </button>
 `;
 
-div.querySelector(
-".radio-btn"
-).onclick=()=>{
+div.querySelector(".radio-btn").onclick=()=>{
 playRadio(station);
 };
 
@@ -1193,34 +1545,24 @@ function playRadio(station){
 if(!station.url_resolved){
 
 playNextRadio();
-
 return;
+
 }
 
 currentMode="radio";
 
-radioIndex=
-radioQueue.indexOf(station);
+radioIndex=radioQueue.indexOf(station);
 
 liveIndicator.style.display="block";
 
-title.textContent=
-station.name||
-"Live Radio";
+title.textContent=station.name||"Live Radio";
+artist.textContent=station.country||"Live Station";
 
-artist.textContent=
-station.country||
-"Live Station";
+cover.src=station.favicon||"";
 
-cover.src=
-station.favicon||
-"";
+audio.src=station.url_resolved;
 
-audio.src=
-station.url_resolved;
-
-audio.play()
-.catch(()=>{
+audio.play().catch(()=>{
 playNextRadio();
 });
 
@@ -1240,55 +1582,28 @@ radioIndex++;
 if(radioIndex>=radioQueue.length)
 radioIndex=0;
 
-playRadio(
-radioQueue[radioIndex]
-);
+playRadio(radioQueue[radioIndex]);
 
 }
 
 
-audio.addEventListener(
-"error",
-()=>{
+audio.addEventListener("error",()=>{
 
-if(currentMode==="radio"){
-
-setTimeout(
-playNextRadio,
-300
-);
-
-}
+if(currentMode==="radio")
+setTimeout(playNextRadio,300);
 
 });
 
 
-/* =========================
-   MALAYALAM MOVIES
-   INTERNET ARCHIVE
-========================= */
+/* MOVIES */
 
 let moviesLoaded=false;
-
-
-/*
-   Search Internet Archive for
-   Malayalam movie records.
-*/
 
 async function loadMovies(){
 
 if(moviesLoaded)return;
 
 moviesLoaded=true;
-
-const box=
-document.getElementById(
-"movieResults"
-);
-
-box.innerHTML=
-'<div class="message">Loading Malayalam movies... 🎬</div>';
 
 await searchMovies();
 
@@ -1297,35 +1612,17 @@ await searchMovies();
 
 async function searchMovies(){
 
-const box=
-document.getElementById(
-"movieResults"
-);
+const box=document.getElementById("movieResults");
 
-const searchInput=
-document.getElementById(
-"movieSearch"
-);
+const input=document.getElementById("movieSearch");
 
-const term=
-searchInput.value.trim();
-
-
-/*
-   Malayalam + movies.
-   If user searches a title,
-   include that title.
-*/
+const term=input.value.trim();
 
 let query=
 'mediatype:movies AND language:Malayalam';
 
-if(term){
-
-query+=
-' AND title:('+term+')';
-
-}
+if(term)
+query+=' AND title:('+term+')';
 
 const url=
 "https://archive.org/advancedsearch.php"+
@@ -1337,88 +1634,58 @@ const url=
 "&page=1"+
 "&output=json";
 
-
 box.innerHTML=
 '<div class="message">Searching movies... 🔎</div>';
 
 try{
 
-const response=
-await fetch(url);
+const response=await fetch(url);
 
 if(!response.ok)
-throw new Error("Search failed");
+throw new Error();
 
-const data=
-await response.json();
+const data=await response.json();
 
-const docs=
-data.response &&
+const docs=data.response&&
 data.response.docs
 ?data.response.docs
 :[];
 
-renderMovies(
-docs,
-box
-);
+renderMovies(docs,box);
 
 }catch(error){
 
 box.innerHTML=
-`
-<div class="message">
-Unable to load movies right now.<br><br>
-Please try again.
-</div>
-`;
+'<div class="message">Unable to load movies right now.</div>';
 
 }
 
 }
 
 
-function renderMovies(
-movies,
-container
-){
+function renderMovies(movies,container){
 
 container.innerHTML="";
 
 if(!movies.length){
 
 container.innerHTML=
-`
-<div class="message">
-No Malayalam movies found.
-</div>
-`;
+'<div class="message">No Malayalam movies found.</div>';
 
 return;
 }
 
-
 movies.forEach(movie=>{
 
-const identifier=
-movie.identifier;
-
-const movieTitle=
-movie.title||
-"Malayalam Movie";
-
-const year=
-movie.year||
-"";
-
+const identifier=movie.identifier;
+const movieTitle=movie.title||"Malayalam Movie";
+const year=movie.year||"";
 
 const poster=
 "https://archive.org/services/img/"+
 encodeURIComponent(identifier);
 
-
-const card=
-document.createElement("div");
+const card=document.createElement("div");
 
 card.className="movie-card";
 
@@ -1429,7 +1696,6 @@ class="movie-poster"
 src="${poster}"
 alt="Movie poster"
 loading="lazy"
-onerror="this.style.visibility='hidden'"
 >
 
 <div class="movie-info">
@@ -1450,18 +1716,11 @@ ${year?" • "+escapeHTML(String(year)):""}
 </button>
 `;
 
+card.querySelector(".watch").onclick=()=>{
 
-card.querySelector(
-".watch"
-).onclick=()=>{
-
-playMovie(
-identifier,
-movieTitle
-);
+playMovie(identifier,movieTitle);
 
 };
-
 
 container.appendChild(card);
 
@@ -1470,42 +1729,19 @@ container.appendChild(card);
 }
 
 
-/* =========================
-   PLAY MOVIE INSIDE JOJIFY
-========================= */
+function playMovie(identifier,movieTitle){
 
-function playMovie(
-identifier,
-movieTitle
-){
+const player=document.getElementById("moviePlayer");
 
-const player=
-document.getElementById(
-"moviePlayer"
-);
+const frame=document.getElementById("movieFrame");
 
-const frame=
-document.getElementById(
-"movieFrame"
-);
-
-const now=
-document.getElementById(
-"movieNow"
-);
-
-
-/*
-   Internet Archive official
-   embedded player.
-*/
+const now=document.getElementById("movieNow");
 
 frame.src=
 "https://archive.org/embed/"+
 encodeURIComponent(identifier);
 
-now.textContent=
-"🎬 "+movieTitle;
+now.textContent="🎬 "+movieTitle;
 
 player.style.display="block";
 
@@ -1517,15 +1753,8 @@ block:"start"
 }
 
 
-/* =========================
-   MOVIE SEARCH ENTER
-========================= */
-
-document.getElementById(
-"movieSearch"
-).addEventListener(
-"keydown",
-event=>{
+document.getElementById("movieSearch")
+.addEventListener("keydown",event=>{
 
 if(event.key==="Enter")
 searchMovies();
@@ -1534,23 +1763,636 @@ searchMovies();
 
 
 /* =========================
-   SONG SEARCH ENTER
+   GAMES
 ========================= */
 
+let currentGame="snake";
+
+
+function openGame(game,button){
+
+currentGame=game;
+
+[
+"snakeGame",
+"tapGame",
+"coinGame",
+"memoryGame",
+"trafficGame"
+].forEach(id=>{
+document.getElementById(id)
+.style.display="none";
+});
+
+document.querySelectorAll(".game-select")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+document.getElementById(game+"Game")
+.style.display="block";
+
+if(game==="memory")
+startMemoryGame();
+
+}
+
+
+/* =========================
+   SNAKE GAME
+========================= */
+
+const snakeCanvas=
+document.getElementById("snakeCanvas");
+
+const ctx=
+snakeCanvas.getContext("2d");
+
+let snake=[];
+let snakeFood={x:150,y:150};
+let snakeDx=15;
+let snakeDy=0;
+let snakeTimer=null;
+let snakeScore=0;
+
+
+function startSnake(){
+
+clearInterval(snakeTimer);
+
+snake=[
+{x:150,y:150},
+{x:135,y:150},
+{x:120,y:150}
+];
+
+snakeDx=15;
+snakeDy=0;
+snakeScore=0;
+
 document.getElementById(
-"searchInput"
-).addEventListener(
+"snakeScore"
+).textContent=0;
+
+placeSnakeFood();
+
+snakeTimer=
+setInterval(drawSnake,110);
+
+}
+
+
+function drawSnake(){
+
+ctx.clearRect(
+0,0,
+snakeCanvas.width,
+snakeCanvas.height
+);
+
+ctx.fillStyle="#1db954";
+
+snake.forEach(part=>{
+ctx.fillRect(
+part.x,
+part.y,
+14,
+14
+);
+});
+
+
+ctx.fillStyle="#ffd700";
+
+ctx.fillRect(
+snakeFood.x,
+snakeFood.y,
+14,
+14
+);
+
+
+const head={
+x:snake[0].x+snakeDx,
+y:snake[0].y+snakeDy
+};
+
+
+if(
+head.x<0||
+head.x>=300||
+head.y<0||
+head.y>=300||
+snake.some(
+(p,i)=>
+i>0&&
+p.x===head.x&&
+p.y===head.y
+)
+){
+
+clearInterval(snakeTimer);
+
+alert(
+"🐍 Game Over!\nScore: "+
+snakeScore
+);
+
+return;
+
+}
+
+
+snake.unshift(head);
+
+
+if(
+head.x===snakeFood.x&&
+head.y===snakeFood.y
+){
+
+snakeScore++;
+
+document.getElementById(
+"snakeScore"
+).textContent=snakeScore;
+
+placeSnakeFood();
+
+}else{
+
+snake.pop();
+
+}
+
+}
+
+
+function placeSnakeFood(){
+
+snakeFood={
+x:Math.floor(Math.random()*20)*15,
+y:Math.floor(Math.random()*20)*15
+};
+
+}
+
+
+function changeDirection(direction){
+
+if(direction==="up"&&snakeDy===0){
+
+snakeDx=0;
+snakeDy=-15;
+
+}
+
+if(direction==="down"&&snakeDy===0){
+
+snakeDx=0;
+snakeDy=15;
+
+}
+
+if(direction==="left"&&snakeDx===0){
+
+snakeDx=-15;
+snakeDy=0;
+
+}
+
+if(direction==="right"&&snakeDx===0){
+
+snakeDx=15;
+snakeDy=0;
+
+}
+
+}
+
+
+document.addEventListener(
 "keydown",
 event=>{
 
-if(event.key==="Enter")
-searchSongs();
+if(currentGame!=="snake")return;
+
+if(event.key==="ArrowUp")
+changeDirection("up");
+
+if(event.key==="ArrowDown")
+changeDirection("down");
+
+if(event.key==="ArrowLeft")
+changeDirection("left");
+
+if(event.key==="ArrowRight")
+changeDirection("right");
 
 });
 
 
 /* =========================
-   HTML ESCAPE
+   TAP GAME
+========================= */
+
+let tapRunning=false;
+let tapScore=0;
+let tapTime=10;
+let tapTimer=null;
+
+
+function startTapGame(){
+
+clearInterval(tapTimer);
+
+tapRunning=true;
+tapScore=0;
+tapTime=10;
+
+document.getElementById(
+"tapScore"
+).textContent=0;
+
+document.getElementById(
+"tapTime"
+).textContent=10;
+
+const area=
+document.getElementById("tapArea");
+
+area.classList.add("running");
+
+area.innerHTML=
+"🔥 TAP! 🔥";
+
+tapTimer=setInterval(()=>{
+
+tapTime--;
+
+document.getElementById(
+"tapTime"
+).textContent=tapTime;
+
+if(tapTime<=0){
+
+clearInterval(tapTimer);
+
+tapRunning=false;
+
+area.classList.remove("running");
+
+area.innerHTML=
+"TIME'S UP! 😂<br>Score: "+
+tapScore;
+
+}
+
+},1000);
+
+}
+
+
+document.getElementById(
+"tapArea"
+).addEventListener(
+"click",
+()=>{
+
+if(!tapRunning)return;
+
+tapScore++;
+
+document.getElementById(
+"tapScore"
+).textContent=tapScore;
+
+});
+
+
+/* =========================
+   COIN CATCHER
+========================= */
+
+let coinTimer=null;
+let coinScore=0;
+
+
+function startCoinGame(){
+
+clearInterval(coinTimer);
+
+const area=
+document.getElementById("coinArea");
+
+area.innerHTML="";
+
+coinScore=0;
+
+document.getElementById(
+"coinScore"
+).textContent=0;
+
+coinTimer=setInterval(()=>{
+
+const item=
+document.createElement("div");
+
+const bomb=
+Math.random()<.2;
+
+item.className="coin-item";
+
+item.textContent=
+bomb?"💣":"🪙";
+
+item.style.left=
+Math.random()*85+"%";
+
+item.style.top=
+Math.random()*85+"%";
+
+item.onclick=()=>{
+
+if(bomb){
+
+clearInterval(coinTimer);
+
+alert(
+"💥 BOOM!\nScore: "+
+coinScore
+);
+
+return;
+
+}
+
+coinScore++;
+
+document.getElementById(
+"coinScore"
+).textContent=coinScore;
+
+item.remove();
+
+};
+
+area.appendChild(item);
+
+setTimeout(()=>{
+
+if(item.parentNode)
+item.remove();
+
+},1000);
+
+},650);
+
+}
+
+
+/* =========================
+   MEMORY GAME
+========================= */
+
+const memoryEmojis=[
+"😂","😂",
+"🔥","🔥",
+"😎","😎",
+"🤯","🤯",
+"🚗","🚗",
+"🎵","🎵",
+"🍕","🍕",
+"👻","👻"
+];
+
+let memoryFirst=null;
+let memorySecond=null;
+let memoryLock=false;
+let memoryMoves=0;
+
+
+function startMemoryGame(){
+
+const grid=
+document.getElementById(
+"memoryGrid"
+);
+
+grid.innerHTML="";
+
+memoryFirst=null;
+memorySecond=null;
+memoryLock=false;
+memoryMoves=0;
+
+document.getElementById(
+"memoryMoves"
+).textContent=0;
+
+const cards=
+[...memoryEmojis]
+.sort(()=>Math.random()-.5);
+
+cards.forEach(emoji=>{
+
+const button=
+document.createElement("button");
+
+button.className=
+"memory-card";
+
+button.textContent="❓";
+
+button.dataset.value=emoji;
+
+button.onclick=()=>{
+
+if(memoryLock)return;
+
+if(button===memoryFirst)return;
+
+button.textContent=emoji;
+button.classList.add("open");
+
+if(!memoryFirst){
+
+memoryFirst=button;
+return;
+
+}
+
+memorySecond=button;
+
+memoryMoves++;
+
+document.getElementById(
+"memoryMoves"
+).textContent=
+memoryMoves;
+
+if(
+memoryFirst.dataset.value===
+memorySecond.dataset.value
+){
+
+memoryFirst=null;
+memorySecond=null;
+
+}else{
+
+memoryLock=true;
+
+setTimeout(()=>{
+
+memoryFirst.textContent="❓";
+memorySecond.textContent="❓";
+
+memoryFirst.classList.remove("open");
+memorySecond.classList.remove("open");
+
+memoryFirst=null;
+memorySecond=null;
+memoryLock=false;
+
+},650);
+
+}
+
+};
+
+grid.appendChild(button);
+
+});
+
+}
+
+
+/* =========================
+   TRAFFIC DODGE
+========================= */
+
+let trafficTimer=null;
+let trafficScore=0;
+let trafficX=108;
+let enemyY=-60;
+
+
+function startTraffic(){
+
+clearInterval(trafficTimer);
+
+trafficScore=0;
+trafficX=108;
+enemyY=-60;
+
+document.getElementById(
+"trafficScore"
+).textContent=0;
+
+const player=
+document.getElementById("playerCar");
+
+const enemy=
+document.getElementById("enemyCar");
+
+player.style.left=
+trafficX+"px";
+
+enemy.style.top=
+enemyY+"px";
+
+enemy.style.left=
+Math.random()*190+"px";
+
+trafficTimer=
+setInterval(()=>{
+
+enemyY+=5;
+
+enemy.style.top=
+enemyY+"px";
+
+if(enemyY>360){
+
+trafficScore++;
+
+document.getElementById(
+"trafficScore"
+).textContent=
+trafficScore;
+
+enemyY=-60;
+
+enemy.style.left=
+Math.random()*190+"px";
+
+}
+
+const enemyLeft=
+parseInt(enemy.style.left);
+
+if(
+enemyY>300&&
+enemyY<355&&
+Math.abs(enemyLeft-trafficX)<45
+){
+
+clearInterval(trafficTimer);
+
+alert(
+"💥 CRASH!\nScore: "+
+trafficScore
+);
+
+}
+
+},40);
+
+}
+
+
+function moveTraffic(direction){
+
+if(direction==="left")
+trafficX-=30;
+
+if(direction==="right")
+trafficX+=30;
+
+trafficX=Math.max(
+5,
+Math.min(215,trafficX)
+);
+
+document.getElementById(
+"playerCar"
+).style.left=
+trafficX+"px";
+
+}
+
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(currentGame!=="traffic")
+return;
+
+if(event.key==="ArrowLeft")
+moveTraffic("left");
+
+if(event.key==="ArrowRight")
+moveTraffic("right");
+
+});
+
+
+/* =========================
+   ESCAPE HTML
 ========================= */
 
 function escapeHTML(text){
@@ -1568,4 +2410,4 @@ return div.innerHTML;
 </script>
 
 </body>
-</html>
+   </html>
