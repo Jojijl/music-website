@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>JOJIFY — Your Music. Your Vibe.</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>JOJIFY — Your Music. Your Vibe.</title><style>
 * {
     box-sizing: border-box;
 }
@@ -16,10 +11,11 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     color: white;
-    background: #111;
-    background-image:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.88)),
+
+    background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.90)),
         url("background.jpg");
+
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -31,17 +27,20 @@ body {
     padding: 20px 15px 80px;
 }
 
-/* JOJIFY HEADER */
+/* HEADER */
 
 .jojify-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 18px 20px;
     margin-bottom: 18px;
+
     background: rgba(0,0,0,.45);
     border: 1px solid rgba(255,255,255,.12);
     border-radius: 18px;
+
     backdrop-filter: blur(12px);
 }
 
@@ -55,11 +54,15 @@ body {
 .logo-icon {
     width: 44px;
     height: 44px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 13px;
+
     background: linear-gradient(135deg,#ff3333,#ff0066);
+
     color: white;
     font-size: 25px;
     font-weight: bold;
@@ -67,136 +70,228 @@ body {
 
 .logo-text {
     color: white;
+
     font-size: 27px;
     font-weight: 900;
+
     letter-spacing: 4px;
 }
 
 .logo-tagline {
     color: #aaa;
+
     font-size: 9px;
     font-weight: bold;
+
     letter-spacing: 1.5px;
 }
 
 .subtitle {
     text-align: center;
+
     color: #ccc;
+
     margin: 10px 0 25px;
 }
+
 
 /* SEARCH */
 
 .search-box {
     display: flex;
     gap: 8px;
+
     margin-bottom: 20px;
 }
 
 .search-box input {
     flex: 1;
+
     padding: 15px;
+
     border: none;
     border-radius: 12px;
+
     font-size: 16px;
+
     outline: none;
 }
 
 .search-box button {
-    padding: 15px 20px;
+    padding: 15px 22px;
+
     border: none;
     border-radius: 12px;
+
     background: #ff3333;
+
     color: white;
+
     font-weight: bold;
+
+    cursor: pointer;
 }
 
-/* YOUTUBE PLAYER */
+
+/* PLAYER */
 
 .player {
-    background: rgba(20,20,20,.9);
+    background: rgba(20,20,20,.94);
+
     border-radius: 20px;
-    padding: 15px;
+
+    padding: 20px;
+
     margin-bottom: 20px;
 }
 
-.youtube {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: 0;
-    border-radius: 15px;
-    display: block;
+.cover {
+    width: 180px;
+    height: 180px;
+
+    margin: 5px auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(135deg,#ff3333,#ff0066);
+
+    font-size: 70px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
 }
 
 .now-playing {
     text-align: center;
-    margin-top: 15px;
-    font-size: 18px;
+
+    font-size: 20px;
+
     font-weight: bold;
+
+    line-height: 1.4;
 }
 
 .artist {
     text-align: center;
+
     color: #aaa;
+
     margin-top: 6px;
 }
+
+
+/* AUDIO */
+
+audio {
+    width: 100%;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+}
+
 
 /* RESULTS */
 
 .results {
-    background: rgba(20,20,20,.9);
+    background: rgba(20,20,20,.94);
+
     border-radius: 20px;
+
     padding: 10px;
 }
 
 .result {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
-    padding: 12px;
-    border-bottom: 1px solid rgba(255,255,255,.12);
+
+    padding: 13px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.12);
 }
 
 .result:last-child {
     border-bottom: none;
 }
 
-.thumbnail {
-    width: 90px;
-    height: 55px;
-    object-fit: cover;
-    border-radius: 9px;
+.cover-small {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(135deg,#ff3333,#ff0066);
+
+    font-size: 28px;
+
+    flex-shrink: 0;
 }
 
 .info {
     flex: 1;
+
+    min-width: 0;
 }
 
 .name {
     font-weight: bold;
+
+    line-height: 1.35;
 }
 
 .artist-name {
     color: #aaa;
+
     font-size: 13px;
+
     margin-top: 5px;
 }
 
 .play {
     border: none;
+
     background: #ff3333;
+
     color: white;
+
     border-radius: 50%;
-    width: 42px;
-    height: 42px;
+
+    width: 44px;
+    height: 44px;
+
     font-size: 17px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+}
+
+.play:active {
+    transform: scale(.9);
 }
 
 .message {
     text-align: center;
+
     color: #aaa;
-    padding: 20px;
+
+    padding: 25px;
 }
+
 
 /* MOBILE */
 
@@ -215,178 +310,336 @@ body {
         height: 38px;
     }
 
-    .thumbnail {
-        width: 75px;
-        height: 50px;
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .cover {
+        width: 150px;
+        height: 150px;
     }
 }
-</style>
-</head>
+</style></head><body><div class="container"><!-- HEADER --><header class="jojify-header"><a href="#" class="jojify-logo">
 
-<body>
+    <span class="logo-icon">
+        ♫
+    </span>
 
-<div class="container">
+    <span class="logo-text">
+        JOJIFY
+    </span>
 
-    <header class="jojify-header">
+</a>
 
-        <a href="#" class="jojify-logo">
+<span class="logo-tagline">
+    YOUR MUSIC. YOUR VIBE.
+</span>
 
-            <span class="logo-icon">♫</span>
+</header><div class="subtitle">
+    Your music. Your vibe. 🎵
+</div><!-- SEARCH --><div class="search-box"><input
+    type="text"
+    id="searchInput"
+    placeholder="Search songs or artists..."
+    autocomplete="off"
+>
 
-            <span class="logo-text">
-                JOJIFY
-            </span>
+<button
+    onclick="searchSongs()"
+>
+    Search
+</button>
 
-        </a>
-
-        <span class="logo-tagline">
-            YOUR MUSIC. YOUR VIBE.
-        </span>
-
-    </header>
-
-    <div class="subtitle">
-        Search and listen on YouTube
-    </div>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search songs or artists..."
-        >
-
-        <button onclick="searchYouTube()">
-            Search
-        </button>
-
-    </div>
-
-    <div class="player">
-
-        <iframe
-            id="youtubePlayer"
-            class="youtube"
-            src=""
-            title="JOJIFY YouTube Player"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-
-        <div class="now-playing" id="title">
-            Select a song
-        </div>
-
-        <div class="artist" id="artist">
-            JOJIFY
-        </div>
-
-    </div>
-
-    <div class="results" id="results">
-
-        <div class="message">
-            Search for a song above 🎵
-        </div>
-
-    </div>
-
+</div><!-- PLAYER --><div class="player"><div class="cover">
+    ♫
 </div>
 
-<script>
+<div
+    class="now-playing"
+    id="nowPlaying"
+>
+    Select a song
+</div>
+
+<div
+    class="artist"
+    id="nowArtist"
+>
+    JOJIFY
+</div>
+
+
+<audio
+    id="audioPlayer"
+    controls
+    preload="metadata"
+>
+</audio>
+
+</div><!-- SONG RESULTS --><div
+    class="results"
+    id="results"
+><div class="message">
+    Search for a song above 🎵
+</div>
+
+</div></div><script>
+
+/*
+=========================================================
+JOJIFY FREE MUSIC PLAYER
+=========================================================
+
+No YouTube API.
+No Google Cloud.
+No external API key.
+
+The demo tracks below are used only for testing.
+
+Replace the "url" values with music files
+that you have permission to use.
+=========================================================
+*/
+
+
+const songs = [
+
+    {
+        title: "SoundHelix Song 1",
+        artist: "SoundHelix",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+
+    {
+        title: "SoundHelix Song 2",
+        artist: "SoundHelix",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+
+    {
+        title: "SoundHelix Song 3",
+        artist: "SoundHelix",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    }
+
+];
+
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
 
 const results =
-    document.getElementById("results");
+    document.getElementById(
+        "results"
+    );
 
-const youtubePlayer =
-    document.getElementById("youtubePlayer");
+const audioPlayer =
+    document.getElementById(
+        "audioPlayer"
+    );
 
-const title =
-    document.getElementById("title");
+const nowPlaying =
+    document.getElementById(
+        "nowPlaying"
+    );
 
-const artist =
-    document.getElementById("artist");
+const nowArtist =
+    document.getElementById(
+        "nowArtist"
+    );
 
 
-function searchYouTube() {
+/* SHOW ALL SONGS */
 
-    const term =
-        searchInput.value.trim();
+function showSongs(list) {
 
-    if (!term) {
+    results.innerHTML = "";
 
-        results.innerHTML =
-            '<div class="message">Type a song or artist name 🎵</div>';
+
+    if (list.length === 0) {
+
+        results.innerHTML = `
+
+            <div class="message">
+
+                No songs found 🎵
+
+            </div>
+
+        `;
 
         return;
     }
 
-    /*
-       YouTube search page.
-       This opens the search results instead of
-       trying to download or extract music.
-    */
 
-    const searchURL =
-        "https://www.youtube.com/results?search_query="
-        + encodeURIComponent(term);
+    list.forEach(
+        function(song, index) {
 
-    results.innerHTML = `
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-        <div class="message">
+            item.className =
+                "result";
 
-            <p>Search YouTube for:</p>
 
-            <strong>${escapeHTML(term)}</strong>
+            item.innerHTML = `
 
-            <br><br>
+                <div class="cover-small">
+                    ♫
+                </div>
 
-            <a
-                href="${searchURL}"
-                target="_blank"
-                style="
-                    display:inline-block;
-                    padding:12px 20px;
-                    background:#ff3333;
-                    color:white;
-                    text-decoration:none;
-                    border-radius:10px;
-                    font-weight:bold;
-                "
-            >
-                Open YouTube Search ▶
-            </a>
+                <div class="info">
 
-        </div>
+                    <div class="name">
+                        ${escapeHTML(song.title)}
+                    </div>
 
-    `;
+                    <div class="artist-name">
+                        ${escapeHTML(song.artist)}
+                    </div>
+
+                </div>
+
+                <button
+                    class="play"
+                    type="button"
+                >
+                    ▶
+                </button>
+
+            `;
+
+
+            item
+                .querySelector(".play")
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        playSong(song);
+
+                    }
+                );
+
+
+            results.appendChild(item);
+
+        }
+    );
+
 }
 
 
-function playVideo(videoID, songTitle, songArtist) {
+/* PLAY */
 
-    youtubePlayer.src =
-        "https://www.youtube.com/embed/"
-        + videoID
-        + "?autoplay=1";
+function playSong(song) {
 
-    title.textContent =
-        songTitle;
+    audioPlayer.src =
+        song.url;
 
-    artist.textContent =
-        songArtist || "YouTube";
+    nowPlaying.textContent =
+        song.title;
+
+    nowArtist.textContent =
+        song.artist;
+
+
+    audioPlayer.play()
+        .catch(
+            function() {
+                /* Browser may require
+                   user interaction first. */
+            }
+        );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
+
+/* SEARCH */
+
+function searchSongs() {
+
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    if (!query) {
+
+        showSongs(songs);
+
+        return;
+    }
+
+
+    const filtered =
+        songs.filter(
+            function(song) {
+
+                return (
+
+                    song.title
+                        .toLowerCase()
+                        .includes(query)
+
+                    ||
+
+                    song.artist
+                        .toLowerCase()
+                        .includes(query)
+
+                );
+
+            }
+        );
+
+
+    showSongs(filtered);
+
+}
+
+
+/* ENTER KEY */
+
+searchInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            searchSongs();
+
+        }
+
+    }
+);
+
+
+/* SECURITY */
 
 function escapeHTML(text) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     div.textContent =
         text;
@@ -396,20 +649,9 @@ function escapeHTML(text) {
 }
 
 
-searchInput.addEventListener(
-    "keydown",
-    function(event) {
+/* INITIAL SONG LIST */
 
-        if (event.key === "Enter") {
+showSongs(songs);
 
-            searchYouTube();
-
-        }
-
-    }
-);
-
-</script>
-
-</body>
-</html>
+</script></body>
+                                                 </html>
