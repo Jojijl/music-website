@@ -1,657 +1,531 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>JOJIFY — Your Music. Your Vibe.</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JOJIFY</title>
+
+<style>
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    min-height: 100vh;
+    background: #080808;
+    color: white;
     font-family: Arial, sans-serif;
-    color: white;
-
-    background:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.90)),
-        url("background.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    padding: 20px 15px 80px;
+header {
+    text-align: center;
+    padding: 28px 15px;
+    background: #111;
 }
 
-/* HEADER */
-
-.jojify-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 18px 20px;
-    margin-bottom: 18px;
-
-    background: rgba(0,0,0,.45);
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 18px;
-
-    backdrop-filter: blur(12px);
-}
-
-.jojify-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo-icon {
-    width: 44px;
-    height: 44px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background: linear-gradient(135deg,#ff3333,#ff0066);
-
-    color: white;
-    font-size: 25px;
+.logo {
+    font-size: 34px;
     font-weight: bold;
-}
-
-.logo-text {
-    color: white;
-
-    font-size: 27px;
-    font-weight: 900;
-
-    letter-spacing: 4px;
-}
-
-.logo-tagline {
-    color: #aaa;
-
-    font-size: 9px;
-    font-weight: bold;
-
-    letter-spacing: 1.5px;
+    letter-spacing: 5px;
 }
 
 .subtitle {
-    text-align: center;
-
-    color: #ccc;
-
-    margin: 10px 0 25px;
+    color: #999;
+    margin-top: 7px;
 }
 
-
-/* SEARCH */
-
-.search-box {
-    display: flex;
-    gap: 8px;
-
-    margin-bottom: 20px;
+.search {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
 }
 
-.search-box input {
-    flex: 1;
-
-    padding: 15px;
-
-    border: none;
-    border-radius: 12px;
-
+.search input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid #333;
+    background: #171717;
+    color: white;
     font-size: 16px;
-
     outline: none;
 }
 
-.search-box button {
-    padding: 15px 22px;
+.categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 15px 20px;
+}
 
-    border: none;
-    border-radius: 12px;
-
-    background: #ff3333;
-
+.categories button {
+    white-space: nowrap;
+    padding: 10px 17px;
+    border-radius: 25px;
+    border: 1px solid #333;
+    background: #151515;
     color: white;
-
-    font-weight: bold;
-
     cursor: pointer;
 }
 
-
-/* PLAYER */
-
-.player {
-    background: rgba(20,20,20,.94);
-
-    border-radius: 20px;
-
-    padding: 20px;
-
-    margin-bottom: 20px;
+.categories button.active,
+.categories button:hover {
+    background: white;
+    color: black;
 }
 
-.cover {
-    width: 180px;
-    height: 180px;
-
-    margin: 5px auto 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(135deg,#ff3333,#ff0066);
-
-    font-size: 70px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
-}
-
-.now-playing {
-    text-align: center;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    line-height: 1.4;
-}
-
-.artist {
-    text-align: center;
-
-    color: #aaa;
-
-    margin-top: 6px;
-}
-
-
-/* AUDIO */
-
-audio {
-    width: 100%;
-
-    margin-top: 20px;
-
-    border-radius: 10px;
-}
-
-
-/* RESULTS */
-
-.results {
-    background: rgba(20,20,20,.94);
-
-    border-radius: 20px;
-
-    padding: 10px;
-}
-
-.result {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 13px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.12);
-}
-
-.result:last-child {
-    border-bottom: none;
-}
-
-.cover-small {
-    width: 65px;
-    height: 65px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(135deg,#ff3333,#ff0066);
-
-    font-size: 28px;
-
-    flex-shrink: 0;
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 15px 40px;
 }
 
 .info {
-    flex: 1;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
 
+.song {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #131313;
+    border: 1px solid #222;
+    padding: 13px;
+    margin-bottom: 9px;
+    border-radius: 12px;
+}
+
+.number {
+    color: #777;
+    width: 30px;
+    text-align: center;
+}
+
+.details {
+    flex: 1;
     min-width: 0;
 }
 
-.name {
+.title {
     font-weight: bold;
-
-    line-height: 1.35;
 }
 
-.artist-name {
-    color: #aaa;
-
-    font-size: 13px;
-
+.meta {
+    color: #888;
+    font-size: 12px;
     margin-top: 5px;
 }
 
+.tag {
+    color: #aaa;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
 .play {
-    border: none;
-
-    background: #ff3333;
-
-    color: white;
-
-    border-radius: 50%;
-
-    width: 44px;
-    height: 44px;
-
-    font-size: 17px;
-
-    flex-shrink: 0;
-
+    border: 0;
+    background: white;
+    color: black;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.play:active {
-    transform: scale(.9);
-}
-
-.message {
+.empty {
     text-align: center;
-
-    color: #aaa;
-
-    padding: 25px;
+    color: #777;
+    padding: 50px 10px;
 }
 
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    .logo-tagline {
-        display: none;
-    }
-
-    .logo-text {
-        font-size: 22px;
-    }
-
-    .logo-icon {
-        width: 38px;
-        height: 38px;
-    }
-
-    .search-box {
-        flex-direction: column;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .cover {
-        width: 150px;
-        height: 150px;
-    }
+footer {
+    text-align: center;
+    color: #666;
+    padding: 30px 15px;
+    font-size: 12px;
 }
-</style></head><body><div class="container"><!-- HEADER --><header class="jojify-header"><a href="#" class="jojify-logo">
+</style>
+</head>
 
-    <span class="logo-icon">
-        ♫
-    </span>
+<body>
 
-    <span class="logo-text">
-        JOJIFY
-    </span>
+<header>
+    <div class="logo">JOJIFY</div>
+    <div class="subtitle">Malayalam Music • Your Mood • Your Music</div>
+</header>
 
-</a>
-
-<span class="logo-tagline">
-    YOUR MUSIC. YOUR VIBE.
-</span>
-
-</header><div class="subtitle">
-    Your music. Your vibe. 🎵
-</div><!-- SEARCH --><div class="search-box"><input
-    type="text"
-    id="searchInput"
-    placeholder="Search songs or artists..."
-    autocomplete="off"
->
-
-<button
-    onclick="searchSongs()"
->
-    Search
-</button>
-
-</div><!-- PLAYER --><div class="player"><div class="cover">
-    ♫
+<div class="search">
+    <input
+        id="search"
+        type="text"
+        placeholder="Search song, movie or singer..."
+    >
 </div>
 
-<div
-    class="now-playing"
-    id="nowPlaying"
->
-    Select a song
+<div class="categories">
+
+    <button class="active" onclick="category('All', this)">
+        All
+    </button>
+
+    <button onclick="category('Chill', this)">
+        🌙 Chill
+    </button>
+
+    <button onclick="category('Sad', this)">
+        💔 Sad
+    </button>
+
+    <button onclick="category('Happy', this)">
+        😊 Happy
+    </button>
+
+    <button onclick="category('Romantic', this)">
+        ❤️ Romantic
+    </button>
+
+    <button onclick="category('Melody', this)">
+        🎵 Melody
+    </button>
+
+    <button onclick="category('Feel Good', this)">
+        ✨ Feel Good
+    </button>
+
 </div>
 
-<div
-    class="artist"
-    id="nowArtist"
->
-    JOJIFY
-</div>
+<main>
+
+    <div id="info" class="info"></div>
+
+    <div id="songs"></div>
+
+</main>
+
+<footer>
+    JOJIFY © 2026
+</footer>
 
 
-<audio
-    id="audioPlayer"
-    controls
-    preload="metadata"
->
-</audio>
+<script>
 
-</div><!-- SONG RESULTS --><div
-    class="results"
-    id="results"
-><div class="message">
-    Search for a song above 🎵
-</div>
+/* =====================================================
+   JOJIFY SONG LIST
 
-</div></div><script>
+   Add your authorized song entries here.
 
-/*
-=========================================================
-JOJIFY FREE MUSIC PLAYER
-=========================================================
-
-No YouTube API.
-No Google Cloud.
-No external API key.
-
-The demo tracks below are used only for testing.
-
-Replace the "url" values with music files
-that you have permission to use.
-=========================================================
-*/
-
+   "online" is the search phrase used when the
+   user presses the PLAY button.
+===================================================== */
 
 const songs = [
 
     {
-        title: "SoundHelix Song 1",
-        artist: "SoundHelix",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        title: "Aaraadhike",
+        artist: "Sooraj Santhosh, Madhuvanthi Narayan",
+        movie: "Ambili",
+        category: "Romantic"
     },
 
     {
-        title: "SoundHelix Song 2",
-        artist: "SoundHelix",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        title: "Mizhiyil",
+        artist: "Shahabaz Aman",
+        movie: "Mayaanadhi",
+        category: "Chill"
     },
 
     {
-        title: "SoundHelix Song 3",
-        artist: "SoundHelix",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        title: "Cherathukal",
+        artist: "Sushin Shyam",
+        movie: "Kumbalangi Nights",
+        category: "Chill"
+    },
+
+    {
+        title: "Pularikalo",
+        artist: "Gopi Sundar",
+        movie: "Charlie",
+        category: "Feel Good"
+    },
+
+    {
+        title: "Muthuchippi Poloru",
+        artist: "Sachin Warrier",
+        movie: "Thattathin Marayathu",
+        category: "Romantic"
+    },
+
+    {
+        title: "Oru Kari Mukilinu",
+        artist: "Gopi Sundar",
+        movie: "Charlie",
+        category: "Melody"
+    },
+
+    {
+        title: "Etho Mazhayil",
+        artist: "Vijay Yesudas, Shweta Mohan",
+        movie: "Vijay Superum Pournamiyum",
+        category: "Romantic"
+    },
+
+    {
+        title: "Oru Venal Puzhayil",
+        artist: "Ranjith Govind",
+        movie: "Pranayakaalam",
+        category: "Sad"
+    },
+
+    {
+        title: "Nilamalare",
+        artist: "Nivas",
+        movie: "Diamond Necklace",
+        category: "Romantic"
+    },
+
+    {
+        title: "Hemanthamen",
+        artist: "Vijay Yesudas",
+        movie: "Kohinoor",
+        category: "Melody"
+    },
+
+    {
+        title: "Aethu Kari Raavilum",
+        artist: "Haricharan",
+        movie: "Bangalore Days",
+        category: "Chill"
+    },
+
+    {
+        title: "Theerame",
+        artist: "Sushin Shyam",
+        movie: "Malik",
+        category: "Melody"
+    },
+
+    {
+        title: "Neeyilla Neram",
+        artist: "Sooraj S. Kurup",
+        movie: "LUCA",
+        category: "Sad"
+    },
+
+    {
+        title: "Kamini",
+        artist: "K. S. Harisankar",
+        movie: "Anugraheethan Antony",
+        category: "Romantic"
+    },
+
+    {
+        title: "Aaro Nenjil",
+        artist: "Gowry Lekshmi",
+        movie: "Godha",
+        category: "Happy"
+    },
+
+    {
+        title: "Mandaarame",
+        artist: "Job Kurian",
+        movie: "Ohm Shanthi Oshaana",
+        category: "Chill"
+    },
+
+    {
+        title: "Azhalinte Aazhangalil",
+        artist: "Nikhil Mathew",
+        movie: "Ayalum Njanum Thammil",
+        category: "Sad"
+    },
+
+    {
+        title: "Parayathe Ariyathe",
+        artist: "K. J. Yesudas, K. S. Chithra",
+        movie: "Udayananu Tharam",
+        category: "Romantic"
+    },
+
+    {
+        title: "Oru Rathri Koodi",
+        artist: "K. J. Yesudas, K. S. Chithra",
+        movie: "Summer in Bethlehem",
+        category: "Melody"
     }
 
 ];
 
 
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
+/* =====================================================
+   CURRENT CATEGORY
+===================================================== */
 
-const results =
-    document.getElementById(
-        "results"
-    );
-
-const audioPlayer =
-    document.getElementById(
-        "audioPlayer"
-    );
-
-const nowPlaying =
-    document.getElementById(
-        "nowPlaying"
-    );
-
-const nowArtist =
-    document.getElementById(
-        "nowArtist"
-    );
+let selectedCategory = "All";
 
 
-/* SHOW ALL SONGS */
+/* =====================================================
+   DISPLAY SONGS
+===================================================== */
 
-function showSongs(list) {
+function showSongs() {
 
-    results.innerHTML = "";
+    const searchText =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const result = songs.filter(song => {
+
+        const searchMatch =
+            song.title.toLowerCase().includes(searchText) ||
+            song.artist.toLowerCase().includes(searchText) ||
+            song.movie.toLowerCase().includes(searchText);
+
+        const categoryMatch =
+            selectedCategory === "All" ||
+            song.category === selectedCategory;
+
+        return searchMatch && categoryMatch;
+    });
 
 
-    if (list.length === 0) {
+    const container =
+        document.getElementById("songs");
 
-        results.innerHTML = `
+    const info =
+        document.getElementById("info");
 
-            <div class="message">
 
-                No songs found 🎵
+    info.textContent =
+        result.length + " songs found";
 
+
+    if (result.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                No songs found.
             </div>
-
         `;
 
         return;
     }
 
 
-    list.forEach(
-        function(song, index) {
-
-            const item =
-                document.createElement(
-                    "div"
-                );
-
-            item.className =
-                "result";
+    container.innerHTML = "";
 
 
-            item.innerHTML = `
+    result.forEach((song, index) => {
 
-                <div class="cover-small">
-                    ♫
+        const div =
+            document.createElement("div");
+
+        div.className = "song";
+
+        div.innerHTML = `
+
+            <div class="number">
+                ${index + 1}
+            </div>
+
+            <div class="details">
+
+                <div class="title">
+                    ${song.title}
                 </div>
 
-                <div class="info">
-
-                    <div class="name">
-                        ${escapeHTML(song.title)}
-                    </div>
-
-                    <div class="artist-name">
-                        ${escapeHTML(song.artist)}
-                    </div>
-
+                <div class="meta">
+                    ${song.artist} • ${song.movie}
                 </div>
 
-                <button
-                    class="play"
-                    type="button"
-                >
-                    ▶
-                </button>
+                <div class="tag">
+                    ${song.category}
+                </div>
 
-            `;
+            </div>
 
+            <button
+                class="play"
+                onclick="openOnline('${encodeURIComponent(song.title + ' ' + song.artist + ' Malayalam')}')"
+            >
+                ▶ Play
+            </button>
 
-            item
-                .querySelector(".play")
-                .addEventListener(
-                    "click",
-                    function() {
+        `;
 
-                        playSong(song);
+        container.appendChild(div);
 
-                    }
-                );
-
-
-            results.appendChild(item);
-
-        }
-    );
-
-}
-
-
-/* PLAY */
-
-function playSong(song) {
-
-    audioPlayer.src =
-        song.url;
-
-    nowPlaying.textContent =
-        song.title;
-
-    nowArtist.textContent =
-        song.artist;
-
-
-    audioPlayer.play()
-        .catch(
-            function() {
-                /* Browser may require
-                   user interaction first. */
-            }
-        );
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
     });
 
 }
 
 
-/* SEARCH */
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
 
-function searchSongs() {
+function category(name, button) {
 
-    const query =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-
-    if (!query) {
-
-        showSongs(songs);
-
-        return;
-    }
+    selectedCategory = name;
 
 
-    const filtered =
-        songs.filter(
-            function(song) {
-
-                return (
-
-                    song.title
-                        .toLowerCase()
-                        .includes(query)
-
-                    ||
-
-                    song.artist
-                        .toLowerCase()
-                        .includes(query)
-
-                );
-
-            }
-        );
+    document
+        .querySelectorAll(".categories button")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
 
 
-    showSongs(filtered);
+    button.classList.add("active");
+
+
+    showSongs();
+}
+
+
+/* =====================================================
+   ONLINE SONG SEARCH
+===================================================== */
+
+function openOnline(query) {
+
+    /*
+       Opens the song search online.
+
+       No Google Cloud.
+       No API key.
+       No MP3 hosting.
+    */
+
+    window.open(
+        "https://www.youtube.com/results?search_query=" + query,
+        "_blank"
+    );
 
 }
 
 
-/* ENTER KEY */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-searchInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            searchSongs();
-
-        }
-
-    }
-);
+document
+    .getElementById("search")
+    .addEventListener("input", showSongs);
 
 
-/* SECURITY */
+/* =====================================================
+   START
+===================================================== */
 
-function escapeHTML(text) {
+showSongs();
 
-    const div =
-        document.createElement(
-            "div"
-        );
+</script>
 
-    div.textContent =
-        text;
-
-    return div.innerHTML;
-
-}
-
-
-/* INITIAL SONG LIST */
-
-showSongs(songs);
-
-</script></body>
-                                                 </html>
+</body>
+    </html>
