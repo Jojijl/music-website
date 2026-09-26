@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: url("background.jpg") center/cover no-repeat;
+            color: white;
+            overflow: hidden;
+        }
+
+        .overlay {
+            height: 100vh;
+            padding: 120px 25px 25px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff3333;
+            font-size: 32px;
+            margin-bottom: 60px;
+        }
+
+        .player {
+            background: rgba(255,255,255,0.20);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 22px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(8px);
+        }
+
+        .cover {
+            width: 85px;
+            height: 85px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .song {
+            flex: 1;
+        }
+
+        .song h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .song p {
+            margin: 5px 0 15px;
+            color: #eeeeee;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .bottom {
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .button {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <h1>ഇഷ്ടഗാനങ്ങൾ</h1>
+
+    <div class="player">
+
+        <img class="cover" src="cover.jpg">
+
+        <div class="song">
+            <h2>My First Song</h2>
+            <p>My Music</p>
+
+            <audio controls>
+                <source src="song.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bottom">
+    <div class="button">🚌</div>
+    <div class="button">🔔</div>
+    <div class="button">🔊</div>
+    <div class="button">ⓘ</div>
+</div>
+
+</body>
+</html>
