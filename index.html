@@ -2,291 +2,343 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JOJIFY</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-    font-family:Arial,sans-serif;
-    background:#080808;
-    color:#fff;
-    min-height:100vh;
+font-family:Arial,sans-serif;
+background:#080808;
+color:#fff;
+min-height:100vh
 }
 
 header{
-    padding:22px 16px;
-    text-align:center;
+padding:22px 16px;
+text-align:center
 }
 
 .logo{
-    font-size:30px;
-    font-weight:800;
-    letter-spacing:3px;
+font-size:30px;
+font-weight:800;
+letter-spacing:3px
 }
 
-.logo span{
-    color:#1db954;
-}
+.logo span{color:#1db954}
 
 .search-box{
-    display:flex;
-    gap:8px;
-    max-width:600px;
-    margin:15px auto;
-    padding:0 12px;
+display:flex;
+gap:8px;
+max-width:600px;
+margin:15px auto;
+padding:0 12px
 }
 
 .search-box input{
-    flex:1;
-    padding:14px 16px;
-    border:none;
-    outline:none;
-    border-radius:14px;
-    background:#191919;
-    color:white;
-    font-size:15px;
+flex:1;
+padding:14px 16px;
+border:0;
+outline:0;
+border-radius:14px;
+background:#191919;
+color:white;
+font-size:15px
 }
 
 .search-box button{
-    border:none;
-    background:#1db954;
-    color:#000;
-    font-weight:bold;
-    padding:0 18px;
-    border-radius:14px;
-    cursor:pointer;
+border:0;
+background:#1db954;
+color:#000;
+font-weight:bold;
+padding:0 18px;
+border-radius:14px;
+cursor:pointer
 }
 
 .tabs{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    padding:5px 12px 15px;
-    overflow-x:auto;
+display:flex;
+gap:8px;
+padding:5px 12px 15px;
+overflow-x:auto;
+justify-content:flex-start
 }
 
 .tab{
-    border:1px solid #292929;
-    background:#141414;
-    color:#aaa;
-    padding:11px 15px;
-    border-radius:20px;
-    white-space:nowrap;
-    cursor:pointer;
+border:1px solid #292929;
+background:#141414;
+color:#aaa;
+padding:11px 15px;
+border-radius:20px;
+white-space:nowrap;
+cursor:pointer
 }
 
 .tab.active{
-    background:#1db954;
-    color:#000;
-    border-color:#1db954;
-    font-weight:bold;
+background:#1db954;
+color:#000;
+border-color:#1db954;
+font-weight:bold
 }
 
 main{
-    max-width:700px;
-    margin:auto;
-    padding:0 12px 180px;
+max-width:700px;
+margin:auto;
+padding:0 12px 190px
 }
 
 .message{
-    text-align:center;
-    color:#888;
-    padding:30px 10px;
+text-align:center;
+color:#888;
+padding:30px 10px
 }
 
-.result,
-.station{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px;
-    margin:8px 0;
-    background:#121212;
-    border-radius:14px;
+.result,.station{
+display:flex;
+align-items:center;
+gap:12px;
+padding:10px;
+margin:8px 0;
+background:#121212;
+border-radius:14px
 }
 
 .result img{
-    width:58px;
-    height:58px;
-    border-radius:10px;
-    object-fit:cover;
+width:58px;
+height:58px;
+border-radius:10px;
+object-fit:cover
 }
 
-.info{
-    flex:1;
-    min-width:0;
+.info,.station-info{
+flex:1;
+min-width:0
 }
 
-.name{
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.name,.station-name{
+font-weight:bold;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
 }
 
-.artist-name{
-    color:#888;
-    font-size:13px;
-    margin-top:5px;
+.artist-name,.station-country{
+color:#888;
+font-size:13px;
+margin-top:5px
+}
+
+.play,.radio-btn{
+border:0;
+background:#1db954;
+color:#000;
+font-weight:bold;
+cursor:pointer
 }
 
 .play{
-    width:42px;
-    height:42px;
-    border:0;
-    border-radius:50%;
-    background:#1db954;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.station-info{
-    flex:1;
-    min-width:0;
-}
-
-.station-name{
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-.station-country{
-    color:#888;
-    font-size:12px;
-    margin-top:4px;
+width:42px;
+height:42px;
+border-radius:50%
 }
 
 .radio-btn{
-    border:0;
-    background:#1db954;
-    color:#000;
-    padding:9px 13px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
+padding:9px 13px;
+border-radius:10px
+}
+
+/* MOVIES */
+
+.movie-box{
+background:#121212;
+border-radius:18px;
+padding:18px;
+margin-top:10px;
+text-align:center
+}
+
+.movie-box h2{
+font-size:22px;
+margin-bottom:8px
+}
+
+.movie-box p{
+color:#999;
+font-size:14px;
+line-height:1.5;
+margin-bottom:16px
+}
+
+.movie-button{
+display:block;
+text-decoration:none;
+background:#1db954;
+color:#000;
+font-weight:bold;
+padding:14px;
+border-radius:13px;
+margin:10px 0
+}
+
+.movie-button.secondary{
+background:#222;
+color:#fff;
+border:1px solid #333
+}
+
+.movie-list{
+margin-top:18px
+}
+
+.movie-card{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+background:#181818;
+padding:13px;
+margin:8px 0;
+border-radius:14px
+}
+
+.movie-card .movie-name{
+font-weight:bold;
+text-align:left
+}
+
+.movie-card small{
+display:block;
+color:#888;
+margin-top:4px
+}
+
+.watch{
+background:#1db954;
+color:#000;
+border:0;
+padding:9px 13px;
+border-radius:10px;
+font-weight:bold;
+text-decoration:none;
+white-space:nowrap
 }
 
 /* PLAYER */
 
 .player{
-    position:fixed;
-    left:10px;
-    right:10px;
-    bottom:10px;
-    background:#151515;
-    border:1px solid #292929;
-    border-radius:20px;
-    padding:12px;
-    z-index:100;
-    box-shadow:0 8px 35px rgba(0,0,0,.55);
+position:fixed;
+left:10px;
+right:10px;
+bottom:10px;
+background:#151515;
+border:1px solid #292929;
+border-radius:20px;
+padding:12px;
+z-index:100;
+box-shadow:0 8px 35px rgba(0,0,0,.55)
 }
 
 .player-top{
-    display:flex;
-    align-items:center;
-    gap:10px;
+display:flex;
+align-items:center;
+gap:10px
 }
 
 .cover{
-    width:55px;
-    height:55px;
-    border-radius:12px;
-    object-fit:cover;
-    background:#222;
+width:55px;
+height:55px;
+border-radius:12px;
+object-fit:cover;
+background:#222
 }
 
 .track-info{
-    flex:1;
-    min-width:0;
+flex:1;
+min-width:0
 }
 
 .track-title{
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+font-weight:bold;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
 }
 
 .track-artist{
-    color:#888;
-    font-size:12px;
-    margin-top:4px;
+color:#888;
+font-size:12px;
+margin-top:4px
 }
 
 .live{
-    color:#ff3030;
-    font-size:11px;
-    font-weight:bold;
-    display:none;
-}
-
-.controls{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:15px;
-    margin-top:10px;
-}
-
-.control{
-    border:0;
-    background:#222;
-    color:white;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    cursor:pointer;
-}
-
-.control.main{
-    background:#1db954;
-    color:#000;
-    width:46px;
-    height:46px;
+color:#ff3030;
+font-size:11px;
+font-weight:bold;
+display:none
 }
 
 .progress{
-    width:100%;
-    margin-top:9px;
+width:100%;
+margin-top:9px
 }
 
-input[type="range"]{
-    accent-color:#1db954;
-    width:100%;
+input[type=range]{
+accent-color:#1db954;
+width:100%
+}
+
+.controls{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+margin-top:10px
+}
+
+.control{
+border:0;
+background:#222;
+color:#fff;
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer
+}
+
+.control.main{
+background:#1db954;
+color:#000;
+width:46px;
+height:46px
 }
 
 .volume{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-top:6px;
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:6px
 }
 
-.volume input{
-    flex:1;
+.volume input{flex:1}
+
+.download{
+display:block;
+width:100%;
+margin-top:10px;
+padding:10px;
+border:0;
+border-radius:11px;
+background:#222;
+color:#aaa;
+font-weight:bold;
+cursor:pointer
 }
 
 @media(max-width:500px){
-    .logo{
-        font-size:26px;
-    }
-
-    .search-box button{
-        padding:0 14px;
-    }
-
-    .player{
-        bottom:6px;
-    }
+.logo{font-size:26px}
+.search-box button{padding:0 14px}
+.player{bottom:6px}
 }
 </style>
 </head>
@@ -294,789 +346,771 @@ input[type="range"]{
 <body>
 
 <header>
-    <div class="logo">JOJ<span>IFY</span></div>
 
-    <div class="search-box">
-        <input
-            id="searchInput"
-            type="search"
-            placeholder="Search songs or artists..."
-            autocomplete="off"
-        >
-        <button onclick="searchSongs()">Search</button>
-    </div>
+<div class="logo">JOJ<span>IFY</span></div>
+
+<div class="search-box">
+<input id="searchInput"
+type="search"
+placeholder="Search songs or artists..."
+autocomplete="off">
+
+<button onclick="searchSongs()">Search</button>
+</div>
+
 </header>
 
 <div class="tabs">
-    <button class="tab active" onclick="showTab('songs',this)">
-        🎵 Tunes
-    </button>
 
-    <button class="tab" onclick="showTab('malayalam',this)">
-        📻 Malayalam Radio
-    </button>
+<button class="tab active"
+onclick="showTab('songs',this)">
+🎵 Tunes
+</button>
 
-    <button class="tab" onclick="showTab('world',this)">
-        🌍 World Radio
-    </button>
+<button class="tab"
+onclick="showTab('malayalam',this)">
+📻 Malayalam Radio
+</button>
+
+<button class="tab"
+onclick="showTab('world',this)">
+🌍 World Radio
+</button>
+
+<button class="tab"
+onclick="showTab('movies',this)">
+🎬 Malayalam Movies
+</button>
+
 </div>
 
 <main>
 
-    <section id="songs">
-        <div id="results">
-            <div class="message">
-                Search for a song or artist 🎵
-            </div>
-        </div>
-    </section>
+<!-- SONGS -->
 
-    <section id="malayalam" style="display:none;">
-        <div id="malayalamResults">
-            <div class="message">
-                Open Malayalam Radio to load stations 📻
-            </div>
-        </div>
-    </section>
+<section id="songs">
 
-    <section id="world" style="display:none;">
-        <div id="worldResults">
-            <div class="message">
-                Open World Radio to load stations 🌍
-            </div>
-        </div>
-    </section>
+<div id="results">
+<div class="message">
+Search for a song or artist 🎵
+</div>
+</div>
+
+</section>
+
+
+<!-- MALAYALAM RADIO -->
+
+<section id="malayalam" style="display:none">
+
+<div id="malayalamResults">
+<div class="message">
+Open Malayalam Radio to load stations 📻
+</div>
+</div>
+
+</section>
+
+
+<!-- WORLD RADIO -->
+
+<section id="world" style="display:none">
+
+<div id="worldResults">
+<div class="message">
+Open World Radio to load stations 🌍
+</div>
+</div>
+
+</section>
+
+
+<!-- MALAYALAM MOVIES -->
+
+<section id="movies" style="display:none">
+
+<div class="movie-box">
+
+<h2>🎬 Malayalam Movies</h2>
+
+<p>
+Watch Malayalam movies through official and
+legal streaming sources.
+</p>
+
+<a class="movie-button"
+href="https://www.zee5.com/movies/collections/free-movies-malayalam/0-8-3z5330893"
+target="_blank"
+rel="noopener">
+🆓 Free Malayalam Movies
+</a>
+
+<a class="movie-button secondary"
+href="https://www.zee5.com/movies/lang/malayalam"
+target="_blank"
+rel="noopener">
+🎬 All Malayalam Movies
+</a>
+
+<div class="movie-list">
+
+<div class="movie-card">
+<div>
+<div class="movie-name">Tik Tik Tik</div>
+<small>Sci-Fi • Action</small>
+</div>
+
+<a class="watch"
+href="https://www.zee5.com/movies/collections/free-movies-malayalam/0-8-3z5330893"
+target="_blank"
+rel="noopener">
+Watch
+</a>
+</div>
+
+
+<div class="movie-card">
+<div>
+<div class="movie-name">Vaanku</div>
+<small>Drama • Comedy</small>
+</div>
+
+<a class="watch"
+href="https://www.zee5.com/movies/collections/free-movies-malayalam/0-8-3z5330893"
+target="_blank"
+rel="noopener">
+Watch
+</a>
+</div>
+
+
+<div class="movie-card">
+<div>
+<div class="movie-name">Bhikshakkaran</div>
+<small>Drama • Action</small>
+</div>
+
+<a class="watch"
+href="https://www.zee5.com/movies/collections/free-movies-malayalam/0-8-3z5330893"
+target="_blank"
+rel="noopener">
+Watch
+</a>
+</div>
+
+
+<div class="movie-card">
+<div>
+<div class="movie-name">March Randam Vyazham</div>
+<small>Drama</small>
+</div>
+
+<a class="watch"
+href="https://www.zee5.com/movies/collections/free-movies-malayalam/0-8-3z5330893"
+target="_blank"
+rel="noopener">
+Watch
+</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 </main>
+
 
 <!-- PLAYER -->
 
 <div class="player">
 
-    <div class="player-top">
+<div class="player-top">
 
-        <img
-            id="cover"
-            class="cover"
-            src=""
-            alt="Cover"
-        >
+<img id="cover"
+class="cover"
+alt="Cover">
 
-        <div class="track-info">
+<div class="track-info">
 
-            <div id="title" class="track-title">
-                JOJIFY
-            </div>
+<div id="title" class="track-title">
+JOJIFY
+</div>
 
-            <div id="artist" class="track-artist">
-                Ready to play
-            </div>
+<div id="artist" class="track-artist">
+Ready to play
+</div>
 
-            <div id="live" class="live">
-                🔴 LIVE
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="progress">
-        <input
-            id="progress"
-            type="range"
-            min="0"
-            max="30"
-            value="0"
-            step="0.1"
-        >
-    </div>
-
-    <div class="controls">
-
-        <button class="control" onclick="previousTrack()">
-            ⏮
-        </button>
-
-        <button
-            id="playButton"
-            class="control main"
-            onclick="togglePlay()"
-        >
-            ▶
-        </button>
-
-        <button class="control" onclick="nextTrack()">
-            ⏭
-        </button>
-
-    </div>
-
-    <div class="volume">
-        🔊
-        <input
-            id="volume"
-            type="range"
-            min="0"
-            max="1"
-            value="0.8"
-            step="0.01"
-        >
-    </div>
+<div id="live" class="live">
+🔴 LIVE
+</div>
 
 </div>
 
+</div>
+
+
+<div class="progress">
+
+<input id="progress"
+type="range"
+min="0"
+max="30"
+value="0"
+step="0.1">
+
+</div>
+
+
+<div class="controls">
+
+<button class="control"
+onclick="previousTrack()">
+⏮
+</button>
+
+<button id="playButton"
+class="control main"
+onclick="togglePlay()">
+▶
+</button>
+
+<button class="control"
+onclick="nextTrack()">
+⏭
+</button>
+
+</div>
+
+
+<div class="volume">
+
+🔊
+
+<input id="volume"
+type="range"
+min="0"
+max="1"
+value="0.8"
+step="0.01">
+
+</div>
+
+
+<!-- ALWAYS VISIBLE DOWNLOAD BUTTON -->
+
+<button class="download"
+onclick="downloadCurrent()">
+📥 Download
+</button>
+
+</div>
+
+
 <audio id="audio" preload="none"></audio>
+
 
 <script>
 
-/* =========================
-   BASIC PLAYER
-========================= */
+/* PLAYER */
 
-const audio = document.getElementById("audio");
-const title = document.getElementById("title");
-const artist = document.getElementById("artist");
-const cover = document.getElementById("cover");
-const playButton = document.getElementById("playButton");
-const progress = document.getElementById("progress");
-const volume = document.getElementById("volume");
-const liveIndicator = document.getElementById("live");
+const audio=document.getElementById("audio");
+const title=document.getElementById("title");
+const artist=document.getElementById("artist");
+const cover=document.getElementById("cover");
+const playButton=document.getElementById("playButton");
+const progress=document.getElementById("progress");
+const volume=document.getElementById("volume");
+const liveIndicator=document.getElementById("live");
 
-let currentMode = "song";
-let currentTrackIndex = -1;
-let songQueue = [];
-let radioQueue = [];
-let radioIndex = -1;
+let currentMode="song";
+let currentTrackIndex=-1;
+let songQueue=[];
+let radioQueue=[];
+let radioIndex=-1;
 
-audio.volume = 0.8;
+audio.volume=.8;
 
-/* =========================
-   TAB SYSTEM
-========================= */
 
-function showTab(tab, button){
+/* TABS */
 
-    document.getElementById("songs").style.display = "none";
-    document.getElementById("malayalam").style.display = "none";
-    document.getElementById("world").style.display = "none";
+function showTab(tab,button){
 
-    document.querySelectorAll(".tab")
-        .forEach(btn => btn.classList.remove("active"));
+document.getElementById("songs").style.display="none";
+document.getElementById("malayalam").style.display="none";
+document.getElementById("world").style.display="none";
+document.getElementById("movies").style.display="none";
 
-    button.classList.add("active");
+document.querySelectorAll(".tab")
+.forEach(x=>x.classList.remove("active"));
 
-    document.getElementById(tab).style.display = "block";
+button.classList.add("active");
 
-    if(tab === "malayalam"){
-        loadMalayalamRadio();
-    }
+document.getElementById(tab).style.display="block";
 
-    if(tab === "world"){
-        loadWorldRadio();
-    }
+if(tab==="malayalam")
+loadMalayalamRadio();
+
+if(tab==="world")
+loadWorldRadio();
+
 }
 
-/* =========================
-   SONG SEARCH
-   iTunes 30-sec previews
-========================= */
+
+/* SEARCH */
 
 function searchSongs(){
 
-    const searchInput =
-        document.getElementById("searchInput");
+const input=document.getElementById("searchInput");
+const results=document.getElementById("results");
+const term=input.value.trim();
 
-    const results =
-        document.getElementById("results");
+if(!term){
 
-    const term =
-        searchInput.value.trim();
+results.innerHTML=
+'<div class="message">Type a song or artist name 🎵</div>';
 
-    if(!term){
-        results.innerHTML =
-            '<div class="message">Type a song or artist name 🎵</div>';
-        return;
-    }
-
-    results.innerHTML =
-        '<div class="message">Searching... 🔎</div>';
-
-    const callbackName =
-        "itunesCallback_" + Date.now();
-
-    window[callbackName] = function(data){
-
-        delete window[callbackName];
-
-        if(!data.results || data.results.length === 0){
-
-            results.innerHTML =
-                '<div class="message">No songs found.</div>';
-
-            return;
-        }
-
-        songQueue = data.results.filter(song =>
-            song.trackName && song.previewUrl
-        );
-
-        results.innerHTML = "";
-
-        data.results.forEach(song => {
-
-            if(!song.trackName) return;
-
-            const div =
-                document.createElement("div");
-
-            div.className = "result";
-
-            const artwork =
-                song.artworkUrl100
-                ? song.artworkUrl100
-                    .replace(/^http:/,"https:")
-                : "";
-
-            div.innerHTML = `
-                <img src="${artwork}" alt="Album">
-
-                <div class="info">
-
-                    <div class="name">
-                        ${escapeHTML(song.trackName)}
-                    </div>
-
-                    <div class="artist-name">
-                        ${escapeHTML(
-                            song.artistName ||
-                            "Unknown Artist"
-                        )}
-                    </div>
-
-                </div>
-
-                <button class="play">
-                    ▶
-                </button>
-            `;
-
-            div.querySelector(".play")
-                .onclick = function(){
-
-                    playSong(song);
-
-                };
-
-            results.appendChild(div);
-
-        });
-
-        const script =
-            document.getElementById(callbackName);
-
-        if(script) script.remove();
-
-    };
-
-    const script =
-        document.createElement("script");
-
-    script.id = callbackName;
-
-    script.src =
-        "https://itunes.apple.com/search" +
-        "?term=" +
-        encodeURIComponent(term) +
-        "&media=music" +
-        "&entity=song" +
-        "&limit=20" +
-        "&country=IN" +
-        "&callback=" +
-        callbackName;
-
-    document.body.appendChild(script);
+return;
 }
 
-/* =========================
-   PLAY SONG
-========================= */
+results.innerHTML=
+'<div class="message">Searching... 🔎</div>';
+
+const callback="itunes_"+Date.now();
+
+window[callback]=function(data){
+
+delete window[callback];
+
+if(!data.results||!data.results.length){
+
+results.innerHTML=
+'<div class="message">No songs found.</div>';
+
+return;
+}
+
+songQueue=data.results.filter(x=>x.trackName&&x.previewUrl);
+
+results.innerHTML="";
+
+data.results.forEach(song=>{
+
+if(!song.trackName)return;
+
+const div=document.createElement("div");
+div.className="result";
+
+const artwork=song.artworkUrl100
+?song.artworkUrl100.replace(/^http:/,"https:")
+:"";
+
+div.innerHTML=`
+
+<img src="${artwork}" alt="Album">
+
+<div class="info">
+
+<div class="name">
+${escapeHTML(song.trackName)}
+</div>
+
+<div class="artist-name">
+${escapeHTML(song.artistName||"Unknown Artist")}
+</div>
+
+</div>
+
+<button class="play">▶</button>
+`;
+
+div.querySelector(".play")
+.onclick=()=>playSong(song);
+
+results.appendChild(div);
+
+});
+
+const script=document.getElementById(callback);
+if(script)script.remove();
+
+};
+
+const script=document.createElement("script");
+
+script.id=callback;
+
+script.src=
+"https://itunes.apple.com/search"+
+"?term="+encodeURIComponent(term)+
+"&media=music"+
+"&entity=song"+
+"&limit=20"+
+"&country=IN"+
+"&callback="+callback;
+
+document.body.appendChild(script);
+
+}
+
+
+/* PLAY SONG */
 
 function playSong(song){
 
-    if(!song.previewUrl){
+if(!song.previewUrl)return;
 
-        alert("Preview not available for this song.");
+currentMode="song";
 
-        return;
-    }
+currentTrackIndex=songQueue.indexOf(song);
 
-    currentMode = "song";
+liveIndicator.style.display="none";
 
-    currentTrackIndex =
-        songQueue.indexOf(song);
+audio.src=song.previewUrl.replace(/^http:/,"https:");
 
-    liveIndicator.style.display = "none";
+title.textContent=song.trackName;
 
-    audio.src =
-        song.previewUrl.replace(/^http:/,"https:");
+artist.textContent=
+song.artistName||"Unknown Artist";
 
-    title.textContent =
-        song.trackName;
+cover.src=song.artworkUrl100
+?song.artworkUrl100.replace(/^http:/,"https:")
+:"";
 
-    artist.textContent =
-        song.artistName ||
-        "Unknown Artist";
+progress.max=30;
+audio.currentTime=0;
 
-    const artwork =
-        song.artworkUrl100
-        ? song.artworkUrl100
-            .replace(/^http:/,"https:")
-        : "";
+audio.play().catch(()=>{});
 
-    cover.src = artwork;
+updateButton();
 
-    progress.max = 30;
-
-    audio.currentTime = 0;
-
-    audio.play()
-        .catch(() => {});
-
-    updatePlayButton();
 }
 
-/* =========================
-   PLAY / PAUSE
-========================= */
+
+/* PLAY / PAUSE */
 
 function togglePlay(){
 
-    if(!audio.src) return;
+if(!audio.src)return;
 
-    if(audio.paused){
+if(audio.paused)
+audio.play().catch(()=>{});
+else
+audio.pause();
 
-        audio.play()
-            .catch(() => {});
-
-    }else{
-
-        audio.pause();
-
-    }
 }
 
-function updatePlayButton(){
-
-    playButton.textContent =
-        audio.paused ? "▶" : "⏸";
+function updateButton(){
+playButton.textContent=audio.paused?"▶":"⏸";
 }
 
-/* =========================
-   30 SECOND LIMIT
-========================= */
 
-audio.addEventListener("timeupdate",function(){
+/* 30 SECOND PREVIEW + AUTO NEXT */
 
-    if(currentMode === "song"){
+audio.addEventListener("timeupdate",()=>{
 
-        if(audio.currentTime >= 30){
+if(currentMode==="song"){
 
-            audio.pause();
+progress.value=Math.min(audio.currentTime,30);
 
-            audio.currentTime = 0;
+if(audio.currentTime>=30){
 
-            playButton.textContent = "▶";
+audio.pause();
+audio.currentTime=0;
 
-        }
+nextTrack();
 
-        progress.value =
-            Math.min(audio.currentTime,30);
+}
 
-    }else{
+}else{
 
-        progress.value = 0;
+progress.value=0;
 
-    }
+}
 
 });
 
-audio.addEventListener("play",updatePlayButton);
-audio.addEventListener("pause",updatePlayButton);
 
-/* =========================
-   NEXT / PREVIOUS
-========================= */
+/* AUTO NEXT */
+
+audio.addEventListener("ended",()=>{
+
+if(currentMode==="song")
+nextTrack();
+
+if(currentMode==="radio")
+playNextRadio();
+
+});
+
+
+/* NEXT */
 
 function nextTrack(){
 
-    if(currentMode !== "song" ||
-       songQueue.length === 0) return;
+if(!songQueue.length)return;
 
-    let next =
-        currentTrackIndex + 1;
+let next=currentTrackIndex+1;
 
-    if(next >= songQueue.length)
-        next = 0;
+if(next>=songQueue.length)
+next=0;
 
-    playSong(songQueue[next]);
+playSong(songQueue[next]);
+
 }
+
+
+/* PREVIOUS */
 
 function previousTrack(){
 
-    if(currentMode !== "song" ||
-       songQueue.length === 0) return;
+if(!songQueue.length)return;
 
-    let previous =
-        currentTrackIndex - 1;
+let previous=currentTrackIndex-1;
 
-    if(previous < 0)
-        previous = songQueue.length - 1;
+if(previous<0)
+previous=songQueue.length-1;
 
-    playSong(songQueue[previous]);
+playSong(songQueue[previous]);
+
 }
 
-audio.addEventListener("ended",function(){
 
-    if(currentMode === "song"){
+/* PROGRESS */
 
-        nextTrack();
+progress.addEventListener("input",()=>{
 
-    }else if(currentMode === "radio"){
-
-        playNextRadio();
-
-    }
+if(currentMode==="song")
+audio.currentTime=Number(progress.value);
 
 });
 
-/* =========================
-   PROGRESS
-========================= */
 
-progress.addEventListener("input",function(){
+/* VOLUME */
 
-    if(currentMode === "song"){
-
-        audio.currentTime =
-            Number(progress.value);
-
-    }
-
+volume.addEventListener("input",()=>{
+audio.volume=Number(volume.value);
 });
 
-/* =========================
-   VOLUME
-========================= */
 
-volume.addEventListener("input",function(){
+/* DOWNLOAD */
 
-    audio.volume =
-        Number(volume.value);
+function downloadCurrent(){
 
-});
+alert(
+"📥 Download is available only for music you own or have permission to distribute. Commercial preview tracks cannot be downloaded from JOJIFY."
+);
 
-/* =========================
-   RADIO BROWSER
-========================= */
+}
 
-const RADIO_APIS = [
-    "https://de1.api.radio-browser.info",
-    "https://at1.api.radio-browser.info",
-    "https://nl1.api.radio-browser.info"
+
+/* RADIO */
+
+const RADIO_APIS=[
+"https://de1.api.radio-browser.info",
+"https://at1.api.radio-browser.info",
+"https://nl1.api.radio-browser.info"
 ];
 
-let loadedMalayalam = false;
-let loadedWorld = false;
+let loadedMalayalam=false;
+let loadedWorld=false;
 
-/* =========================
-   MALAYALAM RADIO
-========================= */
 
 async function loadMalayalamRadio(){
 
-    if(loadedMalayalam) return;
+if(loadedMalayalam)return;
 
-    loadedMalayalam = true;
+loadedMalayalam=true;
 
-    const container =
-        document.getElementById(
-            "malayalamResults"
-        );
+const box=document.getElementById("malayalamResults");
 
-    container.innerHTML =
-        '<div class="message">Loading Malayalam stations... 📻</div>';
+box.innerHTML=
+'<div class="message">Loading Malayalam stations... 📻</div>';
 
-    const stations =
-        await getRadioStations("malayalam");
+const stations=await getRadioStations("malayalam");
 
-    radioQueue = stations;
+radioQueue=stations;
 
-    renderRadio(
-        stations,
-        container
-    );
+renderRadio(stations,box);
+
 }
 
-/* =========================
-   WORLD RADIO
-========================= */
 
 async function loadWorldRadio(){
 
-    if(loadedWorld) return;
+if(loadedWorld)return;
 
-    loadedWorld = true;
+loadedWorld=true;
 
-    const container =
-        document.getElementById(
-            "worldResults"
-        );
+const box=document.getElementById("worldResults");
 
-    container.innerHTML =
-        '<div class="message">Loading world stations... 🌍</div>';
+box.innerHTML=
+'<div class="message">Loading world stations... 🌍</div>';
 
-    const stations =
-        await getRadioStations("");
+const stations=await getRadioStations("");
 
-    radioQueue = stations;
+radioQueue=stations;
 
-    renderRadio(
-        stations,
-        container
-    );
+renderRadio(stations,box);
+
 }
 
-/* =========================
-   GET RADIO STATIONS
-========================= */
 
 async function getRadioStations(language){
 
-    for(const api of RADIO_APIS){
+for(const api of RADIO_APIS){
 
-        try{
+try{
 
-            let url =
-                api +
-                "/json/stations/search" +
-                "?hidebroken=true" +
-                "&limit=25" +
-                "&order=votes" +
-                "&reverse=true";
+let url=
+api+
+"/json/stations/search"+
+"?hidebroken=true"+
+"&limit=25"+
+"&order=votes"+
+"&reverse=true";
 
-            if(language){
+if(language)
+url+="&language="+encodeURIComponent(language);
 
-                url +=
-                    "&language=" +
-                    encodeURIComponent(language);
+const response=await fetch(url);
 
-            }
+if(!response.ok)continue;
 
-            const response =
-                await fetch(url);
+const data=await response.json();
 
-            if(!response.ok)
-                continue;
+return data.filter(x=>x.url_resolved);
 
-            const data =
-                await response.json();
+}catch(e){}
 
-            const valid =
-                data.filter(station =>
-                    station.url_resolved
-                );
-
-            return valid;
-
-        }catch(error){
-
-            console.log(
-                "Radio API failed:",
-                api
-            );
-
-        }
-
-    }
-
-    return [];
 }
 
-/* =========================
-   RENDER RADIO
-========================= */
+return[];
+
+}
+
 
 function renderRadio(stations,container){
 
-    container.innerHTML = "";
+container.innerHTML="";
 
-    if(!stations.length){
+if(!stations.length){
 
-        container.innerHTML =
-            '<div class="message">No working stations found.</div>';
+container.innerHTML=
+'<div class="message">No working stations found.</div>';
 
-        return;
-    }
-
-    stations.forEach(station => {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "station";
-
-        div.innerHTML = `
-
-            <div class="station-info">
-
-                <div class="station-name">
-                    ${escapeHTML(
-                        station.name ||
-                        "Unknown Station"
-                    )}
-                </div>
-
-                <div class="station-country">
-                    ${escapeHTML(
-                        station.country ||
-                        "Radio"
-                    )}
-                </div>
-
-            </div>
-
-            <button class="radio-btn">
-                ▶
-            </button>
-        `;
-
-        div.querySelector(".radio-btn")
-            .onclick = function(){
-
-                playRadio(station);
-
-            };
-
-        container.appendChild(div);
-
-    });
+return;
 }
 
-/* =========================
-   PLAY RADIO
-========================= */
+stations.forEach(station=>{
 
-function playRadio(station){
+const div=document.createElement("div");
 
-    if(!station.url_resolved){
+div.className="station";
 
-        playNextRadio();
+div.innerHTML=`
 
-        return;
+<div class="station-info">
 
-    }
+<div class="station-name">
+${escapeHTML(station.name||"Unknown Station")}
+</div>
 
-    currentMode = "radio";
+<div class="station-country">
+${escapeHTML(station.country||"Radio")}
+</div>
 
-    radioIndex =
-        radioQueue.indexOf(station);
+</div>
 
-    liveIndicator.style.display = "block";
+<button class="radio-btn">▶</button>
+`;
 
-    title.textContent =
-        station.name ||
-        "Live Radio";
+div.querySelector(".radio-btn")
+.onclick=()=>playRadio(station);
 
-    artist.textContent =
-        station.country ||
-        "Live Station";
-
-    cover.src =
-        station.favicon ||
-        "";
-
-    audio.src =
-        station.url_resolved;
-
-    audio.play()
-        .catch(() => {
-
-            playNextRadio();
-
-        });
-
-    progress.value = 0;
-
-    updatePlayButton();
-}
-
-/* =========================
-   AUTO-SKIP FAILED RADIO
-========================= */
-
-audio.addEventListener("error",function(){
-
-    if(currentMode === "radio"){
-
-        setTimeout(() => {
-
-            playNextRadio();
-
-        },300);
-
-    }
+container.appendChild(div);
 
 });
 
-/* =========================
-   NEXT RADIO
-========================= */
+}
+
+
+function playRadio(station){
+
+if(!station.url_resolved){
+
+playNextRadio();
+return;
+
+}
+
+currentMode="radio";
+
+radioIndex=radioQueue.indexOf(station);
+
+liveIndicator.style.display="block";
+
+title.textContent=station.name||"Live Radio";
+
+artist.textContent=station.country||"Live Station";
+
+cover.src=station.favicon||"";
+
+audio.src=station.url_resolved;
+
+audio.play().catch(()=>playNextRadio());
+
+progress.value=0;
+
+updateButton();
+
+}
+
 
 function playNextRadio(){
 
-    if(!radioQueue.length)
-        return;
+if(!radioQueue.length)return;
 
-    radioIndex++;
+radioIndex++;
 
-    if(radioIndex >= radioQueue.length)
-        radioIndex = 0;
+if(radioIndex>=radioQueue.length)
+radioIndex=0;
 
-    const station =
-        radioQueue[radioIndex];
+playRadio(radioQueue[radioIndex]);
 
-    playRadio(station);
 }
 
-/* =========================
-   SEARCH ENTER KEY
-========================= */
 
-document
-    .getElementById("searchInput")
-    .addEventListener("keydown",function(event){
+audio.addEventListener("error",()=>{
 
-        if(event.key === "Enter"){
+if(currentMode==="radio")
+setTimeout(playNextRadio,300);
 
-            searchSongs();
+});
 
-        }
 
-    });
+/* ENTER SEARCH */
 
-/* =========================
-   SECURITY
-========================= */
+document.getElementById("searchInput")
+.addEventListener("keydown",e=>{
+
+if(e.key==="Enter")
+searchSongs();
+
+});
+
+
+/* ESCAPE HTML */
 
 function escapeHTML(text){
 
-    const div =
-        document.createElement("div");
+const div=document.createElement("div");
 
-    div.textContent =
-        text == null ? "" : text;
+div.textContent=text==null?"":text;
 
-    return div.innerHTML;
+return div.innerHTML;
+
 }
 
 </script>
