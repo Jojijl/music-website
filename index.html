@@ -2,2017 +2,1462 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>JOJIFY — Your Music. Your Vibe.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b12">
+
+<title>JOJIFY SOLVE — Life Input</title>
 
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-
-body{
-margin:0;
-background:#090909;
-color:#fff;
-font-family:Arial,sans-serif
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08080d;
+    color:#fff;
+    min-height:100vh;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    padding:18px;
+}
+
+/* HEADER */
+
 header{
-padding:18px 12px 8px;
-text-align:center;
-background:#090909;
-position:sticky;
-top:0;
-z-index:50
+    text-align:center;
+    padding:20px 10px 25px;
 }
 
 .logo{
-font-size:31px;
-font-weight:900;
-letter-spacing:3px
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#8b5cf6;
 }
 
 .tagline{
-font-size:11px;
-color:#888;
-margin-top:4px
+    margin-top:8px;
+    color:#999;
+    font-size:13px;
 }
 
-.search{
-display:flex;
-gap:8px;
-margin:15px 0 10px
-}
-
-.search input{
-flex:1;
-background:#151515;
-border:1px solid #292929;
-border-radius:12px;
-padding:13px;
-color:white;
-outline:none
-}
-
-.search button{
-background:#1ed760;
-border:0;
-border-radius:12px;
-padding:0 16px;
-font-weight:bold
-}
-
-.tabs{
-display:flex;
-gap:7px;
-overflow-x:auto;
-padding:8px 0 5px
-}
-
-.tab{
-flex-shrink:0;
-background:#171717;
-border:1px solid #292929;
-color:#aaa;
-padding:9px 13px;
-border-radius:20px
-}
-
-.tab.active{
-background:#1ed760;
-color:#000;
-border-color:#1ed760
-}
-
-main{
-padding:5px 12px 190px
-}
-
-.section-title{
-font-size:22px;
-font-weight:bold;
-margin:12px 0
-}
+/* CARD */
 
 .card{
-background:#151515;
-border:1px solid #292929;
-border-radius:15px;
-padding:12px;
-margin-bottom:10px
+    background:#12121b;
+    border:1px solid #252536;
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-/* SONGS */
+/* LANGUAGE */
 
-.song{
-display:flex;
-align-items:center;
-gap:12px
+label{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:8px;
 }
 
-.song img{
-width:60px;
-height:60px;
-border-radius:10px;
-object-fit:cover
+select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #303044;
+    background:#0c0c14;
+    color:white;
+    font-size:15px;
 }
 
-.song-info{
-flex:1;
-min-width:0
+/* INPUT */
+
+textarea{
+    width:100%;
+    min-height:150px;
+    resize:vertical;
+    background:#0c0c14;
+    color:#fff;
+    border:1px solid #303044;
+    border-radius:15px;
+    padding:16px;
+    font-size:16px;
+    outline:none;
 }
 
-.song-title{
-font-weight:bold;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
+textarea:focus,
+select:focus{
+    border-color:#8b5cf6;
 }
 
-.song-artist{
-font-size:13px;
-color:#888;
-margin-top:4px
+.solve-btn{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.play-small{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#1ed760;
-font-size:17px
+.solve-btn:active{
+    transform:scale(.98);
 }
 
-/* STORIES */
+/* QUICK EXAMPLES */
 
-.story-search{
-margin-bottom:15px
+.section-title{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:12px;
 }
 
-.story-search input{
-width:100%;
-padding:13px;
-background:#151515;
-border:1px solid #292929;
-border-radius:12px;
-color:white;
-outline:none
+.examples{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
-.story-card{
-background:#151515;
-border:1px solid #292929;
-border-radius:17px;
-padding:15px;
-margin-bottom:12px
+.example{
+    background:#181824;
+    border:1px solid #29293b;
+    border-radius:13px;
+    padding:13px;
+    color:#ddd;
+    cursor:pointer;
+    font-size:13px;
 }
 
-.story-icon{
-font-size:38px;
-margin-bottom:8px
+.example:hover{
+    border-color:#8b5cf6;
 }
 
-.story-title{
-font-size:20px;
-font-weight:bold;
-margin-bottom:6px
+/* CATEGORY */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.story-category{
-color:#1ed760;
-font-size:12px;
-font-weight:bold;
-margin-bottom:9px
+.category{
+    background:#181824;
+    border:1px solid #29293b;
+    border-radius:14px;
+    padding:14px 7px;
+    text-align:center;
+    cursor:pointer;
+    font-size:12px;
 }
 
-.story-preview{
-color:#aaa;
-font-size:14px;
-line-height:1.5
+.category .icon{
+    display:block;
+    font-size:25px;
+    margin-bottom:7px;
 }
 
-.story-actions{
-display:flex;
-gap:7px;
-margin-top:12px;
-flex-wrap:wrap
+/* RESULT */
+
+.result{
+    display:none;
 }
 
-.story-actions button{
-border:0;
-border-radius:10px;
-padding:10px 13px;
-font-weight:bold
+.result-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
 }
 
-.read-btn{
-background:#1ed760;
-color:#000
+.badge{
+    background:#24184b;
+    color:#c4b5fd;
+    border:1px solid #5635a8;
+    padding:7px 10px;
+    border-radius:30px;
+    font-size:12px;
 }
 
-.fav-btn{
-background:#292929;
-color:white
+.result-title{
+    font-size:20px;
+    font-weight:bold;
 }
 
-.story-content{
-display:none;
-margin-top:15px;
-padding-top:15px;
-border-top:1px solid #292929;
-font-size:16px;
-line-height:1.9;
-color:#eee
+.answer{
+    color:#ddd;
+    line-height:1.65;
+    white-space:pre-line;
 }
 
-.story-content.open{
-display:block
+.steps{
+    margin-top:18px;
 }
 
-.empty{
-text-align:center;
-color:#777;
-padding:30px
+.step{
+    display:flex;
+    gap:12px;
+    margin-bottom:13px;
+    align-items:flex-start;
 }
 
-/* MOVIES */
-
-.movie-card{
-background:#151515;
-border:1px solid #292929;
-border-radius:15px;
-overflow:hidden;
-margin-bottom:15px
+.step-number{
+    min-width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#7c3aed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:13px;
+    font-weight:bold;
 }
 
-.movie-card img{
-width:100%;
-height:190px;
-object-fit:cover;
-background:#222
+.step-text{
+    color:#ddd;
+    line-height:1.5;
+    padding-top:3px;
 }
 
-.movie-content{
-padding:12px
+/* HISTORY */
+
+.history-item{
+    padding:12px;
+    background:#181824;
+    border:1px solid #29293b;
+    border-radius:12px;
+    margin-bottom:8px;
+    cursor:pointer;
 }
 
-.movie-button{
-margin-top:10px;
-padding:10px 15px;
-background:#1ed760;
-border:0;
-border-radius:10px;
-font-weight:bold
+.history-item small{
+    display:block;
+    color:#777;
+    margin-top:5px;
 }
 
-#movieFrame{
-width:100%;
-height:300px;
-border:0;
-border-radius:15px;
-background:#000;
-margin-bottom:15px
+.clear-btn{
+    background:none;
+    border:1px solid #333;
+    color:#aaa;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* GAMES */
+/* FOOTER */
 
-.games-title{
-font-size:25px;
-font-weight:900;
-text-align:center;
-margin-top:10px
+footer{
+    text-align:center;
+    color:#666;
+    font-size:12px;
+    padding:25px 10px;
 }
 
-.games-subtitle{
-text-align:center;
-color:#888;
-margin:5px 0 15px
-}
+/* MOBILE */
 
-.game-menu{
-display:flex;
-gap:7px;
-overflow-x:auto;
-margin-bottom:15px
-}
+@media(max-width:450px){
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.game-select{
-flex-shrink:0;
-padding:10px 13px;
-border-radius:20px;
-background:#171717;
-color:#aaa;
-border:1px solid #292929
-}
+    .examples{
+        grid-template-columns:1fr;
+    }
 
-.game-select.active{
-background:#1ed760;
-color:#000
-}
-
-.game-box{
-background:#111;
-border:1px solid #292929;
-border-radius:18px;
-padding:15px;
-text-align:center
-}
-
-.game{
-display:none
-}
-
-.game.active{
-display:block
-}
-
-.game button{
-background:#1ed760;
-color:#000;
-padding:11px 16px;
-border:0;
-border-radius:10px;
-font-weight:bold;
-margin:4px
-}
-
-.game canvas{
-max-width:100%;
-border-radius:12px;
-background:#050505
-}
-
-/* TOOLS */
-
-.tools-title{
-font-size:24px;
-font-weight:900;
-margin:10px 0 5px
-}
-
-.tools-subtitle{
-color:#888;
-margin-bottom:15px
-}
-
-.tool-menu{
-display:flex;
-gap:8px;
-overflow-x:auto;
-margin-bottom:15px
-}
-
-.tool-select{
-flex-shrink:0;
-padding:10px 13px;
-border-radius:20px;
-background:#171717;
-color:#aaa;
-border:1px solid #292929
-}
-
-.tool-select.active{
-background:#1ed760;
-color:#000
-}
-
-.tool{
-display:none
-}
-
-.tool.active{
-display:block
-}
-
-.tool-input{
-width:100%;
-padding:13px;
-background:#090909;
-border:1px solid #292929;
-border-radius:10px;
-color:white;
-margin-bottom:10px
-}
-
-.tool-btn{
-background:#1ed760;
-color:#000;
-border:0;
-border-radius:10px;
-padding:12px 17px;
-font-weight:bold;
-margin:4px
-}
-
-.big-time{
-font-size:50px;
-text-align:center;
-font-weight:bold;
-margin:20px 0
-}
-
-.notes{
-width:100%;
-min-height:250px;
-background:#090909;
-border:1px solid #292929;
-border-radius:12px;
-color:white;
-padding:13px;
-resize:vertical
-}
-
-/* PLAYER */
-
-.player{
-position:fixed;
-left:10px;
-right:10px;
-bottom:10px;
-background:#151515;
-border:1px solid #292929;
-border-radius:20px;
-padding:12px;
-z-index:100;
-box-shadow:0 8px 35px rgba(0,0,0,.55)
-}
-
-.player-top{
-display:flex;
-align-items:center;
-gap:10px
-}
-
-.cover{
-width:52px;
-height:52px;
-border-radius:10px;
-object-fit:cover;
-background:#222
-}
-
-.track-info{
-flex:1;
-min-width:0
-}
-
-.track-title{
-font-weight:bold;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
-}
-
-.track-artist{
-font-size:13px;
-color:#888;
-margin-top:3px
-}
-
-.progress{
-margin-top:10px
-}
-
-.progress input,
-.volume input{
-width:100%
-}
-
-.controls{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:18px;
-margin-top:7px
-}
-
-.control{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#292929;
-color:white;
-border:0;
-font-size:17px
-}
-
-.control.main{
-width:52px;
-height:52px;
-background:#1ed760;
-color:#000
-}
-
-.volume{
-display:flex;
-gap:8px;
-align-items:center;
-margin-top:7px
-}
-
-.download{
-width:100%;
-margin-top:8px;
-padding:9px;
-border:0;
-border-radius:10px;
-background:#222;
-color:#aaa
-}
-
-/* NO PLAYER OVER GAMES */
-
-body.games-active .player{
-display:none
-}
-
-body.games-active main{
-padding-bottom:20px
-}
-
-@media(max-width:500px){
-#movieFrame{height:250px}
+    .logo{
+        font-size:26px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <header>
+    <div class="logo">
+        JOJIFY <span>SOLVE</span>
+    </div>
 
-<div class="logo">JOJIFY</div>
-<div class="tagline">YOUR MUSIC. YOUR VIBE.</div>
-
-<div class="search">
-<input id="searchInput" placeholder="Search songs or artists...">
-<button onclick="searchSongs()">Search</button>
-</div>
-
-<div class="tabs">
-
-<button class="tab active"
-onclick="showTab('songs',this)">
-🎵 Tunes
-</button>
-
-<button class="tab"
-onclick="showTab('stories',this)">
-📖 Malayalam Stories
-</button>
-
-<button class="tab"
-onclick="showTab('movies',this)">
-🎬 Movies
-</button>
-
-<button class="tab"
-onclick="showTab('games',this)">
-🎮 Games
-</button>
-
-<button class="tab"
-onclick="showTab('tools',this)">
-🛠️ Tools
-</button>
-
-</div>
-
+    <div class="tagline">
+        Ask in your language. Understand the problem. Take action.
+    </div>
 </header>
 
-<main>
 
-<!-- TUNES -->
-
-<section id="songs">
-
-<div class="section-title">🎵 Tunes</div>
-
-<div id="songResults">
-<div class="empty">
-Search for a song or artist 🎧
-</div>
-</div>
-
-</section>
-
-
-<!-- MALAYALAM STORIES -->
-
-<section id="stories" style="display:none">
-
-<div class="section-title">
-📖 Malayalam Stories
-</div>
-
-<div class="story-search">
-
-<input
-id="storySearch"
-placeholder="Search stories..."
-oninput="searchStories()">
-
-</div>
-
-<div id="storyResults"></div>
-
-</section>
-
-
-<!-- MOVIES -->
-
-<section id="movies" style="display:none">
-
-<div class="section-title">
-🎬 Malayalam Movies
-</div>
-
-<iframe
-id="movieFrame"
-allowfullscreen
-style="display:none">
-</iframe>
-
-<div id="movieResults">
-<div class="empty">
-Loading movies...
-</div>
-</div>
-
-</section>
-
-
-<!-- GAMES -->
-
-<section id="games" style="display:none">
-
-<div class="games-title">
-🎮 JOJIFY GAMES
-</div>
-
-<div class="games-subtitle">
-Simple to play. Tough to master 😈
-</div>
-
-<div class="game-menu">
-
-<button class="game-select active"
-onclick="openGame('memory',this)">
-🧠 Memory
-</button>
-
-<button class="game-select"
-onclick="openGame('reaction',this)">
-⚡ Reaction
-</button>
-
-<button class="game-select"
-onclick="openGame('math',this)">
-🧮 Math
-</button>
-
-</div>
-
-<div class="game-box">
-
-<div id="memory" class="game active">
-
-<h3>🧠 Memory Challenge</h3>
-
-<p>Remember the number!</p>
-
-<div
-id="memoryNumber"
-style="font-size:45px;font-weight:bold;margin:25px">
-READY
-</div>
-
-<button onclick="startMemory()">
-START
-</button>
-
-<input
-id="memoryAnswer"
-class="tool-input"
-placeholder="Enter number"
-style="margin-top:15px">
-
-<button onclick="checkMemory()">
-CHECK
-</button>
-
-<div id="memoryResult"></div>
-
-</div>
-
-
-<div id="reaction" class="game">
-
-<h3>⚡ Reaction Test</h3>
-
-<p id="reactionText">
-Press START and wait...
-</p>
-
-<button onclick="startReaction()">
-START
-</button>
-
-<button
-id="reactionButton"
-onclick="reactNow()"
-style="display:none;background:#ff3333">
-TAP!
-</button>
-
-<div id="reactionResult"></div>
-
-</div>
-
-
-<div id="math" class="game">
-
-<h3>🧮 Mental Math</h3>
-
-<div
-id="mathQuestion"
-style="font-size:30px;font-weight:bold;margin:20px">
-Press START
-</div>
-
-<button onclick="startMath()">
-START
-</button>
-
-<input
-id="mathAnswer"
-class="tool-input"
-placeholder="Answer">
-
-<button onclick="checkMath()">
-CHECK
-</button>
-
-<div id="mathResult"></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- TOOLS -->
-
-<section id="tools" style="display:none">
-
-<div class="tools-title">
-🛠️ JOJIFY Tools
-</div>
-
-<div class="tools-subtitle">
-Useful everyday tools
-</div>
-
-<div class="tool-menu">
-
-<button class="tool-select active"
-onclick="openTool('calculator',this)">
-🧮 Calculator
-</button>
-
-<button class="tool-select"
-onclick="openTool('percentage',this)">
-📊 Percentage
-</button>
-
-<button class="tool-select"
-onclick="openTool('age',this)">
-🎂 Age
-</button>
-
-<button class="tool-select"
-onclick="openTool('notes',this)">
-📝 Notes
-</button>
-
-</div>
-
-
-<div class="tool active" id="calculator">
+<!-- LANGUAGE + INPUT -->
 
 <div class="card">
 
-<input
-id="calcDisplay"
-class="tool-input"
-readonly
-style="font-size:25px;text-align:right">
+    <label for="language">🌍 Answer language</label>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:7px">
+    <select id="language">
+        <option value="auto">Auto Detect</option>
+        <option value="english">English</option>
+        <option value="malayalam">മലയാളം — Malayalam</option>
+        <option value="tamil">தமிழ் — Tamil</option>
+        <option value="hindi">हिन्दी — Hindi</option>
+        <option value="telugu">తెలుగు — Telugu</option>
+        <option value="kannada">ಕನ್ನಡ — Kannada</option>
+    </select>
 
-<button class="tool-btn" onclick="calc('7')">7</button>
-<button class="tool-btn" onclick="calc('8')">8</button>
-<button class="tool-btn" onclick="calc('9')">9</button>
-<button class="tool-btn" onclick="calc('/')">÷</button>
+    <br><br>
 
-<button class="tool-btn" onclick="calc('4')">4</button>
-<button class="tool-btn" onclick="calc('5')">5</button>
-<button class="tool-btn" onclick="calc('6')">6</button>
-<button class="tool-btn" onclick="calc('*')">×</button>
+    <label for="problem">
+        🧠 What's your problem?
+    </label>
 
-<button class="tool-btn" onclick="calc('1')">1</button>
-<button class="tool-btn" onclick="calc('2')">2</button>
-<button class="tool-btn" onclick="calc('3')">3</button>
-<button class="tool-btn" onclick="calc('-')">−</button>
+    <textarea
+        id="problem"
+        placeholder="Example: I have an exam tomorrow and 5 chapters are left..."
+    ></textarea>
 
-<button class="tool-btn" onclick="calc('0')">0</button>
-<button class="tool-btn" onclick="calc('.')">.</button>
-<button class="tool-btn" onclick="calculate()">=</button>
-<button class="tool-btn" onclick="calc('+')">+</button>
-
-<button class="tool-btn"
-onclick="clearCalc()"
-style="grid-column:span 4">
-CLEAR
-</button>
-
-</div>
-
-</div>
+    <button class="solve-btn" onclick="solveProblem()">
+        ✨ SOLVE MY PROBLEM
+    </button>
 
 </div>
 
 
-<div class="tool" id="percentage">
+<!-- QUICK EXAMPLES -->
 
 <div class="card">
 
-<h3>📊 Percentage Calculator</h3>
+    <div class="section-title">
+        ⚡ Try an example
+    </div>
 
-<input
-id="percentNumber"
-class="tool-input"
-type="number"
-placeholder="Number">
+    <div class="examples">
 
-<input
-id="percentValue"
-class="tool-input"
-type="number"
-placeholder="Percentage">
+        <div class="example"
+             onclick="useExample('I have an exam tomorrow, 5 chapters left and only 6 hours.')">
+            🎓 Exam problem
+        </div>
 
-<button class="tool-btn"
-onclick="calculatePercentage()">
-CALCULATE
-</button>
+        <div class="example"
+             onclick="useExample('I have ₹2000 and need to manage it for 5 days.')">
+            💰 Budget problem
+        </div>
 
-<div id="percentageResult"></div>
+        <div class="example"
+             onclick="useExample('I attended 136 out of 200 classes and need 75% attendance.')">
+            📊 Attendance
+        </div>
+
+        <div class="example"
+             onclick="useExample('I have many things to do today and only 5 hours.')">
+            ⏰ Time problem
+        </div>
+
+    </div>
 
 </div>
 
-</div>
 
-
-<div class="tool" id="age">
+<!-- CATEGORIES -->
 
 <div class="card">
 
-<h3>🎂 Age Calculator</h3>
+    <div class="section-title">
+        🛠️ Choose a problem type
+    </div>
 
-<input
-id="birthDate"
-class="tool-input"
-type="date">
+    <div class="categories">
 
-<button class="tool-btn"
-onclick="calculateAge()">
-CALCULATE AGE
-</button>
+        <div class="category" onclick="categoryProblem('study')">
+            <span class="icon">🎓</span>
+            Study
+        </div>
 
-<div id="ageResult"></div>
+        <div class="category" onclick="categoryProblem('money')">
+            <span class="icon">💰</span>
+            Money
+        </div>
+
+        <div class="category" onclick="categoryProblem('time')">
+            <span class="icon">⏰</span>
+            Time
+        </div>
+
+        <div class="category" onclick="categoryProblem('travel')">
+            <span class="icon">🚌</span>
+            Travel
+        </div>
+
+        <div class="category" onclick="categoryProblem('shopping')">
+            <span class="icon">🛒</span>
+            Shopping
+        </div>
+
+        <div class="category" onclick="categoryProblem('daily')">
+            <span class="icon">📝</span>
+            Daily Life
+        </div>
+
+    </div>
 
 </div>
 
+
+<!-- RESULT -->
+
+<div class="card result" id="result">
+
+    <div class="result-header">
+
+        <div class="result-title">
+            Your Solution
+        </div>
+
+        <div class="badge" id="categoryBadge">
+            General
+        </div>
+
+    </div>
+
+    <div class="answer" id="answer"></div>
+
+    <div class="steps" id="steps"></div>
+
 </div>
 
 
-<div class="tool" id="notes">
+<!-- HISTORY -->
 
 <div class="card">
 
-<h3>📝 Quick Notes</h3>
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:12px;
+    ">
 
-<textarea
-id="notesArea"
-class="notes"
-placeholder="Write your notes here..."></textarea>
+        <div class="section-title" style="margin:0;">
+            🕘 Recent Problems
+        </div>
 
-<button class="tool-btn"
-onclick="saveNotes()">
-💾 SAVE
-</button>
+        <button class="clear-btn" onclick="clearHistory()">
+            Clear
+        </button>
 
-<button class="tool-btn"
-onclick="clearNotes()">
-🗑️ CLEAR
-</button>
+    </div>
 
-<div id="notesResult"></div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<!-- PLAYER -->
-
-<div class="player">
-
-<div class="player-top">
-
-<img
-id="cover"
-class="cover"
-alt="Cover">
-
-<div class="track-info">
-
-<div
-id="title"
-class="track-title">
-JOJIFY
-</div>
-
-<div
-id="artist"
-class="track-artist">
-Ready to play
-</div>
+    <div id="history">
+        <div style="color:#666;font-size:13px;">
+            Your solved problems will appear here.
+        </div>
+    </div>
 
 </div>
 
-</div>
 
-<div class="progress">
-
-<input
-id="progress"
-type="range"
-min="0"
-max="30"
-value="0"
-step="0.1">
+<footer>
+    JOJIFY SOLVE © 2026<br>
+    Problem → Understand → Plan → Action
+</footer>
 
 </div>
-
-<div class="controls">
-
-<button
-class="control"
-onclick="previousTrack()">
-⏮
-</button>
-
-<button
-id="playButton"
-class="control main"
-onclick="togglePlay()">
-▶
-</button>
-
-<button
-class="control"
-onclick="nextTrack()">
-⏭
-</button>
-
-</div>
-
-<div class="volume">
-
-🔊
-
-<input
-id="volume"
-type="range"
-min="0"
-max="1"
-value="0.8"
-step="0.01">
-
-</div>
-
-<button
-class="download"
-onclick="downloadCurrent()">
-📥 Download
-</button>
-
-</div>
-
-<audio
-id="audio"
-preload="none">
-</audio>
 
 
 <script>
 
 /* =========================
-   TABS
+   LANGUAGE DETECTION
 ========================= */
 
-function showTab(tab,button){
+function detectLanguage(text){
 
-[
-"songs",
-"stories",
-"movies",
-"games",
-"tools"
-].forEach(id=>{
-document.getElementById(id).style.display="none";
-});
+    if(
+        /[\u0D00-\u0D7F]/.test(text)
+    ){
+        return "malayalam";
+    }
 
-document
-.querySelectorAll(".tab")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
+    if(
+        /[\u0B80-\u0BFF]/.test(text)
+    ){
+        return "tamil";
+    }
 
-button.classList.add("active");
+    if(
+        /[\u0C00-\u0C7F]/.test(text)
+    ){
+        return "telugu";
+    }
 
-document.getElementById(tab).style.display="block";
+    if(
+        /[\u0C80-\u0CFF]/.test(text)
+    ){
+        return "kannada";
+    }
 
-if(tab==="games"){
-document.body.classList.add("games-active");
-}else{
-document.body.classList.remove("games-active");
+    if(
+        /[\u0900-\u097F]/.test(text)
+    ){
+        return "hindi";
+    }
+
+    return "english";
 }
 
-if(tab==="movies"){
-loadMovies();
+
+/* =========================
+   EXAMPLES
+========================= */
+
+function useExample(text){
+
+    document.getElementById("problem").value = text;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
+
+
+function categoryProblem(category){
+
+    const examples = {
+
+        study:
+        "I have an exam soon and I need help making a study plan.",
+
+        money:
+        "I have ₹2000 and need to manage my money carefully.",
+
+        time:
+        "I have many tasks and very little time. Help me make a plan.",
+
+        travel:
+        "I need to plan a trip and manage my travel time and budget.",
+
+        shopping:
+        "I need to buy something but I have a limited budget.",
+
+        daily:
+        "I have several things to do today and I don't know where to start."
+
+    };
+
+    document.getElementById("problem").value = examples[category];
+
+    solveProblem();
+}
+
+
+/* =========================
+   MAIN SOLVER
+========================= */
+
+function solveProblem(){
+
+    const input =
+        document.getElementById("problem").value.trim();
+
+    if(!input){
+
+        alert("Please describe your problem first 🙂");
+
+        return;
+    }
+
+    const selectedLanguage =
+        document.getElementById("language").value;
+
+    const language =
+        selectedLanguage === "auto"
+        ? detectLanguage(input)
+        : selectedLanguage;
+
+    const category =
+        detectCategory(input);
+
+    let solution;
+
+    if(category === "attendance"){
+
+        solution =
+            attendanceSolver(input,language);
+
+    }else if(category === "money"){
+
+        solution =
+            moneySolver(input,language);
+
+    }else if(category === "study"){
+
+        solution =
+            studySolver(input,language);
+
+    }else if(category === "time"){
+
+        solution =
+            timeSolver(input,language);
+
+    }else if(category === "travel"){
+
+        solution =
+            travelSolver(input,language);
+
+    }else if(category === "shopping"){
+
+        solution =
+            shoppingSolver(input,language);
+
+    }else{
+
+        solution =
+            generalSolver(input,language);
+
+    }
+
+    displayResult(solution);
+
+    saveHistory(input,category,language);
 
 }
 
 
 /* =========================
-   SONG SEARCH
+   CATEGORY DETECTION
 ========================= */
 
-let tracks=[];
-let currentTrack=0;
-
-function searchSongs(){
-
-const q=document
-.getElementById("searchInput")
-.value.trim();
-
-if(!q)return;
-
-const results=document.getElementById("songResults");
-
-results.innerHTML=
-'<div class="empty">Searching... 🎵</div>';
-
-fetch(
-"https://itunes.apple.com/search?term="+
-encodeURIComponent(q)+
-"&media=music&entity=song&limit=20"
-)
-.then(r=>r.json())
-.then(data=>{
-
-tracks=data.results.filter(x=>x.previewUrl);
-
-results.innerHTML="";
-
-if(!tracks.length){
-
-results.innerHTML=
-'<div class="empty">No preview tracks found.</div>';
-
-return;
-}
-
-tracks.forEach((track,index)=>{
-
-const card=document.createElement("div");
-
-card.className="card";
-
-card.innerHTML=`
-
-<div class="song">
-
-<img src="${track.artworkUrl100 || ''}">
-
-<div class="song-info">
-
-<div class="song-title">
-${escapeHTML(track.trackName || "Unknown")}
-</div>
-
-<div class="song-artist">
-${escapeHTML(track.artistName || "")}
-</div>
-
-</div>
-
-<button class="play-small">
-▶
-</button>
-
-</div>
-`;
-
-card
-.querySelector("button")
-.onclick=()=>playTrack(index);
-
-results.appendChild(card);
-
-});
-
-})
-.catch(()=>{
-
-results.innerHTML=
-'<div class="empty">Search failed. Try again.</div>';
-
-});
-
-}
-
-
-function playTrack(index){
-
-currentTrack=index;
-
-const track=tracks[index];
-
-if(!track)return;
-
-const audio=document.getElementById("audio");
-
-audio.src=track.previewUrl;
-
-document.getElementById("title").textContent=
-track.trackName || "Unknown";
-
-document.getElementById("artist").textContent=
-track.artistName || "";
-
-document.getElementById("cover").src=
-track.artworkUrl100 || "";
-
-audio.play();
-
-document.getElementById("playButton").textContent="⏸";
-
-}
-
-
-function togglePlay(){
-
-const audio=document.getElementById("audio");
-
-if(!audio.src)return;
-
-if(audio.paused){
-
-audio.play();
-document.getElementById("playButton").textContent="⏸";
-
-}else{
-
-audio.pause();
-document.getElementById("playButton").textContent="▶";
-
-}
-
-}
-
-
-function nextTrack(){
-
-if(!tracks.length)return;
-
-currentTrack=(currentTrack+1)%tracks.length;
-
-playTrack(currentTrack);
-
-}
-
-
-function previousTrack(){
-
-if(!tracks.length)return;
-
-currentTrack=
-(currentTrack-1+tracks.length)%tracks.length;
-
-playTrack(currentTrack);
-
-}
-
-
-document
-.getElementById("audio")
-.addEventListener("ended",nextTrack);
-
-
-document
-.getElementById("volume")
-.addEventListener("input",function(){
-
-document.getElementById("audio").volume=this.value;
-
-});
-
-
-document
-.getElementById("progress")
-.addEventListener("input",function(){
-
-document.getElementById("audio").currentTime=this.value;
-
-});
-
-
-document
-.getElementById("audio")
-.addEventListener("timeupdate",function(){
-
-document.getElementById("progress").value=
-Math.min(this.currentTime,30);
-
-if(this.currentTime>=30){
-nextTrack();
-}
-
-});
-
-
-function downloadCurrent(){
-
-alert(
-"📥 Download is available only for music you own or have permission to distribute."
-);
-
+function detectCategory(text){
+
+    const t = text.toLowerCase();
+
+    if(
+        t.includes("attendance") ||
+        t.includes("attend") ||
+        t.includes("class") ||
+        t.includes("classes") ||
+        t.includes("percentage")
+    ){
+        return "attendance";
+    }
+
+    if(
+        t.includes("exam") ||
+        t.includes("study") ||
+        t.includes("chapter") ||
+        t.includes("subject") ||
+        t.includes("test") ||
+        t.includes("assignment")
+    ){
+        return "study";
+    }
+
+    if(
+        t.includes("₹") ||
+        t.includes("rs") ||
+        t.includes("rupee") ||
+        t.includes("money") ||
+        t.includes("budget") ||
+        t.includes("salary") ||
+        t.includes("spend") ||
+        t.includes("cost")
+    ){
+        return "money";
+    }
+
+    if(
+        t.includes("hour") ||
+        t.includes("hours") ||
+        t.includes("time") ||
+        t.includes("today") ||
+        t.includes("tomorrow") ||
+        t.includes("deadline")
+    ){
+        return "time";
+    }
+
+    if(
+        t.includes("travel") ||
+        t.includes("trip") ||
+        t.includes("bus") ||
+        t.includes("train") ||
+        t.includes("flight")
+    ){
+        return "travel";
+    }
+
+    if(
+        t.includes("buy") ||
+        t.includes("shopping") ||
+        t.includes("phone") ||
+        t.includes("laptop") ||
+        t.includes("price") ||
+        t.includes("product")
+    ){
+        return "shopping";
+    }
+
+    return "general";
 }
 
 
 /* =========================
-   MALAYALAM STORIES
+   NUMBER EXTRACTION
 ========================= */
 
-const stories=[
-
-{
-title:"മഴയുടെ സുഹൃത്ത്",
-category:"🌧️ Emotional",
-icon:"🌧️",
-preview:"ഒരു മഴയുള്ള രാത്രിയിൽ ഒരു കുട്ടിക്ക് ലഭിച്ച അത്ഭുതകരമായ സൗഹൃദം.",
-text:`
-അന്ന് രാത്രി ശക്തമായ മഴയായിരുന്നു.
-
-അരുൺ ജനലിനരികിൽ ഇരുന്ന് മഴ നോക്കുകയായിരുന്നു.
-അപ്പോഴാണ് വീടിന്റെ മുറ്റത്ത് ഒരു ചെറിയ നായക്കുട്ടിയെ അവൻ കണ്ടത്.
-
-മഴയിൽ നനഞ്ഞ് വിറച്ചുകൊണ്ടിരുന്ന ആ കുഞ്ഞിനെ അരുൺ വീട്ടിലേക്ക് കൊണ്ടുവന്നു.
-
-അമ്മ ആദ്യം എതിർത്തു.
-പക്ഷേ നായക്കുട്ടിയുടെ കണ്ണുകളിലെ ഭയം കണ്ടപ്പോൾ അമ്മയുടെ മനസ്സ് മാറി.
-
-അന്ന് മുതൽ ആ നായക്കുട്ടി അരുണിന്റെ ഏറ്റവും അടുത്ത സുഹൃത്തായി.
-
-വർഷങ്ങൾ കഴിഞ്ഞു.
-
-ഒരു ദിവസം അരുൺ വലിയൊരു അപകടത്തിൽപ്പെട്ടു.
-അവനെ ആദ്യം കണ്ടെത്തിയത് അതേ നായയായിരുന്നു.
-
-ചില സൗഹൃദങ്ങൾ വാക്കുകളിലൂടെ ഉണ്ടാകുന്നതല്ല.
-ഹൃദയത്തിലൂടെയാണ് അവ ഉണ്ടാകുന്നത്.
-`
-},
-
-{
-title:"അവസാന ബസ്",
-category:"🚌 Mystery",
-icon:"🚌",
-preview:"രാത്രിയിലെ അവസാന ബസിൽ യാത്ര ചെയ്ത ഒരാൾക്ക് സംഭവിച്ച വിചിത്രമായ അനുഭവം.",
-text:`
-രാത്രി പതിനൊന്ന് മണി കഴിഞ്ഞിരുന്നു.
-
-അജയ് ബസ് സ്റ്റോപ്പിൽ ഒറ്റയ്ക്ക് നിന്നു.
-
-അപ്പോൾ ഒരു പഴയ ബസ് അവന്റെ മുന്നിൽ വന്നു നിന്നു.
-
-ബസിനുള്ളിൽ ആരുമില്ലായിരുന്നു.
-
-കണ്ടക്ടർ മാത്രം.
-
-അജയ് ബസിൽ കയറി.
-
-"എവിടേക്ക്?" കണ്ടക്ടർ ചോദിച്ചു.
-
-അജയ് തന്റെ സ്ഥലത്തിന്റെ പേര് പറഞ്ഞു.
-
-കുറച്ച് സമയത്തിന് ശേഷം ബസ് ഒരു പരിചയമില്ലാത്ത സ്ഥലത്ത് നിർത്തി.
-
-"ഇതാണ് നിങ്ങളുടെ സ്റ്റോപ്പ്," കണ്ടക്ടർ പറഞ്ഞു.
-
-അജയ് പുറത്തേക്ക് നോക്കി.
-
-അവൻ ഞെട്ടിപ്പോയി.
-
-അത് തന്റെ ബാല്യകാലത്തെ വീട്ടിന് മുന്നിലായിരുന്നു.
-
-വർഷങ്ങൾക്ക് മുമ്പ് ആ വീട് വിറ്റുപോയിരുന്നു.
-
-അവൻ തിരിഞ്ഞുനോക്കുമ്പോൾ ബസ് അവിടെ ഉണ്ടായിരുന്നില്ല.
-`
-},
-
-{
-title:"ഒരു ചെറിയ സഹായം",
-category:"❤️ Moral",
-icon:"❤️",
-preview:"ഒരു ചെറിയ സഹായം ഒരാളുടെ ജീവിതം എങ്ങനെ മാറ്റി എന്ന കഥ.",
-text:`
-റോഡരികിൽ ഒരു വയോധികൻ നിൽക്കുകയായിരുന്നു.
-
-അവന് റോഡ് മുറിച്ചുകടക്കാൻ കഴിയുന്നില്ലായിരുന്നു.
-
-വഴിയിലൂടെ പോയ എല്ലാവരും തിരക്കിലായിരുന്നു.
-
-അവസാനം ഒരു വിദ്യാർത്ഥി അവന്റെ അടുത്തെത്തി.
-
-"ഞാൻ സഹായിക്കട്ടെ?"
-
-അവൻ വയോധികനെ സുരക്ഷിതമായി റോഡ് കടത്തിവിട്ടു.
-
-വർഷങ്ങൾ കഴിഞ്ഞു.
-
-ആ വിദ്യാർത്ഥി ജോലി തേടി ഒരു കമ്പനിയിലെത്തി.
-
-ഇന്റർവ്യൂ ബോർഡിന്റെ മുന്നിൽ ഇരുന്നിരുന്ന വ്യക്തിയെ കണ്ടപ്പോൾ അവൻ ഞെട്ടി.
-
-അത് ആ വയോധികനായിരുന്നു.
-
-അദ്ദേഹം കമ്പനിയുടെ ഉടമയായിരുന്നു.
-
-പക്ഷേ അദ്ദേഹം പറഞ്ഞത്:
-
-"ഞാൻ നിന്നെ ജോലി നൽകുന്നത് അന്ന് എന്നെ സഹായിച്ചതിനല്ല.
-
-മറ്റൊരാളുടെ ബുദ്ധിമുട്ട് കണ്ടപ്പോൾ നീ നിർത്തിയതിനാണ്."
-`
-},
-
-{
-title:"നിലാവിന്റെ കത്ത്",
-category:"🌙 Feel Good",
-icon:"🌙",
-preview:"ഒരു പഴയ കത്തിൽ ഒളിഞ്ഞിരുന്ന ഒരു മനോഹരമായ ഓർമ്മ.",
-text:`
-പഴയ അലമാര വൃത്തിയാക്കുന്നതിനിടയിലാണ് മീരയ്ക്ക് ആ കത്ത് കിട്ടിയത്.
-
-കവറിൽ അവളുടെ പേര് ഉണ്ടായിരുന്നു.
-
-കത്ത് തുറന്നപ്പോൾ അവൾക്ക് പഴയ ഓർമ്മകൾ തിരിച്ചുവന്നു.
-
-"നീ ഒരിക്കലും ഒറ്റയ്ക്കല്ല."
-
-അത്ര മാത്രം എഴുതിയിരുന്നു.
-
-കത്ത് എഴുതിയത് ആരാണെന്ന് അവൾക്ക് അറിയില്ലായിരുന്നു.
-
-വർഷങ്ങൾക്കുശേഷം അവൾ ആ കത്ത് സൂക്ഷിച്ചിരുന്ന പെട്ടി വീണ്ടും തുറന്നു.
-
-അതിന്റെ അടിയിൽ ഒരു ചെറിയ ഫോട്ടോ ഉണ്ടായിരുന്നു.
-
-ഫോട്ടോയുടെ പുറകിൽ എഴുതിയിരുന്നത്:
-
-"നീ മറന്നാലും, ഞാൻ മറക്കില്ല."
-
-അത് അവളുടെ അച്ഛന്റെ കൈയെഴുത്തായിരുന്നു.
-
-അവൾ പുഞ്ചിരിച്ചു.
-
-ചില ഓർമ്മകൾക്ക് സമയം പോലും പ്രായമാകില്ല.
-`
-},
-
-{
-title:"കള്ളനും കണ്ണാടിയും",
-category:"😂 Comedy",
-icon:"😂",
-preview:"ഒരു കള്ളൻ കണ്ണാടിയുടെ മുന്നിൽ കുടുങ്ങിയ രസകരമായ കഥ.",
-text:`
-ഒരു രാത്രി ഒരു കള്ളൻ ഒരു വീട്ടിൽ കയറി.
-
-മുറിയിൽ ഒരു വലിയ കണ്ണാടി ഉണ്ടായിരുന്നു.
-
-കള്ളൻ കണ്ണാടിയിൽ തന്റെ മുഖം കണ്ടു.
-
-"ഇവിടെ മറ്റൊരാൾ!"
-
-അവൻ ഭയന്ന് പിന്നോട്ട് പോയി.
-
-കണ്ണാടിയിലെ ആളും പിന്നോട്ട് പോയി.
-
-കള്ളൻ വീണ്ടും മുന്നോട്ട് വന്നു.
-
-മറ്റെയാളും മുന്നോട്ട് വന്നു.
-
-അവസാനം കള്ളൻ മനസ്സിലാക്കി.
-
-"അയ്യോ... ഇത് ഞാൻ തന്നെയാണല്ലോ!"
-
-അപ്പോഴേക്കും വീട്ടുടമ എഴുന്നേറ്റിരുന്നു.
-
-കള്ളൻ ഓടിപ്പോയി.
-
-പക്ഷേ വാതിലിനരികിലെ കണ്ണാടിയിൽ വീണ്ടും തന്നെ കണ്ടപ്പോൾ അവൻ വീണ്ടും പേടിച്ചു.
-
-ആ രാത്രി കള്ളന് വീട്ടിൽ നിന്ന് ഒന്നും കിട്ടിയില്ല.
-
-പക്ഷേ തന്റെ മുഖം നന്നായി മനസ്സിലായി.
-`
-}
-
-];
-
-
-function renderStories(list=stories){
-
-const container=
-document.getElementById("storyResults");
-
-container.innerHTML="";
-
-if(!list.length){
-
-container.innerHTML=
-'<div class="empty">Story not found 📖</div>';
-
-return;
-}
-
-list.forEach((story,index)=>{
-
-const saved=
-localStorage.getItem("jojifyFav"+index)==="1";
-
-const card=document.createElement("div");
-
-card.className="story-card";
-
-card.innerHTML=`
-
-<div class="story-icon">
-${story.icon}
-</div>
-
-<div class="story-title">
-${story.title}
-</div>
-
-<div class="story-category">
-${story.category}
-</div>
-
-<div class="story-preview">
-${story.preview}
-</div>
-
-<div class="story-actions">
-
-<button class="read-btn"
-onclick="toggleStory(${index},this)">
-📖 Read
-</button>
-
-<button class="fav-btn"
-onclick="favoriteStory(${index},this)">
-${saved ? "❤️ Saved" : "🤍 Save"}
-</button>
-
-<button class="fav-btn"
-onclick="speakStory(${index})">
-🔊 Listen
-</button>
-
-</div>
-
-<div id="story${index}" class="story-content">
-${story.text.replace(/\n/g,"<br>")}
-</div>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-
-function toggleStory(index,button){
-
-const content=
-document.getElementById("story"+index);
-
-content.classList.toggle("open");
-
-button.textContent=
-content.classList.contains("open")
-?"📕 Close"
-:"📖 Read";
-
-}
-
-
-function favoriteStory(index,button){
-
-const key="jojifyFav"+index;
-
-if(localStorage.getItem(key)==="1"){
-
-localStorage.removeItem(key);
-button.textContent="🤍 Save";
-
-}else{
-
-localStorage.setItem(key,"1");
-button.textContent="❤️ Saved";
-
-}
-
-}
-
-
-function speakStory(index){
-
-if(!("speechSynthesis" in window)){
-
-alert("Your browser does not support Read Aloud.");
-
-return;
-
-}
-
-speechSynthesis.cancel();
-
-const text=stories[index].text;
-
-const speech=
-new SpeechSynthesisUtterance(text);
-
-speech.lang="ml-IN";
-speech.rate=0.9;
-
-speechSynthesis.speak(speech);
-
-}
-
-
-function searchStories(){
-
-const q=
-document.getElementById("storySearch")
-.value
-.toLowerCase()
-.trim();
-
-const filtered=stories.filter(story=>
-
-story.title.toLowerCase().includes(q) ||
-story.category.toLowerCase().includes(q) ||
-story.preview.toLowerCase().includes(q)
-
-);
-
-renderStories(filtered);
-
-}
-
-renderStories();
-
-
-/* =========================
-   MOVIES
-========================= */
-
-let moviesLoaded=false;
-
-function loadMovies(){
-
-if(moviesLoaded)return;
-
-moviesLoaded=true;
-
-const container=
-document.getElementById("movieResults");
-
-container.innerHTML=
-'<div class="empty">Searching Internet Archive...</div>';
-
-fetch(
-"https://archive.org/advancedsearch.php?q="+
-encodeURIComponent(
-"mediatype:movies AND language:Malayalam"
-)+
-"&fl[]=identifier,title&rows=20&output=json"
-)
-.then(r=>r.json())
-.then(data=>{
-
-container.innerHTML="";
-
-const docs=data.response.docs || [];
-
-if(!docs.length){
-
-container.innerHTML=
-'<div class="empty">No movies found.</div>';
-
-return;
-}
-
-docs.forEach(movie=>{
-
-const card=document.createElement("div");
-
-card.className="movie-card";
-
-card.innerHTML=`
-
-<div class="movie-content">
-
-<div style="font-size:19px;font-weight:bold">
-${escapeHTML(movie.title || "Malayalam Movie")}
-</div>
-
-<button class="movie-button">
-▶ WATCH
-</button>
-
-</div>
-
-`;
-
-card.querySelector("button").onclick=()=>{
-
-const frame=
-document.getElementById("movieFrame");
-
-frame.src=
-"https://archive.org/embed/"+
-encodeURIComponent(movie.identifier);
-
-frame.style.display="block";
-
-frame.scrollIntoView({
-behavior:"smooth"
-});
-
-};
-
-container.appendChild(card);
-
-});
-
-})
-.catch(()=>{
-
-container.innerHTML=
-'<div class="empty">Could not load movies.</div>';
-
-});
-
+function extractNumbers(text){
+
+    return (
+        text
+        .replace(/,/g,"")
+        .match(/\d+(\.\d+)?/g)
+        || []
+    ).map(Number);
 }
 
 
 /* =========================
-   GAMES
+   ATTENDANCE SOLVER
 ========================= */
 
-function openGame(game,button){
+function attendanceSolver(text,language){
 
-document
-.querySelectorAll(".game")
-.forEach(x=>x.classList.remove("active"));
+    const nums = extractNumbers(text);
 
-document
-.querySelectorAll(".game-select")
-.forEach(x=>x.classList.remove("active"));
+    if(nums.length >= 3){
 
-document
-.getElementById(game)
-.classList.add("active");
+        const attended = nums[0];
+        const total = nums[1];
+        const target = nums[2];
 
-button.classList.add("active");
+        const current =
+            (attended / total) * 100;
 
-}
+        let future = 0;
 
+        if(current < target){
 
-/* MEMORY */
+            future =
+                Math.ceil(
+                    (target * total / 100 - attended)
+                    /
+                    (1 - target / 100)
+                );
 
-let memoryValue="";
+        }
 
-function startMemory(){
+        if(language === "malayalam"){
 
-memoryValue=
-Math.floor(10000+Math.random()*90000)
-.toString();
+            return {
 
-document
-.getElementById("memoryNumber")
-.textContent=memoryValue;
+                category:"Attendance",
 
-document
-.getElementById("memoryResult")
-.textContent="";
+                answer:
+                `നിങ്ങളുടെ നിലവിലെ attendance ഏകദേശം ${current.toFixed(2)}% ആണ്.\n\n` +
+                `Target ${target}% ആണെങ്കിൽ, ഇനി ${future} classes തുടർച്ചയായി attend ചെയ്യണം.`,
 
-setTimeout(()=>{
+                steps:[
+                    "Attendance കുറയാതിരിക്കാൻ ഇനി കഴിയുന്നത്ര classes miss ചെയ്യരുത്.",
+                    "പ്രതിദിന attendance update ചെയ്യുക.",
+                    "Target percentage എത്തുന്നതുവരെ calculation വീണ്ടും പരിശോധിക്കുക."
+                ]
 
-document
-.getElementById("memoryNumber")
-.textContent="?????";
+            };
 
-},2000);
+        }
 
-}
+        if(language === "tamil"){
 
-function checkMemory(){
+            return {
 
-const answer=
-document.getElementById("memoryAnswer").value;
+                category:"Attendance",
 
-document
-.getElementById("memoryResult")
-.textContent=
-answer===memoryValue
-?"🔥 Correct!"
-:"❌ Wrong!";
+                answer:
+                `உங்கள் தற்போதைய attendance சுமார் ${current.toFixed(2)}%.\n\n` +
+                `${target}% அடைய, அடுத்ததாக ${future} classes attend செய்ய வேண்டும்.`,
 
-}
+                steps:[
+                    "முடிந்தவரை classes miss செய்யாதீர்கள்.",
+                    "Attendance-ஐ தொடர்ந்து check செய்யுங்கள்.",
+                    "Target அடையும் வரை கணக்கை update செய்யுங்கள்."
+                ]
 
+            };
 
-/* REACTION */
+        }
 
-let reactionStart=0;
-let reactionTimeout;
+        if(language === "hindi"){
 
-function startReaction(){
+            return {
 
-const button=
-document.getElementById("reactionButton");
+                category:"Attendance",
 
-document
-.getElementById("reactionText")
-.textContent="WAIT...";
+                answer:
+                `आपकी वर्तमान attendance लगभग ${current.toFixed(2)}% है।\n\n` +
+                `${target}% तक पहुँचने के लिए आपको अगले ${future} classes attend करने होंगे।`,
 
-button.style.display="none";
+                steps:[
+                    "आगे classes miss करने से बचें।",
+                    "Attendance नियमित रूप से check करें।",
+                    "Target तक पहुँचने के लिए calculation update करते रहें।"
+                ]
 
-clearTimeout(reactionTimeout);
+            };
 
-reactionTimeout=setTimeout(()=>{
+        }
 
-document
-.getElementById("reactionText")
-.textContent="TAP NOW!";
+        return {
 
-button.style.display="inline-block";
+            category:"Attendance",
 
-reactionStart=performance.now();
+            answer:
+            `Your current attendance is approximately ${current.toFixed(2)}%.\n\n` +
+            `To reach ${target}%, you need to attend the next ${future} classes.`,
 
-},Math.random()*3000+1500);
+            steps:[
+                "Avoid missing classes whenever possible.",
+                "Keep checking your attendance percentage.",
+                "Update the calculation as you attend more classes."
+            ]
 
-}
+        };
 
-function reactNow(){
+    }
 
-if(!reactionStart)return;
-
-const time=
-Math.round(performance.now()-reactionStart);
-
-document
-.getElementById("reactionResult")
-textContent=
-"⚡ "+time+" ms";
-
-reactionStart=0;
-
-document
-.getElementById("reactionButton")
-.style.display="none";
-
-}
-
-
-/* MATH */
-
-let mathAnswer=0;
-
-function startMath(){
-
-const a=Math.floor(Math.random()*30)+1;
-const b=Math.floor(Math.random()*30)+1;
-
-mathAnswer=a+b;
-
-document
-.getElementById("mathQuestion")
-.textContent=a+" + "+b+" = ?";
-
-document
-.getElementById("mathResult")
-.textContent="";
-
-}
-
-function checkMath(){
-
-const answer=
-Number(document.getElementById("mathAnswer").value);
-
-document
-.getElementById("mathResult")
-.textContent=
-answer===mathAnswer
-?"🔥 Correct!"
-:"❌ Wrong!";
-
+    return genericByLanguage(
+        "attendance",
+        language
+    );
 }
 
 
 /* =========================
-   TOOLS
+   MONEY SOLVER
 ========================= */
 
-function openTool(tool,button){
+function moneySolver(text,language){
 
-document
-.querySelectorAll(".tool")
-.forEach(x=>x.classList.remove("active"));
+    const nums = extractNumbers(text);
 
-document
-.querySelectorAll(".tool-select")
-.forEach(x=>x.classList.remove("active"));
+    if(nums.length >= 2){
 
-document
-.getElementById(tool)
-.classList.add("active");
+        const money = nums[0];
+        const days = nums[1];
 
-button.classList.add("active");
+        const daily =
+            money / days;
+
+        const reserve =
+            money * 0.10;
+
+        const usable =
+            money - reserve;
+
+        const safeDaily =
+            usable / days;
+
+        if(language === "malayalam"){
+
+            return {
+
+                category:"Money",
+
+                answer:
+                `നിങ്ങളുടെ മൊത്തം budget ₹${money.toFixed(0)} ആണ്.\n\n` +
+                `${days} ദിവസത്തേക്ക് ഉപയോഗിക്കണമെങ്കിൽ ശരാശരി ₹${daily.toFixed(2)} / ദിവസം ലഭിക്കും.\n\n` +
+                `10% emergency reserve മാറ്റിവെച്ചാൽ ₹${reserve.toFixed(0)} save ചെയ്യാം. ബാക്കി ₹${usable.toFixed(0)} ഉപയോഗിച്ച് ഏകദേശം ₹${safeDaily.toFixed(2)} / ദിവസം ചെലവാക്കാം.`,
+
+                steps:[
+                    "ആദ്യം emergency amount മാറ്റിവെക്കുക.",
+                    "Daily spending limit തീരുമാനിക്കുക.",
+                    "ആവശ്യമായ ചെലവുകൾ ആദ്യം നടത്തുക.",
+                    "Daily limit കടക്കാതിരിക്കാൻ ചെലവുകൾ note ചെയ്യുക."
+                ]
+
+            };
+
+        }
+
+        if(language === "tamil"){
+
+            return {
+
+                category:"Money",
+
+                answer:
+                `உங்கள் மொத்த budget ₹${money.toFixed(0)}.\n\n` +
+                `${days} நாட்களுக்கு பயன்படுத்தினால் சராசரியாக ₹${daily.toFixed(2)} / நாள்.\n\n` +
+                `10% emergency reserve வைத்தால் ₹${reserve.toFixed(0)} சேமிக்கலாம். மீதமுள்ள தொகையில் சுமார் ₹${safeDaily.toFixed(2)} / நாள் செலவு செய்யலாம்.`,
+
+                steps:[
+                    "முதலில் emergency amount-ஐ தனியாக வைத்துக்கொள்ளுங்கள்.",
+                    "Daily spending limit அமைக்கவும்.",
+                    "தேவையான செலவுகளுக்கு முன்னுரிமை கொடுக்கவும்.",
+                    "Daily expenses-ஐ note செய்யவும்."
+                ]
+
+            };
+
+        }
+
+        if(language === "hindi"){
+
+            return {
+
+                category:"Money",
+
+                answer:
+                `आपका कुल budget ₹${money.toFixed(0)} है।\n\n` +
+                `${days} दिनों के लिए औसतन ₹${daily.toFixed(2)} प्रति दिन मिलेंगे।\n\n` +
+                `10% emergency reserve रखने पर ₹${reserve.toFixed(0)} अलग रख सकते हैं और लगभग ₹${safeDaily.toFixed(2)} प्रति दिन खर्च कर सकते हैं।`,
+
+                steps:[
+                    "पहले emergency amount अलग रखें।",
+                    "Daily spending limit तय करें।",
+                    "जरूरी खर्चों को प्राथमिकता दें।",
+                    "हर दिन का खर्च लिखें।"
+                ]
+
+            };
+
+        }
+
+        return {
+
+            category:"Money",
+
+            answer:
+            `Your total budget is ₹${money.toFixed(0)}.\n\n` +
+            `For ${days} days, your average budget is ₹${daily.toFixed(2)} per day.\n\n` +
+            `Keeping 10% as an emergency reserve gives you ₹${reserve.toFixed(0)} in reserve. That leaves about ₹${safeDaily.toFixed(2)} per day for normal spending.`,
+
+            steps:[
+                "Set aside the emergency reserve first.",
+                "Create a daily spending limit.",
+                "Prioritize essential expenses.",
+                "Track your spending every day."
+            ]
+
+        };
+
+    }
+
+    return genericByLanguage(
+        "money",
+        language
+    );
+}
+
+
+/* =========================
+   STUDY SOLVER
+========================= */
+
+function studySolver(text,language){
+
+    const nums = extractNumbers(text);
+
+    let chapters = 5;
+    let hours = 6;
+
+    if(nums.length >= 1)
+        chapters = nums[0];
+
+    if(nums.length >= 2)
+        hours = nums[1];
+
+    const perChapter =
+        hours / chapters;
+
+    if(language === "malayalam"){
+
+        return {
+
+            category:"Study",
+
+            answer:
+            `നിങ്ങളുടെ situation നോക്കുമ്പോൾ ആദ്യം panic ചെയ്യേണ്ടതില്ല.\n\n` +
+            `${chapters} chapters ഉം ഏകദേശം ${hours} മണിക്കൂറും ഉണ്ടെങ്കിൽ, ഓരോ chapter-നും ശരാശരി ${perChapter.toFixed(1)} മണിക്കൂർ നൽകാം.\n\n` +
+            `Goal എല്ലാം perfect ആയി പഠിക്കുക എന്നതല്ല — ആദ്യം high-value topics cover ചെയ്യുക.`,
+
+            steps:[
+                `ആദ്യ ${Math.max(1,Math.round(perChapter*60))} മിനിറ്റ് — Chapter 1 പ്രധാന topics.`,
+                "അടുത്തത് — Chapter 2 പ്രധാന concepts + short notes.",
+                "തുടർന്ന് ബാക്കിയുള്ള chapters priority അനുസരിച്ച് പഠിക്കുക.",
+                "അവസാന 30–45 മിനിറ്റ് revision + important questions.",
+                "ഓരോ study block-നും ഇടയിൽ ചെറിയ break എടുക്കുക."
+            ]
+
+        };
+
+    }
+
+    if(language === "tamil"){
+
+        return {
+
+            category:"Study",
+
+            answer:
+            `Panic செய்ய வேண்டாம். ${chapters} chapters மற்றும் ${hours} hours இருந்தால், ஒரு chapter-க்கு சராசரியாக ${perChapter.toFixed(1)} hours ஒதுக்கலாம்.\n\n` +
+            `முதலில் முக்கியமான topics-ஐ cover செய்வது நல்லது.`,
+
+            steps:[
+                "Chapter 1 முக்கிய topics படிக்கவும்.",
+                "Chapter 2 முக்கிய concepts + short notes படிக்கவும்.",
+                "மீதமுள்ள chapters-ஐ priority அடிப்படையில் முடிக்கவும்.",
+                "கடைசி 30–45 minutes revision செய்யவும்.",
+                "ஒவ்வொரு study block-க்கும் சிறிய break எடுக்கவும்."
+            ]
+
+        };
+
+    }
+
+    if(language === "hindi"){
+
+        return {
+
+            category:"Study",
+
+            answer:
+            `Panic करने की जरूरत नहीं है। ${chapters} chapters और ${hours} घंटे हैं तो हर chapter को लगभग ${perChapter.toFixed(1)} घंटे दे सकते हैं।\n\n` +
+            `पहले important topics पूरे करें।`,
+
+            steps:[
+                "पहले chapter के important topics पढ़ें।",
+                "दूसरे chapter के concepts और short notes करें।",
+                "बाकी chapters को priority के अनुसार पूरा करें।",
+                "आखिरी 30–45 मिनट revision करें।",
+                "हर study block के बीच छोटा break लें।"
+            ]
+
+        };
+
+    }
+
+    return {
+
+        category:"Study",
+
+        answer:
+        `Don't panic. You have approximately ${chapters} chapters and ${hours} hours.\n\n` +
+        `That gives you about ${perChapter.toFixed(1)} hours per chapter.\n\n` +
+        `Don't try to study everything perfectly. Focus first on high-value topics, important questions and concepts.`,
+
+        steps:[
+            "Start with the most important chapter/topics.",
+            "Make short notes instead of rewriting everything.",
+            "Move to the next chapter according to priority.",
+            "Keep the final 30–45 minutes for revision.",
+            "Take short breaks between study blocks."
+        ]
+
+    };
+}
+
+
+/* =========================
+   TIME SOLVER
+========================= */
+
+function timeSolver(text,language){
+
+    const nums = extractNumbers(text);
+
+    const hours =
+        nums.length
+        ? nums[nums.length-1]
+        : 5;
+
+    if(language === "malayalam"){
+
+        return {
+
+            category:"Time",
+
+            answer:
+            `നിങ്ങൾക്ക് ഏകദേശം ${hours} മണിക്കൂർ ഉണ്ടെങ്കിൽ, മുഴുവൻ സമയവും ഒരൊറ്റ task-ന് കൊടുക്കാതെ priority അടിസ്ഥാനത്തിൽ divide ചെയ്യുക.`,
+
+            steps:[
+                "ആദ്യം ഏറ്റവും urgent ആയ task തിരഞ്ഞെടുക്കുക.",
+                "ഏകദേശം 40–50% സമയം പ്രധാന task-ന് നൽകുക.",
+                "20–30% സമയം രണ്ടാമത്തെ പ്രധാന task-ന് നൽകുക.",
+                "ബാക്കി സമയം ചെറിയ tasks-നും buffer-നും ഉപയോഗിക്കുക.",
+                "Phone/social media distractions ഒഴിവാക്കുക."
+            ]
+
+        };
+
+    }
+
+    return {
+
+        category:"Time",
+
+        answer:
+        `You have about ${hours} hours. Don't divide your time equally between everything. Prioritize the tasks that are urgent and important.`,
+
+        steps:[
+            "Choose the most urgent task first.",
+            "Give around 40–50% of your available time to it.",
+            "Use another 20–30% for the second priority.",
+            "Keep some buffer time for small tasks.",
+            "Reduce phone and social-media distractions."
+        ]
+
+    };
+}
+
+
+/* =========================
+   TRAVEL SOLVER
+========================= */
+
+function travelSolver(text,language){
+
+    if(language === "malayalam"){
+
+        return {
+
+            category:"Travel",
+
+            answer:
+            `നിങ്ങളുടെ യാത്ര plan ചെയ്യുമ്പോൾ ആദ്യം route, departure time, budget, return plan എന്നിവ clear ആക്കുക.\n\n` +
+            `Unexpected delay ഉണ്ടാകാൻ ചെറിയ buffer time കൂടി വയ്ക്കുന്നത് നല്ലതാണ്.`,
+
+            steps:[
+                "Destination + route ഉറപ്പാക്കുക.",
+                "Bus/train/flight departure time check ചെയ്യുക.",
+                "Ticket + ID + ആവശ്യമായ documents തയ്യാറാക്കുക.",
+                "Travel budget-ൽ ചെറിയ emergency amount വയ്ക്കുക.",
+                "Departure-ന് കുറഞ്ഞത് 30–60 മിനിറ്റ് buffer വയ്ക്കുക."
+            ]
+
+        };
+
+    }
+
+    return {
+
+        category:"Travel",
+
+        answer:
+        `For a smoother trip, plan the route, departure time, budget and return plan before leaving. Keep some buffer time for unexpected delays.`,
+
+        steps:[
+            "Confirm the destination and route.",
+            "Check your bus/train/flight timing.",
+            "Prepare your ticket, ID and required documents.",
+            "Keep some emergency money in your travel budget.",
+            "Keep at least 30–60 minutes of buffer time."
+        ]
+
+    };
+}
+
+
+/* =========================
+   SHOPPING SOLVER
+========================= */
+
+function shoppingSolver(text,language){
+
+    if(language === "malayalam"){
+
+        return {
+
+            category:"Shopping",
+
+            answer:
+            `Shopping ചെയ്യുന്നതിന് മുമ്പ് "എനിക്ക് ഇത് ശരിക്കും ആവശ്യമാണോ?" എന്ന് ചോദിക്കുക.\n\n` +
+            `Price മാത്രം നോക്കാതെ total value, warranty, reviews, return policy എന്നിവയും പരിശോധിക്കുക.`,
+
+            steps:[
+                "ആവശ്യവും ആഗ്രഹവും വേർതിരിക്കുക.",
+                "Budget limit തീരുമാനിക്കുക.",
+                "കുറഞ്ഞത് 2–3 options compare ചെയ്യുക.",
+                "Warranty + return policy പരിശോധിക്കുക.",
+                "Budget കടക്കാതെ purchase ചെയ്യുക."
+            ]
+
+        };
+
+    }
+
+    return {
+
+        category:"Shopping",
+
+        answer:
+        `Before buying, ask whether you actually need the product. Don't compare only the price; check value, warranty, reviews and return policy too.`,
+
+        steps:[
+            "Separate needs from wants.",
+            "Set your maximum budget.",
+            "Compare at least 2–3 options.",
+            "Check warranty and return policy.",
+            "Don't exceed your planned budget."
+        ]
+
+    };
+}
+
+
+/* =========================
+   GENERAL SOLVER
+========================= */
+
+function generalSolver(text,language){
+
+    return genericByLanguage(
+        "general",
+        language
+    );
 
 }
 
 
-/* CALCULATOR */
+function genericByLanguage(type,language){
 
-let calcValue="";
+    if(language === "malayalam"){
 
-function calc(value){
+        return {
 
-calcValue+=value;
+            category:"Daily Life",
 
-document
-.getElementById("calcDisplay")
-.value=calcValue;
+            answer:
+            `നിങ്ങളുടെ പ്രശ്നം step-by-step ആയി break ചെയ്യുകയാണ് ആദ്യം വേണ്ടത്.\n\n` +
+            `ഇപ്പോൾ ചെയ്യാൻ കഴിയുന്ന ഏറ്റവും ചെറിയ action തിരഞ്ഞെടുക്കുക. വലിയ പ്രശ്നം മുഴുവൻ ഒരുമിച്ച് solve ചെയ്യാൻ ശ്രമിക്കേണ്ടതില്ല.`,
 
-}
+            steps:[
+                "പ്രശ്നത്തിന്റെ പ്രധാന കാര്യം ഒരു sentence-ൽ എഴുതുക.",
+                "ഇപ്പോൾ ഏറ്റവും urgent ആയ ഭാഗം കണ്ടെത്തുക.",
+                "ചെയ്യാൻ കഴിയുന്ന ചെറിയ ഒരു action തിരഞ്ഞെടുക്കുക.",
+                "അത് പൂർത്തിയാക്കിയ ശേഷം അടുത്ത step തീരുമാനിക്കുക.",
+                "പ്രശ്നം ഗുരുതരമാണെങ്കിൽ വിശ്വസിക്കുന്ന വ്യക്തിയുടെയോ ബന്ധപ്പെട്ട professional-ന്റെയോ സഹായം തേടുക."
+            ]
 
-function calculate(){
+        };
 
-try{
+    }
 
-calcValue=
-String(eval(calcValue));
+    if(language === "tamil"){
 
-document
-.getElementById("calcDisplay")
-.value=calcValue;
+        return {
 
-}catch{
+            category:"Daily Life",
 
-calcValue="";
+            answer:
+            `உங்கள் பிரச்சினையை சிறிய steps-ஆக பிரிப்பது முதலில் செய்ய வேண்டியது.\n\n` +
+            `முழு பிரச்சினையையும் ஒரே நேரத்தில் solve செய்ய முயற்சி செய்ய வேண்டாம்.`,
 
-document
-.getElementById("calcDisplay")
-.value="Error";
+            steps:[
+                "பிரச்சினையை ஒரு sentence-ல் எழுதுங்கள்.",
+                "மிகவும் urgent பகுதியை கண்டுபிடிக்கவும்.",
+                "சிறிய ஒரு action-ஐ தேர்வு செய்யவும்.",
+                "அதை முடித்த பிறகு அடுத்த step எடுக்கவும்.",
+                "தேவைப்பட்டால் நம்பிக்கையான நபர் அல்லது தொடர்புடைய professional உதவியை பெறவும்."
+            ]
 
-}
+        };
 
-}
+    }
 
-function clearCalc(){
+    if(language === "hindi"){
 
-calcValue="";
+        return {
 
-document
-.getElementById("calcDisplay")
-.value="";
+            category:"Daily Life",
 
-}
+            answer:
+            `सबसे पहले अपनी समस्या को छोटे steps में बाँटें।\n\n` +
+            `पूरी समस्या को एक साथ हल करने की कोशिश न करें। पहले सबसे छोटा practical action शुरू करें।`,
 
+            steps:[
+                "समस्या को एक sentence में लिखें।",
+                "सबसे urgent हिस्सा पहचानें।",
+                "एक छोटा practical action चुनें।",
+                "उसे पूरा करने के बाद अगला step लें।",
+                "जरूरत होने पर किसी भरोसेमंद व्यक्ति या संबंधित professional से मदद लें।"
+            ]
 
-/* PERCENTAGE */
+        };
 
-function calculatePercentage(){
+    }
 
-const number=
-Number(document.getElementById("percentNumber").value);
+    return {
 
-const percentage=
-Number(document.getElementById("percentValue").value);
+        category:"Daily Life",
 
-const result=
-number*(percentage/100);
+        answer:
+        `Start by breaking your problem into smaller pieces.\n\n` +
+        `You don't need to solve everything at once. Find the smallest useful action you can take right now.`,
 
-document
-.getElementById("percentageResult")
-.innerHTML=
-"<h3>Result: "+result+"</h3>";
+        steps:[
+            "Describe the main problem in one sentence.",
+            "Identify the most urgent part.",
+            "Choose one small practical action.",
+            "Complete it, then decide the next step.",
+            "If the problem is serious, consider help from a trusted person or relevant professional."
+        ]
 
-}
-
-
-/* AGE */
-
-function calculateAge(){
-
-const birth=
-document.getElementById("birthDate").value;
-
-if(!birth)return;
-
-const dob=new Date(birth);
-const today=new Date();
-
-let age=
-today.getFullYear()-dob.getFullYear();
-
-const month=
-today.getMonth()-dob.getMonth();
-
-if(
-month<0 ||
-(month===0 && today.getDate()<dob.getDate())
-){
-age--;
-}
-
-document
-.getElementById("ageResult")
-.innerHTML=
-"<h3>You are "+age+" years old 🎂</h3>";
-
+    };
 }
 
 
-/* NOTES */
+/* =========================
+   DISPLAY RESULT
+========================= */
 
-const notesArea=
-document.getElementById("notesArea");
+function displayResult(solution){
 
-notesArea.value=
-localStorage.getItem("jojifyNotes") || "";
+    document.getElementById("result").style.display="block";
 
-function saveNotes(){
+    document.getElementById("categoryBadge").textContent =
+        solution.category;
 
-localStorage.setItem(
-"jojifyNotes",
-notesArea.value
-);
+    document.getElementById("answer").textContent =
+        solution.answer;
 
-document
-.getElementById("notesResult")
-.textContent="✅ Saved on this device";
+    const steps =
+        document.getElementById("steps");
 
+    steps.innerHTML =
+        "<div class='section-title'>🎯 Action Plan</div>";
+
+    solution.steps.forEach(function(step,index){
+
+        const div =
+            document.createElement("div");
+
+        div.className="step";
+
+        div.innerHTML =
+            `
+            <div class="step-number">${index+1}</div>
+            <div class="step-text">${escapeHTML(step)}</div>
+            `;
+
+        steps.appendChild(div);
+
+    });
+
+    document.getElementById("result").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
-function clearNotes(){
 
-notesArea.value="";
+/* =========================
+   HISTORY
+========================= */
 
-localStorage.removeItem("jojifyNotes");
+function saveHistory(problem,category,language){
 
-document
-.getElementById("notesResult")
-.textContent="🗑️ Notes cleared";
+    let history =
+        JSON.parse(
+            localStorage.getItem("jojifyHistory")
+            || "[]"
+        );
+
+    history.unshift({
+
+        problem:problem,
+
+        category:category,
+
+        language:language,
+
+        date:new Date().toLocaleString()
+
+    });
+
+    history =
+        history.slice(0,8);
+
+    localStorage.setItem(
+        "jojifyHistory",
+        JSON.stringify(history)
+    );
+
+    loadHistory();
+}
+
+
+function loadHistory(){
+
+    const box =
+        document.getElementById("history");
+
+    let history =
+        JSON.parse(
+            localStorage.getItem("jojifyHistory")
+            || "[]"
+        );
+
+    if(history.length === 0){
+
+        box.innerHTML =
+            `<div style="color:#666;font-size:13px;">
+            Your solved problems will appear here.
+            </div>`;
+
+        return;
+    }
+
+    box.innerHTML="";
+
+    history.forEach(function(item){
+
+        const div =
+            document.createElement("div");
+
+        div.className="history-item";
+
+        div.innerHTML =
+            `
+            ${escapeHTML(item.problem)}
+            <small>
+                ${escapeHTML(item.category)} • ${escapeHTML(item.date)}
+            </small>
+            `;
+
+        div.onclick=function(){
+
+            document.getElementById("problem").value =
+                item.problem;
+
+            solveProblem();
+
+        };
+
+        box.appendChild(div);
+
+    });
+}
+
+
+function clearHistory(){
+
+    localStorage.removeItem(
+        "jojifyHistory"
+    );
+
+    loadHistory();
 
 }
 
@@ -2023,14 +1468,35 @@ document
 
 function escapeHTML(text){
 
-return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
+
+
+/* =========================
+   ENTERPRISE
+========================= */
+
+document
+.getElementById("problem")
+.addEventListener("keydown",function(event){
+
+    if(event.key === "Enter" && event.ctrlKey){
+
+        solveProblem();
+
+    }
+
+});
+
+
+/* LOAD */
+
+loadHistory();
 
 </script>
 
