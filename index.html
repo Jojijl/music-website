@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0b12">
 
-<title>JOJIFY SOLVE — Life Input</title>
+<title>JOJIFY STUDY</title>
 
 <style>
 *{
@@ -15,9 +14,9 @@
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#08080d;
-    color:#fff;
+    font-family:Arial, sans-serif;
+    background:#0b0b10;
+    color:white;
     min-height:100vh;
 }
 
@@ -25,14 +24,12 @@ body{
     width:100%;
     max-width:700px;
     margin:auto;
-    padding:18px;
+    padding:20px;
 }
-
-/* HEADER */
 
 header{
     text-align:center;
-    padding:20px 10px 25px;
+    padding:25px 10px;
 }
 
 .logo{
@@ -42,241 +39,196 @@ header{
 }
 
 .logo span{
-    color:#8b5cf6;
+    color:#7c5cff;
 }
 
 .tagline{
-    margin-top:8px;
-    color:#999;
-    font-size:13px;
-}
-
-/* CARD */
-
-.card{
-    background:#12121b;
-    border:1px solid #252536;
-    border-radius:20px;
-    padding:18px;
-    margin-bottom:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-/* LANGUAGE */
-
-label{
-    display:block;
+    margin-top:7px;
     color:#aaa;
-    font-size:13px;
-    margin-bottom:8px;
+    font-size:14px;
 }
 
-select{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #303044;
-    background:#0c0c14;
-    color:white;
-    font-size:15px;
+.search-area{
+    background:#15151d;
+    padding:15px;
+    border-radius:18px;
+    border:1px solid #292936;
 }
-
-/* INPUT */
 
 textarea{
     width:100%;
-    min-height:150px;
-    resize:vertical;
-    background:#0c0c14;
-    color:#fff;
-    border:1px solid #303044;
-    border-radius:15px;
-    padding:16px;
-    font-size:16px;
+    height:120px;
+    resize:none;
+    border:none;
     outline:none;
+    background:#0e0e14;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    font-size:16px;
 }
 
-textarea:focus,
-select:focus{
-    border-color:#8b5cf6;
+textarea::placeholder{
+    color:#777;
 }
 
-.solve-btn{
+.controls{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+}
+
+.voice{
+    width:55px;
+    border-radius:12px;
+    background:#292936;
+    font-size:22px;
+}
+
+.solve{
+    flex:1;
+    border-radius:12px;
+    background:#7c5cff;
+    font-size:16px;
+}
+
+.voice.listening{
+    background:#e53935;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.06);
+    }
+}
+
+.language{
     width:100%;
     margin-top:12px;
-    padding:16px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    background:#0e0e14;
     color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.solve-btn:active{
-    transform:scale(.98);
-}
-
-/* QUICK EXAMPLES */
-
-.section-title{
-    font-size:17px;
-    font-weight:bold;
-    margin-bottom:12px;
+    border:1px solid #292936;
+    padding:12px;
+    border-radius:10px;
 }
 
 .examples{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin:15px 0;
 }
 
 .example{
-    background:#181824;
-    border:1px solid #29293b;
-    border-radius:13px;
-    padding:13px;
-    color:#ddd;
-    cursor:pointer;
-    font-size:13px;
+    white-space:nowrap;
+    background:#171720;
+    padding:9px 13px;
+    border-radius:20px;
+    border:1px solid #292936;
+    color:#ccc;
 }
 
-.example:hover{
-    border-color:#8b5cf6;
-}
-
-/* CATEGORY */
-
-.categories{
+.answer-buttons{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:10px;
+    margin-top:20px;
 }
 
-.category{
-    background:#181824;
-    border:1px solid #29293b;
-    border-radius:14px;
-    padding:14px 7px;
-    text-align:center;
-    cursor:pointer;
-    font-size:12px;
+.mark-btn{
+    padding:14px 5px;
+    background:#171720;
+    border:1px solid #292936;
+    border-radius:12px;
 }
 
-.category .icon{
-    display:block;
-    font-size:25px;
-    margin-bottom:7px;
+.mark-btn.active{
+    background:#7c5cff;
 }
-
-/* RESULT */
 
 .result{
+    margin-top:20px;
+    background:#15151d;
+    border:1px solid #292936;
+    border-radius:18px;
+    padding:20px;
     display:none;
 }
 
-.result-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
-}
-
-.badge{
-    background:#24184b;
-    color:#c4b5fd;
-    border:1px solid #5635a8;
-    padding:7px 10px;
-    border-radius:30px;
-    font-size:12px;
-}
-
-.result-title{
+.result h2{
     font-size:20px;
-    font-weight:bold;
+    margin-bottom:12px;
 }
 
 .answer{
     color:#ddd;
-    line-height:1.65;
+    line-height:1.7;
     white-space:pre-line;
 }
 
-.steps{
+.section{
+    margin-top:20px;
+    padding-top:15px;
+    border-top:1px solid #292936;
+}
+
+.section-title{
+    color:#a995ff;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.action-buttons{
+    display:flex;
+    gap:10px;
     margin-top:18px;
 }
 
-.step{
-    display:flex;
-    gap:12px;
-    margin-bottom:13px;
-    align-items:flex-start;
+.action-buttons button{
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    background:#292936;
 }
 
-.step-number{
-    min-width:28px;
-    height:28px;
-    border-radius:50%;
-    background:#7c3aed;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:13px;
-    font-weight:bold;
+.history{
+    margin-top:25px;
 }
-
-.step-text{
-    color:#ddd;
-    line-height:1.5;
-    padding-top:3px;
-}
-
-/* HISTORY */
 
 .history-item{
+    background:#15151d;
     padding:12px;
-    background:#181824;
-    border:1px solid #29293b;
-    border-radius:12px;
-    margin-bottom:8px;
-    cursor:pointer;
+    border-radius:10px;
+    margin-top:8px;
+    color:#bbb;
+    font-size:14px;
 }
 
-.history-item small{
-    display:block;
-    color:#777;
-    margin-top:5px;
+.status{
+    text-align:center;
+    color:#888;
+    margin-top:10px;
+    font-size:13px;
 }
-
-.clear-btn{
-    background:none;
-    border:1px solid #333;
-    color:#aaa;
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-/* FOOTER */
 
 footer{
     text-align:center;
     color:#666;
     font-size:12px;
-    padding:25px 10px;
+    padding:30px 0;
 }
 
-/* MOBILE */
-
 @media(max-width:450px){
-    .categories{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .examples{
-        grid-template-columns:1fr;
+    .container{
+        padding:14px;
     }
 
     .logo{
@@ -291,186 +243,162 @@ footer{
 <div class="container">
 
 <header>
-    <div class="logo">
-        JOJIFY <span>SOLVE</span>
-    </div>
-
+    <div class="logo">JOJIFY <span>STUDY</span> 🎓</div>
     <div class="tagline">
-        Ask in your language. Understand the problem. Take action.
+        Ask. Learn. Remember. Score.
     </div>
 </header>
 
+<div class="search-area">
 
-<!-- LANGUAGE + INPUT -->
+<textarea
+id="question"
+placeholder="Search your study question...
 
-<div class="card">
+Example:
+What is ALARA?
+What is TLD?
+Explain CT artifacts.
+What is an X-ray transformer?"
+></textarea>
 
-    <label for="language">🌍 Answer language</label>
+<select id="language" class="language">
+    <option value="english">English</option>
+    <option value="malayalam">Malayalam</option>
+</select>
 
-    <select id="language">
-        <option value="auto">Auto Detect</option>
-        <option value="english">English</option>
-        <option value="malayalam">മലയാളം — Malayalam</option>
-        <option value="tamil">தமிழ் — Tamil</option>
-        <option value="hindi">हिन्दी — Hindi</option>
-        <option value="telugu">తెలుగు — Telugu</option>
-        <option value="kannada">ಕನ್ನಡ — Kannada</option>
-    </select>
+<div class="controls">
 
-    <br><br>
+<button
+class="voice"
+id="voiceBtn"
+onclick="startVoice()">
+🎙️
+</button>
 
-    <label for="problem">
-        🧠 What's your problem?
-    </label>
+<button
+class="solve"
+onclick="solveQuestion()">
+✨ SOLVE QUESTION
+</button>
 
-    <textarea
-        id="problem"
-        placeholder="Example: I have an exam tomorrow and 5 chapters are left..."
-    ></textarea>
+</div>
 
-    <button class="solve-btn" onclick="solveProblem()">
-        ✨ SOLVE MY PROBLEM
-    </button>
+<div class="status" id="status">
+Voice search available on supported browsers
+</div>
 
 </div>
 
 
-<!-- QUICK EXAMPLES -->
+<div class="examples">
 
-<div class="card">
+<button class="example" onclick="setQuestion('What is ALARA?')">
+ALARA
+</button>
 
-    <div class="section-title">
-        ⚡ Try an example
-    </div>
+<button class="example" onclick="setQuestion('What is TLD?')">
+TLD
+</button>
 
-    <div class="examples">
+<button class="example" onclick="setQuestion('What is an X-ray transformer?')">
+X-ray Transformer
+</button>
 
-        <div class="example"
-             onclick="useExample('I have an exam tomorrow, 5 chapters left and only 6 hours.')">
-            🎓 Exam problem
-        </div>
-
-        <div class="example"
-             onclick="useExample('I have ₹2000 and need to manage it for 5 days.')">
-            💰 Budget problem
-        </div>
-
-        <div class="example"
-             onclick="useExample('I attended 136 out of 200 classes and need 75% attendance.')">
-            📊 Attendance
-        </div>
-
-        <div class="example"
-             onclick="useExample('I have many things to do today and only 5 hours.')">
-            ⏰ Time problem
-        </div>
-
-    </div>
+<button class="example" onclick="setQuestion('What are CT artifacts?')">
+CT Artifacts
+</button>
 
 </div>
 
 
-<!-- CATEGORIES -->
+<div class="answer-buttons">
 
-<div class="card">
+<button
+class="mark-btn active"
+onclick="setMarks(2,this)">
+2 MARK
+</button>
 
-    <div class="section-title">
-        🛠️ Choose a problem type
-    </div>
+<button
+class="mark-btn"
+onclick="setMarks(5,this)">
+5 MARK
+</button>
 
-    <div class="categories">
-
-        <div class="category" onclick="categoryProblem('study')">
-            <span class="icon">🎓</span>
-            Study
-        </div>
-
-        <div class="category" onclick="categoryProblem('money')">
-            <span class="icon">💰</span>
-            Money
-        </div>
-
-        <div class="category" onclick="categoryProblem('time')">
-            <span class="icon">⏰</span>
-            Time
-        </div>
-
-        <div class="category" onclick="categoryProblem('travel')">
-            <span class="icon">🚌</span>
-            Travel
-        </div>
-
-        <div class="category" onclick="categoryProblem('shopping')">
-            <span class="icon">🛒</span>
-            Shopping
-        </div>
-
-        <div class="category" onclick="categoryProblem('daily')">
-            <span class="icon">📝</span>
-            Daily Life
-        </div>
-
-    </div>
+<button
+class="mark-btn"
+onclick="setMarks(10,this)">
+10 MARK
+</button>
 
 </div>
 
 
-<!-- RESULT -->
+<div class="result" id="result">
 
-<div class="card result" id="result">
+<h2 id="resultTitle">
+📖 Answer
+</h2>
 
-    <div class="result-header">
+<div class="answer" id="answer"></div>
 
-        <div class="result-title">
-            Your Solution
-        </div>
+<div class="section">
 
-        <div class="badge" id="categoryBadge">
-            General
-        </div>
+<div class="section-title">
+🧠 EASY MEMORY
+</div>
 
-    </div>
+<div id="memory"></div>
 
-    <div class="answer" id="answer"></div>
+</div>
 
-    <div class="steps" id="steps"></div>
+<div class="section">
+
+<div class="section-title">
+🎤 VIVA QUESTION
+</div>
+
+<div id="viva"></div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+❓ QUICK MCQ
+</div>
+
+<div id="mcq"></div>
+
+</div>
+
+<div class="action-buttons">
+
+<button onclick="speakAnswer()">
+🔊 Read Answer
+</button>
+
+<button onclick="saveQuestion()">
+⭐ Save
+</button>
+
+</div>
 
 </div>
 
 
-<!-- HISTORY -->
+<div class="history">
 
-<div class="card">
+<h3>📚 Recent Questions</h3>
 
-    <div style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:12px;
-    ">
-
-        <div class="section-title" style="margin:0;">
-            🕘 Recent Problems
-        </div>
-
-        <button class="clear-btn" onclick="clearHistory()">
-            Clear
-        </button>
-
-    </div>
-
-    <div id="history">
-        <div style="color:#666;font-size:13px;">
-            Your solved problems will appear here.
-        </div>
-    </div>
+<div id="history"></div>
 
 </div>
 
 
 <footer>
-    JOJIFY SOLVE © 2026<br>
-    Problem → Understand → Plan → Action
+JOJIFY STUDY • Learn smarter 🎓
 </footer>
 
 </div>
@@ -479,886 +407,587 @@ footer{
 <script>
 
 /* =========================
-   LANGUAGE DETECTION
+   SETTINGS
 ========================= */
 
-function detectLanguage(text){
+let selectedMarks = 2;
+let currentQuestion = "";
+let currentAnswer = "";
 
-    if(
-        /[\u0D00-\u0D7F]/.test(text)
-    ){
-        return "malayalam";
-    }
 
-    if(
-        /[\u0B80-\u0BFF]/.test(text)
-    ){
-        return "tamil";
-    }
+/* =========================
+   QUESTION DATABASE
+========================= */
 
-    if(
-        /[\u0C00-\u0C7F]/.test(text)
-    ){
-        return "telugu";
-    }
+const studyDB = {
 
-    if(
-        /[\u0C80-\u0CFF]/.test(text)
-    ){
-        return "kannada";
-    }
+"alara":{
 
-    if(
-        /[\u0900-\u097F]/.test(text)
-    ){
-        return "hindi";
-    }
+title:"ALARA",
 
-    return "english";
+memory:"ALARA = As Low As Reasonably Achievable",
+
+viva:"Why is ALARA important in radiology?",
+
+mcq:"What does ALARA stand for?\nA) As Low As Radiation Allowed\nB) As Low As Reasonably Achievable\nC) All Levels Are Radiation Allowed\nD) As Long As Radiation Avoided\n\nAnswer: B",
+
+answers:{
+
+2:`ALARA stands for As Low As Reasonably Achievable. It is a radiation protection principle used to minimize unnecessary exposure to ionizing radiation.`,
+
+5:`ALARA means As Low As Reasonably Achievable.
+
+It is a fundamental principle of radiation protection.
+
+Important points:
+1. Minimize radiation exposure.
+2. Use the minimum required radiation dose.
+3. Maintain appropriate distance from the radiation source.
+4. Reduce exposure time.
+5. Use proper shielding.`,
+
+10:`ALARA — As Low As Reasonably Achievable
+
+Definition:
+ALARA is a fundamental principle of radiation protection that aims to keep radiation exposure as low as reasonably achievable while obtaining the required diagnostic information.
+
+Principles:
+
+1. Time
+Reduce the time spent near a radiation source.
+
+2. Distance
+Increase the distance from the radiation source whenever possible.
+
+3. Shielding
+Use appropriate protective devices such as lead aprons, thyroid shields and barriers.
+
+4. Proper technique
+Use appropriate exposure factors and avoid unnecessary repeat examinations.
+
+5. Justification
+Radiological examinations should be performed only when medically justified.
+
+6. Optimization
+The examination should provide the required diagnostic information using an appropriate radiation dose.
+
+Conclusion:
+ALARA helps reduce unnecessary radiation exposure to patients and radiation workers while maintaining diagnostic quality.`
+}
+
+},
+
+"tld":{
+
+title:"Thermoluminescent Dosimeter (TLD)",
+
+memory:"TLD → Radiation → Heat → Light → Dose",
+
+viva:"What is the principle of TLD?",
+
+mcq:"What is TLD mainly used for?\nA) Measuring temperature\nB) Measuring radiation dose\nC) Measuring blood pressure\nD) Measuring ultrasound\n\nAnswer: B",
+
+answers:{
+
+2:`TLD stands for Thermoluminescent Dosimeter. It is a personal radiation monitoring device used to measure exposure to ionizing radiation.`,
+
+5:`TLD stands for Thermoluminescent Dosimeter.
+
+It is used for monitoring radiation exposure.
+
+Principle:
+Radiation stores energy in the TLD material. When the material is heated, this stored energy is released as light. The amount of light is related to the radiation dose.
+
+Advantages:
+1. Small and lightweight.
+2. Reusable.
+3. Good sensitivity.
+4. Wide dose range.
+5. Suitable for personnel monitoring.`,
+
+10:`Thermoluminescent Dosimeter (TLD)
+
+Definition:
+TLD is a radiation dosimeter used to measure and monitor an individual's exposure to ionizing radiation.
+
+Principle:
+When ionizing radiation interacts with the TLD material, electrons become trapped in energy levels. When the material is heated, the trapped electrons are released and emit light. The intensity of the emitted light is related to the radiation dose.
+
+Working:
+1. The TLD is exposed to radiation.
+2. Radiation deposits energy in the TLD material.
+3. Electrons become trapped.
+4. The TLD is heated in a TLD reader.
+5. Light is emitted.
+6. The light output is measured.
+7. The radiation dose is calculated.
+
+Advantages:
+• Small and lightweight.
+• Reusable.
+• Good sensitivity.
+• Wide dose range.
+• Easy to handle.
+
+Uses:
+• Personnel radiation monitoring.
+• Diagnostic radiology.
+• Radiotherapy.
+• Nuclear medicine.
+
+Conclusion:
+TLD is an important personal dosimeter used to monitor occupational radiation exposure.`
+}
+
+},
+
+"ct artifact":{
+
+title:"CT Artifacts",
+
+memory:"CT artifacts → Motion + Beam hardening + Ring + Partial volume",
+
+viva:"What is a CT artifact?",
+
+mcq:"Which artifact can occur due to patient movement?\nA) Motion artifact\nB) Ring artifact\nC) Chemical shift\nD) Aliasing\n\nAnswer: A",
+
+answers:{
+
+2:`CT artifacts are unwanted distortions or errors that appear in CT images and may reduce image quality.`,
+
+5:`CT artifacts are unwanted distortions or errors in CT images.
+
+Common types include:
+1. Motion artifact
+2. Beam-hardening artifact
+3. Ring artifact
+4. Partial-volume artifact
+5. Metal artifact
+
+Artifacts may occur due to patient movement, scanner problems, physical effects or limitations of the imaging process.`,
+
+10:`CT ARTIFACTS
+
+Definition:
+CT artifacts are unwanted structures, distortions or errors appearing in CT images that do not represent the actual anatomy.
+
+Common types:
+
+1. Motion artifact
+Caused by patient movement during scanning. It may produce blurring or duplicated structures.
+
+2. Beam-hardening artifact
+Occurs because lower-energy photons are absorbed more strongly as the X-ray beam passes through the body.
+
+3. Ring artifact
+Usually associated with detector element problems or calibration errors and appears as rings around the center of the image.
+
+4. Partial-volume artifact
+Occurs when different tissues are included within the same voxel and their attenuation values are averaged.
+
+5. Metal artifact
+Caused by highly attenuating metallic objects and may produce streaks or dark bands.
+
+Effects:
+• Reduces image quality.
+• May obscure anatomical structures.
+• Can interfere with diagnosis.
+
+Conclusion:
+Understanding CT artifacts helps radiographers recognize image errors and take appropriate steps to reduce them.`
+}
+
+},
+
+"x-ray transformer":{
+
+title:"X-ray Transformer",
+
+memory:"Transformer → Voltage change → Tube operation",
+
+viva:"Why is a step-up transformer used in an X-ray machine?",
+
+mcq:"Which transformer increases voltage?\nA) Step-down transformer\nB) Step-up transformer\nC) Isolation transformer\nD) Filament transformer\n\nAnswer: B",
+
+answers:{
+
+2:`An X-ray transformer is an electrical device used to change the voltage supplied to the X-ray tube circuit. It helps provide the required voltage for X-ray production.`,
+
+5:`An X-ray transformer changes the voltage of the electrical supply used in an X-ray machine.
+
+Types include:
+1. Step-up transformer — increases voltage.
+2. Step-down transformer — decreases voltage.
+
+The high voltage required across the X-ray tube is produced using a step-up transformer, while a lower voltage is supplied to the filament circuit using a step-down transformer.`,
+
+10:`X-RAY TRANSFORMER
+
+Definition:
+An X-ray transformer is an electrical device used to increase or decrease voltage in an X-ray machine.
+
+Principle:
+It works on the principle of electromagnetic induction.
+
+Types:
+
+1. Step-up transformer
+It increases the voltage and supplies the high voltage required across the X-ray tube.
+
+2. Step-down transformer
+It decreases the voltage and supplies the required lower voltage to the filament circuit.
+
+Construction:
+• Primary winding
+• Secondary winding
+• Iron core
+
+Working:
+Alternating current is supplied to the primary winding. This produces a changing magnetic field in the core. The changing magnetic field induces voltage in the secondary winding.
+
+Importance:
+• Provides appropriate voltage.
+• Helps produce X-rays.
+• Controls the electrical requirements of the X-ray tube.
+
+Conclusion:
+Transformers are essential components of an X-ray generator because they provide the required voltage levels for tube operation.`
+}
+
+}
+
+};
+
+
+/* =========================
+   QUESTION HELPERS
+========================= */
+
+function setQuestion(q){
+
+document.getElementById("question").value = q;
+
+solveQuestion();
+
+}
+
+
+function setMarks(m,button){
+
+selectedMarks = m;
+
+document.querySelectorAll(".mark-btn")
+.forEach(btn => btn.classList.remove("active"));
+
+button.classList.add("active");
+
+if(currentQuestion){
+solveQuestion();
+}
+
 }
 
 
 /* =========================
-   EXAMPLES
+   FIND QUESTION
 ========================= */
 
-function useExample(text){
+function findQuestion(question){
 
-    document.getElementById("problem").value = text;
+let q = question.toLowerCase();
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-}
+if(q.includes("alara"))
+return studyDB["alara"];
 
+if(q.includes("tld") ||
+   q.includes("thermoluminescent"))
+return studyDB["tld"];
 
-function categoryProblem(category){
+if(q.includes("ct") &&
+   q.includes("artifact"))
+return studyDB["ct artifact"];
 
-    const examples = {
+if(q.includes("x-ray") &&
+   q.includes("transformer"))
+return studyDB["x-ray transformer"];
 
-        study:
-        "I have an exam soon and I need help making a study plan.",
+if(q.includes("xray") &&
+   q.includes("transformer"))
+return studyDB["x-ray transformer"];
 
-        money:
-        "I have ₹2000 and need to manage my money carefully.",
-
-        time:
-        "I have many tasks and very little time. Help me make a plan.",
-
-        travel:
-        "I need to plan a trip and manage my travel time and budget.",
-
-        shopping:
-        "I need to buy something but I have a limited budget.",
-
-        daily:
-        "I have several things to do today and I don't know where to start."
-
-    };
-
-    document.getElementById("problem").value = examples[category];
-
-    solveProblem();
-}
-
-
-/* =========================
-   MAIN SOLVER
-========================= */
-
-function solveProblem(){
-
-    const input =
-        document.getElementById("problem").value.trim();
-
-    if(!input){
-
-        alert("Please describe your problem first 🙂");
-
-        return;
-    }
-
-    const selectedLanguage =
-        document.getElementById("language").value;
-
-    const language =
-        selectedLanguage === "auto"
-        ? detectLanguage(input)
-        : selectedLanguage;
-
-    const category =
-        detectCategory(input);
-
-    let solution;
-
-    if(category === "attendance"){
-
-        solution =
-            attendanceSolver(input,language);
-
-    }else if(category === "money"){
-
-        solution =
-            moneySolver(input,language);
-
-    }else if(category === "study"){
-
-        solution =
-            studySolver(input,language);
-
-    }else if(category === "time"){
-
-        solution =
-            timeSolver(input,language);
-
-    }else if(category === "travel"){
-
-        solution =
-            travelSolver(input,language);
-
-    }else if(category === "shopping"){
-
-        solution =
-            shoppingSolver(input,language);
-
-    }else{
-
-        solution =
-            generalSolver(input,language);
-
-    }
-
-    displayResult(solution);
-
-    saveHistory(input,category,language);
+return null;
 
 }
 
 
 /* =========================
-   CATEGORY DETECTION
+   SOLVE
 ========================= */
 
-function detectCategory(text){
+function solveQuestion(){
 
-    const t = text.toLowerCase();
+let question =
+document.getElementById("question").value.trim();
 
-    if(
-        t.includes("attendance") ||
-        t.includes("attend") ||
-        t.includes("class") ||
-        t.includes("classes") ||
-        t.includes("percentage")
-    ){
-        return "attendance";
-    }
+if(!question){
 
-    if(
-        t.includes("exam") ||
-        t.includes("study") ||
-        t.includes("chapter") ||
-        t.includes("subject") ||
-        t.includes("test") ||
-        t.includes("assignment")
-    ){
-        return "study";
-    }
+alert("Please enter a study question.");
 
-    if(
-        t.includes("₹") ||
-        t.includes("rs") ||
-        t.includes("rupee") ||
-        t.includes("money") ||
-        t.includes("budget") ||
-        t.includes("salary") ||
-        t.includes("spend") ||
-        t.includes("cost")
-    ){
-        return "money";
-    }
+return;
 
-    if(
-        t.includes("hour") ||
-        t.includes("hours") ||
-        t.includes("time") ||
-        t.includes("today") ||
-        t.includes("tomorrow") ||
-        t.includes("deadline")
-    ){
-        return "time";
-    }
+}
 
-    if(
-        t.includes("travel") ||
-        t.includes("trip") ||
-        t.includes("bus") ||
-        t.includes("train") ||
-        t.includes("flight")
-    ){
-        return "travel";
-    }
+currentQuestion = question;
 
-    if(
-        t.includes("buy") ||
-        t.includes("shopping") ||
-        t.includes("phone") ||
-        t.includes("laptop") ||
-        t.includes("price") ||
-        t.includes("product")
-    ){
-        return "shopping";
-    }
+let data = findQuestion(question);
 
-    return "general";
+let answer = "";
+
+if(data){
+
+answer = data.answers[selectedMarks];
+
+document.getElementById("resultTitle").innerText =
+"📖 " + data.title;
+
+document.getElementById("memory").innerText =
+data.memory;
+
+document.getElementById("viva").innerText =
+data.viva;
+
+document.getElementById("mcq").innerText =
+data.mcq;
+
+}else{
+
+answer = genericAnswer(question);
+
+document.getElementById("resultTitle").innerText =
+"📖 Study Answer";
+
+document.getElementById("memory").innerText =
+"Read the key points and revise them once more.";
+
+document.getElementById("viva").innerText =
+"Define and explain the main concept.";
+
+document.getElementById("mcq").innerText =
+"Create your own MCQ from the important points.";
+
+}
+
+currentAnswer = answer;
+
+document.getElementById("answer").innerText =
+answer;
+
+document.getElementById("result").style.display =
+"block";
+
+addHistory(question);
+
 }
 
 
 /* =========================
-   NUMBER EXTRACTION
+   GENERIC FALLBACK
 ========================= */
 
-function extractNumbers(text){
+function genericAnswer(question){
 
-    return (
-        text
-        .replace(/,/g,"")
-        .match(/\d+(\.\d+)?/g)
-        || []
-    ).map(Number);
+if(selectedMarks === 2){
+
+return `Definition:
+${question} is an important study topic.
+
+For a 2-mark answer, write the definition and one important point related to the topic.`;
+
+}
+
+if(selectedMarks === 5){
+
+return `Introduction:
+${question}
+
+For a 5-mark answer:
+
+1. Give the definition.
+2. Explain the principle or main concept.
+3. Write 3–4 important points.
+4. Add an example or application.
+5. Finish with a short conclusion.`;
+
+}
+
+return `Topic:
+${question}
+
+10-MARK ANSWER FORMAT
+
+1. Introduction
+Define the topic clearly.
+
+2. Principle
+Explain the basic principle.
+
+3. Main explanation
+Describe the topic in detail.
+
+4. Classification / Types
+List and explain important types.
+
+5. Advantages / Important points
+Write the relevant points.
+
+6. Applications
+Mention important uses.
+
+7. Conclusion
+Finish with a short summary.
+
+Note:
+This is a study-answer structure. For an accurate topic-specific answer, connect JOJIFY to an AI backend.`;
+
 }
 
 
 /* =========================
-   ATTENDANCE SOLVER
+   VOICE INPUT
 ========================= */
 
-function attendanceSolver(text,language){
+function startVoice(){
 
-    const nums = extractNumbers(text);
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
 
-    if(nums.length >= 3){
+if(!SpeechRecognition){
 
-        const attended = nums[0];
-        const total = nums[1];
-        const target = nums[2];
+alert("Voice recognition is not supported in this browser.");
 
-        const current =
-            (attended / total) * 100;
+return;
 
-        let future = 0;
+}
 
-        if(current < target){
+const recognition =
+new SpeechRecognition();
 
-            future =
-                Math.ceil(
-                    (target * total / 100 - attended)
-                    /
-                    (1 - target / 100)
-                );
+const language =
+document.getElementById("language").value;
 
-        }
+if(language === "malayalam"){
+recognition.lang = "ml-IN";
+}else{
+recognition.lang = "en-IN";
+}
 
-        if(language === "malayalam"){
+recognition.interimResults = false;
+recognition.continuous = false;
 
-            return {
+const btn =
+document.getElementById("voiceBtn");
 
-                category:"Attendance",
+const status =
+document.getElementById("status");
 
-                answer:
-                `നിങ്ങളുടെ നിലവിലെ attendance ഏകദേശം ${current.toFixed(2)}% ആണ്.\n\n` +
-                `Target ${target}% ആണെങ്കിൽ, ഇനി ${future} classes തുടർച്ചയായി attend ചെയ്യണം.`,
+btn.classList.add("listening");
 
-                steps:[
-                    "Attendance കുറയാതിരിക്കാൻ ഇനി കഴിയുന്നത്ര classes miss ചെയ്യരുത്.",
-                    "പ്രതിദിന attendance update ചെയ്യുക.",
-                    "Target percentage എത്തുന്നതുവരെ calculation വീണ്ടും പരിശോധിക്കുക."
-                ]
+status.innerText =
+"🎙️ Listening... Ask your question";
 
-            };
+recognition.start();
 
-        }
+recognition.onresult = function(event){
 
-        if(language === "tamil"){
+let text =
+event.results[0][0].transcript;
 
-            return {
+document.getElementById("question").value =
+text;
 
-                category:"Attendance",
+status.innerText =
+"Question received ✓";
 
-                answer:
-                `உங்கள் தற்போதைய attendance சுமார் ${current.toFixed(2)}%.\n\n` +
-                `${target}% அடைய, அடுத்ததாக ${future} classes attend செய்ய வேண்டும்.`,
+btn.classList.remove("listening");
 
-                steps:[
-                    "முடிந்தவரை classes miss செய்யாதீர்கள்.",
-                    "Attendance-ஐ தொடர்ந்து check செய்யுங்கள்.",
-                    "Target அடையும் வரை கணக்கை update செய்யுங்கள்."
-                ]
+solveQuestion();
 
-            };
+};
 
-        }
+recognition.onerror = function(){
 
-        if(language === "hindi"){
+status.innerText =
+"Voice input failed. Try again.";
 
-            return {
+btn.classList.remove("listening");
 
-                category:"Attendance",
+};
 
-                answer:
-                `आपकी वर्तमान attendance लगभग ${current.toFixed(2)}% है।\n\n` +
-                `${target}% तक पहुँचने के लिए आपको अगले ${future} classes attend करने होंगे।`,
+recognition.onend = function(){
 
-                steps:[
-                    "आगे classes miss करने से बचें।",
-                    "Attendance नियमित रूप से check करें।",
-                    "Target तक पहुँचने के लिए calculation update करते रहें।"
-                ]
+btn.classList.remove("listening");
 
-            };
+};
 
-        }
-
-        return {
-
-            category:"Attendance",
-
-            answer:
-            `Your current attendance is approximately ${current.toFixed(2)}%.\n\n` +
-            `To reach ${target}%, you need to attend the next ${future} classes.`,
-
-            steps:[
-                "Avoid missing classes whenever possible.",
-                "Keep checking your attendance percentage.",
-                "Update the calculation as you attend more classes."
-            ]
-
-        };
-
-    }
-
-    return genericByLanguage(
-        "attendance",
-        language
-    );
 }
 
 
 /* =========================
-   MONEY SOLVER
+   TEXT TO SPEECH
 ========================= */
 
-function moneySolver(text,language){
+function speakAnswer(){
 
-    const nums = extractNumbers(text);
+if(!currentAnswer)
+return;
 
-    if(nums.length >= 2){
+speechSynthesis.cancel();
 
-        const money = nums[0];
-        const days = nums[1];
+const speech =
+new SpeechSynthesisUtterance(currentAnswer);
 
-        const daily =
-            money / days;
+const language =
+document.getElementById("language").value;
 
-        const reserve =
-            money * 0.10;
+if(language === "malayalam"){
+speech.lang = "ml-IN";
+}else{
+speech.lang = "en-IN";
+}
 
-        const usable =
-            money - reserve;
+speech.rate = 0.9;
 
-        const safeDaily =
-            usable / days;
+speechSynthesis.speak(speech);
 
-        if(language === "malayalam"){
-
-            return {
-
-                category:"Money",
-
-                answer:
-                `നിങ്ങളുടെ മൊത്തം budget ₹${money.toFixed(0)} ആണ്.\n\n` +
-                `${days} ദിവസത്തേക്ക് ഉപയോഗിക്കണമെങ്കിൽ ശരാശരി ₹${daily.toFixed(2)} / ദിവസം ലഭിക്കും.\n\n` +
-                `10% emergency reserve മാറ്റിവെച്ചാൽ ₹${reserve.toFixed(0)} save ചെയ്യാം. ബാക്കി ₹${usable.toFixed(0)} ഉപയോഗിച്ച് ഏകദേശം ₹${safeDaily.toFixed(2)} / ദിവസം ചെലവാക്കാം.`,
-
-                steps:[
-                    "ആദ്യം emergency amount മാറ്റിവെക്കുക.",
-                    "Daily spending limit തീരുമാനിക്കുക.",
-                    "ആവശ്യമായ ചെലവുകൾ ആദ്യം നടത്തുക.",
-                    "Daily limit കടക്കാതിരിക്കാൻ ചെലവുകൾ note ചെയ്യുക."
-                ]
-
-            };
-
-        }
-
-        if(language === "tamil"){
-
-            return {
-
-                category:"Money",
-
-                answer:
-                `உங்கள் மொத்த budget ₹${money.toFixed(0)}.\n\n` +
-                `${days} நாட்களுக்கு பயன்படுத்தினால் சராசரியாக ₹${daily.toFixed(2)} / நாள்.\n\n` +
-                `10% emergency reserve வைத்தால் ₹${reserve.toFixed(0)} சேமிக்கலாம். மீதமுள்ள தொகையில் சுமார் ₹${safeDaily.toFixed(2)} / நாள் செலவு செய்யலாம்.`,
-
-                steps:[
-                    "முதலில் emergency amount-ஐ தனியாக வைத்துக்கொள்ளுங்கள்.",
-                    "Daily spending limit அமைக்கவும்.",
-                    "தேவையான செலவுகளுக்கு முன்னுரிமை கொடுக்கவும்.",
-                    "Daily expenses-ஐ note செய்யவும்."
-                ]
-
-            };
-
-        }
-
-        if(language === "hindi"){
-
-            return {
-
-                category:"Money",
-
-                answer:
-                `आपका कुल budget ₹${money.toFixed(0)} है।\n\n` +
-                `${days} दिनों के लिए औसतन ₹${daily.toFixed(2)} प्रति दिन मिलेंगे।\n\n` +
-                `10% emergency reserve रखने पर ₹${reserve.toFixed(0)} अलग रख सकते हैं और लगभग ₹${safeDaily.toFixed(2)} प्रति दिन खर्च कर सकते हैं।`,
-
-                steps:[
-                    "पहले emergency amount अलग रखें।",
-                    "Daily spending limit तय करें।",
-                    "जरूरी खर्चों को प्राथमिकता दें।",
-                    "हर दिन का खर्च लिखें।"
-                ]
-
-            };
-
-        }
-
-        return {
-
-            category:"Money",
-
-            answer:
-            `Your total budget is ₹${money.toFixed(0)}.\n\n` +
-            `For ${days} days, your average budget is ₹${daily.toFixed(2)} per day.\n\n` +
-            `Keeping 10% as an emergency reserve gives you ₹${reserve.toFixed(0)} in reserve. That leaves about ₹${safeDaily.toFixed(2)} per day for normal spending.`,
-
-            steps:[
-                "Set aside the emergency reserve first.",
-                "Create a daily spending limit.",
-                "Prioritize essential expenses.",
-                "Track your spending every day."
-            ]
-
-        };
-
-    }
-
-    return genericByLanguage(
-        "money",
-        language
-    );
 }
 
 
 /* =========================
-   STUDY SOLVER
+   SAVE
 ========================= */
 
-function studySolver(text,language){
+function saveQuestion(){
 
-    const nums = extractNumbers(text);
+let saved =
+JSON.parse(localStorage.getItem("jojifySaved") || "[]");
 
-    let chapters = 5;
-    let hours = 6;
+saved.unshift({
+question:currentQuestion,
+marks:selectedMarks,
+date:new Date().toLocaleString()
+});
 
-    if(nums.length >= 1)
-        chapters = nums[0];
+saved =
+saved.slice(0,20);
 
-    if(nums.length >= 2)
-        hours = nums[1];
+localStorage.setItem(
+"jojifySaved",
+JSON.stringify(saved)
+);
 
-    const perChapter =
-        hours / chapters;
+alert("⭐ Question saved!");
 
-    if(language === "malayalam"){
-
-        return {
-
-            category:"Study",
-
-            answer:
-            `നിങ്ങളുടെ situation നോക്കുമ്പോൾ ആദ്യം panic ചെയ്യേണ്ടതില്ല.\n\n` +
-            `${chapters} chapters ഉം ഏകദേശം ${hours} മണിക്കൂറും ഉണ്ടെങ്കിൽ, ഓരോ chapter-നും ശരാശരി ${perChapter.toFixed(1)} മണിക്കൂർ നൽകാം.\n\n` +
-            `Goal എല്ലാം perfect ആയി പഠിക്കുക എന്നതല്ല — ആദ്യം high-value topics cover ചെയ്യുക.`,
-
-            steps:[
-                `ആദ്യ ${Math.max(1,Math.round(perChapter*60))} മിനിറ്റ് — Chapter 1 പ്രധാന topics.`,
-                "അടുത്തത് — Chapter 2 പ്രധാന concepts + short notes.",
-                "തുടർന്ന് ബാക്കിയുള്ള chapters priority അനുസരിച്ച് പഠിക്കുക.",
-                "അവസാന 30–45 മിനിറ്റ് revision + important questions.",
-                "ഓരോ study block-നും ഇടയിൽ ചെറിയ break എടുക്കുക."
-            ]
-
-        };
-
-    }
-
-    if(language === "tamil"){
-
-        return {
-
-            category:"Study",
-
-            answer:
-            `Panic செய்ய வேண்டாம். ${chapters} chapters மற்றும் ${hours} hours இருந்தால், ஒரு chapter-க்கு சராசரியாக ${perChapter.toFixed(1)} hours ஒதுக்கலாம்.\n\n` +
-            `முதலில் முக்கியமான topics-ஐ cover செய்வது நல்லது.`,
-
-            steps:[
-                "Chapter 1 முக்கிய topics படிக்கவும்.",
-                "Chapter 2 முக்கிய concepts + short notes படிக்கவும்.",
-                "மீதமுள்ள chapters-ஐ priority அடிப்படையில் முடிக்கவும்.",
-                "கடைசி 30–45 minutes revision செய்யவும்.",
-                "ஒவ்வொரு study block-க்கும் சிறிய break எடுக்கவும்."
-            ]
-
-        };
-
-    }
-
-    if(language === "hindi"){
-
-        return {
-
-            category:"Study",
-
-            answer:
-            `Panic करने की जरूरत नहीं है। ${chapters} chapters और ${hours} घंटे हैं तो हर chapter को लगभग ${perChapter.toFixed(1)} घंटे दे सकते हैं।\n\n` +
-            `पहले important topics पूरे करें।`,
-
-            steps:[
-                "पहले chapter के important topics पढ़ें।",
-                "दूसरे chapter के concepts और short notes करें।",
-                "बाकी chapters को priority के अनुसार पूरा करें।",
-                "आखिरी 30–45 मिनट revision करें।",
-                "हर study block के बीच छोटा break लें।"
-            ]
-
-        };
-
-    }
-
-    return {
-
-        category:"Study",
-
-        answer:
-        `Don't panic. You have approximately ${chapters} chapters and ${hours} hours.\n\n` +
-        `That gives you about ${perChapter.toFixed(1)} hours per chapter.\n\n` +
-        `Don't try to study everything perfectly. Focus first on high-value topics, important questions and concepts.`,
-
-        steps:[
-            "Start with the most important chapter/topics.",
-            "Make short notes instead of rewriting everything.",
-            "Move to the next chapter according to priority.",
-            "Keep the final 30–45 minutes for revision.",
-            "Take short breaks between study blocks."
-        ]
-
-    };
-}
-
-
-/* =========================
-   TIME SOLVER
-========================= */
-
-function timeSolver(text,language){
-
-    const nums = extractNumbers(text);
-
-    const hours =
-        nums.length
-        ? nums[nums.length-1]
-        : 5;
-
-    if(language === "malayalam"){
-
-        return {
-
-            category:"Time",
-
-            answer:
-            `നിങ്ങൾക്ക് ഏകദേശം ${hours} മണിക്കൂർ ഉണ്ടെങ്കിൽ, മുഴുവൻ സമയവും ഒരൊറ്റ task-ന് കൊടുക്കാതെ priority അടിസ്ഥാനത്തിൽ divide ചെയ്യുക.`,
-
-            steps:[
-                "ആദ്യം ഏറ്റവും urgent ആയ task തിരഞ്ഞെടുക്കുക.",
-                "ഏകദേശം 40–50% സമയം പ്രധാന task-ന് നൽകുക.",
-                "20–30% സമയം രണ്ടാമത്തെ പ്രധാന task-ന് നൽകുക.",
-                "ബാക്കി സമയം ചെറിയ tasks-നും buffer-നും ഉപയോഗിക്കുക.",
-                "Phone/social media distractions ഒഴിവാക്കുക."
-            ]
-
-        };
-
-    }
-
-    return {
-
-        category:"Time",
-
-        answer:
-        `You have about ${hours} hours. Don't divide your time equally between everything. Prioritize the tasks that are urgent and important.`,
-
-        steps:[
-            "Choose the most urgent task first.",
-            "Give around 40–50% of your available time to it.",
-            "Use another 20–30% for the second priority.",
-            "Keep some buffer time for small tasks.",
-            "Reduce phone and social-media distractions."
-        ]
-
-    };
-}
-
-
-/* =========================
-   TRAVEL SOLVER
-========================= */
-
-function travelSolver(text,language){
-
-    if(language === "malayalam"){
-
-        return {
-
-            category:"Travel",
-
-            answer:
-            `നിങ്ങളുടെ യാത്ര plan ചെയ്യുമ്പോൾ ആദ്യം route, departure time, budget, return plan എന്നിവ clear ആക്കുക.\n\n` +
-            `Unexpected delay ഉണ്ടാകാൻ ചെറിയ buffer time കൂടി വയ്ക്കുന്നത് നല്ലതാണ്.`,
-
-            steps:[
-                "Destination + route ഉറപ്പാക്കുക.",
-                "Bus/train/flight departure time check ചെയ്യുക.",
-                "Ticket + ID + ആവശ്യമായ documents തയ്യാറാക്കുക.",
-                "Travel budget-ൽ ചെറിയ emergency amount വയ്ക്കുക.",
-                "Departure-ന് കുറഞ്ഞത് 30–60 മിനിറ്റ് buffer വയ്ക്കുക."
-            ]
-
-        };
-
-    }
-
-    return {
-
-        category:"Travel",
-
-        answer:
-        `For a smoother trip, plan the route, departure time, budget and return plan before leaving. Keep some buffer time for unexpected delays.`,
-
-        steps:[
-            "Confirm the destination and route.",
-            "Check your bus/train/flight timing.",
-            "Prepare your ticket, ID and required documents.",
-            "Keep some emergency money in your travel budget.",
-            "Keep at least 30–60 minutes of buffer time."
-        ]
-
-    };
-}
-
-
-/* =========================
-   SHOPPING SOLVER
-========================= */
-
-function shoppingSolver(text,language){
-
-    if(language === "malayalam"){
-
-        return {
-
-            category:"Shopping",
-
-            answer:
-            `Shopping ചെയ്യുന്നതിന് മുമ്പ് "എനിക്ക് ഇത് ശരിക്കും ആവശ്യമാണോ?" എന്ന് ചോദിക്കുക.\n\n` +
-            `Price മാത്രം നോക്കാതെ total value, warranty, reviews, return policy എന്നിവയും പരിശോധിക്കുക.`,
-
-            steps:[
-                "ആവശ്യവും ആഗ്രഹവും വേർതിരിക്കുക.",
-                "Budget limit തീരുമാനിക്കുക.",
-                "കുറഞ്ഞത് 2–3 options compare ചെയ്യുക.",
-                "Warranty + return policy പരിശോധിക്കുക.",
-                "Budget കടക്കാതെ purchase ചെയ്യുക."
-            ]
-
-        };
-
-    }
-
-    return {
-
-        category:"Shopping",
-
-        answer:
-        `Before buying, ask whether you actually need the product. Don't compare only the price; check value, warranty, reviews and return policy too.`,
-
-        steps:[
-            "Separate needs from wants.",
-            "Set your maximum budget.",
-            "Compare at least 2–3 options.",
-            "Check warranty and return policy.",
-            "Don't exceed your planned budget."
-        ]
-
-    };
-}
-
-
-/* =========================
-   GENERAL SOLVER
-========================= */
-
-function generalSolver(text,language){
-
-    return genericByLanguage(
-        "general",
-        language
-    );
-
-}
-
-
-function genericByLanguage(type,language){
-
-    if(language === "malayalam"){
-
-        return {
-
-            category:"Daily Life",
-
-            answer:
-            `നിങ്ങളുടെ പ്രശ്നം step-by-step ആയി break ചെയ്യുകയാണ് ആദ്യം വേണ്ടത്.\n\n` +
-            `ഇപ്പോൾ ചെയ്യാൻ കഴിയുന്ന ഏറ്റവും ചെറിയ action തിരഞ്ഞെടുക്കുക. വലിയ പ്രശ്നം മുഴുവൻ ഒരുമിച്ച് solve ചെയ്യാൻ ശ്രമിക്കേണ്ടതില്ല.`,
-
-            steps:[
-                "പ്രശ്നത്തിന്റെ പ്രധാന കാര്യം ഒരു sentence-ൽ എഴുതുക.",
-                "ഇപ്പോൾ ഏറ്റവും urgent ആയ ഭാഗം കണ്ടെത്തുക.",
-                "ചെയ്യാൻ കഴിയുന്ന ചെറിയ ഒരു action തിരഞ്ഞെടുക്കുക.",
-                "അത് പൂർത്തിയാക്കിയ ശേഷം അടുത്ത step തീരുമാനിക്കുക.",
-                "പ്രശ്നം ഗുരുതരമാണെങ്കിൽ വിശ്വസിക്കുന്ന വ്യക്തിയുടെയോ ബന്ധപ്പെട്ട professional-ന്റെയോ സഹായം തേടുക."
-            ]
-
-        };
-
-    }
-
-    if(language === "tamil"){
-
-        return {
-
-            category:"Daily Life",
-
-            answer:
-            `உங்கள் பிரச்சினையை சிறிய steps-ஆக பிரிப்பது முதலில் செய்ய வேண்டியது.\n\n` +
-            `முழு பிரச்சினையையும் ஒரே நேரத்தில் solve செய்ய முயற்சி செய்ய வேண்டாம்.`,
-
-            steps:[
-                "பிரச்சினையை ஒரு sentence-ல் எழுதுங்கள்.",
-                "மிகவும் urgent பகுதியை கண்டுபிடிக்கவும்.",
-                "சிறிய ஒரு action-ஐ தேர்வு செய்யவும்.",
-                "அதை முடித்த பிறகு அடுத்த step எடுக்கவும்.",
-                "தேவைப்பட்டால் நம்பிக்கையான நபர் அல்லது தொடர்புடைய professional உதவியை பெறவும்."
-            ]
-
-        };
-
-    }
-
-    if(language === "hindi"){
-
-        return {
-
-            category:"Daily Life",
-
-            answer:
-            `सबसे पहले अपनी समस्या को छोटे steps में बाँटें।\n\n` +
-            `पूरी समस्या को एक साथ हल करने की कोशिश न करें। पहले सबसे छोटा practical action शुरू करें।`,
-
-            steps:[
-                "समस्या को एक sentence में लिखें।",
-                "सबसे urgent हिस्सा पहचानें।",
-                "एक छोटा practical action चुनें।",
-                "उसे पूरा करने के बाद अगला step लें।",
-                "जरूरत होने पर किसी भरोसेमंद व्यक्ति या संबंधित professional से मदद लें।"
-            ]
-
-        };
-
-    }
-
-    return {
-
-        category:"Daily Life",
-
-        answer:
-        `Start by breaking your problem into smaller pieces.\n\n` +
-        `You don't need to solve everything at once. Find the smallest useful action you can take right now.`,
-
-        steps:[
-            "Describe the main problem in one sentence.",
-            "Identify the most urgent part.",
-            "Choose one small practical action.",
-            "Complete it, then decide the next step.",
-            "If the problem is serious, consider help from a trusted person or relevant professional."
-        ]
-
-    };
-}
-
-
-/* =========================
-   DISPLAY RESULT
-========================= */
-
-function displayResult(solution){
-
-    document.getElementById("result").style.display="block";
-
-    document.getElementById("categoryBadge").textContent =
-        solution.category;
-
-    document.getElementById("answer").textContent =
-        solution.answer;
-
-    const steps =
-        document.getElementById("steps");
-
-    steps.innerHTML =
-        "<div class='section-title'>🎯 Action Plan</div>";
-
-    solution.steps.forEach(function(step,index){
-
-        const div =
-            document.createElement("div");
-
-        div.className="step";
-
-        div.innerHTML =
-            `
-            <div class="step-number">${index+1}</div>
-            <div class="step-text">${escapeHTML(step)}</div>
-            `;
-
-        steps.appendChild(div);
-
-    });
-
-    document.getElementById("result").scrollIntoView({
-        behavior:"smooth"
-    });
 }
 
 
@@ -1366,139 +995,57 @@ function displayResult(solution){
    HISTORY
 ========================= */
 
-function saveHistory(problem,category,language){
+function addHistory(question){
 
-    let history =
-        JSON.parse(
-            localStorage.getItem("jojifyHistory")
-            || "[]"
-        );
+let history =
+JSON.parse(localStorage.getItem("jojifyHistory") || "[]");
 
-    history.unshift({
+history.unshift(question);
 
-        problem:problem,
+history =
+[...new Set(history)].slice(0,10);
 
-        category:category,
+localStorage.setItem(
+"jojifyHistory",
+JSON.stringify(history)
+);
 
-        language:language,
-
-        date:new Date().toLocaleString()
-
-    });
-
-    history =
-        history.slice(0,8);
-
-    localStorage.setItem(
-        "jojifyHistory",
-        JSON.stringify(history)
-    );
-
-    loadHistory();
-}
-
-
-function loadHistory(){
-
-    const box =
-        document.getElementById("history");
-
-    let history =
-        JSON.parse(
-            localStorage.getItem("jojifyHistory")
-            || "[]"
-        );
-
-    if(history.length === 0){
-
-        box.innerHTML =
-            `<div style="color:#666;font-size:13px;">
-            Your solved problems will appear here.
-            </div>`;
-
-        return;
-    }
-
-    box.innerHTML="";
-
-    history.forEach(function(item){
-
-        const div =
-            document.createElement("div");
-
-        div.className="history-item";
-
-        div.innerHTML =
-            `
-            ${escapeHTML(item.problem)}
-            <small>
-                ${escapeHTML(item.category)} • ${escapeHTML(item.date)}
-            </small>
-            `;
-
-        div.onclick=function(){
-
-            document.getElementById("problem").value =
-                item.problem;
-
-            solveProblem();
-
-        };
-
-        box.appendChild(div);
-
-    });
-}
-
-
-function clearHistory(){
-
-    localStorage.removeItem(
-        "jojifyHistory"
-    );
-
-    loadHistory();
+displayHistory();
 
 }
 
 
-/* =========================
-   SECURITY
-========================= */
+function displayHistory(){
 
-function escapeHTML(text){
+let history =
+JSON.parse(localStorage.getItem("jojifyHistory") || "[]");
 
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
+let html = "";
 
+history.forEach(q => {
 
-/* =========================
-   ENTERPRISE
-========================= */
-
-document
-.getElementById("problem")
-.addEventListener("keydown",function(event){
-
-    if(event.key === "Enter" && event.ctrlKey){
-
-        solveProblem();
-
-    }
+html += `
+<div class="history-item"
+onclick="setQuestion('${q.replace(/'/g,"\\'")}')">
+🔹 ${q}
+</div>
+`;
 
 });
 
+document.getElementById("history").innerHTML =
+html;
 
-/* LOAD */
+}
 
-loadHistory();
+
+/* =========================
+   START
+========================= */
+
+displayHistory();
 
 </script>
 
 </body>
-   </html>
+    </html>
