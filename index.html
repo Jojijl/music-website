@@ -1,123 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Music</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>My Music</title>
 
-        body {
-            margin: 0;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background: url("background.jpg") center/cover no-repeat;
-            color: white;
-            overflow: hidden;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .overlay {
-            height: 100vh;
-            padding: 120px 25px 25px;
-            background: rgba(0,0,0,0.15);
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #111;
+    background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
+                      url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-        h1 {
-            text-align: center;
-            color: #ff3333;
-            font-size: 32px;
-            margin-bottom: 60px;
-        }
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 25px 15px 100px;
+}
 
-        .player {
-            background: rgba(255,255,255,0.20);
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 22px;
-            padding: 18px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(8px);
-        }
+h1 {
+    text-align: center;
+    color: #ff3333;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
 
-        .cover {
-            width: 85px;
-            height: 85px;
-            border-radius: 12px;
-            object-fit: cover;
-        }
+.subtitle {
+    text-align: center;
+    color: #ddd;
+    margin-bottom: 25px;
+}
 
-        .song {
-            flex: 1;
-        }
+.player {
+    background: rgba(20,20,20,.85);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
 
-        .song h2 {
-            margin: 0;
-            font-size: 20px;
-        }
+.cover {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+    margin: auto;
+}
 
-        .song p {
-            margin: 5px 0 15px;
-            color: #eeeeee;
-        }
+.song-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 18px 0 5px;
+}
 
-        audio {
-            width: 100%;
-        }
+.artist {
+    text-align: center;
+    color: #bbb;
+    margin-bottom: 15px;
+}
 
-        .bottom {
-            position: fixed;
-            bottom: 25px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-around;
-        }
+audio {
+    width: 100%;
+}
 
-        .button {
-            width: 65px;
-            height: 65px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.25);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 28px;
-        }
-    </style>
+.song-list {
+    background: rgba(20,20,20,.85);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.song {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    cursor: pointer;
+}
+
+.song:last-child {
+    border-bottom: none;
+}
+
+.song:hover {
+    background: rgba(255,255,255,.1);
+    border-radius: 12px;
+}
+
+.number {
+    color: #ff3333;
+    font-weight: bold;
+    width: 25px;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-name {
+    font-weight: bold;
+}
+
+.song-artist {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.play-button {
+    background: #ff3333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="overlay">
+<div class="container">
 
-    <h1>ഇഷ്ടഗാനങ്ങൾ</h1>
+    <h1>🎵 MY MUSIC</h1>
+    <div class="subtitle">Listen to your favourite songs</div>
 
     <div class="player">
 
-        <img class="cover" src="cover.jpg">
+        <img src="background.jpg" class="cover" id="cover">
 
-        <div class="song">
-            <h2>My First Song</h2>
-            <p>My Music</p>
+        <div class="song-title" id="title">
+            Select a song
+        </div>
 
-            <audio controls>
-                <source src="song.mp3" type="audio/mpeg">
-            </audio>
+        <div class="artist" id="artist">
+            My Music
+        </div>
+
+        <audio id="audio" controls>
+            Your browser does not support audio.
+        </audio>
+
+    </div>
+
+    <div class="song-list">
+
+        <div class="song" onclick="playSong('song1.mp3','Song One','Artist One')">
+            <div class="number">01</div>
+
+            <div class="song-info">
+                <div class="song-name">Song One</div>
+                <div class="song-artist">Artist One</div>
+            </div>
+
+            <button class="play-button">▶</button>
+        </div>
+
+
+        <div class="song" onclick="playSong('song2.mp3','Song Two','Artist Two')">
+            <div class="number">02</div>
+
+            <div class="song-info">
+                <div class="song-name">Song Two</div>
+                <div class="song-artist">Artist Two</div>
+            </div>
+
+            <button class="play-button">▶</button>
+        </div>
+
+
+        <div class="song" onclick="playSong('song3.mp3','Song Three','Artist Three')">
+            <div class="number">03</div>
+
+            <div class="song-info">
+                <div class="song-name">Song Three</div>
+                <div class="song-artist">Artist Three</div>
+            </div>
+
+            <button class="play-button">▶</button>
         </div>
 
     </div>
 
+    <div class="footer">
+        © 2026 My Music
+    </div>
+
 </div>
 
-<div class="bottom">
-    <div class="button">🚌</div>
-    <div class="button">🔔</div>
-    <div class="button">🔊</div>
-    <div class="button">ⓘ</div>
-</div>
+
+<script>
+
+const audio = document.getElementById("audio");
+const title = document.getElementById("title");
+const artist = document.getElementById("artist");
+
+function playSong(file, songTitle, songArtist) {
+
+    audio.src = file;
+
+    title.innerText = songTitle;
+    artist.innerText = songArtist;
+
+    audio.play();
+}
+
+</script>
 
 </body>
 </html>
