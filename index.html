@@ -4,298 +4,431 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>JOJIFY — Music Player</title>
+<title>JOJIFY — Music & Radio</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+body{
+    font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(circle at top left, #252525 0%, #101010 35%, #050505 75%);
-    color: white;
-    min-height: 100vh;
-    padding-bottom: 110px;
+        radial-gradient(circle at top,#242424 0,#101010 42%,#050505 85%);
+    color:#fff;
+    min-height:100vh;
+    padding-bottom:160px;
 }
 
-header {
-    padding: 22px 18px 12px;
-    text-align: center;
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:25px 15px 17px;
 }
 
-.logo {
-    font-size: 34px;
-    font-weight: 900;
-    letter-spacing: 3px;
+.logo{
+    font-size:36px;
+    font-weight:900;
+    letter-spacing:3px;
 }
 
-.logo span {
-    color: #1ed760;
+.logo span{
+    color:#1ed760;
 }
 
-.tagline {
-    color: #999;
-    font-size: 12px;
-    margin-top: 5px;
+.subtitle{
+    color:#888;
+    font-size:12px;
+    margin-top:5px;
 }
 
-.search-box {
-    padding: 15px;
+/* MAIN NAV */
+
+.nav{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding:5px 15px 18px;
+    flex-wrap:wrap;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 15px 18px;
-    border-radius: 30px;
-    border: 1px solid #292929;
-    background: #181818;
-    color: white;
-    outline: none;
-    font-size: 15px;
+.nav button{
+    border:1px solid #303030;
+    background:#181818;
+    color:#aaa;
+    border-radius:22px;
+    padding:10px 17px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.search-box input:focus {
-    border-color: #1ed760;
+.nav button.active{
+    background:#1ed760;
+    color:#000;
+    border-color:#1ed760;
 }
 
-.categories {
-    display: flex;
-    gap: 9px;
-    overflow-x: auto;
-    padding: 3px 15px 15px;
-    scrollbar-width: none;
+/* SEARCH */
+
+.search-area{
+    padding:0 15px 14px;
 }
 
-.categories::-webkit-scrollbar {
-    display: none;
+.search-box{
+    width:100%;
+    padding:16px 19px;
+    border-radius:30px;
+    border:1px solid #292929;
+    background:#181818;
+    color:#fff;
+    outline:none;
+    font-size:15px;
 }
 
-.category {
-    white-space: nowrap;
-    padding: 9px 15px;
-    border-radius: 20px;
-    background: #191919;
-    color: #aaa;
-    border: 1px solid #292929;
-    cursor: pointer;
-    font-size: 13px;
+.search-box:focus{
+    border-color:#1ed760;
 }
 
-.category.active {
-    background: #1ed760;
-    color: #000;
-    border-color: #1ed760;
-    font-weight: bold;
+.hidden{
+    display:none !important;
 }
 
-.section-title {
-    padding: 8px 18px 12px;
-    font-size: 21px;
-    font-weight: 800;
+/* CATEGORY BUTTONS */
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:0 15px 18px;
 }
 
-.song-list {
-    padding: 0 12px;
+.categories::-webkit-scrollbar{
+    display:none;
 }
 
-.song {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 11px;
-    margin-bottom: 7px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.035);
-    cursor: pointer;
+.category{
+    white-space:nowrap;
+    border:1px solid #292929;
+    background:#181818;
+    color:#aaa;
+    padding:9px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
 }
 
-.song:hover {
-    background: rgba(255,255,255,0.08);
+.category.active{
+    background:#1ed760;
+    border-color:#1ed760;
+    color:#000;
+    font-weight:bold;
 }
 
-.cover {
-    width: 55px;
-    height: 55px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #222, #444);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
+/* RADIO TYPES */
+
+.radio-types{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:0 15px 18px;
 }
 
-.song-info {
-    flex: 1;
-    min-width: 0;
+.radio-types::-webkit-scrollbar{
+    display:none;
 }
 
-.song-title {
-    font-size: 15px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.radio-type{
+    white-space:nowrap;
+    border:1px solid #292929;
+    background:#181818;
+    color:#aaa;
+    padding:9px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
 }
 
-.song-artist {
-    color: #999;
-    font-size: 12px;
-    margin-top: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.radio-type.active{
+    background:#1ed760;
+    color:#000;
 }
 
-.play-small {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: #1ed760;
-    color: black;
-    font-size: 15px;
-    cursor: pointer;
+/* CONTENT */
+
+.heading{
+    padding:8px 17px 8px;
+    font-size:21px;
+    font-weight:800;
 }
 
-.empty {
-    text-align: center;
-    color: #777;
-    padding: 40px 20px;
+.status{
+    padding:0 18px 12px;
+    color:#888;
+    font-size:12px;
 }
 
-.player {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-    background: rgba(13,13,13,0.97);
-    backdrop-filter: blur(18px);
-    border-top: 1px solid #292929;
-    padding: 10px 14px 13px;
+.list{
+    padding:0 12px;
 }
 
-.now-playing {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    margin-bottom: 8px;
+/* ITEMS */
+
+.item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px;
+    margin-bottom:7px;
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    cursor:pointer;
+    transition:.15s;
 }
 
-.now-cover {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    background: linear-gradient(135deg,#1ed760,#0b6b35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.item:hover{
+    background:rgba(255,255,255,.08);
 }
 
-.now-info {
-    flex: 1;
-    min-width: 0;
+.item.playing{
+    background:rgba(30,215,96,.12);
+    border:1px solid rgba(30,215,96,.25);
 }
 
-.now-title {
-    font-size: 14px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.cover{
+    width:58px;
+    height:58px;
+    border-radius:9px;
+    object-fit:cover;
+    background:#222;
+    flex-shrink:0;
 }
 
-.now-artist {
-    color: #999;
-    font-size: 11px;
-    margin-top: 3px;
+.item-info{
+    min-width:0;
+    flex:1;
 }
 
-.heart {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 22px;
-    cursor: pointer;
+.item-title{
+    font-size:15px;
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
-.heart.active {
-    color: #ff477e;
+.item-sub{
+    color:#999;
+    font-size:12px;
+    margin-top:5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
-.progress-area {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.item-meta{
+    color:#666;
+    font-size:10px;
+    margin-top:4px;
 }
 
-.time {
-    font-size: 10px;
-    color: #888;
-    width: 32px;
-    text-align: center;
+.play-small{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:50%;
+    background:#1ed760;
+    color:#000;
+    cursor:pointer;
+    flex-shrink:0;
 }
 
-.progress {
-    flex: 1;
-    accent-color: #1ed760;
-    cursor: pointer;
+/* LIVE */
+
+.live{
+    color:#ff3838;
+    font-size:10px;
+    font-weight:bold;
 }
 
-.controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 8px;
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:45px 20px;
+    line-height:1.7;
 }
 
-.control {
-    border: none;
-    background: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
+/* LOADING */
+
+.loading{
+    text-align:center;
+    color:#aaa;
+    padding:35px 20px;
 }
 
-.main-play {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    background: white;
-    color: black;
-    font-size: 18px;
-    cursor: pointer;
+.spinner{
+    width:28px;
+    height:28px;
+    border:3px solid #333;
+    border-top-color:#1ed760;
+    border-radius:50%;
+    margin:0 auto 12px;
+    animation:spin .8s linear infinite;
 }
 
-.volume {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+@keyframes spin{
+    to{transform:rotate(360deg)}
 }
 
-.volume input {
-    width: 70px;
-    accent-color: #1ed760;
+/* PLAYER */
+
+.player{
+    position:fixed;
+    z-index:100;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(10,10,10,.97);
+    backdrop-filter:blur(18px);
+    border-top:1px solid #292929;
+    padding:10px 14px 14px;
 }
 
-@media (max-width: 600px) {
-    .volume {
-        display: none;
+.now{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.now-cover{
+    width:48px;
+    height:48px;
+    border-radius:8px;
+    object-fit:cover;
+    background:#222;
+    flex-shrink:0;
+}
+
+.now-info{
+    min-width:0;
+    flex:1;
+}
+
+.now-title{
+    font-size:14px;
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.now-sub{
+    color:#999;
+    font-size:11px;
+    margin-top:4px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.favorite{
+    border:0;
+    background:none;
+    color:#aaa;
+    font-size:23px;
+    cursor:pointer;
+}
+
+.favorite.active{
+    color:#ff477e;
+}
+
+/* PROGRESS */
+
+.progress-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.time{
+    width:35px;
+    text-align:center;
+    color:#888;
+    font-size:10px;
+}
+
+.progress{
+    flex:1;
+    accent-color:#1ed760;
+}
+
+/* CONTROLS */
+
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    margin-top:7px;
+}
+
+.control{
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.play-main{
+    width:47px;
+    height:47px;
+    border:0;
+    border-radius:50%;
+    background:#fff;
+    color:#000;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.volume{
+    position:absolute;
+    right:16px;
+    bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.volume input{
+    width:75px;
+    accent-color:#1ed760;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    .volume{
+        display:none;
     }
 
-    .logo {
-        font-size: 30px;
+    .logo{
+        font-size:31px;
     }
+
+    .controls{
+        gap:28px;
+    }
+
 }
 </style>
 </head>
@@ -303,51 +436,273 @@ header {
 <body>
 
 <header>
-    <div class="logo">JOJI<span>FY</span></div>
-    <div class="tagline">Your music. Your mood.</div>
+
+    <div class="logo">
+        JOJI<span>FY</span>
+    </div>
+
+    <div class="subtitle">
+        Music • Malayalam Radio • Worldwide Radio
+    </div>
+
 </header>
 
-<div class="search-box">
+
+<!-- MAIN NAVIGATION -->
+
+<div class="nav">
+
+    <button
+        id="musicTab"
+        class="active"
+        onclick="showMusic()">
+        🎵 Music
+    </button>
+
+    <button
+        id="malayalamTab"
+        onclick="showMalayalamRadio()">
+        🇮🇳 Malayalam Radio
+    </button>
+
+    <button
+        id="worldRadioTab"
+        onclick="showWorldRadio()">
+        🌍 World Radio
+    </button>
+
+</div>
+
+
+<!-- MUSIC SEARCH -->
+
+<div
+    id="musicSearchArea"
+    class="search-area">
+
     <input
-        type="text"
-        id="search"
-        placeholder="Search songs, artists or movies..."
-        oninput="renderSongs()"
-    >
+        id="musicSearch"
+        class="search-box"
+        type="search"
+        placeholder="Search songs, artists, genres..."
+        autocomplete="off">
+
 </div>
 
-<div class="categories">
-    <button class="category active" onclick="setCategory('All', this)">All</button>
-    <button class="category" onclick="setCategory('Chill', this)">🌙 Chill</button>
-    <button class="category" onclick="setCategory('Sad', this)">💔 Sad</button>
-    <button class="category" onclick="setCategory('Happy', this)">😊 Happy</button>
-    <button class="category" onclick="setCategory('Romantic', this)">❤️ Romantic</button>
-    <button class="category" onclick="setCategory('Melody', this)">🎵 Melody</button>
-    <button class="category" onclick="setCategory('Feel Good', this)">✨ Feel Good</button>
+
+<!-- RADIO SEARCH -->
+
+<div
+    id="radioSearchArea"
+    class="search-area hidden">
+
+    <input
+        id="radioSearch"
+        class="search-box"
+        type="search"
+        placeholder="Search radio stations..."
+        autocomplete="off">
+
 </div>
 
-<div class="section-title">Made for you</div>
 
-<div id="songList" class="song-list"></div>
+<!-- MUSIC CATEGORIES -->
+
+<div
+    id="musicCategories"
+    class="categories">
+
+    <button
+        class="category active"
+        data-query="">
+        🌍 All
+    </button>
+
+    <button
+        class="category"
+        data-query="chillout">
+        🌙 Chill
+    </button>
+
+    <button
+        class="category"
+        data-query="sad">
+        💔 Sad
+    </button>
+
+    <button
+        class="category"
+        data-query="happy">
+        😊 Happy
+    </button>
+
+    <button
+        class="category"
+        data-query="romance">
+        ❤️ Romantic
+    </button>
+
+    <button
+        class="category"
+        data-query="pop">
+        🎵 Melody
+    </button>
+
+    <button
+        class="category"
+        data-query="energetic">
+        ✨ Feel Good
+    </button>
+
+</div>
+
+
+<!-- MALAYALAM RADIO QUICK FILTERS -->
+
+<div
+    id="malayalamTypes"
+    class="radio-types hidden">
+
+    <button
+        class="radio-type active"
+        onclick="loadMalayalamRadio('')">
+        🇮🇳 All Malayalam
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadMalayalamRadio('India')">
+        🇮🇳 Kerala / India
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadMalayalamRadio('United Arab Emirates')">
+        🇦🇪 UAE
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadMalayalamRadio('Saudi Arabia')">
+        🇸🇦 Saudi Arabia
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadMalayalamRadio('Qatar')">
+        🇶🇦 Qatar
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadMalayalamRadio('Kuwait')">
+        🇰🇼 Kuwait
+    </button>
+
+</div>
+
+
+<div
+    id="worldRadioTypes"
+    class="radio-types hidden">
+
+    <button
+        class="radio-type active"
+        onclick="loadWorldRadio('')">
+        🌍 Worldwide
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadWorldRadio('India')">
+        🇮🇳 India
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadWorldRadio('United Kingdom')">
+        🇬🇧 UK
+    </button>
+
+    <button
+        class="radio-type"
+        onclick="loadWorldRadio('United States')">
+        🇺🇸 USA
+    </button>
+
+</div>
+
+
+<div
+    id="heading"
+    class="heading">
+    Discover Music
+</div>
+
+
+<div
+    id="status"
+    class="status">
+    Search for music or choose a category.
+</div>
+
+
+<div
+    id="list"
+    class="list">
+
+    <div class="empty">
+        🎵 Search for music to begin
+    </div>
+
+</div>
+
+
+<!-- PLAYER -->
 
 <div class="player">
 
-    <div class="now-playing">
+    <div class="now">
 
-        <div class="now-cover">🎵</div>
+        <img
+            id="nowCover"
+            class="now-cover"
+            src=""
+            alt="">
 
         <div class="now-info">
-            <div id="nowTitle" class="now-title">Select a song</div>
-            <div id="nowArtist" class="now-artist">JOJIFY</div>
+
+            <div
+                id="nowTitle"
+                class="now-title">
+                Nothing playing
+            </div>
+
+            <div
+                id="nowSub"
+                class="now-sub">
+                Choose music or radio
+            </div>
+
         </div>
 
-        <button id="heart" class="heart" onclick="toggleFavorite()">♡</button>
+        <button
+            id="favorite"
+            class="favorite"
+            onclick="toggleFavorite()">
+            ♡
+        </button>
 
     </div>
 
-    <div class="progress-area">
 
-        <span id="currentTime" class="time">0:00</span>
+    <div class="progress-row">
+
+        <span
+            id="currentTime"
+            class="time">
+            0:00
+        </span>
 
         <input
             id="progress"
@@ -355,436 +710,1608 @@ header {
             type="range"
             min="0"
             max="100"
-            value="0"
-            oninput="seekSong()"
-        >
+            value="0">
 
-        <span id="duration" class="time">0:00</span>
+        <span
+            id="duration"
+            class="time">
+            0:00
+        </span>
 
     </div>
+
 
     <div class="controls">
 
-        <button class="control" onclick="previousSong()">⏮</button>
+        <button
+            class="control"
+            onclick="previousItem()">
+            ⏮
+        </button>
 
-        <button id="playButton" class="main-play" onclick="togglePlay()">▶</button>
+        <button
+            id="playButton"
+            class="play-main"
+            onclick="togglePlay()">
+            ▶
+        </button>
 
-        <button class="control" onclick="nextSong()">⏭</button>
+        <button
+            class="control"
+            onclick="nextItem()">
+            ⏭
+        </button>
 
     </div>
 
+
     <div class="volume">
+
         🔊
+
         <input
             id="volume"
             type="range"
             min="0"
             max="1"
             step="0.01"
-            value="0.8"
-            oninput="changeVolume()"
-        >
+            value="0.8">
+
     </div>
 
 </div>
 
-<audio id="audio"></audio>
+
+<audio
+    id="audio"
+    preload="none">
+</audio>
+
 
 <script>
 
-/* =========================================
-   JOJIFY SONG LIBRARY
-   Legal demo/royalty-free audio examples
-========================================= */
+/* =====================================================
+   JOJIFY CONFIG
+===================================================== */
 
-const songs = [
+const JAMENDO_CLIENT_ID = "55c894cf";
 
-    {
-        title: "SoundHelix Song 1",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Chill",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-    },
+const JAMENDO_API =
+    "https://api.jamendo.com/v3.0/tracks/";
 
-    {
-        title: "SoundHelix Song 2",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Feel Good",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-    },
+const RADIO_API =
+    "https://de1.api.radio-browser.info/json/stations/search";
 
-    {
-        title: "SoundHelix Song 3",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Melody",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-    },
 
-    {
-        title: "SoundHelix Song 4",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Happy",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-    },
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-    {
-        title: "SoundHelix Song 5",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Romantic",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-    },
+const audio =
+    document.getElementById("audio");
 
-    {
-        title: "SoundHelix Song 6",
-        artist: "SoundHelix",
-        movie: "JOJIFY Demo",
-        category: "Sad",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-    }
+const list =
+    document.getElementById("list");
 
-];
+const statusText =
+    document.getElementById("status");
 
-let currentList = songs;
+const heading =
+    document.getElementById("heading");
+
+const musicSearch =
+    document.getElementById("musicSearch");
+
+const radioSearch =
+    document.getElementById("radioSearch");
+
+const musicSearchArea =
+    document.getElementById("musicSearchArea");
+
+const radioSearchArea =
+    document.getElementById("radioSearchArea");
+
+const musicCategories =
+    document.getElementById("musicCategories");
+
+const malayalamTypes =
+    document.getElementById("malayalamTypes");
+
+const worldRadioTypes =
+    document.getElementById("worldRadioTypes");
+
+const playButton =
+    document.getElementById("playButton");
+
+const progress =
+    document.getElementById("progress");
+
+const volume =
+    document.getElementById("volume");
+
+const nowTitle =
+    document.getElementById("nowTitle");
+
+const nowSub =
+    document.getElementById("nowSub");
+
+const nowCover =
+    document.getElementById("nowCover");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+const favoriteButton =
+    document.getElementById("favorite");
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentMode = "music";
+
+let items = [];
+
 let currentIndex = -1;
-let currentSong = null;
+
+let currentItem = null;
+
 let favorite = false;
 
-const audio = document.getElementById("audio");
-const playButton = document.getElementById("playButton");
-const progress = document.getElementById("progress");
-const volume = document.getElementById("volume");
+let searchTimer;
+
+
+/* =====================================================
+   VOLUME
+===================================================== */
 
 audio.volume = 0.8;
 
 
-/* =========================================
+/* =====================================================
    FORMAT TIME
-========================================= */
+===================================================== */
 
-function formatTime(seconds) {
+function formatTime(seconds){
 
-    if (!isFinite(seconds)) return "0:00";
+    if(!isFinite(seconds)){
+        return "0:00";
+    }
 
-    const minutes = Math.floor(seconds / 60);
+    const minutes =
+        Math.floor(seconds / 60);
 
-    const secs = Math.floor(seconds % 60)
+    const secondsPart =
+        Math.floor(seconds % 60)
         .toString()
-        .padStart(2, "0");
+        .padStart(2,"0");
 
-    return minutes + ":" + secs;
+    return minutes + ":" + secondsPart;
 }
 
 
-/* =========================================
-   DISPLAY SONGS
-========================================= */
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
-function renderSongs() {
+function escapeHtml(value){
 
-    const search =
-        document.getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
-    const filtered = songs.filter(song => {
-
-        const matchesSearch =
-            song.title.toLowerCase().includes(search) ||
-            song.artist.toLowerCase().includes(search) ||
-            song.movie.toLowerCase().includes(search);
-
-        const matchesCategory =
-            selectedCategory === "All" ||
-            song.category === selectedCategory;
-
-        return matchesSearch && matchesCategory;
-
-    });
-
-    currentList = filtered;
-
-    const list = document.getElementById("songList");
-
-    list.innerHTML = "";
-
-    if (filtered.length === 0) {
-
-        list.innerHTML =
-            '<div class="empty">😕 No songs found</div>';
-
-        return;
-    }
-
-    filtered.forEach((song, index) => {
-
-        const div = document.createElement("div");
-
-        div.className = "song";
-
-        div.onclick = () => playSong(song, filtered);
-
-        div.innerHTML = `
-
-            <div class="cover">🎵</div>
-
-            <div class="song-info">
-
-                <div class="song-title">
-                    ${song.title}
-                </div>
-
-                <div class="song-artist">
-                    ${song.artist} • ${song.category}
-                </div>
-
-            </div>
-
-            <button
-                class="play-small"
-                onclick="event.stopPropagation(); playSong(songs.indexOf(song), filtered)"
-            >
-                ▶
-            </button>
-
-        `;
-
-        list.appendChild(div);
-
-    });
 }
 
 
-/* =========================================
-   CATEGORY
-========================================= */
+/* =====================================================
+   RESET FILTER BUTTONS
+===================================================== */
 
-let selectedCategory = "All";
+function resetRadioButtons(container){
 
-function setCategory(category, button) {
+    container
+    .querySelectorAll(".radio-type")
+    .forEach(
+        button =>
+        button.classList.remove("active")
+    );
 
-    selectedCategory = category;
-
-    document.querySelectorAll(".category")
-        .forEach(btn => btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    renderSongs();
 }
 
 
-/* =========================================
-   PLAY SONG
-========================================= */
+/* =====================================================
+   SHOW MUSIC
+===================================================== */
 
-function playSong(songOrIndex, list = currentList) {
+function showMusic(){
 
-    let song;
+    currentMode = "music";
 
-    if (typeof songOrIndex === "number") {
+    document
+    .getElementById("musicTab")
+    .classList.add("active");
 
-        song = songs[songOrIndex];
+    document
+    .getElementById("malayalamTab")
+    .classList.remove("active");
 
-        currentIndex = list.indexOf(song);
+    document
+    .getElementById("worldRadioTab")
+    .classList.remove("active");
 
-    } else {
 
-        song = songOrIndex;
+    musicSearchArea
+    .classList.remove("hidden");
 
-        currentIndex = list.indexOf(song);
+    radioSearchArea
+    .classList.add("hidden");
 
-    }
+    musicCategories.style.display =
+        "flex";
 
-    if (!song) return;
+    malayalamTypes
+    .classList.add("hidden");
 
-    currentSong = song;
-    currentList = list;
+    worldRadioTypes
+    .classList.add("hidden");
 
-    audio.src = song.url;
 
-    document.getElementById("nowTitle").textContent =
-        song.title;
+    heading.textContent =
+        "Discover Music";
 
-    document.getElementById("nowArtist").textContent =
-        song.artist + " • " + song.movie;
+    statusText.textContent =
+        "Search for music or choose a category.";
 
-    audio.play()
-        .then(() => {
+    list.innerHTML =
+        '<div class="empty">🎵 Search for music to begin</div>';
 
-            playButton.textContent = "❚❚";
+    items = [];
 
-        })
-        .catch(() => {
+}
 
-            playButton.textContent = "▶";
 
-            alert(
-                "This demo audio could not be played. Please try another track."
+/* =====================================================
+   SHOW MALAYALAM RADIO
+===================================================== */
+
+function showMalayalamRadio(){
+
+    currentMode = "malayalam";
+
+    document
+    .getElementById("musicTab")
+    .classList.remove("active");
+
+    document
+    .getElementById("malayalamTab")
+    .classList.add("active");
+
+    document
+    .getElementById("worldRadioTab")
+    .classList.remove("active");
+
+
+    musicSearchArea
+    .classList.add("hidden");
+
+    radioSearchArea
+    .classList.remove("hidden");
+
+    musicCategories.style.display =
+        "none";
+
+    malayalamTypes
+    .classList.remove("hidden");
+
+    worldRadioTypes
+    .classList.add("hidden");
+
+
+    heading.textContent =
+        "🇮🇳 Malayalam Radio";
+
+    statusText.textContent =
+        "Finding Malayalam radio stations...";
+
+    radioSearch.value = "";
+
+
+    loadMalayalamRadio("");
+
+}
+
+
+/* =====================================================
+   SHOW WORLD RADIO
+===================================================== */
+
+function showWorldRadio(){
+
+    currentMode = "world";
+
+    document
+    .getElementById("musicTab")
+    .classList.remove("active");
+
+    document
+    .getElementById("malayalamTab")
+    .classList.remove("active");
+
+    document
+    .getElementById("worldRadioTab")
+    .classList.add("active");
+
+
+    musicSearchArea
+    .classList.add("hidden");
+
+    radioSearchArea
+    .classList.remove("hidden");
+
+    musicCategories.style.display =
+        "none";
+
+    malayalamTypes
+    .classList.add("hidden");
+
+    worldRadioTypes
+    .classList.remove("hidden");
+
+
+    heading.textContent =
+        "🌍 World Radio";
+
+    statusText.textContent =
+        "Search worldwide radio stations.";
+
+    radioSearch.value = "";
+
+
+    loadWorldRadio("");
+
+}
+
+
+/* =====================================================
+   MUSIC SEARCH
+===================================================== */
+
+musicSearch.addEventListener(
+    "input",
+    function(){
+
+        clearTimeout(searchTimer);
+
+        searchTimer =
+            setTimeout(
+                () => {
+
+                    const query =
+                        musicSearch.value.trim();
+
+                    if(query){
+                        searchMusic(query);
+                    }
+
+                },
+                500
             );
 
-        });
-
-    favorite = false;
-
-    updateHeart();
-
-}
+    }
+);
 
 
-/* =========================================
-   PLAY / PAUSE
-========================================= */
+musicSearch.addEventListener(
+    "keydown",
+    function(event){
 
-function togglePlay() {
+        if(event.key === "Enter"){
 
-    if (!currentSong) {
+            const query =
+                musicSearch.value.trim();
 
-        if (currentList.length > 0) {
-
-            playSong(currentList[0], currentList);
+            if(query){
+                searchMusic(query);
+            }
 
         }
 
+    }
+);
+
+
+/* =====================================================
+   MUSIC CATEGORIES
+===================================================== */
+
+document
+.querySelectorAll(".category")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".category")
+            .forEach(
+                btn =>
+                btn.classList.remove("active")
+            );
+
+            this.classList.add("active");
+
+            const query =
+                this.dataset.query;
+
+
+            if(!query){
+
+                musicSearch.value = "";
+
+                list.innerHTML =
+                    '<div class="empty">🎵 Search for music to begin</div>';
+
+                statusText.textContent =
+                    "Search for music or choose a category.";
+
+                return;
+
+            }
+
+
+            musicSearch.value =
+                query;
+
+            searchMusic(query);
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   JAMENDO MUSIC SEARCH
+===================================================== */
+
+async function searchMusic(query){
+
+    currentMode = "music";
+
+    heading.textContent =
+        "Music Results";
+
+    statusText.textContent =
+        "Searching Jamendo...";
+
+
+    list.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+            Searching music...
+        </div>
+    `;
+
+
+    try{
+
+        const url =
+            JAMENDO_API +
+            "?client_id=" +
+            encodeURIComponent(JAMENDO_CLIENT_ID) +
+            "&format=json" +
+            "&limit=25" +
+            "&search=" +
+            encodeURIComponent(query) +
+            "&audioformat=mp32" +
+            "&imagesize=200" +
+            "&type=single+albumtrack";
+
+
+        const response =
+            await fetch(url);
+
+
+        if(!response.ok){
+            throw new Error(
+                "Jamendo HTTP " +
+                response.status
+            );
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            !data.results ||
+            data.results.length === 0
+        ){
+
+            items = [];
+
+            list.innerHTML = `
+                <div class="empty">
+                    😕 No matching tracks found.<br><br>
+                    Try another song, artist or genre.
+                </div>
+            `;
+
+            statusText.textContent =
+                "No results.";
+
+            return;
+
+        }
+
+
+        items =
+            data.results.filter(
+                track => track.audio
+            );
+
+
+        statusText.textContent =
+            items.length +
+            " tracks found";
+
+
+        renderMusic();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+            <div class="empty">
+                ⚠️ Could not connect to Jamendo.<br><br>
+                Check your internet connection
+                and Client ID.
+            </div>
+        `;
+
+        statusText.textContent =
+            "Music search failed.";
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER MUSIC
+===================================================== */
+
+function renderMusic(){
+
+    list.innerHTML = "";
+
+
+    if(!items.length){
+
+        list.innerHTML =
+            '<div class="empty">No music found.</div>';
+
+        return;
+
+    }
+
+
+    items.forEach(
+        (track,index) => {
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "item";
+
+
+            if(
+                currentItem &&
+                currentItem.id === track.id
+            ){
+
+                row.classList.add("playing");
+
+            }
+
+
+            const image =
+                track.image ||
+                track.album_image ||
+                "";
+
+
+            row.innerHTML = `
+
+                <img
+                    class="cover"
+                    src="${escapeHtml(image)}"
+                    alt=""
+                    onerror="this.style.display='none'">
+
+                <div class="item-info">
+
+                    <div class="item-title">
+                        ${escapeHtml(track.name)}
+                    </div>
+
+                    <div class="item-sub">
+                        ${escapeHtml(
+                            track.artist_name ||
+                            "Unknown artist"
+                        )}
+                    </div>
+
+                    <div class="item-meta">
+                        ${formatTime(
+                            Number(track.duration)
+                        )}
+                    </div>
+
+                </div>
+
+                <button
+                    class="play-small"
+                    type="button">
+                    ▶
+                </button>
+
+            `;
+
+
+            row
+            .querySelector(".play-small")
+            .addEventListener(
+                "click",
+                function(event){
+
+                    event.stopPropagation();
+
+                    playItem(index);
+
+                }
+            );
+
+
+            row.addEventListener(
+                "click",
+                () => playItem(index)
+            );
+
+
+            list.appendChild(row);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RADIO SEARCH INPUT
+===================================================== */
+
+radioSearch.addEventListener(
+    "input",
+    function(){
+
+        clearTimeout(searchTimer);
+
+        searchTimer =
+            setTimeout(
+                () => {
+
+                    const query =
+                        radioSearch.value.trim();
+
+                    if(query.length >= 2){
+
+                        searchRadio(
+                            query,
+                            currentMode === "malayalam"
+                        );
+
+                    }
+
+                },
+                500
+            );
+
+    }
+);
+
+
+radioSearch.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            const query =
+                radioSearch.value.trim();
+
+            if(query.length >= 2){
+
+                searchRadio(
+                    query,
+                    currentMode === "malayalam"
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MALAYALAM RADIO
+===================================================== */
+
+async function loadMalayalamRadio(country){
+
+    currentMode = "malayalam";
+
+    heading.textContent =
+        "🇮🇳 Malayalam Radio";
+
+    statusText.textContent =
+        "Finding Malayalam stations...";
+
+
+    list.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+            Loading Malayalam radio...
+        </div>
+    `;
+
+
+    try{
+
+        let url =
+            RADIO_API +
+            "?language=malayalam" +
+            "&hidebroken=true" +
+            "&limit=50" +
+            "&order=votes" +
+            "&reverse=true";
+
+
+        if(country){
+            url +=
+                "&country=" +
+                encodeURIComponent(country);
+        }
+
+
+        const response =
+            await fetch(url);
+
+
+        if(!response.ok){
+            throw new Error(
+                "Radio API HTTP " +
+                response.status
+            );
+        }
+
+
+        const data =
+            await response.json();
+
+
+        items =
+            data.filter(
+                station =>
+                    station.url_resolved
+            );
+
+
+        if(!items.length){
+
+            list.innerHTML = `
+                <div class="empty">
+                    📻 No Malayalam stations found.<br><br>
+                    Try the search box above.
+                </div>
+            `;
+
+            statusText.textContent =
+                "No Malayalam stations found.";
+
+            return;
+
+        }
+
+
+        statusText.textContent =
+            items.length +
+            " Malayalam stations";
+
+
+        renderRadio();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+            <div class="empty">
+                ⚠️ Malayalam radio could not be loaded.<br><br>
+                Try again in a moment.
+            </div>
+        `;
+
+        statusText.textContent =
+            "Radio loading failed.";
+
+    }
+
+}
+
+
+/* =====================================================
+   WORLD RADIO
+===================================================== */
+
+async function loadWorldRadio(country){
+
+    currentMode = "world";
+
+    heading.textContent =
+        "🌍 World Radio";
+
+    statusText.textContent =
+        "Loading radio stations...";
+
+
+    list.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+            Loading radio...
+        </div>
+    `;
+
+
+    try{
+
+        let url =
+            RADIO_API +
+            "?hidebroken=true" +
+            "&limit=50" +
+            "&order=votes" +
+            "&reverse=true";
+
+
+        if(country){
+
+            url +=
+                "&country=" +
+                encodeURIComponent(country);
+
+        }
+
+
+        const response =
+            await fetch(url);
+
+
+        if(!response.ok){
+            throw new Error(
+                "Radio API HTTP " +
+                response.status
+            );
+        }
+
+
+        const data =
+            await response.json();
+
+
+        items =
+            data.filter(
+                station =>
+                    station.url_resolved
+            );
+
+
+        statusText.textContent =
+            items.length +
+            " stations found";
+
+
+        renderRadio();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+            <div class="empty">
+                ⚠️ Radio could not be loaded.<br><br>
+                Try again later.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   SEARCH RADIO
+===================================================== */
+
+async function searchRadio(
+    query,
+    malayalamOnly
+){
+
+    heading.textContent =
+        malayalamOnly
+        ? "🇮🇳 Malayalam Radio"
+        : "🌍 Radio Search";
+
+
+    statusText.textContent =
+        "Searching radio stations...";
+
+
+    list.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+            Searching radio...
+        </div>
+    `;
+
+
+    try{
+
+        let url =
+            RADIO_API +
+            "?name=" +
+            encodeURIComponent(query) +
+            "&hidebroken=true" +
+            "&limit=50" +
+            "&order=votes" +
+            "&reverse=true";
+
+
+        if(malayalamOnly){
+
+            url +=
+                "&language=malayalam";
+
+        }
+
+
+        const response =
+            await fetch(url);
+
+
+        if(!response.ok){
+            throw new Error(
+                "Radio search failed"
+            );
+        }
+
+
+        const data =
+            await response.json();
+
+
+        items =
+            data.filter(
+                station =>
+                    station.url_resolved
+            );
+
+
+        if(!items.length){
+
+            list.innerHTML = `
+                <div class="empty">
+                    😕 No matching radio stations.<br><br>
+                    Try another station name.
+                </div>
+            `;
+
+            statusText.textContent =
+                "No stations found.";
+
+            return;
+
+        }
+
+
+        statusText.textContent =
+            items.length +
+            " stations found";
+
+
+        renderRadio();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+            <div class="empty">
+                ⚠️ Radio search failed.<br><br>
+                Please try again.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER RADIO
+===================================================== */
+
+function renderRadio(){
+
+    list.innerHTML = "";
+
+
+    items.forEach(
+        (station,index) => {
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "item";
+
+
+            if(
+                currentItem &&
+                currentItem.stationuuid ===
+                station.stationuuid
+            ){
+
+                row.classList.add("playing");
+
+            }
+
+
+            const image =
+                station.favicon || "";
+
+
+            row.innerHTML = `
+
+                <img
+                    class="cover"
+                    src="${escapeHtml(image)}"
+                    alt=""
+                    onerror="this.style.display='none'">
+
+                <div class="item-info">
+
+                    <div class="item-title">
+                        ${escapeHtml(
+                            station.name ||
+                            "Radio Station"
+                        )}
+                    </div>
+
+                    <div class="item-sub">
+
+                        <span class="live">
+                            ● LIVE
+                        </span>
+
+                        &nbsp;
+
+                        ${escapeHtml(
+                            station.country ||
+                            "Worldwide"
+                        )}
+
+                    </div>
+
+                    <div class="item-meta">
+
+                        ${escapeHtml(
+                            station.language ||
+                            "Radio"
+                        )}
+
+                        ${station.codec
+                        ? " • " +
+                          escapeHtml(
+                              station.codec
+                          )
+                        : ""}
+
+                        ${station.bitrate
+                        ? " • " +
+                          station.bitrate +
+                          " kbps"
+                        : ""}
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="play-small"
+                    type="button">
+                    ▶
+                </button>
+
+            `;
+
+
+            row
+            .querySelector(".play-small")
+            .addEventListener(
+                "click",
+                function(event){
+
+                    event.stopPropagation();
+
+                    playItem(index);
+
+                }
+            );
+
+
+            row.addEventListener(
+                "click",
+                () => playItem(index)
+            );
+
+
+            list.appendChild(row);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   PLAY ITEM
+===================================================== */
+
+async function playItem(index){
+
+    if(
+        index < 0 ||
+        index >= items.length
+    ){
         return;
     }
 
-    if (audio.paused) {
+
+    const item =
+        items[index];
+
+
+    currentIndex =
+        index;
+
+    currentItem =
+        item;
+
+    favorite =
+        false;
+
+    updateFavorite();
+
+
+    audio.pause();
+
+
+    /* MUSIC */
+
+    if(currentMode === "music"){
+
+        nowTitle.textContent =
+            item.name ||
+            "Unknown song";
+
+
+        nowSub.textContent =
+            (
+                item.artist_name ||
+                "Unknown artist"
+            ) +
+            " • Jamendo";
+
+
+        nowCover.src =
+            item.image ||
+            item.album_image ||
+            "";
+
+
+        audio.src =
+            item.audio;
+
+
+        progress.value =
+            0;
+
+        currentTime.textContent =
+            "0:00";
+
+        duration.textContent =
+            formatTime(
+                Number(item.duration)
+            );
+
+    }
+
+
+    /* RADIO */
+
+    else{
+
+        nowTitle.textContent =
+            item.name ||
+            "Radio Station";
+
+
+        nowSub.textContent =
+            "🔴 LIVE • " +
+            (
+                item.country ||
+                "Worldwide"
+            );
+
+
+        nowCover.src =
+            item.favicon ||
+            "";
+
+
+        audio.src =
+            item.url_resolved;
+
+
+        progress.value =
+            0;
+
+        currentTime.textContent =
+            "LIVE";
+
+        duration.textContent =
+            "LIVE";
+
+
+        /* Radio Browser click counter */
+
+        if(item.stationuuid){
+
+            fetch(
+                "https://de1.api.radio-browser.info/json/url/" +
+                encodeURIComponent(
+                    item.stationuuid
+                )
+            ).catch(
+                () => {}
+            );
+
+        }
+
+    }
+
+
+    renderCurrentList();
+
+
+    try{
+
+        await audio.play();
+
+        playButton.textContent =
+            "❚❚";
+
+    }catch(error){
+
+        console.error(error);
+
+        playButton.textContent =
+            "▶";
+
+        alert(
+            "This stream could not be played. Try another station or track."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER CURRENT LIST
+===================================================== */
+
+function renderCurrentList(){
+
+    if(currentMode === "music"){
+        renderMusic();
+    }else{
+        renderRadio();
+    }
+
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+function togglePlay(){
+
+    if(!currentItem){
+
+        if(items.length){
+            playItem(0);
+        }
+
+        return;
+
+    }
+
+
+    if(audio.paused){
 
         audio.play();
 
-        playButton.textContent = "❚❚";
-
-    } else {
+    }else{
 
         audio.pause();
 
-        playButton.textContent = "▶";
+    }
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextItem(){
+
+    if(!items.length){
+        return;
+    }
+
+
+    const next =
+        (currentIndex + 1)
+        % items.length;
+
+
+    playItem(next);
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousItem(){
+
+    if(!items.length){
+        return;
+    }
+
+
+    const previous =
+        (
+            currentIndex -
+            1 +
+            items.length
+        )
+        % items.length;
+
+
+    playItem(previous);
+
+}
+
+
+/* =====================================================
+   AUDIO PLAY
+===================================================== */
+
+audio.addEventListener(
+    "play",
+    function(){
+
+        playButton.textContent =
+            "❚❚";
 
     }
-}
+);
 
 
-/* =========================================
-   NEXT
-========================================= */
+/* =====================================================
+   AUDIO PAUSE
+===================================================== */
 
-function nextSong() {
+audio.addEventListener(
+    "pause",
+    function(){
 
-    if (!currentList.length) return;
+        playButton.textContent =
+            "▶";
 
-    currentIndex =
-        (currentIndex + 1) % currentList.length;
-
-    playSong(
-        currentList[currentIndex],
-        currentList
-    );
-}
+    }
+);
 
 
-/* =========================================
-   PREVIOUS
-========================================= */
+/* =====================================================
+   MUSIC PROGRESS
+===================================================== */
 
-function previousSong() {
+audio.addEventListener(
+    "timeupdate",
+    function(){
 
-    if (!currentList.length) return;
-
-    currentIndex =
-        (currentIndex - 1 + currentList.length)
-        % currentList.length;
-
-    playSong(
-        currentList[currentIndex],
-        currentList
-    );
-}
+        if(
+            currentMode !== "music" ||
+            !audio.duration
+        ){
+            return;
+        }
 
 
-/* =========================================
-   AUDIO EVENTS
-========================================= */
-
-audio.addEventListener("timeupdate", () => {
-
-    if (!audio.duration) return;
-
-    progress.value =
-        (audio.currentTime / audio.duration) * 100;
-
-    document.getElementById("currentTime")
-        .textContent =
-        formatTime(audio.currentTime);
-
-    document.getElementById("duration")
-        .textContent =
-        formatTime(audio.duration);
-
-});
+        progress.value =
+            (
+                audio.currentTime /
+                audio.duration
+            ) * 100;
 
 
-audio.addEventListener("ended", () => {
+        currentTime.textContent =
+            formatTime(
+                audio.currentTime
+            );
 
-    nextSong();
 
-});
+        duration.textContent =
+            formatTime(
+                audio.duration
+            );
+
+    }
+);
 
 
-/* =========================================
+/* =====================================================
+   LOADED METADATA
+===================================================== */
+
+audio.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        if(currentMode === "music"){
+
+            duration.textContent =
+                formatTime(
+                    audio.duration
+                );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   NEXT AFTER MUSIC ENDS
+===================================================== */
+
+audio.addEventListener(
+    "ended",
+    function(){
+
+        if(currentMode === "music"){
+            nextItem();
+        }
+
+    }
+);
+
+
+/* =====================================================
    SEEK
-========================================= */
+===================================================== */
 
-function seekSong() {
+progress.addEventListener(
+    "input",
+    function(){
 
-    if (!audio.duration) return;
+        if(
+            currentMode !== "music" ||
+            !audio.duration
+        ){
+            return;
+        }
 
-    audio.currentTime =
-        (progress.value / 100) * audio.duration;
 
-}
+        audio.currentTime =
+            (
+                Number(progress.value) /
+                100
+            ) *
+            audio.duration;
+
+    }
+);
 
 
-/* =========================================
+/* =====================================================
    VOLUME
-========================================= */
+===================================================== */
 
-function changeVolume() {
+volume.addEventListener(
+    "input",
+    function(){
 
-    audio.volume = volume.value;
+        audio.volume =
+            Number(volume.value);
 
-}
+    }
+);
 
 
-/* =========================================
+/* =====================================================
    FAVORITE
-========================================= */
+===================================================== */
 
-function toggleFavorite() {
+function toggleFavorite(){
 
-    if (!currentSong) return;
+    if(!currentItem){
+        return;
+    }
 
-    favorite = !favorite;
 
-    updateHeart();
+    favorite =
+        !favorite;
+
+
+    updateFavorite();
 
 }
 
 
-function updateHeart() {
+function updateFavorite(){
 
-    const heart =
-        document.getElementById("heart");
+    favoriteButton.textContent =
+        favorite
+        ? "♥"
+        : "♡";
 
-    heart.textContent =
-        favorite ? "♥" : "♡";
 
-    heart.classList.toggle(
+    favoriteButton.classList.toggle(
         "active",
         favorite
     );
@@ -792,13 +2319,13 @@ function updateHeart() {
 }
 
 
-/* =========================================
-   START
-========================================= */
+/* =====================================================
+   START JOJIFY
+===================================================== */
 
-renderSongs();
+showMusic();
 
 </script>
 
 </body>
-    </html>
+</html>
