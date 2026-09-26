@@ -204,9 +204,7 @@ audio {
     </div>
 
 </div>
-
 <script>
-
 const audio = document.getElementById("audio");
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
@@ -214,35 +212,28 @@ const cover = document.getElementById("cover");
 const results = document.getElementById("results");
 const searchInput = document.getElementById("searchInput");
 
-async function searchSongs() {
-
+function searchSongs() {
     const term = searchInput.value.trim();
 
     if (!term) {
         results.innerHTML =
-            '<div class="message">Type a song or artist name.</div>';
+            '<div class="message">Type a song or artist name 🎵</div>';
         return;
     }
 
     results.innerHTML =
         '<div class="message">Searching... 🔎</div>';
 
-    try {
+    const callbackName =
+        "itunesCallback_" + Date.now();
 
-        const url =
-            "https://itunes.apple.com/search?term=" +
-            encodeURIComponent(term) +
-            "&media=music&entity=song&limit=20&country=IN";
+    window[callbackName] = function(data) {
 
-        const response = await fetch(url);
-
-        const data = await response.json();
+        delete window[callbackName];
 
         if (!data.results || data.results.length === 0) {
-
             results.innerHTML =
                 '<div class="message">No songs found.</div>';
-
             return;
         }
 
@@ -250,80 +241,85 @@ async function searchSongs() {
 
         data.results.forEach(song => {
 
-            const div = document.createElement("div");
+            if (!song.trackName) return;
 
+            const div = document.createElement("div");
             div.className = "result";
 
-            div.innerHTML = `
+            const artwork =
+                song.artworkUrl100
+                ? song.artworkUrl100.replace(/^http:/, "https:")
+                : "background.jpg";
 
-                <img src="${song.artworkUrl100 || 'background.jpg'}">
+            div.innerHTML = `
+                <img src="${artwork}" alt="Album">
 
                 <div class="info">
-
                     <div class="name">
                         ${escapeHTML(song.trackName)}
                     </div>
 
                     <div class="artist-name">
-                        ${escapeHTML(song.artistName)}
+                        ${escapeHTML(song.artistName || "Unknown Artist")}
                     </div>
-
                 </div>
 
-                <button class="play">
-                    ▶
-                </button>
+                <button class="play">▶</button>
             `;
 
-            div.querySelector(".play").onclick = () => {
+            div.querySelector(".play").onclick = function() {
 
                 if (!song.previewUrl) {
                     alert("Preview not available for this song.");
                     return;
                 }
 
-                audio.src = song.previewUrl;
+                audio.src =
+                    song.previewUrl.replace(/^http:/, "https:");
 
                 title.textContent = song.trackName;
+                artist.textContent =
+                    song.artistName || "Unknown Artist";
 
-                artist.textContent = song.artistName;
-
-                cover.src =
-                    song.artworkUrl100 || "background.jpg";
+                cover.src = artwork;
 
                 audio.play();
             };
 
             results.appendChild(div);
-
         });
 
-    } catch (error) {
+        const script = document.getElementById(callbackName);
+        if (script) script.remove();
+    };
 
-        results.innerHTML =
-            '<div class="message">Search failed. Please try again.</div>';
+    const script = document.createElement("script");
 
-        console.error(error);
-    }
+    script.id = callbackName;
+
+    script.src =
+        "https://itunes.apple.com/search" +
+        "?term=" + encodeURIComponent(term) +
+        "&media=music" +
+        "&entity=song" +
+        "&limit=20" +
+        "&country=IN" +
+        "&callback=" + callbackName;
+
+    document.body.appendChild(script);
 }
 
 function escapeHTML(text) {
-
     const div = document.createElement("div");
-
     div.textContent = text;
-
     return div.innerHTML;
 }
 
 searchInput.addEventListener("keydown", function(event) {
-
     if (event.key === "Enter") {
         searchSongs();
     }
-
 });
-
 </script>
 
 </body>
