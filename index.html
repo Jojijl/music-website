@@ -2,271 +2,325 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>JOJIFY ONE</title>
+<title>JOJIFY ONE — Your Everyday AI Assistant</title>
+
+<meta name="description"
+content="JOJIFY ONE — Your everyday AI assistant. Solve questions, study smarter, translate, explain and learn.">
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#09090d;
-  color:#fff;
-  min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:#fff;
+    min-height:100vh;
 }
 
 .container{
-  width:100%;
-  max-width:720px;
-  margin:auto;
-  padding:18px;
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:20px;
 }
 
 /* HEADER */
 
 header{
-  text-align:center;
-  padding:28px 10px 22px;
+    text-align:center;
+    padding:20px 0 25px;
 }
 
 .logo{
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:3px;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
 .logo span{
-  color:#7c5cff;
+    color:#00e5ff;
 }
 
 .tagline{
-  color:#888;
-  margin-top:8px;
-  font-size:14px;
+    margin-top:7px;
+    color:#aaa;
+    font-size:14px;
 }
 
-/* MAIN ASK BOX */
+/* CARD */
 
-.ask-box{
-  background:#15151d;
-  border:1px solid #292936;
-  border-radius:22px;
-  padding:16px;
+.card{
+    background:#111;
+    border:1px solid #242424;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
+
+/* INPUT */
 
 textarea{
-  width:100%;
-  height:130px;
-  resize:none;
-  border:0;
-  outline:0;
-  border-radius:15px;
-  background:#0d0d13;
-  color:#fff;
-  padding:16px;
-  font-size:16px;
+    width:100%;
+    min-height:135px;
+    resize:vertical;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#1b1b1b;
+    color:white;
+    padding:17px;
+    font-size:16px;
+    line-height:1.5;
 }
 
 textarea::placeholder{
-  color:#6f6f78;
+    color:#777;
 }
+
+/* CONTROLS */
 
 .controls{
-  display:flex;
-  gap:10px;
-  margin-top:12px;
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+    flex-wrap:wrap;
 }
 
-button{
-  border:0;
-  cursor:pointer;
-  color:#fff;
-  font-weight:700;
+select{
+    flex:1;
+    min-width:150px;
+    padding:13px;
+    border-radius:12px;
+    background:#1b1b1b;
+    color:white;
+    border:1px solid #333;
 }
 
-.voice{
-  width:58px;
-  border-radius:14px;
-  background:#292936;
-  font-size:22px;
+/* MAIN BUTTON */
+
+.solve-btn{
+    width:100%;
+    border:none;
+    border-radius:15px;
+    padding:16px;
+    margin-top:14px;
+    background:linear-gradient(135deg,#00e5ff,#007bff);
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.voice.listening{
-  background:#e53935;
-  animation:pulse 1s infinite;
+.solve-btn:hover{
+    transform:translateY(-2px);
+    opacity:.95;
 }
 
-@keyframes pulse{
-  50%{transform:scale(1.06)}
+.solve-btn:active{
+    transform:scale(.98);
 }
 
-.ask{
-  flex:1;
-  border-radius:14px;
-  background:#7c5cff;
-  font-size:16px;
+/* VOICE */
+
+.voice-btn{
+    width:100%;
+    margin-top:10px;
+    padding:13px;
+    border-radius:13px;
+    border:1px solid #333;
+    background:#181818;
+    color:#fff;
+    cursor:pointer;
 }
 
-/* LANGUAGE */
+/* QUICK TOOLS */
 
-.language{
-  width:100%;
-  margin-top:12px;
-  padding:12px;
-  background:#0d0d13;
-  color:#fff;
-  border:1px solid #292936;
-  border-radius:12px;
+.section-title{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:13px;
 }
 
-/* QUICK ACTIONS */
-
-.quick-title{
-  margin:25px 0 12px;
-  color:#aaa;
-  font-size:14px;
+.tools{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
-.quick-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+.tool{
+    padding:15px;
+    background:#191919;
+    border:1px solid #292929;
+    border-radius:14px;
+    color:white;
+    cursor:pointer;
+    text-align:center;
 }
 
-.quick{
-  background:#15151d;
-  border:1px solid #292936;
-  border-radius:15px;
-  padding:16px;
-  text-align:left;
-}
-
-.quick strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.quick small{
-  color:#888;
+.tool:hover{
+    background:#222;
 }
 
 /* STUDY */
 
-.study{
-  margin-top:25px;
-  background:linear-gradient(145deg,#171522,#111119);
-  border:1px solid #302c45;
-  border-radius:20px;
-  padding:18px;
+.study-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.study-title{
-  font-size:21px;
-  font-weight:800;
+.study-btn{
+    padding:14px 8px;
+    background:#171717;
+    border:1px solid #303030;
+    border-radius:14px;
+    color:#fff;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.study-sub{
-  color:#999;
-  margin-top:5px;
-  margin-bottom:15px;
-}
-
-.marks{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-}
-
-.mark{
-  background:#24232e;
-  padding:13px 5px;
-  border-radius:12px;
-}
-
-.mark.active{
-  background:#7c5cff;
+.study-btn:hover{
+    border-color:#00e5ff;
 }
 
 /* RESULT */
 
 .result{
-  display:none;
-  margin-top:20px;
-  background:#15151d;
-  border:1px solid #292936;
-  border-radius:20px;
-  padding:20px;
+    display:none;
 }
 
-.result-title{
-  font-size:21px;
-  margin-bottom:15px;
+.answer-box{
+    background:#181818;
+    border-radius:15px;
+    padding:18px;
+    line-height:1.7;
+    color:#eee;
+    white-space:pre-wrap;
 }
 
-.answer{
-  color:#ddd;
-  line-height:1.75;
-  white-space:pre-line;
+.result-actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:12px;
 }
 
-.section{
-  border-top:1px solid #292936;
-  margin-top:20px;
-  padding-top:16px;
+.action-btn{
+    padding:13px;
+    border-radius:12px;
+    background:#202020;
+    color:white;
+    border:1px solid #333;
+    cursor:pointer;
 }
 
-.section-title{
-  color:#a995ff;
-  font-weight:bold;
-  margin-bottom:8px;
+/* LOADING */
+
+.loading{
+    display:none;
+    text-align:center;
+    padding:20px;
+    color:#00e5ff;
 }
 
-.actions{
-  display:flex;
-  gap:8px;
-  margin-top:20px;
+.spinner{
+    width:30px;
+    height:30px;
+    border:3px solid #333;
+    border-top:3px solid #00e5ff;
+    border-radius:50%;
+    margin:auto auto 10px;
+    animation:spin 1s linear infinite;
 }
 
-.actions button{
-  flex:1;
-  background:#292936;
-  padding:12px;
-  border-radius:10px;
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-/* HISTORY */
+/* RECENT */
 
-.history{
-  margin-top:25px;
+.recent-item{
+    padding:13px;
+    margin-top:8px;
+    background:#181818;
+    border-radius:12px;
+    cursor:pointer;
+    color:#ddd;
 }
 
-.history-item{
-  background:#15151d;
-  border:1px solid #24242d;
-  border-radius:10px;
-  padding:12px;
-  margin-top:8px;
-  color:#bbb;
+.recent-item:hover{
+    background:#222;
 }
 
-.status{
-  text-align:center;
-  color:#777;
-  font-size:12px;
-  margin-top:9px;
+/* INSTAGRAM */
+
+.instagram{
+    text-align:center;
+    padding:25px 10px 10px;
 }
 
-footer{
-  text-align:center;
-  color:#555;
-  padding:30px 0 15px;
-  font-size:12px;
+.instagram a{
+    display:inline-block;
+    margin-top:12px;
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+    padding:13px 20px;
+    border-radius:14px;
+    font-weight:800;
 }
+
+.instagram-username{
+    display:block;
+    font-size:12px;
+    margin-top:4px;
+    opacity:.85;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    font-size:12px;
+    padding:15px 0 25px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        padding:14px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+    .tools{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .study-grid{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .study-btn{
+        font-size:12px;
+    }
+
+}
+
 </style>
 </head>
 
@@ -274,140 +328,190 @@ footer{
 
 <div class="container">
 
-<header>
-  <div class="logo">
-    JOJIFY <span>ONE</span>
-  </div>
+<!-- HEADER -->
 
-  <div class="tagline">
-    Your everyday AI assistant.
-  </div>
+<header>
+
+    <div class="logo">
+        JOJIFY <span>ONE</span>
+    </div>
+
+    <div class="tagline">
+        Your everyday AI assistant.
+    </div>
+
 </header>
 
 
-<!-- ASK -->
+<!-- ASK JOJIFY -->
 
-<div class="ask-box">
+<div class="card">
 
-<textarea
-id="question"
-placeholder="Ask anything...
+    <div class="section-title">
+        🤖 Ask JOJIFY
+    </div>
 
-Try:
-Explain photosynthesis
-Solve 2x + 5 = 15
+    <textarea
+        id="questionInput"
+        placeholder="Ask anything...
+
+Example:
 What is ALARA?
-Write a leave message
-Translate this sentence..."
-></textarea>
+Solve 2x + 5 = 15
+Explain photosynthesis
+What is CT?
+Translate this to Malayalam..."
+    ></textarea>
 
-<select id="language" class="language">
-  <option value="en-IN">English</option>
-  <option value="ml-IN">Malayalam</option>
-  <option value="ta-IN">Tamil</option>
-  <option value="hi-IN">Hindi</option>
-  <option value="te-IN">Telugu</option>
-  <option value="kn-IN">Kannada</option>
-</select>
 
-<div class="controls">
+    <div class="controls">
 
-<button
-class="voice"
-id="voiceBtn"
-onclick="startVoice()">
-🎙️
-</button>
+        <select id="language">
 
-<button
-class="ask"
-onclick="askJojify()">
-✨ ASK JOJIFY
-</button>
+            <option value="English">
+                🇬🇧 English
+            </option>
+
+            <option value="Malayalam">
+                🇮🇳 Malayalam
+            </option>
+
+            <option value="Tamil">
+                🇮🇳 Tamil
+            </option>
+
+            <option value="Hindi">
+                🇮🇳 Hindi
+            </option>
+
+            <option value="Telugu">
+                🇮🇳 Telugu
+            </option>
+
+            <option value="Kannada">
+                🇮🇳 Kannada
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- SOLVE QUESTION -->
+
+    <button
+        class="solve-btn"
+        onclick="solveQuestion()"
+    >
+        🔍 SOLVE THE QUESTION
+    </button>
+
+
+    <!-- VOICE -->
+
+    <button
+        class="voice-btn"
+        onclick="startVoice()"
+    >
+        🎤 Ask with Voice
+    </button>
 
 </div>
+
+
+<!-- QUICK TOOLS -->
+
+<div class="card">
+
+    <div class="section-title">
+        ⚡ Quick Tools
+    </div>
+
+    <div class="tools">
+
+        <button
+            class="tool"
+            onclick="useTool('Explain')"
+        >
+            🧠 Explain
+        </button>
+
+        <button
+            class="tool"
+            onclick="useTool('Solve')"
+        >
+            🧮 Solve
+        </button>
+
+        <button
+            class="tool"
+            onclick="useTool('Translate')"
+        >
+            🌐 Translate
+        </button>
+
+        <button
+            class="tool"
+            onclick="useTool('Rewrite')"
+        >
+            ✍️ Rewrite
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- JOJIFY STUDY -->
+
+<div class="card">
+
+    <div class="section-title">
+        🎓 JOJIFY STUDY
+    </div>
+
+    <p style="color:#888;font-size:13px;margin-bottom:15px;">
+        Get exam-ready answers in different mark formats.
+    </p>
+
+    <div class="study-grid">
+
+        <button
+            class="study-btn"
+            onclick="studyAnswer('2')"
+        >
+            2 MARK
+        </button>
+
+        <button
+            class="study-btn"
+            onclick="studyAnswer('5')"
+        >
+            5 MARK
+        </button>
+
+        <button
+            class="study-btn"
+            onclick="studyAnswer('10')"
+        >
+            10 MARK
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LOADING -->
 
 <div
-class="status"
-id="status">
-Ready
-</div>
+    class="loading"
+    id="loading"
+>
 
-</div>
+    <div class="spinner"></div>
 
-
-<!-- QUICK ACTIONS -->
-
-<div class="quick-title">
-QUICK TOOLS
-</div>
-
-<div class="quick-grid">
-
-<button
-class="quick"
-onclick="quickAsk('Explain this topic in simple words')">
-<strong>🧠 Explain</strong>
-<small>Make difficult things simple</small>
-</button>
-
-<button
-class="quick"
-onclick="quickAsk('Solve this step by step')">
-<strong>🧮 Solve</strong>
-<small>Show the working</small>
-</button>
-
-<button
-class="quick"
-onclick="quickAsk('Translate this into Malayalam')">
-<strong>🌐 Translate</strong>
-<small>Change the language</small>
-</button>
-
-<button
-class="quick"
-onclick="quickAsk('Rewrite this professionally')">
-<strong>✍️ Rewrite</strong>
-<small>Make text better</small>
-</button>
-
-</div>
-
-
-<!-- STUDY -->
-
-<div class="study">
-
-<div class="study-title">
-🎓 JOJIFY STUDY
-</div>
-
-<div class="study-sub">
-Solve study questions in your exam format.
-</div>
-
-<div class="marks">
-
-<button
-class="mark active"
-onclick="setMarks(2,this)">
-2 MARK
-</button>
-
-<button
-class="mark"
-onclick="setMarks(5,this)">
-5 MARK
-</button>
-
-<button
-class="mark"
-onclick="setMarks(10,this)">
-10 MARK
-</button>
-
-</div>
+    JOJIFY is thinking...
 
 </div>
 
@@ -415,583 +519,987 @@ onclick="setMarks(10,this)">
 <!-- RESULT -->
 
 <div
-class="result"
-id="result">
+    class="card result"
+    id="result"
+>
 
-<div
-class="result-title"
-id="resultTitle">
-🤖 JOJIFY
+    <div class="section-title">
+        ✨ JOJIFY ANSWER
+    </div>
+
+
+    <div
+        class="answer-box"
+        id="answer"
+    ></div>
+
+
+    <div class="result-actions">
+
+        <button
+            class="action-btn"
+            onclick="readAnswer()"
+        >
+            🔊 Read Answer
+        </button>
+
+        <button
+            class="action-btn"
+            onclick="saveAnswer()"
+        >
+            💾 Save
+        </button>
+
+    </div>
+
+
+    <div
+        style="
+        margin-top:18px;
+        color:#00e5ff;
+        font-weight:bold;
+        "
+    >
+        🧠 Easy Memory
+    </div>
+
+    <div
+        class="answer-box"
+        id="memory"
+        style="margin-top:8px;"
+    ></div>
+
+
+    <div
+        style="
+        margin-top:18px;
+        color:#00e5ff;
+        font-weight:bold;
+        "
+    >
+        📝 Practice
+    </div>
+
+    <div
+        class="answer-box"
+        id="practice"
+        style="margin-top:8px;"
+    ></div>
+
+
+    <div
+        style="
+        margin-top:18px;
+        color:#00e5ff;
+        font-weight:bold;
+        "
+    >
+        🎤 Viva Question
+    </div>
+
+    <div
+        class="answer-box"
+        id="viva"
+        style="margin-top:8px;"
+    ></div>
+
 </div>
 
-<div
-class="answer"
-id="answer">
-</div>
 
+<!-- RECENT QUESTIONS -->
 
-<div class="section">
+<div class="card">
 
-<div class="section-title">
-🧠 EASY MEMORY
-</div>
+    <div class="section-title">
+        🕘 Recent Questions
+    </div>
 
-<div id="memory">
-</div>
+    <div id="recentQuestions">
 
-</div>
+        <div style="color:#666;font-size:13px;">
+            No recent questions.
+        </div>
 
-
-<div class="section">
-
-<div class="section-title">
-❓ PRACTICE
-</div>
-
-<div id="practice">
-</div>
+    </div>
 
 </div>
 
 
-<div class="section">
+<!-- INSTAGRAM -->
 
-<div class="section-title">
-🎤 VIVA
-</div>
+<div class="instagram">
 
-<div id="viva">
-</div>
+    <div style="color:#aaa;">
+        👋 Made by Joji
+    </div>
 
-</div>
+    <a
+        href="https://www.instagram.com/Joh7ii/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
 
+        📸 Follow me on Instagram
 
-<div class="actions">
+        <span class="instagram-username">
+            @Joh7ii
+        </span>
 
-<button onclick="readAnswer()">
-🔊 Read
-</button>
-
-<button onclick="saveQuestion()">
-⭐ Save
-</button>
-
-</div>
+    </a>
 
 </div>
 
 
-<!-- HISTORY -->
+<div class="footer">
 
-<div class="history">
-
-<h3>🕘 Recent</h3>
-
-<div id="historyList">
-</div>
+    © 2026 JOJIFY ONE · Your everyday AI assistant.
 
 </div>
-
-
-<footer>
-JOJIFY ONE • Made by Joji
-</footer>
 
 </div>
 
 
 <script>
 
-let selectedMarks = 2;
-let currentAnswer = "";
-let currentQuestion = "";
+/* =====================================================
+   JOJIFY ONE
+   MAIN QUESTION SOLVER
+   ===================================================== */
+
+async function solveQuestion(){
+
+    const input =
+        document.getElementById("questionInput");
+
+    const question =
+        input.value.trim();
+
+    const language =
+        document.getElementById("language").value;
 
 
-/* =========================
-   MARK SELECTION
-========================= */
+    if(!question){
 
-function setMarks(mark,button){
+        alert("Please enter a question first.");
+        return;
 
-selectedMarks = mark;
+    }
 
-document
-.querySelectorAll(".mark")
-.forEach(x => x.classList.remove("active"));
 
-button.classList.add("active");
+    showLoading(true);
 
-if(currentQuestion){
-askJojify();
+
+    /*
+    =====================================================
+    REAL AI CONNECTION GOES HERE
+
+    For GitHub Pages, DON'T put your AI API key here.
+
+    Your frontend should send the question to your
+    secure backend:
+
+        /api/solve
+
+    Example:
+
+        const response = await fetch("/api/solve", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                question:question,
+                language:language
+            })
+        });
+
+        const data = await response.json();
+
+        showAnswer(data.answer);
+
+    =====================================================
+    */
+
+
+    /*
+    DEMO MODE
+
+    This gives working answers for some common questions
+    until a real AI backend is connected.
+    */
+
+    setTimeout(function(){
+
+        const answer =
+            demoAI(question,language);
+
+        showAnswer(answer);
+
+        saveRecent(question);
+
+        showLoading(false);
+
+    },700);
+
 }
 
+
+/* =====================================================
+   DEMO AI
+   ===================================================== */
+
+function demoAI(question,language){
+
+    const q =
+        question.toLowerCase();
+
+
+    /* ALARA */
+
+    if(
+        q.includes("alara") ||
+        q.includes("radiation protection")
+    ){
+
+        if(language === "Malayalam"){
+
+            return `
+2 MARK ANSWER
+
+ALARA എന്നത് "As Low As Reasonably Achievable" എന്നാണ്.
+
+Radiation exposure ആവശ്യമായ clinical purpose
+നിറവേറ്റാൻ കഴിയുന്ന ഏറ്റവും കുറഞ്ഞ നിലയിൽ
+സാധ്യമാകുന്നത്ര കുറയ്ക്കുക എന്നതാണ് ALARA principle.
+
+5 MARK ANSWER
+
+ALARA radiation protection-ന്റെ പ്രധാന principle ആണ്.
+
+പ്രധാന points:
+
+1. Radiation exposure കുറയ്ക്കുക.
+2. Exposure time കുറയ്ക്കുക.
+3. Distance വർധിപ്പിക്കുക.
+4. Shielding ഉപയോഗിക്കുക.
+5. Unnecessary examinations ഒഴിവാക്കുക.
+
+10 MARK ANSWER
+
+ALARA എന്നത് "As Low As Reasonably Achievable"
+എന്നതിന്റെ ചുരുക്കപ്പേരാണ്.
+
+Radiation ഉപയോഗിക്കുമ്പോൾ patient-നും staff-നും
+ലഭിക്കുന്ന radiation dose clinical purpose
+നിറവേറ്റുന്നതിന് ആവശ്യമായ ഏറ്റവും കുറഞ്ഞ
+നിലയിൽ നിലനിർത്തുകയാണ് ഇതിന്റെ ലക്ഷ്യം.
+
+പ്രധാന മാർഗങ്ങൾ:
+
+• Time — exposure time കുറയ്ക്കുക.
+• Distance — radiation source-ൽ നിന്ന് distance വർധിപ്പിക്കുക.
+• Shielding — protective barriers ഉപയോഗിക്കുക.
+• Proper technique — ശരിയായ exposure factors ഉപയോഗിക്കുക.
+• Unnecessary exposure ഒഴിവാക്കുക.
+
+Easy Memory:
+
+TIME + DISTANCE + SHIELDING = ALARA
+
+VIVA:
+
+Q: ALARA full form എന്താണ്?
+
+A: As Low As Reasonably Achievable.
+`;
+
+        }
+
+        return `
+2 MARK ANSWER
+
+ALARA means "As Low As Reasonably Achievable".
+
+It means keeping radiation exposure as low as reasonably
+achievable while still obtaining the required clinical result.
+
+5 MARK ANSWER
+
+ALARA is an important radiation protection principle.
+
+Main methods:
+
+1. Reduce exposure time.
+2. Increase distance.
+3. Use proper shielding.
+4. Use correct exposure factors.
+5. Avoid unnecessary radiation exposure.
+
+10 MARK ANSWER
+
+ALARA stands for "As Low As Reasonably Achievable".
+
+It is a radiation protection principle used to minimize
+unnecessary radiation exposure while achieving the required
+diagnostic or therapeutic objective.
+
+Important methods include:
+
+• Time — minimize exposure time.
+• Distance — increase distance from the source.
+• Shielding — use appropriate protective barriers.
+• Proper technique — use suitable exposure factors.
+• Justification — avoid unnecessary examinations.
+
+Easy Memory:
+
+TIME + DISTANCE + SHIELDING = ALARA
+
+VIVA:
+
+Q: What is the full form of ALARA?
+
+A: As Low As Reasonably Achievable.
+`;
+
+    }
+
+
+    /* TLD */
+
+    if(
+        q.includes("tld") ||
+        q.includes("thermoluminescent")
+    ){
+
+        return `
+2 MARK ANSWER
+
+TLD stands for Thermoluminescent Dosimeter.
+
+It is a radiation monitoring device used to measure
+the radiation dose received by personnel.
+
+5 MARK ANSWER
+
+TLD is a personal radiation monitoring device.
+
+Principle:
+
+When ionizing radiation interacts with the TLD material,
+energy is stored in the material. When heated, the material
+releases this energy as light. The amount of light is related
+to the radiation dose.
+
+Uses:
+
+• Personnel monitoring
+• Radiation protection
+• Occupational dose measurement
+
+10 MARK ANSWER
+
+TLD stands for Thermoluminescent Dosimeter.
+
+It is used to monitor occupational radiation exposure.
+
+Principle:
+
+1. Radiation interacts with the TLD crystal.
+2. Energy is stored in trapping centres.
+3. Heating releases the stored energy.
+4. Light is emitted.
+5. The emitted light is measured.
+6. The amount of light is related to radiation dose.
+
+Advantages:
+
+• Small size
+• Reusable
+• Good sensitivity
+• Easy to carry
+• Suitable for personnel monitoring
+
+Easy Memory:
+
+RADIATION → STORE ENERGY → HEAT → LIGHT → DOSE
+
+VIVA:
+
+Q: What does TLD stand for?
+
+A: Thermoluminescent Dosimeter.
+`;
+
+    }
+
+
+    /* CT */
+
+    if(
+        q.includes("ct artifact") ||
+        q.includes("ct artifacts")
+    ){
+
+        return `
+2 MARK ANSWER
+
+CT artifacts are unwanted distortions or errors appearing
+in a CT image.
+
+Examples include motion artifact, beam-hardening artifact,
+ring artifact and metal artifact.
+
+5 MARK ANSWER
+
+Common CT artifacts include:
+
+1. Motion artifact
+2. Beam-hardening artifact
+3. Ring artifact
+4. Metal artifact
+5. Partial-volume artifact
+
+Causes include patient movement, scanner problems,
+high-density objects and limitations of image reconstruction.
+
+10 MARK ANSWER
+
+CT artifacts are image distortions that reduce image quality
+or produce structures that are not actually present.
+
+Common types:
+
+1. Motion artifact
+   Caused by patient movement during scanning.
+
+2. Beam-hardening artifact
+   Occurs because lower-energy photons are preferentially
+   absorbed as the beam passes through the patient.
+
+3. Ring artifact
+   Usually associated with detector calibration problems.
+
+4. Metal artifact
+   Caused by highly attenuating metallic objects.
+
+5. Partial-volume artifact
+   Occurs when different tissues are represented within
+   a single voxel.
+
+Easy Memory:
+
+M-B-R-M-P
+
+Motion
+Beam hardening
+Ring
+Metal
+Partial volume
+
+VIVA:
+
+Q: Name two CT artifacts.
+
+A: Motion artifact and beam-hardening artifact.
+`;
+
+    }
+
+
+    /* GENERIC */
+
+    return `
+JOJIFY DEMO MODE
+
+Your question:
+
+"${question}"
+
+I received your question successfully.
+
+However, this GitHub Pages version is currently running
+without a real AI backend.
+
+To make JOJIFY ONE solve ANY question automatically,
+connect the SOLVE THE QUESTION button to a secure AI
+backend/API.
+
+The final system will be:
+
+QUESTION
+   ↓
+JOJIFY
+   ↓
+AI ENGINE
+   ↓
+ANSWER
+   ↓
+2 MARK / 5 MARK / 10 MARK
+   ↓
+MEMORY + PRACTICE + VIVA
+
+The frontend is ready for that connection.
+
+Important:
+
+Never put your private AI API key directly inside
+index.html because anyone can view the key.
+`;
+
 }
 
 
-/* =========================
-   QUICK ASK
-========================= */
+/* =====================================================
+   SHOW ANSWER
+   ===================================================== */
 
-function quickAsk(text){
+function showAnswer(text){
 
-const box =
-document.getElementById("question");
+    document.getElementById("result").style.display =
+        "block";
 
-box.value = text + "\n\n";
+    document.getElementById("answer").textContent =
+        text;
 
-box.focus();
+
+    document.getElementById("memory").textContent =
+        createMemory(text);
+
+
+    document.getElementById("practice").textContent =
+        "Try explaining this topic without looking at the answer. Then ask JOJIFY another question about the same topic.";
+
+
+    document.getElementById("viva").textContent =
+        "Explain the main definition, principle and two important points of this topic.";
+
+
+    document
+        .getElementById("result")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
 }
 
 
-/* =========================
-   VOICE
-========================= */
+/* =====================================================
+   MEMORY
+   ===================================================== */
+
+function createMemory(text){
+
+    if(text.toLowerCase().includes("alara")){
+
+        return "TIME + DISTANCE + SHIELDING = ALARA";
+
+    }
+
+    if(text.toLowerCase().includes("tld")){
+
+        return "RADIATION → STORE → HEAT → LIGHT → DOSE";
+
+    }
+
+    if(text.toLowerCase().includes("artifact")){
+
+        return "MOTION + BEAM + RING + METAL + PARTIAL";
+
+    }
+
+    return "UNDERSTAND → REMEMBER → PRACTICE → REPEAT";
+
+}
+
+
+/* =====================================================
+   STUDY MODE
+   ===================================================== */
+
+function studyAnswer(marks){
+
+    const input =
+        document.getElementById("questionInput");
+
+    const question =
+        input.value.trim();
+
+    if(!question){
+
+        alert(
+            "Enter your study question first."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    input.value =
+        question +
+        "\n\nGive me a " +
+        marks +
+        " mark exam answer.";
+
+    solveQuestion();
+
+}
+
+
+/* =====================================================
+   QUICK TOOLS
+   ===================================================== */
+
+function useTool(tool){
+
+    const input =
+        document.getElementById("questionInput");
+
+    const question =
+        input.value.trim();
+
+
+    if(!question){
+
+        alert(
+            "Enter your question first."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    input.value =
+        tool +
+        " this question:\n\n" +
+        question;
+
+    solveQuestion();
+
+}
+
+
+/* =====================================================
+   VOICE INPUT
+   ===================================================== */
 
 function startVoice(){
 
-const Recognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-if(!Recognition){
-
-alert(
-"Voice recognition is not supported in this browser."
-);
-
-return;
-}
-
-const recognition =
-new Recognition();
-
-recognition.lang =
-document.getElementById("language").value;
-
-recognition.continuous = false;
-recognition.interimResults = false;
-
-const btn =
-document.getElementById("voiceBtn");
-
-const status =
-document.getElementById("status");
-
-btn.classList.add("listening");
-
-status.innerText =
-"🎙️ Listening...";
-
-recognition.start();
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
 
 
-recognition.onresult =
-function(event){
+    if(!SpeechRecognition){
 
-const text =
-event.results[0][0].transcript;
+        alert(
+            "Voice input is not supported in this browser."
+        );
 
-document.getElementById("question").value =
-text;
+        return;
 
-status.innerText =
-"Question received ✓";
-
-btn.classList.remove("listening");
-
-askJojify();
-
-};
+    }
 
 
-recognition.onerror =
-function(){
-
-status.innerText =
-"Voice error. Try again.";
-
-btn.classList.remove("listening");
-
-};
+    const recognition =
+        new SpeechRecognition();
 
 
-recognition.onend =
-function(){
+    recognition.lang =
+        document.getElementById("language").value === "Malayalam"
+        ? "ml-IN"
+        : "en-IN";
 
-btn.classList.remove("listening");
 
-};
+    recognition.interimResults =
+        false;
+
+
+    recognition.maxAlternatives =
+        1;
+
+
+    recognition.start();
+
+
+    recognition.onresult =
+        function(event){
+
+            document.getElementById(
+                "questionInput"
+            ).value =
+                event.results[0][0].transcript;
+
+        };
+
+
+    recognition.onerror =
+        function(){
+
+            alert(
+                "Voice input could not be started."
+            );
+
+        };
 
 }
 
 
-/* =========================
-   MAIN JOJIFY
-========================= */
-
-function askJojify(){
-
-const question =
-document.getElementById("question")
-.value
-.trim();
-
-if(!question){
-
-alert("Ask JOJIFY something first.");
-
-return;
-}
-
-currentQuestion = question;
-
-
-/*
-IMPORTANT:
-
-This demo does not pretend to be
-a real AI model.
-
-For production, this function should
-send the question to your secure backend.
-*/
-
-const result =
-localDemoAnswer(question);
-
-currentAnswer =
-result.answer;
-
-
-document.getElementById("resultTitle")
-.innerText =
-"🤖 JOJIFY • " + selectedMarks + " MARK ANSWER";
-
-document.getElementById("answer")
-.innerText =
-result.answer;
-
-document.getElementById("memory")
-.innerText =
-result.memory;
-
-document.getElementById("practice")
-.innerText =
-result.practice;
-
-document.getElementById("viva")
-.innerText =
-result.viva;
-
-document.getElementById("result")
-.style.display =
-"block";
-
-saveHistory(question);
-
-}
-
-
-/* =========================
-   DEMO ANSWER ENGINE
-========================= */
-
-function localDemoAnswer(question){
-
-const q =
-question.toLowerCase();
-
-
-/* ALARA */
-
-if(q.includes("alara")){
-
-return {
-
-answer:
-
-selectedMarks === 2
-
-? `ALARA stands for As Low As Reasonably Achievable. It is a radiation protection principle used to minimize unnecessary radiation exposure.`
-
-: selectedMarks === 5
-
-? `ALARA means As Low As Reasonably Achievable.
-
-It is an important principle of radiation protection.
-
-Key points:
-1. Reduce unnecessary exposure.
-2. Minimize exposure time.
-3. Increase distance from the radiation source.
-4. Use appropriate shielding.
-5. Avoid unnecessary repeat examinations.`
-
-:
-
-`ALARA — As Low As Reasonably Achievable
-
-Definition:
-ALARA is a fundamental radiation protection principle that aims to keep radiation exposure as low as reasonably achievable while obtaining the required diagnostic information.
-
-Main principles:
-
-1. Time — minimize exposure time.
-2. Distance — increase distance from the radiation source.
-3. Shielding — use appropriate protective barriers.
-4. Justification — perform examinations only when justified.
-5. Optimization — use an appropriate radiation dose.
-
-Conclusion:
-ALARA helps minimize unnecessary radiation exposure to patients and radiation workers.`,
-
-memory:
-"ALARA = As Low As Reasonably Achievable",
-
-practice:
-"What does ALARA stand for?",
-
-viva:
-"Why is ALARA important in radiology?"
-
-};
-
-}
-
-
-/* TLD */
-
-if(q.includes("tld") ||
-q.includes("thermoluminescent")){
-
-return {
-
-answer:
-
-selectedMarks === 2
-
-? `TLD stands for Thermoluminescent Dosimeter. It is used to measure an individual's exposure to ionizing radiation.`
-
-:
-
-selectedMarks === 5
-
-? `TLD stands for Thermoluminescent Dosimeter.
-
-Principle:
-Radiation stores energy in the TLD material. When heated, the stored energy is released as light. The amount of light is related to the radiation dose.
-
-Advantages:
-• Small
-• Lightweight
-• Reusable
-• Sensitive
-• Useful for personnel monitoring.`
-
-:
-
-`THERMOLUMINESCENT DOSIMETER (TLD)
-
-Definition:
-TLD is a radiation dosimeter used to monitor an individual's exposure to ionizing radiation.
-
-Principle:
-Ionizing radiation deposits energy in the TLD material. Electrons become trapped in energy levels. When the material is heated, the trapped energy is released as light. The light output is related to the radiation dose.
-
-Working:
-1. TLD is exposed to radiation.
-2. Energy is stored.
-3. The TLD is heated.
-4. Light is released.
-5. Light intensity is measured.
-6. Dose is calculated.
-
-Uses:
-• Personnel monitoring
-• Diagnostic radiology
-• Radiotherapy
-• Nuclear medicine
-
-Conclusion:
-TLD is an important device for monitoring occupational radiation exposure.`,
-
-memory:
-"TLD → Radiation → Heat → Light → Dose",
-
-practice:
-"What is the principle of TLD?",
-
-viva:
-"What is TLD used for?"
-
-};
-
-}
-
-
-/* DEFAULT */
-
-return {
-
-answer:
-
-selectedMarks === 2
-
-? `For a 2-mark answer:
-
-Define the topic clearly and mention one important point.
-
-Topic:
-${question}
-
-A real AI connection is required for JOJIFY to generate a topic-specific answer.`
-
-:
-
-selectedMarks === 5
-
-? `For a 5-mark answer:
-
-1. Definition
-2. Principle / basic concept
-3. Important points
-4. Example or application
-5. Short conclusion
-
-Topic:
-${question}
-
-A real AI connection is required for JOJIFY to generate the complete topic-specific answer.`
-
-:
-
-`10-MARK ANSWER
-
-Topic:
-${question}
-
-Recommended structure:
-
-1. Introduction
-2. Definition
-3. Principle
-4. Classification / types
-5. Detailed explanation
-6. Advantages
-7. Disadvantages
-8. Applications
-9. Important points
-10. Conclusion
-
-A real AI connection is required for JOJIFY to generate the complete answer.`,
-
-memory:
-"Understand → Key points → Recall → Practice",
-
-practice:
-"Write three questions from this topic.",
-
-viva:
-"Define the topic and explain its main principle."
-
-};
-
-}
-
-
-/* =========================
+/* =====================================================
    READ ANSWER
-========================= */
+   ===================================================== */
 
 function readAnswer(){
 
-if(!currentAnswer)
-return;
+    const text =
+        document.getElementById("answer").textContent;
 
-speechSynthesis.cancel();
 
-const speech =
-new SpeechSynthesisUtterance(currentAnswer);
+    if(!text){
 
-speech.lang =
-document.getElementById("language").value;
+        return;
 
-speech.rate = 0.9;
+    }
 
-speechSynthesis.speak(speech);
+
+    if(!("speechSynthesis" in window)){
+
+        alert(
+            "Text-to-speech is not supported."
+        );
+
+        return;
+
+    }
+
+
+    speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+
+    speech.lang =
+        document.getElementById("language").value === "Malayalam"
+        ? "ml-IN"
+        : "en-IN";
+
+
+    speech.rate = .9;
+
+
+    speechSynthesis.speak(speech);
 
 }
 
 
-/* =========================
-   SAVE HISTORY
-========================= */
+/* =====================================================
+   SAVE ANSWER
+   ===================================================== */
 
-function saveHistory(question){
+function saveAnswer(){
 
-let history =
-JSON.parse(
-localStorage.getItem("jojifyHistory") || "[]"
+    const question =
+        document.getElementById(
+            "questionInput"
+        ).value.trim();
+
+    const answer =
+        document.getElementById(
+            "answer"
+        ).textContent;
+
+
+    if(!question || !answer){
+
+        return;
+
+    }
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "jojifySavedAnswers"
+            ) || "[]"
+        );
+
+
+    saved.unshift({
+
+        question:question,
+        answer:answer,
+        date:new Date().toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+        "jojifySavedAnswers",
+        JSON.stringify(
+            saved.slice(0,20)
+        )
+    );
+
+
+    alert(
+        "✅ Answer saved!"
+    );
+
+}
+
+
+/* =====================================================
+   RECENT QUESTIONS
+   ===================================================== */
+
+function saveRecent(question){
+
+    let recent =
+        JSON.parse(
+            localStorage.getItem(
+                "jojifyRecent"
+            ) || "[]"
+        );
+
+
+    recent =
+        recent.filter(
+            item => item !== question
+        );
+
+
+    recent.unshift(question);
+
+
+    recent =
+        recent.slice(0,8);
+
+
+    localStorage.setItem(
+        "jojifyRecent",
+        JSON.stringify(recent)
+    );
+
+
+    displayRecent();
+
+}
+
+
+function displayRecent(){
+
+    const box =
+        document.getElementById(
+            "recentQuestions"
+        );
+
+
+    const recent =
+        JSON.parse(
+            localStorage.getItem(
+                "jojifyRecent"
+            ) || "[]"
+        );
+
+
+    if(recent.length === 0){
+
+        box.innerHTML =
+            '<div style="color:#666;font-size:13px;">No recent questions.</div>';
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        "";
+
+
+    recent.forEach(function(question){
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "recent-item";
+
+
+        item.textContent =
+            "🔍 " + question;
+
+
+        item.onclick =
+            function(){
+
+                document.getElementById(
+                    "questionInput"
+                ).value =
+                    question;
+
+                solveQuestion();
+
+            };
+
+
+        box.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+function showLoading(show){
+
+    document.getElementById(
+        "loading"
+    ).style.display =
+        show ? "block" : "none";
+
+}
+
+
+/* =====================================================
+   ENTER KEY
+   ===================================================== */
+
+document
+.getElementById("questionInput")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            event.ctrlKey
+        ){
+
+            solveQuestion();
+
+        }
+
+    }
 );
 
-history.unshift(question);
 
-history =
-[...new Set(history)].slice(0,10);
+/* =====================================================
+   START
+   ===================================================== */
 
-localStorage.setItem(
-"jojifyHistory",
-JSON.stringify(history)
-);
-
-showHistory();
-
-}
-
-
-/* =========================
-   SHOW HISTORY
-========================= */
-
-function showHistory(){
-
-const history =
-JSON.parse(
-localStorage.getItem("jojifyHistory") || "[]"
-);
-
-document.getElementById("historyList")
-.innerHTML =
-history.map(q => {
-
-const safe =
-q.replace(/'/g,"\\'");
-
-return `
-<div
-class="history-item"
-onclick="loadHistory('${safe}')">
-🔹 ${q}
-</div>
-`;
-
-}).join("");
-
-}
-
-
-function loadHistory(question){
-
-document.getElementById("question")
-.value = question;
-
-askJojify();
-
-}
-
-
-showHistory();
+displayRecent();
 
 </script>
 
