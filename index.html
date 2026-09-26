@@ -3,1503 +3,1502 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>JOJIFY ONE — Your Everyday AI Assistant</title>
-
-<meta name="description"
-content="JOJIFY ONE — Your everyday AI assistant. Solve questions, study smarter, translate, explain and learn.">
+<meta name="theme-color" content="#087f5b">
+<title>Kerala ONE | Kerala Public Utility Hub</title>
 
 <style>
+:root{
+  --green:#087f5b;
+  --green-dark:#045c42;
+  --green-light:#e9f8f1;
+  --gold:#e5a900;
+  --red:#d62839;
+  --blue:#1769aa;
+  --text:#17231f;
+  --muted:#66736e;
+  --bg:#f5f8f6;
+  --card:#ffffff;
+  --border:#e2e9e5;
+  --shadow:0 10px 30px rgba(0,0,0,.07);
+}
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#070707;
-    color:#fff;
-    min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
 }
 
-.container{
-    width:100%;
-    max-width:850px;
-    margin:auto;
-    padding:20px;
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 /* HEADER */
 
 header{
-    text-align:center;
-    padding:20px 0 25px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-    font-size:32px;
-    font-weight:900;
-    letter-spacing:2px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--text);
 }
 
-.logo span{
-    color:#00e5ff;
+.logo-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:var(--green);
+  color:white;
+  font-size:22px;
+  font-weight:bold;
 }
 
-.tagline{
-    margin-top:7px;
-    color:#aaa;
-    font-size:14px;
+.logo-text{
+  font-size:21px;
+  font-weight:800;
 }
 
-/* CARD */
+.logo-text span{
+  color:var(--green);
+}
+
+.nav-links{
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#34413c;
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.nav-links a:hover{
+  background:var(--green-light);
+  color:var(--green);
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:var(--green-light);
+  color:var(--green);
+  padding:9px 12px;
+  border-radius:10px;
+}
+
+/* HERO */
+
+.hero{
+  background:
+    radial-gradient(circle at 90% 20%,rgba(229,169,0,.18),transparent 25%),
+    radial-gradient(circle at 10% 80%,rgba(8,127,91,.15),transparent 30%),
+    linear-gradient(135deg,#effaf5,#ffffff);
+  padding:75px 20px 55px;
+}
+
+.hero-inner{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 13px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--green);
+  font-size:13px;
+  font-weight:700;
+  box-shadow:0 5px 18px rgba(0,0,0,.04);
+}
+
+.hero h1{
+  margin-top:18px;
+  font-size:clamp(38px,7vw,72px);
+  line-height:1;
+  letter-spacing:-3px;
+}
+
+.hero h1 span{
+  color:var(--green);
+}
+
+.hero p{
+  max-width:650px;
+  margin:18px auto 27px;
+  color:var(--muted);
+  font-size:17px;
+}
+
+.search-box{
+  max-width:720px;
+  margin:auto;
+  background:white;
+  border:1px solid var(--border);
+  padding:8px;
+  border-radius:18px;
+  display:flex;
+  gap:8px;
+  box-shadow:var(--shadow);
+}
+
+.search-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:14px;
+  font-size:16px;
+  background:transparent;
+}
+
+.search-btn{
+  border:0;
+  background:var(--green);
+  color:white;
+  border-radius:13px;
+  padding:0 22px;
+  font-weight:700;
+}
+
+.search-btn:hover{
+  background:var(--green-dark);
+}
+
+.quick{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+
+.quick button{
+  border:1px solid var(--border);
+  background:white;
+  color:#3c4844;
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:13px;
+}
+
+/* MAIN */
+
+main{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 20px 100px;
+}
+
+.section{
+  margin-bottom:55px;
+  scroll-margin-top:90px;
+}
+
+.section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.section-heading h2{
+  font-size:27px;
+}
+
+.section-heading p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
 
 .card{
-    background:#111;
-    border:1px solid #242424;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.035);
+  transition:.2s;
 }
 
-/* INPUT */
-
-textarea{
-    width:100%;
-    min-height:135px;
-    resize:vertical;
-    border:none;
-    outline:none;
-    border-radius:15px;
-    background:#1b1b1b;
-    color:white;
-    padding:17px;
-    font-size:16px;
-    line-height:1.5;
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
 }
 
-textarea::placeholder{
-    color:#777;
+.card-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:var(--green-light);
+  font-size:24px;
+  margin-bottom:15px;
 }
 
-/* CONTROLS */
-
-.controls{
-    display:flex;
-    gap:10px;
-    margin-top:12px;
-    flex-wrap:wrap;
+.card h3{
+  margin-bottom:7px;
+  font-size:17px;
 }
 
-select{
-    flex:1;
-    min-width:150px;
-    padding:13px;
-    border-radius:12px;
-    background:#1b1b1b;
-    color:white;
-    border:1px solid #333;
+.card p{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:15px;
 }
 
-/* MAIN BUTTON */
-
-.solve-btn{
-    width:100%;
-    border:none;
-    border-radius:15px;
-    padding:16px;
-    margin-top:14px;
-    background:linear-gradient(135deg,#00e5ff,#007bff);
-    color:#fff;
-    font-size:17px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.2s;
+.card button,
+.card a{
+  display:inline-block;
+  border:0;
+  text-decoration:none;
+  color:var(--green);
+  background:var(--green-light);
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
 }
 
-.solve-btn:hover{
-    transform:translateY(-2px);
-    opacity:.95;
+/* EMERGENCY */
+
+.emergency{
+  background:#fff4f4;
+  border:1px solid #ffd5d8;
+  border-radius:22px;
+  padding:22px;
 }
 
-.solve-btn:active{
-    transform:scale(.98);
+.emergency .section-heading h2{
+  color:var(--red);
 }
 
-/* VOICE */
-
-.voice-btn{
-    width:100%;
-    margin-top:10px;
-    padding:13px;
-    border-radius:13px;
-    border:1px solid #333;
-    background:#181818;
-    color:#fff;
-    cursor:pointer;
+.emergency-cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
 
-/* QUICK TOOLS */
-
-.section-title{
-    font-size:18px;
-    font-weight:800;
-    margin-bottom:13px;
+.emergency-card{
+  background:white;
+  border:1px solid #f0dfe0;
+  border-radius:15px;
+  padding:17px;
 }
 
-.tools{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+.emergency-card strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-.tool{
-    padding:15px;
-    background:#191919;
-    border:1px solid #292929;
-    border-radius:14px;
-    color:white;
-    cursor:pointer;
-    text-align:center;
+.emergency-card a{
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  background:var(--red);
+  color:white;
+  padding:8px 13px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:bold;
 }
 
-.tool:hover{
-    background:#222;
+/* BLOOD */
+
+.blood-box{
+  background:linear-gradient(135deg,#fff5f5,#ffffff);
+  border:1px solid #f2dddd;
+  border-radius:22px;
+  padding:25px;
 }
 
-/* STUDY */
-
-.study-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+.blood-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-.study-btn{
-    padding:14px 8px;
-    background:#171717;
-    border:1px solid #303030;
-    border-radius:14px;
-    color:#fff;
-    cursor:pointer;
-    font-weight:bold;
+.form{
+  display:grid;
+  gap:11px;
 }
 
-.study-btn:hover{
-    border-color:#00e5ff;
+.form input,
+.form select{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:12px;
+  outline:0;
+  background:white;
 }
 
-/* RESULT */
+.primary{
+  border:0;
+  background:var(--green);
+  color:white;
+  border-radius:11px;
+  padding:12px;
+  font-weight:700;
+}
+
+.primary:hover{
+  background:var(--green-dark);
+}
+
+.request-list{
+  display:grid;
+  gap:10px;
+}
+
+.request{
+  padding:13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:white;
+}
+
+.request strong{
+  color:var(--red);
+}
+
+/* SEARCH RESULTS */
+
+#searchResults{
+  display:none;
+  margin-bottom:40px;
+}
+
+.results-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+}
 
 .result{
-    display:none;
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
 }
 
-.answer-box{
-    background:#181818;
-    border-radius:15px;
-    padding:18px;
-    line-height:1.7;
-    color:#eee;
-    white-space:pre-wrap;
+.result:last-child{
+  border-bottom:0;
 }
 
-.result-actions{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-top:12px;
+.result h3{
+  font-size:16px;
 }
 
-.action-btn{
-    padding:13px;
-    border-radius:12px;
-    background:#202020;
-    color:white;
-    border:1px solid #333;
-    cursor:pointer;
+.result p{
+  color:var(--muted);
+  font-size:13px;
 }
 
-/* LOADING */
-
-.loading{
-    display:none;
-    text-align:center;
-    padding:20px;
-    color:#00e5ff;
+.result button{
+  margin-top:8px;
+  border:0;
+  background:var(--green-light);
+  color:var(--green);
+  padding:7px 10px;
+  border-radius:8px;
+  font-weight:bold;
 }
 
-.spinner{
-    width:30px;
-    height:30px;
-    border:3px solid #333;
-    border-top:3px solid #00e5ff;
-    border-radius:50%;
-    margin:auto auto 10px;
-    animation:spin 1s linear infinite;
+/* FOOTER */
+
+footer{
+  background:#10251e;
+  color:#dce9e4;
+  padding:40px 20px 80px;
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+.footer-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px;
 }
 
-/* RECENT */
-
-.recent-item{
-    padding:13px;
-    margin-top:8px;
-    background:#181818;
-    border-radius:12px;
-    cursor:pointer;
-    color:#ddd;
+footer h3{
+  margin-bottom:10px;
 }
 
-.recent-item:hover{
-    background:#222;
+footer p,
+footer a{
+  color:#aebdb7;
+  font-size:13px;
+  text-decoration:none;
 }
 
-/* INSTAGRAM */
-
-.instagram{
-    text-align:center;
-    padding:25px 10px 10px;
-}
-
-.instagram a{
-    display:inline-block;
-    margin-top:12px;
-    text-decoration:none;
-    color:#fff;
-    background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
-    padding:13px 20px;
-    border-radius:14px;
-    font-weight:800;
-}
-
-.instagram-username{
-    display:block;
-    font-size:12px;
-    margin-top:4px;
-    opacity:.85;
-}
-
-.footer{
-    text-align:center;
-    color:#666;
-    font-size:12px;
-    padding:15px 0 25px;
+.footer-links{
+  display:grid;
+  gap:7px;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
-
-    .container{
-        padding:14px;
-    }
-
-    .logo{
-        font-size:27px;
-    }
-
-    .tools{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .study-grid{
-        grid-template-columns:1fr 1fr 1fr;
-    }
-
-    .study-btn{
-        font-size:12px;
-    }
-
+.bottom-nav{
+  display:none;
 }
 
+@media(max-width:900px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .emergency-cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:50px 15px 40px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .search-box{
+    flex-direction:column;
+  }
+
+  .search-btn{
+    padding:13px;
+  }
+
+  main{
+    padding:25px 15px 90px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .emergency-cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .blood-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .bottom-nav{
+    position:fixed;
+    display:flex;
+    bottom:0;
+    left:0;
+    right:0;
+    height:64px;
+    background:rgba(255,255,255,.97);
+    border-top:1px solid var(--border);
+    z-index:999;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .bottom-nav a{
+    text-decoration:none;
+    color:#59655f;
+    font-size:11px;
+    text-align:center;
+  }
+
+  .bottom-nav span{
+    display:block;
+    font-size:20px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<!-- HEADER -->
-
 <header>
+  <nav class="navbar">
 
-    <div class="logo">
-        JOJIFY <span>ONE</span>
+    <a class="logo" href="#home">
+      <div class="logo-icon">K</div>
+      <div class="logo-text">KERALA <span>ONE</span></div>
+    </a>
+
+    <div class="nav-links">
+      <a href="#emergency">Emergency</a>
+      <a href="#blood">Blood</a>
+      <a href="#health">Health</a>
+      <a href="#government">Government</a>
+      <a href="#students">Students</a>
     </div>
 
-    <div class="tagline">
-        Your everyday AI assistant.
-    </div>
+    <button class="menu-btn" onclick="scrollToSection('tools')">
+      Tools
+    </button>
 
+  </nav>
 </header>
 
 
-<!-- ASK JOJIFY -->
+<section class="hero" id="home">
 
-<div class="card">
+  <div class="hero-inner">
 
-    <div class="section-title">
-        🤖 Ask JOJIFY
-    </div>
+    <div class="badge">🌴 Made for Kerala</div>
 
-    <textarea
-        id="questionInput"
-        placeholder="Ask anything...
+    <h1>KERALA <span>ONE</span></h1>
 
-Example:
-What is ALARA?
-Solve 2x + 5 = 15
-Explain photosynthesis
-What is CT?
-Translate this to Malayalam..."
-    ></textarea>
-
-
-    <div class="controls">
-
-        <select id="language">
-
-            <option value="English">
-                🇬🇧 English
-            </option>
-
-            <option value="Malayalam">
-                🇮🇳 Malayalam
-            </option>
-
-            <option value="Tamil">
-                🇮🇳 Tamil
-            </option>
-
-            <option value="Hindi">
-                🇮🇳 Hindi
-            </option>
-
-            <option value="Telugu">
-                🇮🇳 Telugu
-            </option>
-
-            <option value="Kannada">
-                🇮🇳 Kannada
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <!-- SOLVE QUESTION -->
-
-    <button
-        class="solve-btn"
-        onclick="solveQuestion()"
-    >
-        🔍 SOLVE THE QUESTION
-    </button>
-
-
-    <!-- VOICE -->
-
-    <button
-        class="voice-btn"
-        onclick="startVoice()"
-    >
-        🎤 Ask with Voice
-    </button>
-
-</div>
-
-
-<!-- QUICK TOOLS -->
-
-<div class="card">
-
-    <div class="section-title">
-        ⚡ Quick Tools
-    </div>
-
-    <div class="tools">
-
-        <button
-            class="tool"
-            onclick="useTool('Explain')"
-        >
-            🧠 Explain
-        </button>
-
-        <button
-            class="tool"
-            onclick="useTool('Solve')"
-        >
-            🧮 Solve
-        </button>
-
-        <button
-            class="tool"
-            onclick="useTool('Translate')"
-        >
-            🌐 Translate
-        </button>
-
-        <button
-            class="tool"
-            onclick="useTool('Rewrite')"
-        >
-            ✍️ Rewrite
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- JOJIFY STUDY -->
-
-<div class="card">
-
-    <div class="section-title">
-        🎓 JOJIFY STUDY
-    </div>
-
-    <p style="color:#888;font-size:13px;margin-bottom:15px;">
-        Get exam-ready answers in different mark formats.
+    <p>
+      A simple public utility hub for Kerala —
+      emergency help, health, government services,
+      student resources and useful everyday tools.
     </p>
 
-    <div class="study-grid">
+    <div class="search-box">
 
-        <button
-            class="study-btn"
-            onclick="studyAnswer('2')"
-        >
-            2 MARK
-        </button>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search Kerala ONE..."
+        onkeydown="handleSearchKey(event)"
+      >
 
-        <button
-            class="study-btn"
-            onclick="studyAnswer('5')"
-        >
-            5 MARK
-        </button>
-
-        <button
-            class="study-btn"
-            onclick="studyAnswer('10')"
-        >
-            10 MARK
-        </button>
+      <button class="search-btn" onclick="performSearch()">
+        Search
+      </button>
 
     </div>
 
-</div>
-
-
-<!-- LOADING -->
-
-<div
-    class="loading"
-    id="loading"
->
-
-    <div class="spinner"></div>
-
-    JOJIFY is thinking...
-
-</div>
-
-
-<!-- RESULT -->
-
-<div
-    class="card result"
-    id="result"
->
-
-    <div class="section-title">
-        ✨ JOJIFY ANSWER
+    <div class="quick">
+      <button onclick="searchQuick('blood')">🩸 Blood</button>
+      <button onclick="searchQuick('hospital')">🏥 Hospital</button>
+      <button onclick="searchQuick('government')">🏛️ Government</button>
+      <button onclick="searchQuick('student')">🎓 Student</button>
+      <button onclick="searchQuick('emergency')">🚨 Emergency</button>
     </div>
 
+  </div>
 
-    <div
-        class="answer-box"
-        id="answer"
-    ></div>
+</section>
 
 
-    <div class="result-actions">
+<main>
 
-        <button
-            class="action-btn"
-            onclick="readAnswer()"
-        >
-            🔊 Read Answer
-        </button>
 
-        <button
-            class="action-btn"
-            onclick="saveAnswer()"
-        >
-            💾 Save
-        </button>
+<!-- SEARCH RESULTS -->
+
+<section id="searchResults">
+
+  <div class="results-box">
+
+    <div class="section-heading">
+      <div>
+        <h2>Search Results</h2>
+        <p id="resultCount"></p>
+      </div>
+    </div>
+
+    <div id="resultsContainer"></div>
+
+  </div>
+
+</section>
+
+
+<!-- EMERGENCY -->
+
+<section class="section" id="emergency">
+
+  <div class="emergency">
+
+    <div class="section-heading">
+
+      <div>
+        <h2>🚨 Emergency</h2>
+        <p>Important emergency contacts</p>
+      </div>
 
     </div>
 
+    <div class="emergency-cards">
 
-    <div
-        style="
-        margin-top:18px;
-        color:#00e5ff;
-        font-weight:bold;
-        "
-    >
-        🧠 Easy Memory
+      <div class="emergency-card">
+        <strong>🚓 Police</strong>
+        <span>Emergency assistance</span>
+        <a href="tel:112">Call 112</a>
+      </div>
+
+      <div class="emergency-card">
+        <strong>🚑 Ambulance</strong>
+        <span>Medical emergency</span>
+        <a href="tel:108">Call 108</a>
+      </div>
+
+      <div class="emergency-card">
+        <strong>🚒 Fire & Rescue</strong>
+        <span>Fire emergency</span>
+        <a href="tel:101">Call 101</a>
+      </div>
+
+      <div class="emergency-card">
+        <strong>🆘 Emergency</strong>
+        <span>Unified emergency number</span>
+        <a href="tel:112">Call 112</a>
+      </div>
+
     </div>
 
-    <div
-        class="answer-box"
-        id="memory"
-        style="margin-top:8px;"
-    ></div>
+  </div>
+
+</section>
 
 
-    <div
-        style="
-        margin-top:18px;
-        color:#00e5ff;
-        font-weight:bold;
-        "
-    >
-        📝 Practice
+<!-- BLOOD -->
+
+<section class="section" id="blood">
+
+  <div class="section-heading">
+
+    <div>
+      <h2>🩸 Blood Connect</h2>
+      <p>Prototype for community blood emergency requests</p>
     </div>
 
-    <div
-        class="answer-box"
-        id="practice"
-        style="margin-top:8px;"
-    ></div>
+  </div>
 
+  <div class="blood-box">
 
-    <div
-        style="
-        margin-top:18px;
-        color:#00e5ff;
-        font-weight:bold;
-        "
-    >
-        🎤 Viva Question
-    </div>
+    <div class="blood-grid">
 
-    <div
-        class="answer-box"
-        id="viva"
-        style="margin-top:8px;"
-    ></div>
+      <div>
 
-</div>
+        <h3 style="margin-bottom:12px;">
+          Create Blood Request
+        </h3>
 
+        <div class="form">
 
-<!-- RECENT QUESTIONS -->
+          <select id="bloodGroup">
+            <option value="">Select blood group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+          </select>
 
-<div class="card">
+          <input
+            id="bloodLocation"
+            placeholder="District / Location"
+          >
 
-    <div class="section-title">
-        🕘 Recent Questions
-    </div>
+          <input
+            id="bloodHospital"
+            placeholder="Hospital name"
+          >
 
-    <div id="recentQuestions">
+          <input
+            id="bloodContact"
+            placeholder="Contact number"
+            type="tel"
+          >
 
-        <div style="color:#666;font-size:13px;">
-            No recent questions.
+          <button class="primary" onclick="createBloodRequest()">
+            Create Request
+          </button>
+
         </div>
 
+        <p style="margin-top:12px;font-size:12px;color:#777;">
+          Demo only. Real emergency requests should be verified
+          with the hospital/blood bank.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 style="margin-bottom:12px;">
+          Recent Requests
+        </h3>
+
+        <div id="requestList" class="request-list"></div>
+
+      </div>
+
     </div>
 
-</div>
+  </div>
+
+</section>
 
 
-<!-- INSTAGRAM -->
+<!-- HEALTH -->
 
-<div class="instagram">
+<section class="section" id="health">
 
-    <div style="color:#aaa;">
-        👋 Made by Joji
+  <div class="section-heading">
+
+    <div>
+      <h2>🏥 Health</h2>
+      <p>Useful health-related directories</p>
     </div>
 
-    <a
-        href="https://www.instagram.com/Joh7ii/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
+  </div>
 
-        📸 Follow me on Instagram
+  <div class="cards">
 
-        <span class="instagram-username">
-            @Joh7ii
-        </span>
+    <div class="card" data-search="hospital health emergency">
+      <div class="card-icon">🏥</div>
+      <h3>Hospital Finder</h3>
+      <p>Find hospitals and healthcare information by location.</p>
+      <button onclick="showMessage('Hospital Finder will be connected to verified hospital data.')">
+        Open
+      </button>
+    </div>
 
-    </a>
+    <div class="card" data-search="blood blood bank">
+      <div class="card-icon">🩸</div>
+      <h3>Blood Banks</h3>
+      <p>Directory for blood banks and donation information.</p>
+      <button onclick="scrollToSection('blood')">
+        Open
+      </button>
+    </div>
 
-</div>
+    <div class="card" data-search="ambulance emergency">
+      <div class="card-icon">🚑</div>
+      <h3>Ambulance Help</h3>
+      <p>Quick access to emergency ambulance services.</p>
+      <button onclick="window.location.href='tel:108'">
+        Call 108
+      </button>
+    </div>
+
+    <div class="card" data-search="health pharmacy medicine">
+      <div class="card-icon">💊</div>
+      <h3>Health Resources</h3>
+      <p>Useful links and verified healthcare resources.</p>
+      <button onclick="showMessage('Verified resources can be added here.')">
+        Open
+      </button>
+    </div>
+
+  </div>
+
+</section>
 
 
-<div class="footer">
+<!-- GOVERNMENT -->
 
-    © 2026 JOJIFY ONE · Your everyday AI assistant.
+<section class="section" id="government">
 
-</div>
+  <div class="section-heading">
+
+    <div>
+      <h2>🏛️ Government Services</h2>
+      <p>Find the official service you need</p>
+    </div>
+
+  </div>
+
+  <div class="cards">
+
+    <div class="card" data-search="government birth certificate">
+      <div class="card-icon">📜</div>
+      <h3>Birth Certificate</h3>
+      <p>Find the appropriate official service for birth certificates.</p>
+      <button onclick="showMessage('Add the official Kerala government service link here.')">
+        Find Service
+      </button>
+    </div>
+
+    <div class="card" data-search="government income certificate">
+      <div class="card-icon">📄</div>
+      <h3>Income Certificate</h3>
+      <p>Find information and official application services.</p>
+      <button onclick="showMessage('Add the official service link here.')">
+        Find Service
+      </button>
+    </div>
+
+    <div class="card" data-search="government driving licence">
+      <div class="card-icon">🚗</div>
+      <h3>Driving Licence</h3>
+      <p>Access official driving licence-related services.</p>
+      <button onclick="showMessage('Add the official transport service link here.')">
+        Find Service
+      </button>
+    </div>
+
+    <div class="card" data-search="government passport">
+      <div class="card-icon">🛂</div>
+      <h3>Passport</h3>
+      <p>Find official passport application information.</p>
+      <button onclick="showMessage('Add the official passport service link here.')">
+        Find Service
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- STUDENTS -->
+
+<section class="section" id="students">
+
+  <div class="section-heading">
+
+    <div>
+      <h2>🎓 Student Help</h2>
+      <p>Useful tools for Kerala students</p>
+    </div>
+
+  </div>
+
+  <div class="cards">
+
+    <div class="card" data-search="student cgpa calculator">
+      <div class="card-icon">🧮</div>
+      <h3>CGPA Calculator</h3>
+      <p>Calculate your CGPA using your grades and credits.</p>
+      <button onclick="showMessage('CGPA calculator can be added as the next tool.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="student attendance calculator">
+      <div class="card-icon">📊</div>
+      <h3>Attendance Calculator</h3>
+      <p>Calculate attendance percentage and required classes.</p>
+      <button onclick="showMessage('Attendance calculator can be added next.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="student scholarship">
+      <div class="card-icon">🎓</div>
+      <h3>Scholarships</h3>
+      <p>Directory of scholarship information and official links.</p>
+      <button onclick="showMessage('Add verified scholarship sources here.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="student exam notes">
+      <div class="card-icon">📚</div>
+      <h3>Study Resources</h3>
+      <p>Notes, previous papers and study tools.</p>
+      <button onclick="showMessage('Study resources section ready to expand.')">
+        Open
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TOOLS -->
+
+<section class="section" id="tools">
+
+  <div class="section-heading">
+
+    <div>
+      <h2>🛠️ Everyday Tools</h2>
+      <p>Simple tools that work directly in your browser</p>
+    </div>
+
+  </div>
+
+  <div class="cards">
+
+    <div class="card" data-search="calculator percentage">
+      <div class="card-icon">%</div>
+      <h3>Percentage Calculator</h3>
+      <p>Quickly calculate percentages.</p>
+      <button onclick="showMessage('Percentage calculator coming next.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="timer study">
+      <div class="card-icon">⏱️</div>
+      <h3>Study Timer</h3>
+      <p>Simple focus timer for studying.</p>
+      <button onclick="showMessage('Study timer coming next.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="qr code">
+      <div class="card-icon">▦</div>
+      <h3>QR Generator</h3>
+      <p>Create QR codes for useful information.</p>
+      <button onclick="showMessage('QR generator coming next.')">
+        Open
+      </button>
+    </div>
+
+    <div class="card" data-search="text counter word counter">
+      <div class="card-icon">📝</div>
+      <h3>Text Counter</h3>
+      <p>Count words and characters instantly.</p>
+      <button onclick="showMessage('Text counter coming next.')">
+        Open
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div>
+      <h3>KERALA ONE</h3>
+      <p>
+        A community-focused public utility hub concept
+        designed to make useful Kerala resources easier to find.
+      </p>
+      <p style="margin-top:12px;">
+        Information should be verified with the relevant
+        official authority before important decisions.
+      </p>
+    </div>
+
+    <div>
+      <h3>Explore</h3>
+
+      <div class="footer-links">
+        <a href="#emergency">Emergency</a>
+        <a href="#blood">Blood</a>
+        <a href="#health">Health</a>
+        <a href="#government">Government</a>
+        <a href="#students">Students</a>
+      </div>
+
+    </div>
+
+    <div>
+      <h3>About</h3>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#tools">Tools</a>
+        <a href="#home">Privacy</a>
+        <a href="#home">Contact</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- MOBILE NAV -->
+
+<div class="bottom-nav">
+
+  <a href="#home">
+    <span>🏠</span>
+    Home
+  </a>
+
+  <a href="#emergency">
+    <span>🚨</span>
+    Emergency
+  </a>
+
+  <a href="#blood">
+    <span>🩸</span>
+    Blood
+  </a>
+
+  <a href="#health">
+    <span>🏥</span>
+    Health
+  </a>
+
+  <a href="#students">
+    <span>🎓</span>
+    Students
+  </a>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-   JOJIFY ONE
-   MAIN QUESTION SOLVER
-   ===================================================== */
+/* -----------------------------
+   NAVIGATION
+----------------------------- */
 
-async function solveQuestion(){
+function scrollToSection(id){
+  const element = document.getElementById(id);
 
-    const input =
-        document.getElementById("questionInput");
-
-    const question =
-        input.value.trim();
-
-    const language =
-        document.getElementById("language").value;
-
-
-    if(!question){
-
-        alert("Please enter a question first.");
-        return;
-
-    }
-
-
-    showLoading(true);
-
-
-    /*
-    =====================================================
-    REAL AI CONNECTION GOES HERE
-
-    For GitHub Pages, DON'T put your AI API key here.
-
-    Your frontend should send the question to your
-    secure backend:
-
-        /api/solve
-
-    Example:
-
-        const response = await fetch("/api/solve", {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                question:question,
-                language:language
-            })
-        });
-
-        const data = await response.json();
-
-        showAnswer(data.answer);
-
-    =====================================================
-    */
-
-
-    /*
-    DEMO MODE
-
-    This gives working answers for some common questions
-    until a real AI backend is connected.
-    */
-
-    setTimeout(function(){
-
-        const answer =
-            demoAI(question,language);
-
-        showAnswer(answer);
-
-        saveRecent(question);
-
-        showLoading(false);
-
-    },700);
-
+  if(element){
+    element.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
 }
 
 
-/* =====================================================
-   DEMO AI
-   ===================================================== */
-
-function demoAI(question,language){
-
-    const q =
-        question.toLowerCase();
-
-
-    /* ALARA */
-
-    if(
-        q.includes("alara") ||
-        q.includes("radiation protection")
-    ){
-
-        if(language === "Malayalam"){
-
-            return `
-2 MARK ANSWER
-
-ALARA എന്നത് "As Low As Reasonably Achievable" എന്നാണ്.
-
-Radiation exposure ആവശ്യമായ clinical purpose
-നിറവേറ്റാൻ കഴിയുന്ന ഏറ്റവും കുറഞ്ഞ നിലയിൽ
-സാധ്യമാകുന്നത്ര കുറയ്ക്കുക എന്നതാണ് ALARA principle.
-
-5 MARK ANSWER
-
-ALARA radiation protection-ന്റെ പ്രധാന principle ആണ്.
-
-പ്രധാന points:
-
-1. Radiation exposure കുറയ്ക്കുക.
-2. Exposure time കുറയ്ക്കുക.
-3. Distance വർധിപ്പിക്കുക.
-4. Shielding ഉപയോഗിക്കുക.
-5. Unnecessary examinations ഒഴിവാക്കുക.
-
-10 MARK ANSWER
-
-ALARA എന്നത് "As Low As Reasonably Achievable"
-എന്നതിന്റെ ചുരുക്കപ്പേരാണ്.
-
-Radiation ഉപയോഗിക്കുമ്പോൾ patient-നും staff-നും
-ലഭിക്കുന്ന radiation dose clinical purpose
-നിറവേറ്റുന്നതിന് ആവശ്യമായ ഏറ്റവും കുറഞ്ഞ
-നിലയിൽ നിലനിർത്തുകയാണ് ഇതിന്റെ ലക്ഷ്യം.
-
-പ്രധാന മാർഗങ്ങൾ:
-
-• Time — exposure time കുറയ്ക്കുക.
-• Distance — radiation source-ൽ നിന്ന് distance വർധിപ്പിക്കുക.
-• Shielding — protective barriers ഉപയോഗിക്കുക.
-• Proper technique — ശരിയായ exposure factors ഉപയോഗിക്കുക.
-• Unnecessary exposure ഒഴിവാക്കുക.
-
-Easy Memory:
-
-TIME + DISTANCE + SHIELDING = ALARA
-
-VIVA:
-
-Q: ALARA full form എന്താണ്?
-
-A: As Low As Reasonably Achievable.
-`;
-
-        }
-
-        return `
-2 MARK ANSWER
-
-ALARA means "As Low As Reasonably Achievable".
-
-It means keeping radiation exposure as low as reasonably
-achievable while still obtaining the required clinical result.
-
-5 MARK ANSWER
-
-ALARA is an important radiation protection principle.
-
-Main methods:
-
-1. Reduce exposure time.
-2. Increase distance.
-3. Use proper shielding.
-4. Use correct exposure factors.
-5. Avoid unnecessary radiation exposure.
-
-10 MARK ANSWER
-
-ALARA stands for "As Low As Reasonably Achievable".
-
-It is a radiation protection principle used to minimize
-unnecessary radiation exposure while achieving the required
-diagnostic or therapeutic objective.
-
-Important methods include:
-
-• Time — minimize exposure time.
-• Distance — increase distance from the source.
-• Shielding — use appropriate protective barriers.
-• Proper technique — use suitable exposure factors.
-• Justification — avoid unnecessary examinations.
-
-Easy Memory:
-
-TIME + DISTANCE + SHIELDING = ALARA
-
-VIVA:
-
-Q: What is the full form of ALARA?
-
-A: As Low As Reasonably Achievable.
-`;
-
-    }
-
-
-    /* TLD */
-
-    if(
-        q.includes("tld") ||
-        q.includes("thermoluminescent")
-    ){
-
-        return `
-2 MARK ANSWER
-
-TLD stands for Thermoluminescent Dosimeter.
-
-It is a radiation monitoring device used to measure
-the radiation dose received by personnel.
-
-5 MARK ANSWER
-
-TLD is a personal radiation monitoring device.
-
-Principle:
-
-When ionizing radiation interacts with the TLD material,
-energy is stored in the material. When heated, the material
-releases this energy as light. The amount of light is related
-to the radiation dose.
-
-Uses:
-
-• Personnel monitoring
-• Radiation protection
-• Occupational dose measurement
-
-10 MARK ANSWER
-
-TLD stands for Thermoluminescent Dosimeter.
-
-It is used to monitor occupational radiation exposure.
-
-Principle:
-
-1. Radiation interacts with the TLD crystal.
-2. Energy is stored in trapping centres.
-3. Heating releases the stored energy.
-4. Light is emitted.
-5. The emitted light is measured.
-6. The amount of light is related to radiation dose.
-
-Advantages:
-
-• Small size
-• Reusable
-• Good sensitivity
-• Easy to carry
-• Suitable for personnel monitoring
-
-Easy Memory:
-
-RADIATION → STORE ENERGY → HEAT → LIGHT → DOSE
-
-VIVA:
-
-Q: What does TLD stand for?
-
-A: Thermoluminescent Dosimeter.
-`;
-
-    }
-
-
-    /* CT */
-
-    if(
-        q.includes("ct artifact") ||
-        q.includes("ct artifacts")
-    ){
-
-        return `
-2 MARK ANSWER
-
-CT artifacts are unwanted distortions or errors appearing
-in a CT image.
-
-Examples include motion artifact, beam-hardening artifact,
-ring artifact and metal artifact.
-
-5 MARK ANSWER
-
-Common CT artifacts include:
-
-1. Motion artifact
-2. Beam-hardening artifact
-3. Ring artifact
-4. Metal artifact
-5. Partial-volume artifact
-
-Causes include patient movement, scanner problems,
-high-density objects and limitations of image reconstruction.
-
-10 MARK ANSWER
-
-CT artifacts are image distortions that reduce image quality
-or produce structures that are not actually present.
-
-Common types:
-
-1. Motion artifact
-   Caused by patient movement during scanning.
-
-2. Beam-hardening artifact
-   Occurs because lower-energy photons are preferentially
-   absorbed as the beam passes through the patient.
-
-3. Ring artifact
-   Usually associated with detector calibration problems.
-
-4. Metal artifact
-   Caused by highly attenuating metallic objects.
-
-5. Partial-volume artifact
-   Occurs when different tissues are represented within
-   a single voxel.
-
-Easy Memory:
-
-M-B-R-M-P
-
-Motion
-Beam hardening
-Ring
-Metal
-Partial volume
-
-VIVA:
-
-Q: Name two CT artifacts.
-
-A: Motion artifact and beam-hardening artifact.
-`;
-
-    }
-
-
-    /* GENERIC */
-
-    return `
-JOJIFY DEMO MODE
-
-Your question:
-
-"${question}"
-
-I received your question successfully.
-
-However, this GitHub Pages version is currently running
-without a real AI backend.
-
-To make JOJIFY ONE solve ANY question automatically,
-connect the SOLVE THE QUESTION button to a secure AI
-backend/API.
-
-The final system will be:
-
-QUESTION
-   ↓
-JOJIFY
-   ↓
-AI ENGINE
-   ↓
-ANSWER
-   ↓
-2 MARK / 5 MARK / 10 MARK
-   ↓
-MEMORY + PRACTICE + VIVA
-
-The frontend is ready for that connection.
-
-Important:
-
-Never put your private AI API key directly inside
-index.html because anyone can view the key.
-`;
-
+/* -----------------------------
+   MESSAGE
+----------------------------- */
+
+function showMessage(message){
+  alert(message);
 }
 
 
-/* =====================================================
-   SHOW ANSWER
-   ===================================================== */
+/* -----------------------------
+   SEARCH
+----------------------------- */
+
+const searchItems = [
+
+  {
+    title:"Emergency",
+    description:"Emergency contacts and quick assistance.",
+    keywords:"emergency police ambulance fire 112 108 101",
+    section:"emergency"
+  },
+
+  {
+    title:"Blood Connect",
+    description:"Blood emergency request and volunteer system.",
+    keywords:"blood blood group donor donation emergency",
+    section:"blood"
+  },
+
+  {
+    title:"Hospital Finder",
+    description:"Find healthcare resources and hospitals.",
+    keywords:"hospital health doctor medical emergency",
+    section:"health"
+  },
+
+  {
+    title:"Government Services",
+    description:"Find government service information.",
+    keywords:"government certificate birth income passport licence",
+    section:"government"
+  },
+
+  {
+    title:"Student Help",
+    description:"Student tools, scholarships and study resources.",
+    keywords:"student college university scholarship exam study",
+    section:"students"
+  },
+
+  {
+    title:"CGPA Calculator",
+    description:"Calculate your academic CGPA.",
+    keywords:"cgpa grade marks student calculator",
+    section:"students"
+  },
+
+  {
+    title:"Attendance Calculator",
+    description:"Calculate attendance requirements.",
+    keywords:"attendance student college classes percentage",
+    section:"students"
+  },
+
+  {
+    title:"Study Timer",
+    description:"Focus timer for studying.",
+    keywords:"study timer pomodoro focus student",
+    section:"tools"
+  },
+
+  {
+    title:"QR Generator",
+    description:"Generate QR codes.",
+    keywords:"qr qr code generator utility",
+    section:"tools"
+  },
+
+  {
+    title:"Text Counter",
+    description:"Count words and characters.",
+    keywords:"text word character counter",
+    section:"tools"
+  }
+
+];
+
+
+function performSearch(){
+
+  const input =
+    document.getElementById("searchInput");
+
+  const query =
+    input.value.trim().toLowerCase();
+
+  const resultsBox =
+    document.getElementById("searchResults");
+
+  const container =
+    document.getElementById("resultsContainer");
+
+  const count =
+    document.getElementById("resultCount");
+
+  if(!query){
+
+    resultsBox.style.display="none";
+
+    return;
+  }
 
-function showAnswer(text){
+  const results =
+    searchItems.filter(item =>
 
-    document.getElementById("result").style.display =
-        "block";
+      (
+        item.title +
+        " " +
+        item.description +
+        " " +
+        item.keywords
+      )
+      .toLowerCase()
+      .includes(query)
 
-    document.getElementById("answer").textContent =
-        text;
+    );
 
+  container.innerHTML="";
 
-    document.getElementById("memory").textContent =
-        createMemory(text);
+  count.textContent =
+    results.length +
+    (results.length === 1 ? " result" : " results");
 
+  if(results.length === 0){
 
-    document.getElementById("practice").textContent =
-        "Try explaining this topic without looking at the answer. Then ask JOJIFY another question about the same topic.";
+    container.innerHTML = `
+      <div class="result">
+        <h3>No results found</h3>
+        <p>
+          Try another search such as blood,
+          hospital, emergency, student or government.
+        </p>
+      </div>
+    `;
 
+  }else{
 
-    document.getElementById("viva").textContent =
-        "Explain the main definition, principle and two important points of this topic.";
+    results.forEach(item => {
 
+      const div =
+        document.createElement("div");
 
-    document
-        .getElementById("result")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+      div.className="result";
 
-}
+      div.innerHTML=`
 
+        <h3>${item.title}</h3>
 
-/* =====================================================
-   MEMORY
-   ===================================================== */
+        <p>${item.description}</p>
 
-function createMemory(text){
+        <button
+          onclick="scrollToSection('${item.section}')"
+        >
+          Open
+        </button>
 
-    if(text.toLowerCase().includes("alara")){
+      `;
 
-        return "TIME + DISTANCE + SHIELDING = ALARA";
-
-    }
-
-    if(text.toLowerCase().includes("tld")){
-
-        return "RADIATION → STORE → HEAT → LIGHT → DOSE";
-
-    }
-
-    if(text.toLowerCase().includes("artifact")){
-
-        return "MOTION + BEAM + RING + METAL + PARTIAL";
-
-    }
-
-    return "UNDERSTAND → REMEMBER → PRACTICE → REPEAT";
-
-}
-
-
-/* =====================================================
-   STUDY MODE
-   ===================================================== */
-
-function studyAnswer(marks){
-
-    const input =
-        document.getElementById("questionInput");
-
-    const question =
-        input.value.trim();
-
-    if(!question){
-
-        alert(
-            "Enter your study question first."
-        );
-
-        input.focus();
-
-        return;
-
-    }
-
-
-    input.value =
-        question +
-        "\n\nGive me a " +
-        marks +
-        " mark exam answer.";
-
-    solveQuestion();
-
-}
-
-
-/* =====================================================
-   QUICK TOOLS
-   ===================================================== */
-
-function useTool(tool){
-
-    const input =
-        document.getElementById("questionInput");
-
-    const question =
-        input.value.trim();
-
-
-    if(!question){
-
-        alert(
-            "Enter your question first."
-        );
-
-        input.focus();
-
-        return;
-
-    }
-
-
-    input.value =
-        tool +
-        " this question:\n\n" +
-        question;
-
-    solveQuestion();
-
-}
-
-
-/* =====================================================
-   VOICE INPUT
-   ===================================================== */
-
-function startVoice(){
-
-    const SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-
-
-    if(!SpeechRecognition){
-
-        alert(
-            "Voice input is not supported in this browser."
-        );
-
-        return;
-
-    }
-
-
-    const recognition =
-        new SpeechRecognition();
-
-
-    recognition.lang =
-        document.getElementById("language").value === "Malayalam"
-        ? "ml-IN"
-        : "en-IN";
-
-
-    recognition.interimResults =
-        false;
-
-
-    recognition.maxAlternatives =
-        1;
-
-
-    recognition.start();
-
-
-    recognition.onresult =
-        function(event){
-
-            document.getElementById(
-                "questionInput"
-            ).value =
-                event.results[0][0].transcript;
-
-        };
-
-
-    recognition.onerror =
-        function(){
-
-            alert(
-                "Voice input could not be started."
-            );
-
-        };
-
-}
-
-
-/* =====================================================
-   READ ANSWER
-   ===================================================== */
-
-function readAnswer(){
-
-    const text =
-        document.getElementById("answer").textContent;
-
-
-    if(!text){
-
-        return;
-
-    }
-
-
-    if(!("speechSynthesis" in window)){
-
-        alert(
-            "Text-to-speech is not supported."
-        );
-
-        return;
-
-    }
-
-
-    speechSynthesis.cancel();
-
-
-    const speech =
-        new SpeechSynthesisUtterance(text);
-
-
-    speech.lang =
-        document.getElementById("language").value === "Malayalam"
-        ? "ml-IN"
-        : "en-IN";
-
-
-    speech.rate = .9;
-
-
-    speechSynthesis.speak(speech);
-
-}
-
-
-/* =====================================================
-   SAVE ANSWER
-   ===================================================== */
-
-function saveAnswer(){
-
-    const question =
-        document.getElementById(
-            "questionInput"
-        ).value.trim();
-
-    const answer =
-        document.getElementById(
-            "answer"
-        ).textContent;
-
-
-    if(!question || !answer){
-
-        return;
-
-    }
-
-
-    const saved =
-        JSON.parse(
-            localStorage.getItem(
-                "jojifySavedAnswers"
-            ) || "[]"
-        );
-
-
-    saved.unshift({
-
-        question:question,
-        answer:answer,
-        date:new Date().toLocaleString()
+      container.appendChild(div);
 
     });
 
+  }
 
-    localStorage.setItem(
-        "jojifySavedAnswers",
-        JSON.stringify(
-            saved.slice(0,20)
-        )
-    );
+  resultsBox.style.display="block";
 
-
-    alert(
-        "✅ Answer saved!"
-    );
+  resultsBox.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
 
 }
 
 
-/* =====================================================
-   RECENT QUESTIONS
-   ===================================================== */
+function handleSearchKey(event){
 
-function saveRecent(question){
-
-    let recent =
-        JSON.parse(
-            localStorage.getItem(
-                "jojifyRecent"
-            ) || "[]"
-        );
-
-
-    recent =
-        recent.filter(
-            item => item !== question
-        );
-
-
-    recent.unshift(question);
-
-
-    recent =
-        recent.slice(0,8);
-
-
-    localStorage.setItem(
-        "jojifyRecent",
-        JSON.stringify(recent)
-    );
-
-
-    displayRecent();
+  if(event.key === "Enter"){
+    performSearch();
+  }
 
 }
 
 
-function displayRecent(){
+function searchQuick(query){
 
-    const box =
-        document.getElementById(
-            "recentQuestions"
-        );
+  document.getElementById("searchInput").value=query;
 
-
-    const recent =
-        JSON.parse(
-            localStorage.getItem(
-                "jojifyRecent"
-            ) || "[]"
-        );
-
-
-    if(recent.length === 0){
-
-        box.innerHTML =
-            '<div style="color:#666;font-size:13px;">No recent questions.</div>';
-
-        return;
-
-    }
-
-
-    box.innerHTML =
-        "";
-
-
-    recent.forEach(function(question){
-
-        const item =
-            document.createElement("div");
-
-
-        item.className =
-            "recent-item";
-
-
-        item.textContent =
-            "🔍 " + question;
-
-
-        item.onclick =
-            function(){
-
-                document.getElementById(
-                    "questionInput"
-                ).value =
-                    question;
-
-                solveQuestion();
-
-            };
-
-
-        box.appendChild(item);
-
-    });
+  performSearch();
 
 }
 
 
-/* =====================================================
-   LOADING
-   ===================================================== */
+/* -----------------------------
+   BLOOD REQUEST DEMO
+----------------------------- */
 
-function showLoading(show){
+function getRequests(){
 
-    document.getElementById(
-        "loading"
-    ).style.display =
-        show ? "block" : "none";
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("keralaOneBloodRequests")
+    ) || [];
+
+  }catch(error){
+
+    return [];
+
+  }
 
 }
 
 
-/* =====================================================
-   ENTER KEY
-   ===================================================== */
+function saveRequests(requests){
 
-document
-.getElementById("questionInput")
-.addEventListener(
-    "keydown",
-    function(event){
+  localStorage.setItem(
+    "keralaOneBloodRequests",
+    JSON.stringify(requests)
+  );
 
-        if(
-            event.key === "Enter" &&
-            event.ctrlKey
-        ){
-
-            solveQuestion();
-
-        }
-
-    }
-);
+}
 
 
-/* =====================================================
-   START
-   ===================================================== */
+function createBloodRequest(){
 
-displayRecent();
+  const group =
+    document.getElementById("bloodGroup").value;
+
+  const location =
+    document.getElementById("bloodLocation").value.trim();
+
+  const hospital =
+    document.getElementById("bloodHospital").value.trim();
+
+  const contact =
+    document.getElementById("bloodContact").value.trim();
+
+  if(!group || !location || !hospital || !contact){
+
+    alert("Please fill all blood request details.");
+
+    return;
+
+  }
+
+  const request = {
+
+    id:Date.now(),
+
+    group,
+
+    location,
+
+    hospital,
+
+    contact,
+
+    time:new Date().toLocaleString()
+
+  };
+
+  const requests =
+    getRequests();
+
+  requests.unshift(request);
+
+  saveRequests(requests);
+
+  document.getElementById("bloodGroup").value="";
+  document.getElementById("bloodLocation").value="";
+  document.getElementById("bloodHospital").value="";
+  document.getElementById("bloodContact").value="";
+
+  renderRequests();
+
+  alert(
+    "Blood request created in this browser demo."
+  );
+
+}
+
+
+function renderRequests(){
+
+  const list =
+    document.getElementById("requestList");
+
+  const requests =
+    getRequests();
+
+  if(requests.length === 0){
+
+    list.innerHTML=`
+
+      <div class="request">
+
+        <strong>No requests yet</strong>
+
+        <div style="font-size:12px;color:#777;">
+          Blood requests created on this device
+          will appear here.
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  list.innerHTML="";
+
+  requests.slice(0,8).forEach(request => {
+
+    const div =
+      document.createElement("div");
+
+    div.className="request";
+
+    div.innerHTML=`
+
+      <strong>${escapeHTML(request.group)} needed</strong>
+
+      <div>
+        📍 ${escapeHTML(request.location)}
+      </div>
+
+      <div>
+        🏥 ${escapeHTML(request.hospital)}
+      </div>
+
+      <div style="font-size:11px;color:#888;margin-top:5px;">
+        ${escapeHTML(request.time)}
+      </div>
+
+    `;
+
+    list.appendChild(div);
+
+  });
+
+}
+
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* -----------------------------
+   INITIALIZE
+----------------------------- */
+
+renderRequests();
 
 </script>
 
