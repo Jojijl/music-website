@@ -2,238 +2,270 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>JOJIFY STUDY</title>
+<title>JOJIFY ONE</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#0b0b10;
-    color:white;
-    min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#09090d;
+  color:#fff;
+  min-height:100vh;
 }
 
 .container{
-    width:100%;
-    max-width:700px;
-    margin:auto;
-    padding:20px;
+  width:100%;
+  max-width:720px;
+  margin:auto;
+  padding:18px;
 }
 
+/* HEADER */
+
 header{
-    text-align:center;
-    padding:25px 10px;
+  text-align:center;
+  padding:28px 10px 22px;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:2px;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:3px;
 }
 
 .logo span{
-    color:#7c5cff;
+  color:#7c5cff;
 }
 
 .tagline{
-    margin-top:7px;
-    color:#aaa;
-    font-size:14px;
+  color:#888;
+  margin-top:8px;
+  font-size:14px;
 }
 
-.search-area{
-    background:#15151d;
-    padding:15px;
-    border-radius:18px;
-    border:1px solid #292936;
+/* MAIN ASK BOX */
+
+.ask-box{
+  background:#15151d;
+  border:1px solid #292936;
+  border-radius:22px;
+  padding:16px;
 }
 
 textarea{
-    width:100%;
-    height:120px;
-    resize:none;
-    border:none;
-    outline:none;
-    background:#0e0e14;
-    color:white;
-    padding:15px;
-    border-radius:12px;
-    font-size:16px;
+  width:100%;
+  height:130px;
+  resize:none;
+  border:0;
+  outline:0;
+  border-radius:15px;
+  background:#0d0d13;
+  color:#fff;
+  padding:16px;
+  font-size:16px;
 }
 
 textarea::placeholder{
-    color:#777;
+  color:#6f6f78;
 }
 
 .controls{
-    display:flex;
-    gap:10px;
-    margin-top:12px;
+  display:flex;
+  gap:10px;
+  margin-top:12px;
 }
 
 button{
-    border:none;
-    cursor:pointer;
-    color:white;
-    font-weight:bold;
+  border:0;
+  cursor:pointer;
+  color:#fff;
+  font-weight:700;
 }
 
 .voice{
-    width:55px;
-    border-radius:12px;
-    background:#292936;
-    font-size:22px;
-}
-
-.solve{
-    flex:1;
-    border-radius:12px;
-    background:#7c5cff;
-    font-size:16px;
+  width:58px;
+  border-radius:14px;
+  background:#292936;
+  font-size:22px;
 }
 
 .voice.listening{
-    background:#e53935;
-    animation:pulse 1s infinite;
+  background:#e53935;
+  animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-    50%{
-        transform:scale(1.06);
-    }
+  50%{transform:scale(1.06)}
 }
+
+.ask{
+  flex:1;
+  border-radius:14px;
+  background:#7c5cff;
+  font-size:16px;
+}
+
+/* LANGUAGE */
 
 .language{
-    width:100%;
-    margin-top:12px;
-    background:#0e0e14;
-    color:white;
-    border:1px solid #292936;
-    padding:12px;
-    border-radius:10px;
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  background:#0d0d13;
+  color:#fff;
+  border:1px solid #292936;
+  border-radius:12px;
 }
 
-.examples{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    margin:15px 0;
+/* QUICK ACTIONS */
+
+.quick-title{
+  margin:25px 0 12px;
+  color:#aaa;
+  font-size:14px;
 }
 
-.example{
-    white-space:nowrap;
-    background:#171720;
-    padding:9px 13px;
-    border-radius:20px;
-    border:1px solid #292936;
-    color:#ccc;
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.answer-buttons{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:20px;
+.quick{
+  background:#15151d;
+  border:1px solid #292936;
+  border-radius:15px;
+  padding:16px;
+  text-align:left;
 }
 
-.mark-btn{
-    padding:14px 5px;
-    background:#171720;
-    border:1px solid #292936;
-    border-radius:12px;
+.quick strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-.mark-btn.active{
-    background:#7c5cff;
+.quick small{
+  color:#888;
 }
+
+/* STUDY */
+
+.study{
+  margin-top:25px;
+  background:linear-gradient(145deg,#171522,#111119);
+  border:1px solid #302c45;
+  border-radius:20px;
+  padding:18px;
+}
+
+.study-title{
+  font-size:21px;
+  font-weight:800;
+}
+
+.study-sub{
+  color:#999;
+  margin-top:5px;
+  margin-bottom:15px;
+}
+
+.marks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.mark{
+  background:#24232e;
+  padding:13px 5px;
+  border-radius:12px;
+}
+
+.mark.active{
+  background:#7c5cff;
+}
+
+/* RESULT */
 
 .result{
-    margin-top:20px;
-    background:#15151d;
-    border:1px solid #292936;
-    border-radius:18px;
-    padding:20px;
-    display:none;
+  display:none;
+  margin-top:20px;
+  background:#15151d;
+  border:1px solid #292936;
+  border-radius:20px;
+  padding:20px;
 }
 
-.result h2{
-    font-size:20px;
-    margin-bottom:12px;
+.result-title{
+  font-size:21px;
+  margin-bottom:15px;
 }
 
 .answer{
-    color:#ddd;
-    line-height:1.7;
-    white-space:pre-line;
+  color:#ddd;
+  line-height:1.75;
+  white-space:pre-line;
 }
 
 .section{
-    margin-top:20px;
-    padding-top:15px;
-    border-top:1px solid #292936;
+  border-top:1px solid #292936;
+  margin-top:20px;
+  padding-top:16px;
 }
 
 .section-title{
-    color:#a995ff;
-    font-weight:bold;
-    margin-bottom:8px;
+  color:#a995ff;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
-.action-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:18px;
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
 }
 
-.action-buttons button{
-    flex:1;
-    padding:12px;
-    border-radius:10px;
-    background:#292936;
+.actions button{
+  flex:1;
+  background:#292936;
+  padding:12px;
+  border-radius:10px;
 }
+
+/* HISTORY */
 
 .history{
-    margin-top:25px;
+  margin-top:25px;
 }
 
 .history-item{
-    background:#15151d;
-    padding:12px;
-    border-radius:10px;
-    margin-top:8px;
-    color:#bbb;
-    font-size:14px;
+  background:#15151d;
+  border:1px solid #24242d;
+  border-radius:10px;
+  padding:12px;
+  margin-top:8px;
+  color:#bbb;
 }
 
 .status{
-    text-align:center;
-    color:#888;
-    margin-top:10px;
-    font-size:13px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  margin-top:9px;
 }
 
 footer{
-    text-align:center;
-    color:#666;
-    font-size:12px;
-    padding:30px 0;
-}
-
-@media(max-width:450px){
-    .container{
-        padding:14px;
-    }
-
-    .logo{
-        font-size:26px;
-    }
+  text-align:center;
+  color:#555;
+  padding:30px 0 15px;
+  font-size:12px;
 }
 </style>
 </head>
@@ -243,28 +275,39 @@ footer{
 <div class="container">
 
 <header>
-    <div class="logo">JOJIFY <span>STUDY</span> 🎓</div>
-    <div class="tagline">
-        Ask. Learn. Remember. Score.
-    </div>
+  <div class="logo">
+    JOJIFY <span>ONE</span>
+  </div>
+
+  <div class="tagline">
+    Your everyday AI assistant.
+  </div>
 </header>
 
-<div class="search-area">
+
+<!-- ASK -->
+
+<div class="ask-box">
 
 <textarea
 id="question"
-placeholder="Search your study question...
+placeholder="Ask anything...
 
-Example:
+Try:
+Explain photosynthesis
+Solve 2x + 5 = 15
 What is ALARA?
-What is TLD?
-Explain CT artifacts.
-What is an X-ray transformer?"
+Write a leave message
+Translate this sentence..."
 ></textarea>
 
 <select id="language" class="language">
-    <option value="english">English</option>
-    <option value="malayalam">Malayalam</option>
+  <option value="en-IN">English</option>
+  <option value="ml-IN">Malayalam</option>
+  <option value="ta-IN">Tamil</option>
+  <option value="hi-IN">Hindi</option>
+  <option value="te-IN">Telugu</option>
+  <option value="kn-IN">Kannada</option>
 </select>
 
 <div class="controls">
@@ -277,71 +320,115 @@ onclick="startVoice()">
 </button>
 
 <button
-class="solve"
-onclick="solveQuestion()">
-✨ SOLVE QUESTION
+class="ask"
+onclick="askJojify()">
+✨ ASK JOJIFY
 </button>
 
 </div>
 
-<div class="status" id="status">
-Voice search available on supported browsers
+<div
+class="status"
+id="status">
+Ready
 </div>
 
 </div>
 
 
-<div class="examples">
+<!-- QUICK ACTIONS -->
 
-<button class="example" onclick="setQuestion('What is ALARA?')">
-ALARA
-</button>
-
-<button class="example" onclick="setQuestion('What is TLD?')">
-TLD
-</button>
-
-<button class="example" onclick="setQuestion('What is an X-ray transformer?')">
-X-ray Transformer
-</button>
-
-<button class="example" onclick="setQuestion('What are CT artifacts?')">
-CT Artifacts
-</button>
-
+<div class="quick-title">
+QUICK TOOLS
 </div>
 
-
-<div class="answer-buttons">
+<div class="quick-grid">
 
 <button
-class="mark-btn active"
+class="quick"
+onclick="quickAsk('Explain this topic in simple words')">
+<strong>🧠 Explain</strong>
+<small>Make difficult things simple</small>
+</button>
+
+<button
+class="quick"
+onclick="quickAsk('Solve this step by step')">
+<strong>🧮 Solve</strong>
+<small>Show the working</small>
+</button>
+
+<button
+class="quick"
+onclick="quickAsk('Translate this into Malayalam')">
+<strong>🌐 Translate</strong>
+<small>Change the language</small>
+</button>
+
+<button
+class="quick"
+onclick="quickAsk('Rewrite this professionally')">
+<strong>✍️ Rewrite</strong>
+<small>Make text better</small>
+</button>
+
+</div>
+
+
+<!-- STUDY -->
+
+<div class="study">
+
+<div class="study-title">
+🎓 JOJIFY STUDY
+</div>
+
+<div class="study-sub">
+Solve study questions in your exam format.
+</div>
+
+<div class="marks">
+
+<button
+class="mark active"
 onclick="setMarks(2,this)">
 2 MARK
 </button>
 
 <button
-class="mark-btn"
+class="mark"
 onclick="setMarks(5,this)">
 5 MARK
 </button>
 
 <button
-class="mark-btn"
+class="mark"
 onclick="setMarks(10,this)">
 10 MARK
 </button>
 
 </div>
 
+</div>
 
-<div class="result" id="result">
 
-<h2 id="resultTitle">
-📖 Answer
-</h2>
+<!-- RESULT -->
 
-<div class="answer" id="answer"></div>
+<div
+class="result"
+id="result">
+
+<div
+class="result-title"
+id="resultTitle">
+🤖 JOJIFY
+</div>
+
+<div
+class="answer"
+id="answer">
+</div>
+
 
 <div class="section">
 
@@ -349,34 +436,40 @@ onclick="setMarks(10,this)">
 🧠 EASY MEMORY
 </div>
 
-<div id="memory"></div>
+<div id="memory">
+</div>
 
 </div>
+
 
 <div class="section">
 
 <div class="section-title">
-🎤 VIVA QUESTION
+❓ PRACTICE
 </div>
 
-<div id="viva"></div>
+<div id="practice">
+</div>
 
 </div>
+
 
 <div class="section">
 
 <div class="section-title">
-❓ QUICK MCQ
+🎤 VIVA
 </div>
 
-<div id="mcq"></div>
+<div id="viva">
+</div>
 
 </div>
 
-<div class="action-buttons">
 
-<button onclick="speakAnswer()">
-🔊 Read Answer
+<div class="actions">
+
+<button onclick="readAnswer()">
+🔊 Read
 </button>
 
 <button onclick="saveQuestion()">
@@ -388,17 +481,20 @@ onclick="setMarks(10,this)">
 </div>
 
 
+<!-- HISTORY -->
+
 <div class="history">
 
-<h3>📚 Recent Questions</h3>
+<h3>🕘 Recent</h3>
 
-<div id="history"></div>
+<div id="historyList">
+</div>
 
 </div>
 
 
 <footer>
-JOJIFY STUDY • Learn smarter 🎓
+JOJIFY ONE • Made by Joji
 </footer>
 
 </div>
@@ -406,484 +502,75 @@ JOJIFY STUDY • Learn smarter 🎓
 
 <script>
 
-/* =========================
-   SETTINGS
-========================= */
-
 let selectedMarks = 2;
-let currentQuestion = "";
 let currentAnswer = "";
+let currentQuestion = "";
 
 
 /* =========================
-   QUESTION DATABASE
+   MARK SELECTION
 ========================= */
 
-const studyDB = {
+function setMarks(mark,button){
 
-"alara":{
+selectedMarks = mark;
 
-title:"ALARA",
-
-memory:"ALARA = As Low As Reasonably Achievable",
-
-viva:"Why is ALARA important in radiology?",
-
-mcq:"What does ALARA stand for?\nA) As Low As Radiation Allowed\nB) As Low As Reasonably Achievable\nC) All Levels Are Radiation Allowed\nD) As Long As Radiation Avoided\n\nAnswer: B",
-
-answers:{
-
-2:`ALARA stands for As Low As Reasonably Achievable. It is a radiation protection principle used to minimize unnecessary exposure to ionizing radiation.`,
-
-5:`ALARA means As Low As Reasonably Achievable.
-
-It is a fundamental principle of radiation protection.
-
-Important points:
-1. Minimize radiation exposure.
-2. Use the minimum required radiation dose.
-3. Maintain appropriate distance from the radiation source.
-4. Reduce exposure time.
-5. Use proper shielding.`,
-
-10:`ALARA — As Low As Reasonably Achievable
-
-Definition:
-ALARA is a fundamental principle of radiation protection that aims to keep radiation exposure as low as reasonably achievable while obtaining the required diagnostic information.
-
-Principles:
-
-1. Time
-Reduce the time spent near a radiation source.
-
-2. Distance
-Increase the distance from the radiation source whenever possible.
-
-3. Shielding
-Use appropriate protective devices such as lead aprons, thyroid shields and barriers.
-
-4. Proper technique
-Use appropriate exposure factors and avoid unnecessary repeat examinations.
-
-5. Justification
-Radiological examinations should be performed only when medically justified.
-
-6. Optimization
-The examination should provide the required diagnostic information using an appropriate radiation dose.
-
-Conclusion:
-ALARA helps reduce unnecessary radiation exposure to patients and radiation workers while maintaining diagnostic quality.`
-}
-
-},
-
-"tld":{
-
-title:"Thermoluminescent Dosimeter (TLD)",
-
-memory:"TLD → Radiation → Heat → Light → Dose",
-
-viva:"What is the principle of TLD?",
-
-mcq:"What is TLD mainly used for?\nA) Measuring temperature\nB) Measuring radiation dose\nC) Measuring blood pressure\nD) Measuring ultrasound\n\nAnswer: B",
-
-answers:{
-
-2:`TLD stands for Thermoluminescent Dosimeter. It is a personal radiation monitoring device used to measure exposure to ionizing radiation.`,
-
-5:`TLD stands for Thermoluminescent Dosimeter.
-
-It is used for monitoring radiation exposure.
-
-Principle:
-Radiation stores energy in the TLD material. When the material is heated, this stored energy is released as light. The amount of light is related to the radiation dose.
-
-Advantages:
-1. Small and lightweight.
-2. Reusable.
-3. Good sensitivity.
-4. Wide dose range.
-5. Suitable for personnel monitoring.`,
-
-10:`Thermoluminescent Dosimeter (TLD)
-
-Definition:
-TLD is a radiation dosimeter used to measure and monitor an individual's exposure to ionizing radiation.
-
-Principle:
-When ionizing radiation interacts with the TLD material, electrons become trapped in energy levels. When the material is heated, the trapped electrons are released and emit light. The intensity of the emitted light is related to the radiation dose.
-
-Working:
-1. The TLD is exposed to radiation.
-2. Radiation deposits energy in the TLD material.
-3. Electrons become trapped.
-4. The TLD is heated in a TLD reader.
-5. Light is emitted.
-6. The light output is measured.
-7. The radiation dose is calculated.
-
-Advantages:
-• Small and lightweight.
-• Reusable.
-• Good sensitivity.
-• Wide dose range.
-• Easy to handle.
-
-Uses:
-• Personnel radiation monitoring.
-• Diagnostic radiology.
-• Radiotherapy.
-• Nuclear medicine.
-
-Conclusion:
-TLD is an important personal dosimeter used to monitor occupational radiation exposure.`
-}
-
-},
-
-"ct artifact":{
-
-title:"CT Artifacts",
-
-memory:"CT artifacts → Motion + Beam hardening + Ring + Partial volume",
-
-viva:"What is a CT artifact?",
-
-mcq:"Which artifact can occur due to patient movement?\nA) Motion artifact\nB) Ring artifact\nC) Chemical shift\nD) Aliasing\n\nAnswer: A",
-
-answers:{
-
-2:`CT artifacts are unwanted distortions or errors that appear in CT images and may reduce image quality.`,
-
-5:`CT artifacts are unwanted distortions or errors in CT images.
-
-Common types include:
-1. Motion artifact
-2. Beam-hardening artifact
-3. Ring artifact
-4. Partial-volume artifact
-5. Metal artifact
-
-Artifacts may occur due to patient movement, scanner problems, physical effects or limitations of the imaging process.`,
-
-10:`CT ARTIFACTS
-
-Definition:
-CT artifacts are unwanted structures, distortions or errors appearing in CT images that do not represent the actual anatomy.
-
-Common types:
-
-1. Motion artifact
-Caused by patient movement during scanning. It may produce blurring or duplicated structures.
-
-2. Beam-hardening artifact
-Occurs because lower-energy photons are absorbed more strongly as the X-ray beam passes through the body.
-
-3. Ring artifact
-Usually associated with detector element problems or calibration errors and appears as rings around the center of the image.
-
-4. Partial-volume artifact
-Occurs when different tissues are included within the same voxel and their attenuation values are averaged.
-
-5. Metal artifact
-Caused by highly attenuating metallic objects and may produce streaks or dark bands.
-
-Effects:
-• Reduces image quality.
-• May obscure anatomical structures.
-• Can interfere with diagnosis.
-
-Conclusion:
-Understanding CT artifacts helps radiographers recognize image errors and take appropriate steps to reduce them.`
-}
-
-},
-
-"x-ray transformer":{
-
-title:"X-ray Transformer",
-
-memory:"Transformer → Voltage change → Tube operation",
-
-viva:"Why is a step-up transformer used in an X-ray machine?",
-
-mcq:"Which transformer increases voltage?\nA) Step-down transformer\nB) Step-up transformer\nC) Isolation transformer\nD) Filament transformer\n\nAnswer: B",
-
-answers:{
-
-2:`An X-ray transformer is an electrical device used to change the voltage supplied to the X-ray tube circuit. It helps provide the required voltage for X-ray production.`,
-
-5:`An X-ray transformer changes the voltage of the electrical supply used in an X-ray machine.
-
-Types include:
-1. Step-up transformer — increases voltage.
-2. Step-down transformer — decreases voltage.
-
-The high voltage required across the X-ray tube is produced using a step-up transformer, while a lower voltage is supplied to the filament circuit using a step-down transformer.`,
-
-10:`X-RAY TRANSFORMER
-
-Definition:
-An X-ray transformer is an electrical device used to increase or decrease voltage in an X-ray machine.
-
-Principle:
-It works on the principle of electromagnetic induction.
-
-Types:
-
-1. Step-up transformer
-It increases the voltage and supplies the high voltage required across the X-ray tube.
-
-2. Step-down transformer
-It decreases the voltage and supplies the required lower voltage to the filament circuit.
-
-Construction:
-• Primary winding
-• Secondary winding
-• Iron core
-
-Working:
-Alternating current is supplied to the primary winding. This produces a changing magnetic field in the core. The changing magnetic field induces voltage in the secondary winding.
-
-Importance:
-• Provides appropriate voltage.
-• Helps produce X-rays.
-• Controls the electrical requirements of the X-ray tube.
-
-Conclusion:
-Transformers are essential components of an X-ray generator because they provide the required voltage levels for tube operation.`
-}
-
-}
-
-};
-
-
-/* =========================
-   QUESTION HELPERS
-========================= */
-
-function setQuestion(q){
-
-document.getElementById("question").value = q;
-
-solveQuestion();
-
-}
-
-
-function setMarks(m,button){
-
-selectedMarks = m;
-
-document.querySelectorAll(".mark-btn")
-.forEach(btn => btn.classList.remove("active"));
+document
+.querySelectorAll(".mark")
+.forEach(x => x.classList.remove("active"));
 
 button.classList.add("active");
 
 if(currentQuestion){
-solveQuestion();
+askJojify();
 }
 
 }
 
 
 /* =========================
-   FIND QUESTION
+   QUICK ASK
 ========================= */
 
-function findQuestion(question){
+function quickAsk(text){
 
-let q = question.toLowerCase();
+const box =
+document.getElementById("question");
 
-if(q.includes("alara"))
-return studyDB["alara"];
+box.value = text + "\n\n";
 
-if(q.includes("tld") ||
-   q.includes("thermoluminescent"))
-return studyDB["tld"];
-
-if(q.includes("ct") &&
-   q.includes("artifact"))
-return studyDB["ct artifact"];
-
-if(q.includes("x-ray") &&
-   q.includes("transformer"))
-return studyDB["x-ray transformer"];
-
-if(q.includes("xray") &&
-   q.includes("transformer"))
-return studyDB["x-ray transformer"];
-
-return null;
+box.focus();
 
 }
 
 
 /* =========================
-   SOLVE
-========================= */
-
-function solveQuestion(){
-
-let question =
-document.getElementById("question").value.trim();
-
-if(!question){
-
-alert("Please enter a study question.");
-
-return;
-
-}
-
-currentQuestion = question;
-
-let data = findQuestion(question);
-
-let answer = "";
-
-if(data){
-
-answer = data.answers[selectedMarks];
-
-document.getElementById("resultTitle").innerText =
-"📖 " + data.title;
-
-document.getElementById("memory").innerText =
-data.memory;
-
-document.getElementById("viva").innerText =
-data.viva;
-
-document.getElementById("mcq").innerText =
-data.mcq;
-
-}else{
-
-answer = genericAnswer(question);
-
-document.getElementById("resultTitle").innerText =
-"📖 Study Answer";
-
-document.getElementById("memory").innerText =
-"Read the key points and revise them once more.";
-
-document.getElementById("viva").innerText =
-"Define and explain the main concept.";
-
-document.getElementById("mcq").innerText =
-"Create your own MCQ from the important points.";
-
-}
-
-currentAnswer = answer;
-
-document.getElementById("answer").innerText =
-answer;
-
-document.getElementById("result").style.display =
-"block";
-
-addHistory(question);
-
-}
-
-
-/* =========================
-   GENERIC FALLBACK
-========================= */
-
-function genericAnswer(question){
-
-if(selectedMarks === 2){
-
-return `Definition:
-${question} is an important study topic.
-
-For a 2-mark answer, write the definition and one important point related to the topic.`;
-
-}
-
-if(selectedMarks === 5){
-
-return `Introduction:
-${question}
-
-For a 5-mark answer:
-
-1. Give the definition.
-2. Explain the principle or main concept.
-3. Write 3–4 important points.
-4. Add an example or application.
-5. Finish with a short conclusion.`;
-
-}
-
-return `Topic:
-${question}
-
-10-MARK ANSWER FORMAT
-
-1. Introduction
-Define the topic clearly.
-
-2. Principle
-Explain the basic principle.
-
-3. Main explanation
-Describe the topic in detail.
-
-4. Classification / Types
-List and explain important types.
-
-5. Advantages / Important points
-Write the relevant points.
-
-6. Applications
-Mention important uses.
-
-7. Conclusion
-Finish with a short summary.
-
-Note:
-This is a study-answer structure. For an accurate topic-specific answer, connect JOJIFY to an AI backend.`;
-
-}
-
-
-/* =========================
-   VOICE INPUT
+   VOICE
 ========================= */
 
 function startVoice(){
 
-const SpeechRecognition =
+const Recognition =
 window.SpeechRecognition ||
 window.webkitSpeechRecognition;
 
-if(!SpeechRecognition){
+if(!Recognition){
 
-alert("Voice recognition is not supported in this browser.");
+alert(
+"Voice recognition is not supported in this browser."
+);
 
 return;
-
 }
 
 const recognition =
-new SpeechRecognition();
+new Recognition();
 
-const language =
+recognition.lang =
 document.getElementById("language").value;
 
-if(language === "malayalam"){
-recognition.lang = "ml-IN";
-}else{
-recognition.lang = "en-IN";
-}
-
-recognition.interimResults = false;
 recognition.continuous = false;
+recognition.interimResults = false;
 
 const btn =
 document.getElementById("voiceBtn");
@@ -894,13 +581,15 @@ document.getElementById("status");
 btn.classList.add("listening");
 
 status.innerText =
-"🎙️ Listening... Ask your question";
+"🎙️ Listening...";
 
 recognition.start();
 
-recognition.onresult = function(event){
 
-let text =
+recognition.onresult =
+function(event){
+
+const text =
 event.results[0][0].transcript;
 
 document.getElementById("question").value =
@@ -911,20 +600,24 @@ status.innerText =
 
 btn.classList.remove("listening");
 
-solveQuestion();
+askJojify();
 
 };
 
-recognition.onerror = function(){
+
+recognition.onerror =
+function(){
 
 status.innerText =
-"Voice input failed. Try again.";
+"Voice error. Try again.";
 
 btn.classList.remove("listening");
 
 };
 
-recognition.onend = function(){
+
+recognition.onend =
+function(){
 
 btn.classList.remove("listening");
 
@@ -934,10 +627,284 @@ btn.classList.remove("listening");
 
 
 /* =========================
-   TEXT TO SPEECH
+   MAIN JOJIFY
 ========================= */
 
-function speakAnswer(){
+function askJojify(){
+
+const question =
+document.getElementById("question")
+.value
+.trim();
+
+if(!question){
+
+alert("Ask JOJIFY something first.");
+
+return;
+}
+
+currentQuestion = question;
+
+
+/*
+IMPORTANT:
+
+This demo does not pretend to be
+a real AI model.
+
+For production, this function should
+send the question to your secure backend.
+*/
+
+const result =
+localDemoAnswer(question);
+
+currentAnswer =
+result.answer;
+
+
+document.getElementById("resultTitle")
+.innerText =
+"🤖 JOJIFY • " + selectedMarks + " MARK ANSWER";
+
+document.getElementById("answer")
+.innerText =
+result.answer;
+
+document.getElementById("memory")
+.innerText =
+result.memory;
+
+document.getElementById("practice")
+.innerText =
+result.practice;
+
+document.getElementById("viva")
+.innerText =
+result.viva;
+
+document.getElementById("result")
+.style.display =
+"block";
+
+saveHistory(question);
+
+}
+
+
+/* =========================
+   DEMO ANSWER ENGINE
+========================= */
+
+function localDemoAnswer(question){
+
+const q =
+question.toLowerCase();
+
+
+/* ALARA */
+
+if(q.includes("alara")){
+
+return {
+
+answer:
+
+selectedMarks === 2
+
+? `ALARA stands for As Low As Reasonably Achievable. It is a radiation protection principle used to minimize unnecessary radiation exposure.`
+
+: selectedMarks === 5
+
+? `ALARA means As Low As Reasonably Achievable.
+
+It is an important principle of radiation protection.
+
+Key points:
+1. Reduce unnecessary exposure.
+2. Minimize exposure time.
+3. Increase distance from the radiation source.
+4. Use appropriate shielding.
+5. Avoid unnecessary repeat examinations.`
+
+:
+
+`ALARA — As Low As Reasonably Achievable
+
+Definition:
+ALARA is a fundamental radiation protection principle that aims to keep radiation exposure as low as reasonably achievable while obtaining the required diagnostic information.
+
+Main principles:
+
+1. Time — minimize exposure time.
+2. Distance — increase distance from the radiation source.
+3. Shielding — use appropriate protective barriers.
+4. Justification — perform examinations only when justified.
+5. Optimization — use an appropriate radiation dose.
+
+Conclusion:
+ALARA helps minimize unnecessary radiation exposure to patients and radiation workers.`,
+
+memory:
+"ALARA = As Low As Reasonably Achievable",
+
+practice:
+"What does ALARA stand for?",
+
+viva:
+"Why is ALARA important in radiology?"
+
+};
+
+}
+
+
+/* TLD */
+
+if(q.includes("tld") ||
+q.includes("thermoluminescent")){
+
+return {
+
+answer:
+
+selectedMarks === 2
+
+? `TLD stands for Thermoluminescent Dosimeter. It is used to measure an individual's exposure to ionizing radiation.`
+
+:
+
+selectedMarks === 5
+
+? `TLD stands for Thermoluminescent Dosimeter.
+
+Principle:
+Radiation stores energy in the TLD material. When heated, the stored energy is released as light. The amount of light is related to the radiation dose.
+
+Advantages:
+• Small
+• Lightweight
+• Reusable
+• Sensitive
+• Useful for personnel monitoring.`
+
+:
+
+`THERMOLUMINESCENT DOSIMETER (TLD)
+
+Definition:
+TLD is a radiation dosimeter used to monitor an individual's exposure to ionizing radiation.
+
+Principle:
+Ionizing radiation deposits energy in the TLD material. Electrons become trapped in energy levels. When the material is heated, the trapped energy is released as light. The light output is related to the radiation dose.
+
+Working:
+1. TLD is exposed to radiation.
+2. Energy is stored.
+3. The TLD is heated.
+4. Light is released.
+5. Light intensity is measured.
+6. Dose is calculated.
+
+Uses:
+• Personnel monitoring
+• Diagnostic radiology
+• Radiotherapy
+• Nuclear medicine
+
+Conclusion:
+TLD is an important device for monitoring occupational radiation exposure.`,
+
+memory:
+"TLD → Radiation → Heat → Light → Dose",
+
+practice:
+"What is the principle of TLD?",
+
+viva:
+"What is TLD used for?"
+
+};
+
+}
+
+
+/* DEFAULT */
+
+return {
+
+answer:
+
+selectedMarks === 2
+
+? `For a 2-mark answer:
+
+Define the topic clearly and mention one important point.
+
+Topic:
+${question}
+
+A real AI connection is required for JOJIFY to generate a topic-specific answer.`
+
+:
+
+selectedMarks === 5
+
+? `For a 5-mark answer:
+
+1. Definition
+2. Principle / basic concept
+3. Important points
+4. Example or application
+5. Short conclusion
+
+Topic:
+${question}
+
+A real AI connection is required for JOJIFY to generate the complete topic-specific answer.`
+
+:
+
+`10-MARK ANSWER
+
+Topic:
+${question}
+
+Recommended structure:
+
+1. Introduction
+2. Definition
+3. Principle
+4. Classification / types
+5. Detailed explanation
+6. Advantages
+7. Disadvantages
+8. Applications
+9. Important points
+10. Conclusion
+
+A real AI connection is required for JOJIFY to generate the complete answer.`,
+
+memory:
+"Understand → Key points → Recall → Practice",
+
+practice:
+"Write three questions from this topic.",
+
+viva:
+"Define the topic and explain its main principle."
+
+};
+
+}
+
+
+/* =========================
+   READ ANSWER
+========================= */
+
+function readAnswer(){
 
 if(!currentAnswer)
 return;
@@ -947,14 +914,8 @@ speechSynthesis.cancel();
 const speech =
 new SpeechSynthesisUtterance(currentAnswer);
 
-const language =
+speech.lang =
 document.getElementById("language").value;
-
-if(language === "malayalam"){
-speech.lang = "ml-IN";
-}else{
-speech.lang = "en-IN";
-}
 
 speech.rate = 0.9;
 
@@ -964,41 +925,15 @@ speechSynthesis.speak(speech);
 
 
 /* =========================
-   SAVE
+   SAVE HISTORY
 ========================= */
 
-function saveQuestion(){
-
-let saved =
-JSON.parse(localStorage.getItem("jojifySaved") || "[]");
-
-saved.unshift({
-question:currentQuestion,
-marks:selectedMarks,
-date:new Date().toLocaleString()
-});
-
-saved =
-saved.slice(0,20);
-
-localStorage.setItem(
-"jojifySaved",
-JSON.stringify(saved)
-);
-
-alert("⭐ Question saved!");
-
-}
-
-
-/* =========================
-   HISTORY
-========================= */
-
-function addHistory(question){
+function saveHistory(question){
 
 let history =
-JSON.parse(localStorage.getItem("jojifyHistory") || "[]");
+JSON.parse(
+localStorage.getItem("jojifyHistory") || "[]"
+);
 
 history.unshift(question);
 
@@ -1010,42 +945,55 @@ localStorage.setItem(
 JSON.stringify(history)
 );
 
-displayHistory();
-
-}
-
-
-function displayHistory(){
-
-let history =
-JSON.parse(localStorage.getItem("jojifyHistory") || "[]");
-
-let html = "";
-
-history.forEach(q => {
-
-html += `
-<div class="history-item"
-onclick="setQuestion('${q.replace(/'/g,"\\'")}')">
-🔹 ${q}
-</div>
-`;
-
-});
-
-document.getElementById("history").innerHTML =
-html;
+showHistory();
 
 }
 
 
 /* =========================
-   START
+   SHOW HISTORY
 ========================= */
 
-displayHistory();
+function showHistory(){
+
+const history =
+JSON.parse(
+localStorage.getItem("jojifyHistory") || "[]"
+);
+
+document.getElementById("historyList")
+.innerHTML =
+history.map(q => {
+
+const safe =
+q.replace(/'/g,"\\'");
+
+return `
+<div
+class="history-item"
+onclick="loadHistory('${safe}')">
+🔹 ${q}
+</div>
+`;
+
+}).join("");
+
+}
+
+
+function loadHistory(question){
+
+document.getElementById("question")
+.value = question;
+
+askJojify();
+
+}
+
+
+showHistory();
 
 </script>
 
 </body>
-    </html>
+</html>
