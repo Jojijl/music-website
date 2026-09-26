@@ -2,292 +2,310 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JOJIFY</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JOJIFY — Your Music. Your Vibe.</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 body{
-font-family:Arial,sans-serif;
-background:#080808;
+margin:0;
+background:#090909;
 color:#fff;
-min-height:100vh
+font-family:Arial,sans-serif
 }
 
 header{
-padding:22px 16px;
-text-align:center
+padding:18px 12px 8px;
+text-align:center;
+background:#090909;
+position:sticky;
+top:0;
+z-index:50
 }
 
 .logo{
-font-size:30px;
-font-weight:800;
+font-size:31px;
+font-weight:900;
 letter-spacing:3px
 }
 
-.logo span{color:#1db954}
+.tagline{
+font-size:11px;
+color:#888;
+margin-top:4px
+}
 
-.search-box{
+.search{
 display:flex;
 gap:8px;
-max-width:600px;
-margin:15px auto;
-padding:0 12px
+margin:15px 0 10px
 }
 
-.search-box input{
+.search input{
 flex:1;
-padding:14px 16px;
-border:0;
-outline:0;
-border-radius:14px;
-background:#191919;
+background:#151515;
+border:1px solid #292929;
+border-radius:12px;
+padding:13px;
 color:white;
-font-size:15px
+outline:none
 }
 
-.search-box button{
+.search button{
+background:#1ed760;
 border:0;
-background:#1db954;
-color:#000;
-font-weight:bold;
-padding:0 18px;
-border-radius:14px;
-cursor:pointer
+border-radius:12px;
+padding:0 16px;
+font-weight:bold
 }
 
 .tabs{
 display:flex;
-gap:8px;
-padding:5px 12px 15px;
-overflow-x:auto
+gap:7px;
+overflow-x:auto;
+padding:8px 0 5px
 }
 
 .tab{
+flex-shrink:0;
+background:#171717;
 border:1px solid #292929;
-background:#141414;
 color:#aaa;
-padding:11px 15px;
-border-radius:20px;
-white-space:nowrap;
-cursor:pointer
+padding:9px 13px;
+border-radius:20px
 }
 
 .tab.active{
-background:#1db954;
+background:#1ed760;
 color:#000;
-border-color:#1db954;
-font-weight:bold
+border-color:#1ed760
 }
 
 main{
-max-width:700px;
-margin:auto;
-padding:0 12px 190px
+padding:5px 12px 190px
 }
 
-.message{
-text-align:center;
-color:#888;
-padding:30px 10px
+.section-title{
+font-size:22px;
+font-weight:bold;
+margin:12px 0
 }
 
-/* SONGS / RADIO */
+.card{
+background:#151515;
+border:1px solid #292929;
+border-radius:15px;
+padding:12px;
+margin-bottom:10px
+}
 
-.result,.station{
+/* SONGS */
+
+.song{
 display:flex;
 align-items:center;
-gap:12px;
-padding:10px;
-margin:8px 0;
-background:#121212;
-border-radius:14px
+gap:12px
 }
 
-.result img{
-width:58px;
-height:58px;
+.song img{
+width:60px;
+height:60px;
 border-radius:10px;
 object-fit:cover
 }
 
-.info,.station-info{
+.song-info{
 flex:1;
 min-width:0
 }
 
-.name,.station-name{
+.song-title{
 font-weight:bold;
 white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis
 }
 
-.artist-name,.station-country{
-color:#888;
+.song-artist{
 font-size:13px;
-margin-top:5px
+color:#888;
+margin-top:4px
 }
 
-.play,.radio-btn{
-border:0;
-background:#1db954;
-color:#000;
-font-weight:bold;
-cursor:pointer
-}
-
-.play{
+.play-small{
 width:42px;
 height:42px;
-border-radius:50%
+border-radius:50%;
+background:#1ed760;
+font-size:17px
 }
 
-.radio-btn{
-padding:9px 13px;
-border-radius:10px
+/* STORIES */
+
+.story-search{
+margin-bottom:15px
+}
+
+.story-search input{
+width:100%;
+padding:13px;
+background:#151515;
+border:1px solid #292929;
+border-radius:12px;
+color:white;
+outline:none
+}
+
+.story-card{
+background:#151515;
+border:1px solid #292929;
+border-radius:17px;
+padding:15px;
+margin-bottom:12px
+}
+
+.story-icon{
+font-size:38px;
+margin-bottom:8px
+}
+
+.story-title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:6px
+}
+
+.story-category{
+color:#1ed760;
+font-size:12px;
+font-weight:bold;
+margin-bottom:9px
+}
+
+.story-preview{
+color:#aaa;
+font-size:14px;
+line-height:1.5
+}
+
+.story-actions{
+display:flex;
+gap:7px;
+margin-top:12px;
+flex-wrap:wrap
+}
+
+.story-actions button{
+border:0;
+border-radius:10px;
+padding:10px 13px;
+font-weight:bold
+}
+
+.read-btn{
+background:#1ed760;
+color:#000
+}
+
+.fav-btn{
+background:#292929;
+color:white
+}
+
+.story-content{
+display:none;
+margin-top:15px;
+padding-top:15px;
+border-top:1px solid #292929;
+font-size:16px;
+line-height:1.9;
+color:#eee
+}
+
+.story-content.open{
+display:block
+}
+
+.empty{
+text-align:center;
+color:#777;
+padding:30px
 }
 
 /* MOVIES */
 
-.movie-player{
-display:none;
-background:#000;
-border-radius:16px;
-overflow:hidden;
-margin-bottom:15px;
-border:1px solid #292929
-}
-
-.movie-player iframe{
-display:block;
-width:100%;
-height:390px;
-border:0
-}
-
-.movie-now{
-padding:12px;
-background:#111;
-font-weight:bold
-}
-
-.movie-search{
-display:flex;
-gap:8px;
-margin-bottom:12px
-}
-
-.movie-search input{
-flex:1;
-padding:12px;
-border:0;
-border-radius:12px;
-background:#191919;
-color:#fff;
-outline:0
-}
-
-.movie-search button{
-border:0;
-background:#1db954;
-color:#000;
-font-weight:bold;
-border-radius:12px;
-padding:0 15px
-}
-
 .movie-card{
-display:flex;
-align-items:center;
-gap:12px;
 background:#151515;
-padding:12px;
-margin:8px 0;
-border-radius:14px
+border:1px solid #292929;
+border-radius:15px;
+overflow:hidden;
+margin-bottom:15px
 }
 
-.movie-poster{
-width:70px;
-height:90px;
+.movie-card img{
+width:100%;
+height:190px;
 object-fit:cover;
-border-radius:9px;
 background:#222
 }
 
-.movie-info{
-flex:1;
-min-width:0
+.movie-content{
+padding:12px
 }
 
-.movie-title{
-font-weight:bold;
-line-height:1.3
-}
-
-.movie-meta{
-font-size:12px;
-color:#888;
-margin-top:5px
-}
-
-.watch{
+.movie-button{
+margin-top:10px;
+padding:10px 15px;
+background:#1ed760;
 border:0;
-background:#1db954;
-color:#000;
-padding:10px 13px;
 border-radius:10px;
-font-weight:bold;
-cursor:pointer
+font-weight:bold
 }
 
-.movie-note{
-font-size:12px;
-color:#777;
-line-height:1.5;
-margin:12px 3px
+#movieFrame{
+width:100%;
+height:300px;
+border:0;
+border-radius:15px;
+background:#000;
+margin-bottom:15px
 }
 
-/* =========================
-   GAMES
-========================= */
+/* GAMES */
 
 .games-title{
+font-size:25px;
+font-weight:900;
 text-align:center;
-margin:5px 0 5px;
-font-size:24px
+margin-top:10px
 }
 
 .games-subtitle{
 text-align:center;
-color:#777;
-font-size:13px;
-margin-bottom:15px
+color:#888;
+margin:5px 0 15px
 }
 
 .game-menu{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+display:flex;
+gap:7px;
+overflow-x:auto;
 margin-bottom:15px
 }
 
 .game-select{
-background:#151515;
-border:1px solid #292929;
-color:#fff;
-padding:16px 8px;
-border-radius:15px;
-cursor:pointer;
-font-size:14px;
-font-weight:bold
+flex-shrink:0;
+padding:10px 13px;
+border-radius:20px;
+background:#171717;
+color:#aaa;
+border:1px solid #292929
 }
 
 .game-select.active{
-background:#1db954;
-color:#000;
-border-color:#1db954
+background:#1ed760;
+color:#000
 }
 
 .game-box{
@@ -295,170 +313,111 @@ background:#111;
 border:1px solid #292929;
 border-radius:18px;
 padding:15px;
-min-height:300px
+text-align:center
 }
 
-.game-heading{
-text-align:center;
-font-size:21px;
-margin-bottom:5px
+.game{
+display:none
 }
 
-.game-score{
-text-align:center;
-color:#1db954;
-font-size:17px;
-font-weight:bold;
-margin-bottom:12px
+.game.active{
+display:block
 }
 
-.game-start{
-display:block;
-margin:10px auto;
-border:0;
-background:#1db954;
+.game button{
+background:#1ed760;
 color:#000;
-padding:12px 20px;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer
-}
-
-/* SNAKE */
-
-#snakeCanvas{
-display:block;
-width:100%;
-max-width:360px;
-height:auto;
-aspect-ratio:1;
-background:#050505;
-border:1px solid #333;
-border-radius:12px;
-margin:auto
-}
-
-.snake-controls{
-display:grid;
-grid-template-columns:repeat(3,55px);
-justify-content:center;
-gap:7px;
-margin-top:12px
-}
-
-.snake-controls button{
-height:45px;
+padding:11px 16px;
 border:0;
 border-radius:10px;
-background:#222;
-color:#fff;
-font-size:18px
-}
-
-.snake-controls button:nth-child(1){
-grid-column:2
-}
-
-/* TAP */
-
-.tap-area{
-height:220px;
-background:#171717;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-font-size:30px;
 font-weight:bold;
-cursor:pointer;
-user-select:none
+margin:4px
 }
 
-.tap-area.running{
-background:#152415
-}
-
-/* COIN */
-
-.coin-area{
-position:relative;
-height:300px;
-background:#080808;
-border-radius:15px;
-overflow:hidden;
-border:1px solid #222
-}
-
-.coin-item{
-position:absolute;
-font-size:30px;
-cursor:pointer;
-user-select:none
-}
-
-/* MEMORY */
-
-.memory-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px;
-max-width:360px;
-margin:auto
-}
-
-.memory-card{
-aspect-ratio:1;
-border:0;
+.game canvas{
+max-width:100%;
 border-radius:12px;
-background:#222;
-color:#fff;
-font-size:25px;
-cursor:pointer
+background:#050505
 }
 
-.memory-card.open{
-background:#1db954;
+/* TOOLS */
+
+.tools-title{
+font-size:24px;
+font-weight:900;
+margin:10px 0 5px
+}
+
+.tools-subtitle{
+color:#888;
+margin-bottom:15px
+}
+
+.tool-menu{
+display:flex;
+gap:8px;
+overflow-x:auto;
+margin-bottom:15px
+}
+
+.tool-select{
+flex-shrink:0;
+padding:10px 13px;
+border-radius:20px;
+background:#171717;
+color:#aaa;
+border:1px solid #292929
+}
+
+.tool-select.active{
+background:#1ed760;
 color:#000
 }
 
-/* TRAFFIC */
-
-.traffic-road{
-position:relative;
-width:260px;
-height:360px;
-margin:auto;
-background:#222;
-border-left:5px solid #ddd;
-border-right:5px solid #ddd;
-overflow:hidden;
-border-radius:10px
+.tool{
+display:none
 }
 
-.road-line{
-position:absolute;
-width:5px;
-height:55px;
-background:#ddd;
-left:50%;
-transform:translateX(-50%)
+.tool.active{
+display:block
 }
 
-.car{
-position:absolute;
-font-size:35px;
-user-select:none
+.tool-input{
+width:100%;
+padding:13px;
+background:#090909;
+border:1px solid #292929;
+border-radius:10px;
+color:white;
+margin-bottom:10px
 }
 
-.player-car{
-bottom:10px;
-left:108px
+.tool-btn{
+background:#1ed760;
+color:#000;
+border:0;
+border-radius:10px;
+padding:12px 17px;
+font-weight:bold;
+margin:4px
 }
 
-.enemy-car{
-top:-50px;
-left:50px
+.big-time{
+font-size:50px;
+text-align:center;
+font-weight:bold;
+margin:20px 0
+}
+
+.notes{
+width:100%;
+min-height:250px;
+background:#090909;
+border:1px solid #292929;
+border-radius:12px;
+color:white;
+padding:13px;
+resize:vertical
 }
 
 /* PLAYER */
@@ -483,9 +442,9 @@ gap:10px
 }
 
 .cover{
-width:55px;
-height:55px;
-border-radius:12px;
+width:52px;
+height:52px;
+border-radius:10px;
 object-fit:cover;
 background:#222
 }
@@ -503,95 +462,74 @@ text-overflow:ellipsis
 }
 
 .track-artist{
+font-size:13px;
 color:#888;
-font-size:12px;
-margin-top:4px
-}
-
-.live{
-color:#ff3030;
-font-size:11px;
-font-weight:bold;
-display:none
+margin-top:3px
 }
 
 .progress{
-width:100%;
-margin-top:9px
+margin-top:10px
 }
 
-input[type=range]{
-accent-color:#1db954;
+.progress input,
+.volume input{
 width:100%
 }
 
 .controls{
 display:flex;
-align-items:center;
 justify-content:center;
-gap:15px;
-margin-top:10px
+align-items:center;
+gap:18px;
+margin-top:7px
 }
 
 .control{
-border:0;
-background:#222;
-color:#fff;
-width:40px;
-height:40px;
+width:42px;
+height:42px;
 border-radius:50%;
-cursor:pointer
+background:#292929;
+color:white;
+border:0;
+font-size:17px
 }
 
 .control.main{
-background:#1db954;
-color:#000;
-width:46px;
-height:46px
+width:52px;
+height:52px;
+background:#1ed760;
+color:#000
 }
 
 .volume{
 display:flex;
-align-items:center;
 gap:8px;
-margin-top:6px
+align-items:center;
+margin-top:7px
 }
-
-.volume input{flex:1}
 
 .download{
-display:block;
 width:100%;
-margin-top:10px;
-padding:10px;
+margin-top:8px;
+padding:9px;
 border:0;
-border-radius:11px;
+border-radius:10px;
 background:#222;
-color:#aaa;
-font-weight:bold;
-cursor:pointer
+color:#aaa
 }
 
-@media(max-width:600px){
+/* NO PLAYER OVER GAMES */
 
-.logo{font-size:26px}
-
-.search-box button{
-padding:0 14px
+body.games-active .player{
+display:none
 }
 
-.movie-player iframe{
-height:230px
+body.games-active main{
+padding-bottom:20px
 }
 
-.game-menu{
-grid-template-columns:repeat(2,1fr)
-}
-
-.player{
-bottom:6px
-}
-
+@media(max-width:500px){
+#movieFrame{height:250px}
 }
 </style>
 </head>
@@ -600,24 +538,13 @@ bottom:6px
 
 <header>
 
-<div class="logo">JOJ<span>IFY</span></div>
+<div class="logo">JOJIFY</div>
+<div class="tagline">YOUR MUSIC. YOUR VIBE.</div>
 
-<div class="search-box">
-
-<input
-id="searchInput"
-type="search"
-placeholder="Search songs or artists..."
-autocomplete="off">
-
+<div class="search">
+<input id="searchInput" placeholder="Search songs or artists...">
 <button onclick="searchSongs()">Search</button>
-
 </div>
-
-</header>
-
-
-<!-- TABS -->
 
 <div class="tabs">
 
@@ -627,18 +554,13 @@ onclick="showTab('songs',this)">
 </button>
 
 <button class="tab"
-onclick="showTab('malayalam',this)">
-📻 Malayalam Radio
-</button>
-
-<button class="tab"
-onclick="showTab('world',this)">
-🌍 World Radio
+onclick="showTab('stories',this)">
+📖 Malayalam Stories
 </button>
 
 <button class="tab"
 onclick="showTab('movies',this)">
-🎬 Malayalam Movies
+🎬 Movies
 </button>
 
 <button class="tab"
@@ -646,8 +568,14 @@ onclick="showTab('games',this)">
 🎮 Games
 </button>
 
+<button class="tab"
+onclick="showTab('tools',this)">
+🛠️ Tools
+</button>
+
 </div>
 
+</header>
 
 <main>
 
@@ -655,43 +583,35 @@ onclick="showTab('games',this)">
 
 <section id="songs">
 
-<div id="results">
+<div class="section-title">🎵 Tunes</div>
 
-<div class="message">
-Search for a song or artist 🎵
+<div id="songResults">
+<div class="empty">
+Search for a song or artist 🎧
 </div>
-
-</div>
-
-</section>
-
-
-<!-- MALAYALAM RADIO -->
-
-<section id="malayalam" style="display:none">
-
-<div id="malayalamResults">
-
-<div class="message">
-Open Malayalam Radio to load stations 📻
-</div>
-
 </div>
 
 </section>
 
 
-<!-- WORLD RADIO -->
+<!-- MALAYALAM STORIES -->
 
-<section id="world" style="display:none">
+<section id="stories" style="display:none">
 
-<div id="worldResults">
-
-<div class="message">
-Open World Radio to load stations 🌍
+<div class="section-title">
+📖 Malayalam Stories
 </div>
 
+<div class="story-search">
+
+<input
+id="storySearch"
+placeholder="Search stories..."
+oninput="searchStories()">
+
 </div>
+
+<div id="storyResults"></div>
 
 </section>
 
@@ -700,44 +620,20 @@ Open World Radio to load stations 🌍
 
 <section id="movies" style="display:none">
 
-<div class="movie-player" id="moviePlayer">
+<div class="section-title">
+🎬 Malayalam Movies
+</div>
 
 <iframe
 id="movieFrame"
-allow="autoplay; fullscreen"
-allowfullscreen>
+allowfullscreen
+style="display:none">
 </iframe>
 
-<div class="movie-now" id="movieNow">
-Select a movie
-</div>
-
-</div>
-
-<div class="movie-search">
-
-<input
-id="movieSearch"
-type="search"
-placeholder="Search Malayalam movies...">
-
-<button onclick="searchMovies()">
-Search
-</button>
-
-</div>
-
 <div id="movieResults">
-
-<div class="message">
-Loading Malayalam movies... 🎬
+<div class="empty">
+Loading movies...
 </div>
-
-</div>
-
-<div class="movie-note">
-🎬 Free movies are loaded from sources that provide an embeddable player.
-Availability depends on the individual title.
 </div>
 
 </section>
@@ -752,247 +648,279 @@ Availability depends on the individual title.
 </div>
 
 <div class="games-subtitle">
-No download. Just play 😂
+Simple to play. Tough to master 😈
 </div>
-
 
 <div class="game-menu">
 
-<button
-class="game-select active"
-onclick="openGame('snake',this)">
-🐍 Snake
-</button>
-
-<button
-class="game-select"
-onclick="openGame('tap',this)">
-🎯 Tap
-</button>
-
-<button
-class="game-select"
-onclick="openGame('coin',this)">
-🪙 Coins
-</button>
-
-<button
-class="game-select"
+<button class="game-select active"
 onclick="openGame('memory',this)">
 🧠 Memory
 </button>
 
-<button
-class="game-select"
-onclick="openGame('traffic',this)">
-🚗 Traffic
+<button class="game-select"
+onclick="openGame('reaction',this)">
+⚡ Reaction
+</button>
+
+<button class="game-select"
+onclick="openGame('math',this)">
+🧮 Math
 </button>
 
 </div>
-
 
 <div class="game-box">
 
+<div id="memory" class="game active">
 
-<!-- SNAKE -->
+<h3>🧠 Memory Challenge</h3>
 
-<div id="snakeGame">
-
-<div class="game-heading">
-🐍 Snake
-</div>
-
-<div class="game-score">
-Score: <span id="snakeScore">0</span>
-</div>
-
-<canvas
-id="snakeCanvas"
-width="300"
-height="300">
-</canvas>
-
-<button
-class="game-start"
-onclick="startSnake()">
-▶ Start Snake
-</button>
-
-<div class="snake-controls">
-
-<button onclick="changeDirection('up')">
-⬆️
-</button>
-
-<button onclick="changeDirection('left')">
-⬅️
-</button>
-
-<button onclick="changeDirection('down')">
-⬇️
-</button>
-
-<button onclick="changeDirection('right')">
-➡️
-</button>
-
-</div>
-
-</div>
-
-
-<!-- TAP -->
-
-<div id="tapGame" style="display:none">
-
-<div class="game-heading">
-🎯 Tap Challenge
-</div>
-
-<div class="game-score">
-Time: <span id="tapTime">10</span>s |
-Score: <span id="tapScore">0</span>
-</div>
-
-<button
-class="game-start"
-onclick="startTapGame()">
-▶ Start Challenge
-</button>
+<p>Remember the number!</p>
 
 <div
-id="tapArea"
-class="tap-area">
-TAP START<br>
-THEN TAP HERE!
+id="memoryNumber"
+style="font-size:45px;font-weight:bold;margin:25px">
+READY
 </div>
 
+<button onclick="startMemory()">
+START
+</button>
+
+<input
+id="memoryAnswer"
+class="tool-input"
+placeholder="Enter number"
+style="margin-top:15px">
+
+<button onclick="checkMemory()">
+CHECK
+</button>
+
+<div id="memoryResult"></div>
+
 </div>
 
 
-<!-- COIN -->
+<div id="reaction" class="game">
 
-<div id="coinGame" style="display:none">
+<h3>⚡ Reaction Test</h3>
 
-<div class="game-heading">
-🪙 Coin Catcher
-</div>
+<p id="reactionText">
+Press START and wait...
+</p>
 
-<div class="game-score">
-Score: <span id="coinScore">0</span>
-</div>
+<button onclick="startReaction()">
+START
+</button>
 
 <button
-class="game-start"
-onclick="startCoinGame()">
-▶ Start Game
+id="reactionButton"
+onclick="reactNow()"
+style="display:none;background:#ff3333">
+TAP!
 </button>
+
+<div id="reactionResult"></div>
+
+</div>
+
+
+<div id="math" class="game">
+
+<h3>🧮 Mental Math</h3>
 
 <div
-id="coinArea"
-class="coin-area">
+id="mathQuestion"
+style="font-size:30px;font-weight:bold;margin:20px">
+Press START
+</div>
 
-<div class="message">
-Catch 🪙<br>
-Avoid 💣
+<button onclick="startMath()">
+START
+</button>
+
+<input
+id="mathAnswer"
+class="tool-input"
+placeholder="Answer">
+
+<button onclick="checkMath()">
+CHECK
+</button>
+
+<div id="mathResult"></div>
+
 </div>
 
 </div>
 
+</section>
+
+
+<!-- TOOLS -->
+
+<section id="tools" style="display:none">
+
+<div class="tools-title">
+🛠️ JOJIFY Tools
 </div>
 
-
-<!-- MEMORY -->
-
-<div id="memoryGame" style="display:none">
-
-<div class="game-heading">
-🧠 Memory Match
+<div class="tools-subtitle">
+Useful everyday tools
 </div>
 
-<div class="game-score">
-Moves: <span id="memoryMoves">0</span>
-</div>
+<div class="tool-menu">
 
-<div
-id="memoryGrid"
-class="memory-grid">
-</div>
+<button class="tool-select active"
+onclick="openTool('calculator',this)">
+🧮 Calculator
+</button>
 
-<button
-class="game-start"
-onclick="startMemoryGame()">
-🔄 New Game
+<button class="tool-select"
+onclick="openTool('percentage',this)">
+📊 Percentage
+</button>
+
+<button class="tool-select"
+onclick="openTool('age',this)">
+🎂 Age
+</button>
+
+<button class="tool-select"
+onclick="openTool('notes',this)">
+📝 Notes
 </button>
 
 </div>
 
 
-<!-- TRAFFIC -->
+<div class="tool active" id="calculator">
 
-<div id="trafficGame" style="display:none">
+<div class="card">
 
-<div class="game-heading">
-🚗 Traffic Dodge
-</div>
+<input
+id="calcDisplay"
+class="tool-input"
+readonly
+style="font-size:25px;text-align:right">
 
-<div class="game-score">
-Score: <span id="trafficScore">0</span>
-</div>
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px">
 
-<div class="traffic-road"
-id="trafficRoad">
+<button class="tool-btn" onclick="calc('7')">7</button>
+<button class="tool-btn" onclick="calc('8')">8</button>
+<button class="tool-btn" onclick="calc('9')">9</button>
+<button class="tool-btn" onclick="calc('/')">÷</button>
 
-<div class="road-line"
-style="top:20px">
-</div>
+<button class="tool-btn" onclick="calc('4')">4</button>
+<button class="tool-btn" onclick="calc('5')">5</button>
+<button class="tool-btn" onclick="calc('6')">6</button>
+<button class="tool-btn" onclick="calc('*')">×</button>
 
-<div class="road-line"
-style="top:120px">
-</div>
+<button class="tool-btn" onclick="calc('1')">1</button>
+<button class="tool-btn" onclick="calc('2')">2</button>
+<button class="tool-btn" onclick="calc('3')">3</button>
+<button class="tool-btn" onclick="calc('-')">−</button>
 
-<div class="road-line"
-style="top:220px">
-</div>
+<button class="tool-btn" onclick="calc('0')">0</button>
+<button class="tool-btn" onclick="calc('.')">.</button>
+<button class="tool-btn" onclick="calculate()">=</button>
+<button class="tool-btn" onclick="calc('+')">+</button>
 
-<div class="road-line"
-style="top:320px">
-</div>
-
-<div
-id="playerCar"
-class="car player-car">
-🚗
-</div>
-
-<div
-id="enemyCar"
-class="car enemy-car">
-🚙
-</div>
-
-</div>
-
-<button
-class="game-start"
-onclick="startTraffic()">
-▶ Start Traffic
-</button>
-
-<div class="snake-controls">
-
-<button onclick="moveTraffic('left')">
-⬅️
-</button>
-
-<button onclick="moveTraffic('right')">
-➡️
+<button class="tool-btn"
+onclick="clearCalc()"
+style="grid-column:span 4">
+CLEAR
 </button>
 
 </div>
 
 </div>
 
+</div>
+
+
+<div class="tool" id="percentage">
+
+<div class="card">
+
+<h3>📊 Percentage Calculator</h3>
+
+<input
+id="percentNumber"
+class="tool-input"
+type="number"
+placeholder="Number">
+
+<input
+id="percentValue"
+class="tool-input"
+type="number"
+placeholder="Percentage">
+
+<button class="tool-btn"
+onclick="calculatePercentage()">
+CALCULATE
+</button>
+
+<div id="percentageResult"></div>
+
+</div>
+
+</div>
+
+
+<div class="tool" id="age">
+
+<div class="card">
+
+<h3>🎂 Age Calculator</h3>
+
+<input
+id="birthDate"
+class="tool-input"
+type="date">
+
+<button class="tool-btn"
+onclick="calculateAge()">
+CALCULATE AGE
+</button>
+
+<div id="ageResult"></div>
+
+</div>
+
+</div>
+
+
+<div class="tool" id="notes">
+
+<div class="card">
+
+<h3>📝 Quick Notes</h3>
+
+<textarea
+id="notesArea"
+class="notes"
+placeholder="Write your notes here..."></textarea>
+
+<button class="tool-btn"
+onclick="saveNotes()">
+💾 SAVE
+</button>
+
+<button class="tool-btn"
+onclick="clearNotes()">
+🗑️ CLEAR
+</button>
+
+<div id="notesResult"></div>
+
+</div>
 
 </div>
 
@@ -1001,7 +929,7 @@ onclick="startTraffic()">
 </main>
 
 
-<!-- MUSIC PLAYER -->
+<!-- PLAYER -->
 
 <div class="player">
 
@@ -1014,22 +942,21 @@ alt="Cover">
 
 <div class="track-info">
 
-<div id="title" class="track-title">
+<div
+id="title"
+class="track-title">
 JOJIFY
 </div>
 
-<div id="artist" class="track-artist">
+<div
+id="artist"
+class="track-artist">
 Ready to play
 </div>
 
-<div id="live" class="live">
-🔴 LIVE
 </div>
 
 </div>
-
-</div>
-
 
 <div class="progress">
 
@@ -1043,10 +970,10 @@ step="0.1">
 
 </div>
 
-
 <div class="controls">
 
-<button class="control"
+<button
+class="control"
 onclick="previousTrack()">
 ⏮
 </button>
@@ -1058,13 +985,13 @@ onclick="togglePlay()">
 ▶
 </button>
 
-<button class="control"
+<button
+class="control"
 onclick="nextTrack()">
 ⏭
 </button>
 
 </div>
-
 
 <div class="volume">
 
@@ -1080,7 +1007,6 @@ step="0.01">
 
 </div>
 
-
 <button
 class="download"
 onclick="downloadCurrent()">
@@ -1088,7 +1014,6 @@ onclick="downloadCurrent()">
 </button>
 
 </div>
-
 
 <audio
 id="audio"
@@ -1099,298 +1024,240 @@ preload="none">
 <script>
 
 /* =========================
-   MUSIC
+   TABS
 ========================= */
-
-const audio=document.getElementById("audio");
-const title=document.getElementById("title");
-const artist=document.getElementById("artist");
-const cover=document.getElementById("cover");
-const playButton=document.getElementById("playButton");
-const progress=document.getElementById("progress");
-const volume=document.getElementById("volume");
-const liveIndicator=document.getElementById("live");
-
-let currentMode="song";
-let currentTrackIndex=-1;
-let songQueue=[];
-let radioQueue=[];
-let radioIndex=-1;
-let previewEnded=false;
-
-audio.volume=.8;
-
-
-/* TABS */
 
 function showTab(tab,button){
 
 [
 "songs",
-"malayalam",
-"world",
+"stories",
 "movies",
-"games"
+"games",
+"tools"
 ].forEach(id=>{
-document.getElementById(id)
-.style.display="none";
+document.getElementById(id).style.display="none";
 });
 
-document.querySelectorAll(".tab")
+document
+.querySelectorAll(".tab")
 .forEach(btn=>{
 btn.classList.remove("active");
 });
 
 button.classList.add("active");
 
-document.getElementById(tab)
-.style.display="block";
+document.getElementById(tab).style.display="block";
 
-if(tab==="malayalam")
-loadMalayalamRadio();
+if(tab==="games"){
+document.body.classList.add("games-active");
+}else{
+document.body.classList.remove("games-active");
+}
 
-if(tab==="world")
-loadWorldRadio();
-
-if(tab==="movies")
+if(tab==="movies"){
 loadMovies();
-
-if(tab==="games")
-startMemoryGame();
+}
 
 }
 
 
-/* SEARCH SONGS */
+/* =========================
+   SONG SEARCH
+========================= */
+
+let tracks=[];
+let currentTrack=0;
 
 function searchSongs(){
 
-const input=document.getElementById("searchInput");
-const results=document.getElementById("results");
-const term=input.value.trim();
+const q=document
+.getElementById("searchInput")
+.value.trim();
 
-if(!term){
+if(!q)return;
 
-results.innerHTML=
-'<div class="message">Type a song or artist name 🎵</div>';
-
-return;
-}
+const results=document.getElementById("songResults");
 
 results.innerHTML=
-'<div class="message">Searching... 🔎</div>';
+'<div class="empty">Searching... 🎵</div>';
 
-const callback="itunes_"+Date.now();
+fetch(
+"https://itunes.apple.com/search?term="+
+encodeURIComponent(q)+
+"&media=music&entity=song&limit=20"
+)
+.then(r=>r.json())
+.then(data=>{
 
-window[callback]=function(data){
-
-delete window[callback];
-
-if(!data.results||!data.results.length){
-
-results.innerHTML=
-'<div class="message">No songs found.</div>';
-
-return;
-}
-
-songQueue=data.results.filter(
-x=>x.trackName&&x.previewUrl
-);
+tracks=data.results.filter(x=>x.previewUrl);
 
 results.innerHTML="";
 
-data.results.forEach(song=>{
+if(!tracks.length){
 
-if(!song.trackName)return;
+results.innerHTML=
+'<div class="empty">No preview tracks found.</div>';
 
-const div=document.createElement("div");
-div.className="result";
+return;
+}
 
-const artwork=song.artworkUrl100
-?song.artworkUrl100.replace(/^http:/,"https:")
-:"";
+tracks.forEach((track,index)=>{
 
-div.innerHTML=`
+const card=document.createElement("div");
 
-<img src="${artwork}" alt="Album">
+card.className="card";
 
-<div class="info">
+card.innerHTML=`
 
-<div class="name">
-${escapeHTML(song.trackName)}
+<div class="song">
+
+<img src="${track.artworkUrl100 || ''}">
+
+<div class="song-info">
+
+<div class="song-title">
+${escapeHTML(track.trackName || "Unknown")}
 </div>
 
-<div class="artist-name">
-${escapeHTML(song.artistName||"Unknown Artist")}
+<div class="song-artist">
+${escapeHTML(track.artistName || "")}
 </div>
 
 </div>
 
-<button class="play">▶</button>
+<button class="play-small">
+▶
+</button>
+
+</div>
 `;
 
-div.querySelector(".play").onclick=()=>{
-playSong(song);
-};
+card
+.querySelector("button")
+.onclick=()=>playTrack(index);
 
-results.appendChild(div);
+results.appendChild(card);
 
 });
 
-const script=document.getElementById(callback);
+})
+.catch(()=>{
 
-if(script)script.remove();
+results.innerHTML=
+'<div class="empty">Search failed. Try again.</div>';
 
-};
-
-const script=document.createElement("script");
-
-script.id=callback;
-
-script.src=
-"https://itunes.apple.com/search"+
-"?term="+encodeURIComponent(term)+
-"&media=music"+
-"&entity=song"+
-"&limit=20"+
-"&country=IN"+
-"&callback="+callback;
-
-document.body.appendChild(script);
+});
 
 }
 
 
-/* PLAY SONG */
+function playTrack(index){
 
-function playSong(song){
+currentTrack=index;
 
-if(!song.previewUrl)return;
+const track=tracks[index];
 
-currentMode="song";
-currentTrackIndex=songQueue.indexOf(song);
-previewEnded=false;
+if(!track)return;
 
-liveIndicator.style.display="none";
+const audio=document.getElementById("audio");
 
-audio.src=
-song.previewUrl.replace(/^http:/,"https:");
+audio.src=track.previewUrl;
 
-title.textContent=song.trackName;
-artist.textContent=song.artistName||"Unknown Artist";
+document.getElementById("title").textContent=
+track.trackName || "Unknown";
 
-cover.src=song.artworkUrl100
-?song.artworkUrl100.replace(/^http:/,"https:")
-:"";
+document.getElementById("artist").textContent=
+track.artistName || "";
 
-progress.max=30;
-audio.currentTime=0;
+document.getElementById("cover").src=
+track.artworkUrl100 || "";
 
-audio.play().catch(()=>{});
+audio.play();
 
-updateButton();
+document.getElementById("playButton").textContent="⏸";
 
 }
 
-
-/* PLAY */
 
 function togglePlay(){
 
+const audio=document.getElementById("audio");
+
 if(!audio.src)return;
 
-if(audio.paused)
-audio.play().catch(()=>{});
-else
+if(audio.paused){
+
+audio.play();
+document.getElementById("playButton").textContent="⏸";
+
+}else{
+
 audio.pause();
+document.getElementById("playButton").textContent="▶";
 
 }
 
-function updateButton(){
-
-playButton.textContent=
-audio.paused?"▶":"⏸";
-
 }
 
-
-/* NEXT */
 
 function nextTrack(){
 
-if(!songQueue.length)return;
+if(!tracks.length)return;
 
-let next=currentTrackIndex+1;
+currentTrack=(currentTrack+1)%tracks.length;
 
-if(next>=songQueue.length)
-next=0;
-
-playSong(songQueue[next]);
+playTrack(currentTrack);
 
 }
 
 
 function previousTrack(){
 
-if(!songQueue.length)return;
+if(!tracks.length)return;
 
-let previous=currentTrackIndex-1;
+currentTrack=
+(currentTrack-1+tracks.length)%tracks.length;
 
-if(previous<0)
-previous=songQueue.length-1;
-
-playSong(songQueue[previous]);
+playTrack(currentTrack);
 
 }
 
 
-/* AUDIO EVENTS */
+document
+.getElementById("audio")
+.addEventListener("ended",nextTrack);
 
-audio.addEventListener("play",updateButton);
-audio.addEventListener("pause",updateButton);
 
-audio.addEventListener("timeupdate",()=>{
+document
+.getElementById("volume")
+.addEventListener("input",function(){
 
-if(currentMode==="song"){
+document.getElementById("audio").volume=this.value;
 
-progress.value=
-Math.min(audio.currentTime,30);
+});
 
-if(audio.currentTime>=30&&!previewEnded){
 
-previewEnded=true;
+document
+.getElementById("progress")
+.addEventListener("input",function(){
 
+document.getElementById("audio").currentTime=this.value;
+
+});
+
+
+document
+.getElementById("audio")
+.addEventListener("timeupdate",function(){
+
+document.getElementById("progress").value=
+Math.min(this.currentTime,30);
+
+if(this.currentTime>=30){
 nextTrack();
-
 }
 
-}
-
-});
-
-
-audio.addEventListener("ended",()=>{
-
-if(currentMode==="song")
-nextTrack();
-
-if(currentMode==="radio")
-playNextRadio();
-
-});
-
-
-progress.addEventListener("input",()=>{
-
-if(currentMode==="song")
-audio.currentTime=Number(progress.value);
-
-});
-
-
-volume.addEventListener("input",()=>{
-audio.volume=Number(volume.value);
 });
 
 
@@ -1403,324 +1270,255 @@ alert(
 }
 
 
-/* RADIO */
+/* =========================
+   MALAYALAM STORIES
+========================= */
 
-const RADIO_APIS=[
-"https://de1.api.radio-browser.info",
-"https://at1.api.radio-browser.info",
-"https://nl1.api.radio-browser.info"
+const stories=[
+
+{
+title:"മഴയുടെ സുഹൃത്ത്",
+category:"🌧️ Emotional",
+icon:"🌧️",
+preview:"ഒരു മഴയുള്ള രാത്രിയിൽ ഒരു കുട്ടിക്ക് ലഭിച്ച അത്ഭുതകരമായ സൗഹൃദം.",
+text:`
+അന്ന് രാത്രി ശക്തമായ മഴയായിരുന്നു.
+
+അരുൺ ജനലിനരികിൽ ഇരുന്ന് മഴ നോക്കുകയായിരുന്നു.
+അപ്പോഴാണ് വീടിന്റെ മുറ്റത്ത് ഒരു ചെറിയ നായക്കുട്ടിയെ അവൻ കണ്ടത്.
+
+മഴയിൽ നനഞ്ഞ് വിറച്ചുകൊണ്ടിരുന്ന ആ കുഞ്ഞിനെ അരുൺ വീട്ടിലേക്ക് കൊണ്ടുവന്നു.
+
+അമ്മ ആദ്യം എതിർത്തു.
+പക്ഷേ നായക്കുട്ടിയുടെ കണ്ണുകളിലെ ഭയം കണ്ടപ്പോൾ അമ്മയുടെ മനസ്സ് മാറി.
+
+അന്ന് മുതൽ ആ നായക്കുട്ടി അരുണിന്റെ ഏറ്റവും അടുത്ത സുഹൃത്തായി.
+
+വർഷങ്ങൾ കഴിഞ്ഞു.
+
+ഒരു ദിവസം അരുൺ വലിയൊരു അപകടത്തിൽപ്പെട്ടു.
+അവനെ ആദ്യം കണ്ടെത്തിയത് അതേ നായയായിരുന്നു.
+
+ചില സൗഹൃദങ്ങൾ വാക്കുകളിലൂടെ ഉണ്ടാകുന്നതല്ല.
+ഹൃദയത്തിലൂടെയാണ് അവ ഉണ്ടാകുന്നത്.
+`
+},
+
+{
+title:"അവസാന ബസ്",
+category:"🚌 Mystery",
+icon:"🚌",
+preview:"രാത്രിയിലെ അവസാന ബസിൽ യാത്ര ചെയ്ത ഒരാൾക്ക് സംഭവിച്ച വിചിത്രമായ അനുഭവം.",
+text:`
+രാത്രി പതിനൊന്ന് മണി കഴിഞ്ഞിരുന്നു.
+
+അജയ് ബസ് സ്റ്റോപ്പിൽ ഒറ്റയ്ക്ക് നിന്നു.
+
+അപ്പോൾ ഒരു പഴയ ബസ് അവന്റെ മുന്നിൽ വന്നു നിന്നു.
+
+ബസിനുള്ളിൽ ആരുമില്ലായിരുന്നു.
+
+കണ്ടക്ടർ മാത്രം.
+
+അജയ് ബസിൽ കയറി.
+
+"എവിടേക്ക്?" കണ്ടക്ടർ ചോദിച്ചു.
+
+അജയ് തന്റെ സ്ഥലത്തിന്റെ പേര് പറഞ്ഞു.
+
+കുറച്ച് സമയത്തിന് ശേഷം ബസ് ഒരു പരിചയമില്ലാത്ത സ്ഥലത്ത് നിർത്തി.
+
+"ഇതാണ് നിങ്ങളുടെ സ്റ്റോപ്പ്," കണ്ടക്ടർ പറഞ്ഞു.
+
+അജയ് പുറത്തേക്ക് നോക്കി.
+
+അവൻ ഞെട്ടിപ്പോയി.
+
+അത് തന്റെ ബാല്യകാലത്തെ വീട്ടിന് മുന്നിലായിരുന്നു.
+
+വർഷങ്ങൾക്ക് മുമ്പ് ആ വീട് വിറ്റുപോയിരുന്നു.
+
+അവൻ തിരിഞ്ഞുനോക്കുമ്പോൾ ബസ് അവിടെ ഉണ്ടായിരുന്നില്ല.
+`
+},
+
+{
+title:"ഒരു ചെറിയ സഹായം",
+category:"❤️ Moral",
+icon:"❤️",
+preview:"ഒരു ചെറിയ സഹായം ഒരാളുടെ ജീവിതം എങ്ങനെ മാറ്റി എന്ന കഥ.",
+text:`
+റോഡരികിൽ ഒരു വയോധികൻ നിൽക്കുകയായിരുന്നു.
+
+അവന് റോഡ് മുറിച്ചുകടക്കാൻ കഴിയുന്നില്ലായിരുന്നു.
+
+വഴിയിലൂടെ പോയ എല്ലാവരും തിരക്കിലായിരുന്നു.
+
+അവസാനം ഒരു വിദ്യാർത്ഥി അവന്റെ അടുത്തെത്തി.
+
+"ഞാൻ സഹായിക്കട്ടെ?"
+
+അവൻ വയോധികനെ സുരക്ഷിതമായി റോഡ് കടത്തിവിട്ടു.
+
+വർഷങ്ങൾ കഴിഞ്ഞു.
+
+ആ വിദ്യാർത്ഥി ജോലി തേടി ഒരു കമ്പനിയിലെത്തി.
+
+ഇന്റർവ്യൂ ബോർഡിന്റെ മുന്നിൽ ഇരുന്നിരുന്ന വ്യക്തിയെ കണ്ടപ്പോൾ അവൻ ഞെട്ടി.
+
+അത് ആ വയോധികനായിരുന്നു.
+
+അദ്ദേഹം കമ്പനിയുടെ ഉടമയായിരുന്നു.
+
+പക്ഷേ അദ്ദേഹം പറഞ്ഞത്:
+
+"ഞാൻ നിന്നെ ജോലി നൽകുന്നത് അന്ന് എന്നെ സഹായിച്ചതിനല്ല.
+
+മറ്റൊരാളുടെ ബുദ്ധിമുട്ട് കണ്ടപ്പോൾ നീ നിർത്തിയതിനാണ്."
+`
+},
+
+{
+title:"നിലാവിന്റെ കത്ത്",
+category:"🌙 Feel Good",
+icon:"🌙",
+preview:"ഒരു പഴയ കത്തിൽ ഒളിഞ്ഞിരുന്ന ഒരു മനോഹരമായ ഓർമ്മ.",
+text:`
+പഴയ അലമാര വൃത്തിയാക്കുന്നതിനിടയിലാണ് മീരയ്ക്ക് ആ കത്ത് കിട്ടിയത്.
+
+കവറിൽ അവളുടെ പേര് ഉണ്ടായിരുന്നു.
+
+കത്ത് തുറന്നപ്പോൾ അവൾക്ക് പഴയ ഓർമ്മകൾ തിരിച്ചുവന്നു.
+
+"നീ ഒരിക്കലും ഒറ്റയ്ക്കല്ല."
+
+അത്ര മാത്രം എഴുതിയിരുന്നു.
+
+കത്ത് എഴുതിയത് ആരാണെന്ന് അവൾക്ക് അറിയില്ലായിരുന്നു.
+
+വർഷങ്ങൾക്കുശേഷം അവൾ ആ കത്ത് സൂക്ഷിച്ചിരുന്ന പെട്ടി വീണ്ടും തുറന്നു.
+
+അതിന്റെ അടിയിൽ ഒരു ചെറിയ ഫോട്ടോ ഉണ്ടായിരുന്നു.
+
+ഫോട്ടോയുടെ പുറകിൽ എഴുതിയിരുന്നത്:
+
+"നീ മറന്നാലും, ഞാൻ മറക്കില്ല."
+
+അത് അവളുടെ അച്ഛന്റെ കൈയെഴുത്തായിരുന്നു.
+
+അവൾ പുഞ്ചിരിച്ചു.
+
+ചില ഓർമ്മകൾക്ക് സമയം പോലും പ്രായമാകില്ല.
+`
+},
+
+{
+title:"കള്ളനും കണ്ണാടിയും",
+category:"😂 Comedy",
+icon:"😂",
+preview:"ഒരു കള്ളൻ കണ്ണാടിയുടെ മുന്നിൽ കുടുങ്ങിയ രസകരമായ കഥ.",
+text:`
+ഒരു രാത്രി ഒരു കള്ളൻ ഒരു വീട്ടിൽ കയറി.
+
+മുറിയിൽ ഒരു വലിയ കണ്ണാടി ഉണ്ടായിരുന്നു.
+
+കള്ളൻ കണ്ണാടിയിൽ തന്റെ മുഖം കണ്ടു.
+
+"ഇവിടെ മറ്റൊരാൾ!"
+
+അവൻ ഭയന്ന് പിന്നോട്ട് പോയി.
+
+കണ്ണാടിയിലെ ആളും പിന്നോട്ട് പോയി.
+
+കള്ളൻ വീണ്ടും മുന്നോട്ട് വന്നു.
+
+മറ്റെയാളും മുന്നോട്ട് വന്നു.
+
+അവസാനം കള്ളൻ മനസ്സിലാക്കി.
+
+"അയ്യോ... ഇത് ഞാൻ തന്നെയാണല്ലോ!"
+
+അപ്പോഴേക്കും വീട്ടുടമ എഴുന്നേറ്റിരുന്നു.
+
+കള്ളൻ ഓടിപ്പോയി.
+
+പക്ഷേ വാതിലിനരികിലെ കണ്ണാടിയിൽ വീണ്ടും തന്നെ കണ്ടപ്പോൾ അവൻ വീണ്ടും പേടിച്ചു.
+
+ആ രാത്രി കള്ളന് വീട്ടിൽ നിന്ന് ഒന്നും കിട്ടിയില്ല.
+
+പക്ഷേ തന്റെ മുഖം നന്നായി മനസ്സിലായി.
+`
+}
+
 ];
 
-let loadedMalayalam=false;
-let loadedWorld=false;
 
-async function loadMalayalamRadio(){
+function renderStories(list=stories){
 
-if(loadedMalayalam)return;
-
-loadedMalayalam=true;
-
-const box=document.getElementById("malayalamResults");
-
-box.innerHTML=
-'<div class="message">Loading Malayalam stations... 📻</div>';
-
-const stations=await getRadioStations("malayalam");
-
-radioQueue=stations;
-
-renderRadio(stations,box);
-
-}
-
-
-async function loadWorldRadio(){
-
-if(loadedWorld)return;
-
-loadedWorld=true;
-
-const box=document.getElementById("worldResults");
-
-box.innerHTML=
-'<div class="message">Loading world stations... 🌍</div>';
-
-const stations=await getRadioStations("");
-
-radioQueue=stations;
-
-renderRadio(stations,box);
-
-}
-
-
-async function getRadioStations(language){
-
-for(const api of RADIO_APIS){
-
-try{
-
-let url=
-api+
-"/json/stations/search"+
-"?hidebroken=true"+
-"&limit=25"+
-"&order=votes"+
-"&reverse=true";
-
-if(language){
-
-url+="&language="+
-encodeURIComponent(language);
-
-}
-
-const response=await fetch(url);
-
-if(!response.ok)continue;
-
-const data=await response.json();
-
-return data.filter(x=>x.url_resolved);
-
-}catch(error){}
-
-}
-
-return[];
-
-}
-
-
-function renderRadio(stations,container){
+const container=
+document.getElementById("storyResults");
 
 container.innerHTML="";
 
-if(!stations.length){
+if(!list.length){
 
 container.innerHTML=
-'<div class="message">No working stations found.</div>';
+'<div class="empty">Story not found 📖</div>';
 
 return;
 }
 
-stations.forEach(station=>{
+list.forEach((story,index)=>{
 
-const div=document.createElement("div");
-
-div.className="station";
-
-div.innerHTML=`
-
-<div class="station-info">
-
-<div class="station-name">
-${escapeHTML(station.name||"Unknown Station")}
-</div>
-
-<div class="station-country">
-${escapeHTML(station.country||"Radio")}
-</div>
-
-</div>
-
-<button class="radio-btn">
-▶
-</button>
-`;
-
-div.querySelector(".radio-btn").onclick=()=>{
-playRadio(station);
-};
-
-container.appendChild(div);
-
-});
-
-}
-
-
-function playRadio(station){
-
-if(!station.url_resolved){
-
-playNextRadio();
-return;
-
-}
-
-currentMode="radio";
-
-radioIndex=radioQueue.indexOf(station);
-
-liveIndicator.style.display="block";
-
-title.textContent=station.name||"Live Radio";
-artist.textContent=station.country||"Live Station";
-
-cover.src=station.favicon||"";
-
-audio.src=station.url_resolved;
-
-audio.play().catch(()=>{
-playNextRadio();
-});
-
-progress.value=0;
-
-updateButton();
-
-}
-
-
-function playNextRadio(){
-
-if(!radioQueue.length)return;
-
-radioIndex++;
-
-if(radioIndex>=radioQueue.length)
-radioIndex=0;
-
-playRadio(radioQueue[radioIndex]);
-
-}
-
-
-audio.addEventListener("error",()=>{
-
-if(currentMode==="radio")
-setTimeout(playNextRadio,300);
-
-});
-
-
-/* MOVIES */
-
-let moviesLoaded=false;
-
-async function loadMovies(){
-
-if(moviesLoaded)return;
-
-moviesLoaded=true;
-
-await searchMovies();
-
-}
-
-
-async function searchMovies(){
-
-const box=document.getElementById("movieResults");
-
-const input=document.getElementById("movieSearch");
-
-const term=input.value.trim();
-
-let query=
-'mediatype:movies AND language:Malayalam';
-
-if(term)
-query+=' AND title:('+term+')';
-
-const url=
-"https://archive.org/advancedsearch.php"+
-"?q="+encodeURIComponent(query)+
-"&fl[]=identifier"+
-"&fl[]=title"+
-"&fl[]=year"+
-"&rows=24"+
-"&page=1"+
-"&output=json";
-
-box.innerHTML=
-'<div class="message">Searching movies... 🔎</div>';
-
-try{
-
-const response=await fetch(url);
-
-if(!response.ok)
-throw new Error();
-
-const data=await response.json();
-
-const docs=data.response&&
-data.response.docs
-?data.response.docs
-:[];
-
-renderMovies(docs,box);
-
-}catch(error){
-
-box.innerHTML=
-'<div class="message">Unable to load movies right now.</div>';
-
-}
-
-}
-
-
-function renderMovies(movies,container){
-
-container.innerHTML="";
-
-if(!movies.length){
-
-container.innerHTML=
-'<div class="message">No Malayalam movies found.</div>';
-
-return;
-}
-
-movies.forEach(movie=>{
-
-const identifier=movie.identifier;
-const movieTitle=movie.title||"Malayalam Movie";
-const year=movie.year||"";
-
-const poster=
-"https://archive.org/services/img/"+
-encodeURIComponent(identifier);
+const saved=
+localStorage.getItem("jojifyFav"+index)==="1";
 
 const card=document.createElement("div");
 
-card.className="movie-card";
+card.className="story-card";
 
 card.innerHTML=`
 
-<img
-class="movie-poster"
-src="${poster}"
-alt="Movie poster"
-loading="lazy"
->
-
-<div class="movie-info">
-
-<div class="movie-title">
-${escapeHTML(movieTitle)}
+<div class="story-icon">
+${story.icon}
 </div>
 
-<div class="movie-meta">
-Malayalam
-${year?" • "+escapeHTML(String(year)):""}
+<div class="story-title">
+${story.title}
 </div>
 
+<div class="story-category">
+${story.category}
 </div>
 
-<button class="watch">
-▶ Watch
+<div class="story-preview">
+${story.preview}
+</div>
+
+<div class="story-actions">
+
+<button class="read-btn"
+onclick="toggleStory(${index},this)">
+📖 Read
 </button>
+
+<button class="fav-btn"
+onclick="favoriteStory(${index},this)">
+${saved ? "❤️ Saved" : "🤍 Save"}
+</button>
+
+<button class="fav-btn"
+onclick="speakStory(${index})">
+🔊 Listen
+</button>
+
+</div>
+
+<div id="story${index}" class="story-content">
+${story.text.replace(/\n/g,"<br>")}
+</div>
+
 `;
-
-card.querySelector(".watch").onclick=()=>{
-
-playMovie(identifier,movieTitle);
-
-};
 
 container.appendChild(card);
 
@@ -1729,681 +1527,508 @@ container.appendChild(card);
 }
 
 
-function playMovie(identifier,movieTitle){
+function toggleStory(index,button){
 
-const player=document.getElementById("moviePlayer");
+const content=
+document.getElementById("story"+index);
 
-const frame=document.getElementById("movieFrame");
+content.classList.toggle("open");
 
-const now=document.getElementById("movieNow");
-
-frame.src=
-"https://archive.org/embed/"+
-encodeURIComponent(identifier);
-
-now.textContent="🎬 "+movieTitle;
-
-player.style.display="block";
-
-player.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
+button.textContent=
+content.classList.contains("open")
+?"📕 Close"
+:"📖 Read";
 
 }
 
 
-document.getElementById("movieSearch")
-.addEventListener("keydown",event=>{
+function favoriteStory(index,button){
 
-if(event.key==="Enter")
-searchMovies();
+const key="jojifyFav"+index;
+
+if(localStorage.getItem(key)==="1"){
+
+localStorage.removeItem(key);
+button.textContent="🤍 Save";
+
+}else{
+
+localStorage.setItem(key,"1");
+button.textContent="❤️ Saved";
+
+}
+
+}
+
+
+function speakStory(index){
+
+if(!("speechSynthesis" in window)){
+
+alert("Your browser does not support Read Aloud.");
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+const text=stories[index].text;
+
+const speech=
+new SpeechSynthesisUtterance(text);
+
+speech.lang="ml-IN";
+speech.rate=0.9;
+
+speechSynthesis.speak(speech);
+
+}
+
+
+function searchStories(){
+
+const q=
+document.getElementById("storySearch")
+.value
+.toLowerCase()
+.trim();
+
+const filtered=stories.filter(story=>
+
+story.title.toLowerCase().includes(q) ||
+story.category.toLowerCase().includes(q) ||
+story.preview.toLowerCase().includes(q)
+
+);
+
+renderStories(filtered);
+
+}
+
+renderStories();
+
+
+/* =========================
+   MOVIES
+========================= */
+
+let moviesLoaded=false;
+
+function loadMovies(){
+
+if(moviesLoaded)return;
+
+moviesLoaded=true;
+
+const container=
+document.getElementById("movieResults");
+
+container.innerHTML=
+'<div class="empty">Searching Internet Archive...</div>';
+
+fetch(
+"https://archive.org/advancedsearch.php?q="+
+encodeURIComponent(
+"mediatype:movies AND language:Malayalam"
+)+
+"&fl[]=identifier,title&rows=20&output=json"
+)
+.then(r=>r.json())
+.then(data=>{
+
+container.innerHTML="";
+
+const docs=data.response.docs || [];
+
+if(!docs.length){
+
+container.innerHTML=
+'<div class="empty">No movies found.</div>';
+
+return;
+}
+
+docs.forEach(movie=>{
+
+const card=document.createElement("div");
+
+card.className="movie-card";
+
+card.innerHTML=`
+
+<div class="movie-content">
+
+<div style="font-size:19px;font-weight:bold">
+${escapeHTML(movie.title || "Malayalam Movie")}
+</div>
+
+<button class="movie-button">
+▶ WATCH
+</button>
+
+</div>
+
+`;
+
+card.querySelector("button").onclick=()=>{
+
+const frame=
+document.getElementById("movieFrame");
+
+frame.src=
+"https://archive.org/embed/"+
+encodeURIComponent(movie.identifier);
+
+frame.style.display="block";
+
+frame.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+container.appendChild(card);
 
 });
+
+})
+.catch(()=>{
+
+container.innerHTML=
+'<div class="empty">Could not load movies.</div>';
+
+});
+
+}
 
 
 /* =========================
    GAMES
 ========================= */
 
-let currentGame="snake";
-
-
 function openGame(game,button){
 
-currentGame=game;
+document
+.querySelectorAll(".game")
+.forEach(x=>x.classList.remove("active"));
 
-[
-"snakeGame",
-"tapGame",
-"coinGame",
-"memoryGame",
-"trafficGame"
-].forEach(id=>{
-document.getElementById(id)
-.style.display="none";
-});
+document
+.querySelectorAll(".game-select")
+.forEach(x=>x.classList.remove("active"));
 
-document.querySelectorAll(".game-select")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
+document
+.getElementById(game)
+.classList.add("active");
 
 button.classList.add("active");
 
-document.getElementById(game+"Game")
-.style.display="block";
-
-if(game==="memory")
-startMemoryGame();
-
 }
 
 
-/* =========================
-   SNAKE GAME
-========================= */
+/* MEMORY */
 
-const snakeCanvas=
-document.getElementById("snakeCanvas");
+let memoryValue="";
 
-const ctx=
-snakeCanvas.getContext("2d");
+function startMemory(){
 
-let snake=[];
-let snakeFood={x:150,y:150};
-let snakeDx=15;
-let snakeDy=0;
-let snakeTimer=null;
-let snakeScore=0;
+memoryValue=
+Math.floor(10000+Math.random()*90000)
+.toString();
 
+document
+.getElementById("memoryNumber")
+.textContent=memoryValue;
 
-function startSnake(){
-
-clearInterval(snakeTimer);
-
-snake=[
-{x:150,y:150},
-{x:135,y:150},
-{x:120,y:150}
-];
-
-snakeDx=15;
-snakeDy=0;
-snakeScore=0;
-
-document.getElementById(
-"snakeScore"
-).textContent=0;
-
-placeSnakeFood();
-
-snakeTimer=
-setInterval(drawSnake,110);
-
-}
-
-
-function drawSnake(){
-
-ctx.clearRect(
-0,0,
-snakeCanvas.width,
-snakeCanvas.height
-);
-
-ctx.fillStyle="#1db954";
-
-snake.forEach(part=>{
-ctx.fillRect(
-part.x,
-part.y,
-14,
-14
-);
-});
-
-
-ctx.fillStyle="#ffd700";
-
-ctx.fillRect(
-snakeFood.x,
-snakeFood.y,
-14,
-14
-);
-
-
-const head={
-x:snake[0].x+snakeDx,
-y:snake[0].y+snakeDy
-};
-
-
-if(
-head.x<0||
-head.x>=300||
-head.y<0||
-head.y>=300||
-snake.some(
-(p,i)=>
-i>0&&
-p.x===head.x&&
-p.y===head.y
-)
-){
-
-clearInterval(snakeTimer);
-
-alert(
-"🐍 Game Over!\nScore: "+
-snakeScore
-);
-
-return;
-
-}
-
-
-snake.unshift(head);
-
-
-if(
-head.x===snakeFood.x&&
-head.y===snakeFood.y
-){
-
-snakeScore++;
-
-document.getElementById(
-"snakeScore"
-).textContent=snakeScore;
-
-placeSnakeFood();
-
-}else{
-
-snake.pop();
-
-}
-
-}
-
-
-function placeSnakeFood(){
-
-snakeFood={
-x:Math.floor(Math.random()*20)*15,
-y:Math.floor(Math.random()*20)*15
-};
-
-}
-
-
-function changeDirection(direction){
-
-if(direction==="up"&&snakeDy===0){
-
-snakeDx=0;
-snakeDy=-15;
-
-}
-
-if(direction==="down"&&snakeDy===0){
-
-snakeDx=0;
-snakeDy=15;
-
-}
-
-if(direction==="left"&&snakeDx===0){
-
-snakeDx=-15;
-snakeDy=0;
-
-}
-
-if(direction==="right"&&snakeDx===0){
-
-snakeDx=15;
-snakeDy=0;
-
-}
-
-}
-
-
-document.addEventListener(
-"keydown",
-event=>{
-
-if(currentGame!=="snake")return;
-
-if(event.key==="ArrowUp")
-changeDirection("up");
-
-if(event.key==="ArrowDown")
-changeDirection("down");
-
-if(event.key==="ArrowLeft")
-changeDirection("left");
-
-if(event.key==="ArrowRight")
-changeDirection("right");
-
-});
-
-
-/* =========================
-   TAP GAME
-========================= */
-
-let tapRunning=false;
-let tapScore=0;
-let tapTime=10;
-let tapTimer=null;
-
-
-function startTapGame(){
-
-clearInterval(tapTimer);
-
-tapRunning=true;
-tapScore=0;
-tapTime=10;
-
-document.getElementById(
-"tapScore"
-).textContent=0;
-
-document.getElementById(
-"tapTime"
-).textContent=10;
-
-const area=
-document.getElementById("tapArea");
-
-area.classList.add("running");
-
-area.innerHTML=
-"🔥 TAP! 🔥";
-
-tapTimer=setInterval(()=>{
-
-tapTime--;
-
-document.getElementById(
-"tapTime"
-).textContent=tapTime;
-
-if(tapTime<=0){
-
-clearInterval(tapTimer);
-
-tapRunning=false;
-
-area.classList.remove("running");
-
-area.innerHTML=
-"TIME'S UP! 😂<br>Score: "+
-tapScore;
-
-}
-
-},1000);
-
-}
-
-
-document.getElementById(
-"tapArea"
-).addEventListener(
-"click",
-()=>{
-
-if(!tapRunning)return;
-
-tapScore++;
-
-document.getElementById(
-"tapScore"
-).textContent=tapScore;
-
-});
-
-
-/* =========================
-   COIN CATCHER
-========================= */
-
-let coinTimer=null;
-let coinScore=0;
-
-
-function startCoinGame(){
-
-clearInterval(coinTimer);
-
-const area=
-document.getElementById("coinArea");
-
-area.innerHTML="";
-
-coinScore=0;
-
-document.getElementById(
-"coinScore"
-).textContent=0;
-
-coinTimer=setInterval(()=>{
-
-const item=
-document.createElement("div");
-
-const bomb=
-Math.random()<.2;
-
-item.className="coin-item";
-
-item.textContent=
-bomb?"💣":"🪙";
-
-item.style.left=
-Math.random()*85+"%";
-
-item.style.top=
-Math.random()*85+"%";
-
-item.onclick=()=>{
-
-if(bomb){
-
-clearInterval(coinTimer);
-
-alert(
-"💥 BOOM!\nScore: "+
-coinScore
-);
-
-return;
-
-}
-
-coinScore++;
-
-document.getElementById(
-"coinScore"
-).textContent=coinScore;
-
-item.remove();
-
-};
-
-area.appendChild(item);
+document
+.getElementById("memoryResult")
+.textContent="";
 
 setTimeout(()=>{
 
-if(item.parentNode)
-item.remove();
+document
+.getElementById("memoryNumber")
+.textContent="?????";
 
-},1000);
+},2000);
 
-},650);
+}
+
+function checkMemory(){
+
+const answer=
+document.getElementById("memoryAnswer").value;
+
+document
+.getElementById("memoryResult")
+.textContent=
+answer===memoryValue
+?"🔥 Correct!"
+:"❌ Wrong!";
 
 }
 
 
-/* =========================
-   MEMORY GAME
-========================= */
+/* REACTION */
 
-const memoryEmojis=[
-"😂","😂",
-"🔥","🔥",
-"😎","😎",
-"🤯","🤯",
-"🚗","🚗",
-"🎵","🎵",
-"🍕","🍕",
-"👻","👻"
-];
+let reactionStart=0;
+let reactionTimeout;
 
-let memoryFirst=null;
-let memorySecond=null;
-let memoryLock=false;
-let memoryMoves=0;
-
-
-function startMemoryGame(){
-
-const grid=
-document.getElementById(
-"memoryGrid"
-);
-
-grid.innerHTML="";
-
-memoryFirst=null;
-memorySecond=null;
-memoryLock=false;
-memoryMoves=0;
-
-document.getElementById(
-"memoryMoves"
-).textContent=0;
-
-const cards=
-[...memoryEmojis]
-.sort(()=>Math.random()-.5);
-
-cards.forEach(emoji=>{
+function startReaction(){
 
 const button=
-document.createElement("button");
+document.getElementById("reactionButton");
 
-button.className=
-"memory-card";
+document
+.getElementById("reactionText")
+.textContent="WAIT...";
 
-button.textContent="❓";
+button.style.display="none";
 
-button.dataset.value=emoji;
+clearTimeout(reactionTimeout);
 
-button.onclick=()=>{
+reactionTimeout=setTimeout(()=>{
 
-if(memoryLock)return;
+document
+.getElementById("reactionText")
+.textContent="TAP NOW!";
 
-if(button===memoryFirst)return;
+button.style.display="inline-block";
 
-button.textContent=emoji;
-button.classList.add("open");
+reactionStart=performance.now();
 
-if(!memoryFirst){
-
-memoryFirst=button;
-return;
-
-}
-
-memorySecond=button;
-
-memoryMoves++;
-
-document.getElementById(
-"memoryMoves"
-).textContent=
-memoryMoves;
-
-if(
-memoryFirst.dataset.value===
-memorySecond.dataset.value
-){
-
-memoryFirst=null;
-memorySecond=null;
-
-}else{
-
-memoryLock=true;
-
-setTimeout(()=>{
-
-memoryFirst.textContent="❓";
-memorySecond.textContent="❓";
-
-memoryFirst.classList.remove("open");
-memorySecond.classList.remove("open");
-
-memoryFirst=null;
-memorySecond=null;
-memoryLock=false;
-
-},650);
+},Math.random()*3000+1500);
 
 }
 
-};
+function reactNow(){
 
-grid.appendChild(button);
+if(!reactionStart)return;
 
-});
+const time=
+Math.round(performance.now()-reactionStart);
+
+document
+.getElementById("reactionResult")
+textContent=
+"⚡ "+time+" ms";
+
+reactionStart=0;
+
+document
+.getElementById("reactionButton")
+.style.display="none";
+
+}
+
+
+/* MATH */
+
+let mathAnswer=0;
+
+function startMath(){
+
+const a=Math.floor(Math.random()*30)+1;
+const b=Math.floor(Math.random()*30)+1;
+
+mathAnswer=a+b;
+
+document
+.getElementById("mathQuestion")
+.textContent=a+" + "+b+" = ?";
+
+document
+.getElementById("mathResult")
+.textContent="";
+
+}
+
+function checkMath(){
+
+const answer=
+Number(document.getElementById("mathAnswer").value);
+
+document
+.getElementById("mathResult")
+.textContent=
+answer===mathAnswer
+?"🔥 Correct!"
+:"❌ Wrong!";
 
 }
 
 
 /* =========================
-   TRAFFIC DODGE
+   TOOLS
 ========================= */
 
-let trafficTimer=null;
-let trafficScore=0;
-let trafficX=108;
-let enemyY=-60;
+function openTool(tool,button){
 
+document
+.querySelectorAll(".tool")
+.forEach(x=>x.classList.remove("active"));
 
-function startTraffic(){
+document
+.querySelectorAll(".tool-select")
+.forEach(x=>x.classList.remove("active"));
 
-clearInterval(trafficTimer);
+document
+.getElementById(tool)
+.classList.add("active");
 
-trafficScore=0;
-trafficX=108;
-enemyY=-60;
-
-document.getElementById(
-"trafficScore"
-).textContent=0;
-
-const player=
-document.getElementById("playerCar");
-
-const enemy=
-document.getElementById("enemyCar");
-
-player.style.left=
-trafficX+"px";
-
-enemy.style.top=
-enemyY+"px";
-
-enemy.style.left=
-Math.random()*190+"px";
-
-trafficTimer=
-setInterval(()=>{
-
-enemyY+=5;
-
-enemy.style.top=
-enemyY+"px";
-
-if(enemyY>360){
-
-trafficScore++;
-
-document.getElementById(
-"trafficScore"
-).textContent=
-trafficScore;
-
-enemyY=-60;
-
-enemy.style.left=
-Math.random()*190+"px";
+button.classList.add("active");
 
 }
 
-const enemyLeft=
-parseInt(enemy.style.left);
+
+/* CALCULATOR */
+
+let calcValue="";
+
+function calc(value){
+
+calcValue+=value;
+
+document
+.getElementById("calcDisplay")
+.value=calcValue;
+
+}
+
+function calculate(){
+
+try{
+
+calcValue=
+String(eval(calcValue));
+
+document
+.getElementById("calcDisplay")
+.value=calcValue;
+
+}catch{
+
+calcValue="";
+
+document
+.getElementById("calcDisplay")
+.value="Error";
+
+}
+
+}
+
+function clearCalc(){
+
+calcValue="";
+
+document
+.getElementById("calcDisplay")
+.value="";
+
+}
+
+
+/* PERCENTAGE */
+
+function calculatePercentage(){
+
+const number=
+Number(document.getElementById("percentNumber").value);
+
+const percentage=
+Number(document.getElementById("percentValue").value);
+
+const result=
+number*(percentage/100);
+
+document
+.getElementById("percentageResult")
+.innerHTML=
+"<h3>Result: "+result+"</h3>";
+
+}
+
+
+/* AGE */
+
+function calculateAge(){
+
+const birth=
+document.getElementById("birthDate").value;
+
+if(!birth)return;
+
+const dob=new Date(birth);
+const today=new Date();
+
+let age=
+today.getFullYear()-dob.getFullYear();
+
+const month=
+today.getMonth()-dob.getMonth();
 
 if(
-enemyY>300&&
-enemyY<355&&
-Math.abs(enemyLeft-trafficX)<45
+month<0 ||
+(month===0 && today.getDate()<dob.getDate())
 ){
+age--;
+}
 
-clearInterval(trafficTimer);
+document
+.getElementById("ageResult")
+.innerHTML=
+"<h3>You are "+age+" years old 🎂</h3>";
 
-alert(
-"💥 CRASH!\nScore: "+
-trafficScore
+}
+
+
+/* NOTES */
+
+const notesArea=
+document.getElementById("notesArea");
+
+notesArea.value=
+localStorage.getItem("jojifyNotes") || "";
+
+function saveNotes(){
+
+localStorage.setItem(
+"jojifyNotes",
+notesArea.value
 );
 
-}
-
-},40);
-
-}
-
-
-function moveTraffic(direction){
-
-if(direction==="left")
-trafficX-=30;
-
-if(direction==="right")
-trafficX+=30;
-
-trafficX=Math.max(
-5,
-Math.min(215,trafficX)
-);
-
-document.getElementById(
-"playerCar"
-).style.left=
-trafficX+"px";
+document
+.getElementById("notesResult")
+.textContent="✅ Saved on this device";
 
 }
 
+function clearNotes(){
 
-document.addEventListener(
-"keydown",
-event=>{
+notesArea.value="";
 
-if(currentGame!=="traffic")
-return;
+localStorage.removeItem("jojifyNotes");
 
-if(event.key==="ArrowLeft")
-moveTraffic("left");
+document
+.getElementById("notesResult")
+.textContent="🗑️ Notes cleared";
 
-if(event.key==="ArrowRight")
-moveTraffic("right");
-
-});
+}
 
 
 /* =========================
-   ESCAPE HTML
+   SECURITY
 ========================= */
 
 function escapeHTML(text){
 
-const div=
-document.createElement("div");
-
-div.textContent=
-text==null?"":text;
-
-return div.innerHTML;
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
