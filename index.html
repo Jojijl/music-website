@@ -2,1503 +2,1357 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#087f5b">
-<title>Kerala ONE | Kerala Public Utility Hub</title>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+<title>JOJIFY CHAOS</title>
 
 <style>
-:root{
-  --green:#087f5b;
-  --green-dark:#045c42;
-  --green-light:#e9f8f1;
-  --gold:#e5a900;
-  --red:#d62839;
-  --blue:#1769aa;
-  --text:#17231f;
-  --muted:#66736e;
-  --bg:#f5f8f6;
-  --card:#ffffff;
-  --border:#e2e9e5;
-  --shadow:0 10px 30px rgba(0,0,0,.07);
-}
-
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
+    overflow:hidden;
+    background:#000;
+    font-family:Arial,sans-serif;
+    touch-action:none;
 }
 
-button,input,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-/* HEADER */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
-
-.navbar{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color:var(--text);
-}
-
-.logo-icon{
-  width:42px;
-  height:42px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  background:var(--green);
-  color:white;
-  font-size:22px;
-  font-weight:bold;
-}
-
-.logo-text{
-  font-size:21px;
-  font-weight:800;
-}
-
-.logo-text span{
-  color:var(--green);
-}
-
-.nav-links{
-  display:flex;
-  gap:7px;
-  align-items:center;
-}
-
-.nav-links a{
-  text-decoration:none;
-  color:#34413c;
-  padding:9px 12px;
-  border-radius:10px;
-  font-size:14px;
-  font-weight:600;
-}
-
-.nav-links a:hover{
-  background:var(--green-light);
-  color:var(--green);
-}
-
-.menu-btn{
-  display:none;
-  border:0;
-  background:var(--green-light);
-  color:var(--green);
-  padding:9px 12px;
-  border-radius:10px;
-}
-
-/* HERO */
-
-.hero{
-  background:
-    radial-gradient(circle at 90% 20%,rgba(229,169,0,.18),transparent 25%),
-    radial-gradient(circle at 10% 80%,rgba(8,127,91,.15),transparent 30%),
-    linear-gradient(135deg,#effaf5,#ffffff);
-  padding:75px 20px 55px;
-}
-
-.hero-inner{
-  max-width:1100px;
-  margin:auto;
-  text-align:center;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 13px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:999px;
-  color:var(--green);
-  font-size:13px;
-  font-weight:700;
-  box-shadow:0 5px 18px rgba(0,0,0,.04);
-}
-
-.hero h1{
-  margin-top:18px;
-  font-size:clamp(38px,7vw,72px);
-  line-height:1;
-  letter-spacing:-3px;
-}
-
-.hero h1 span{
-  color:var(--green);
-}
-
-.hero p{
-  max-width:650px;
-  margin:18px auto 27px;
-  color:var(--muted);
-  font-size:17px;
-}
-
-.search-box{
-  max-width:720px;
-  margin:auto;
-  background:white;
-  border:1px solid var(--border);
-  padding:8px;
-  border-radius:18px;
-  display:flex;
-  gap:8px;
-  box-shadow:var(--shadow);
-}
-
-.search-box input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:14px;
-  font-size:16px;
-  background:transparent;
-}
-
-.search-btn{
-  border:0;
-  background:var(--green);
-  color:white;
-  border-radius:13px;
-  padding:0 22px;
-  font-weight:700;
-}
-
-.search-btn:hover{
-  background:var(--green-dark);
-}
-
-.quick{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:18px;
-}
-
-.quick button{
-  border:1px solid var(--border);
-  background:white;
-  color:#3c4844;
-  border-radius:999px;
-  padding:8px 13px;
-  font-size:13px;
-}
-
-/* MAIN */
-
-main{
-  max-width:1200px;
-  margin:auto;
-  padding:35px 20px 100px;
-}
-
-.section{
-  margin-bottom:55px;
-  scroll-margin-top:90px;
-}
-
-.section-heading{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.section-heading h2{
-  font-size:27px;
-}
-
-.section-heading p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* CARDS */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.035);
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:var(--shadow);
-}
-
-.card-icon{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  border-radius:14px;
-  background:var(--green-light);
-  font-size:24px;
-  margin-bottom:15px;
-}
-
-.card h3{
-  margin-bottom:7px;
-  font-size:17px;
-}
-
-.card p{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-.card button,
-.card a{
-  display:inline-block;
-  border:0;
-  text-decoration:none;
-  color:var(--green);
-  background:var(--green-light);
-  padding:9px 12px;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:700;
-}
-
-/* EMERGENCY */
-
-.emergency{
-  background:#fff4f4;
-  border:1px solid #ffd5d8;
-  border-radius:22px;
-  padding:22px;
-}
-
-.emergency .section-heading h2{
-  color:var(--red);
-}
-
-.emergency-cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.emergency-card{
-  background:white;
-  border:1px solid #f0dfe0;
-  border-radius:15px;
-  padding:17px;
-}
-
-.emergency-card strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.emergency-card a{
-  display:inline-block;
-  margin-top:10px;
-  text-decoration:none;
-  background:var(--red);
-  color:white;
-  padding:8px 13px;
-  border-radius:9px;
-  font-size:13px;
-  font-weight:bold;
-}
-
-/* BLOOD */
-
-.blood-box{
-  background:linear-gradient(135deg,#fff5f5,#ffffff);
-  border:1px solid #f2dddd;
-  border-radius:22px;
-  padding:25px;
-}
-
-.blood-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.form{
-  display:grid;
-  gap:11px;
-}
-
-.form input,
-.form select{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:12px;
-  outline:0;
-  background:white;
-}
-
-.primary{
-  border:0;
-  background:var(--green);
-  color:white;
-  border-radius:11px;
-  padding:12px;
-  font-weight:700;
-}
-
-.primary:hover{
-  background:var(--green-dark);
-}
-
-.request-list{
-  display:grid;
-  gap:10px;
-}
-
-.request{
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:white;
-}
-
-.request strong{
-  color:var(--red);
-}
-
-/* SEARCH RESULTS */
-
-#searchResults{
-  display:none;
-  margin-bottom:40px;
-}
-
-.results-box{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:22px;
-}
-
-.result{
-  padding:15px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.result:last-child{
-  border-bottom:0;
-}
-
-.result h3{
-  font-size:16px;
-}
-
-.result p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.result button{
-  margin-top:8px;
-  border:0;
-  background:var(--green-light);
-  color:var(--green);
-  padding:7px 10px;
-  border-radius:8px;
-  font-weight:bold;
-}
-
-/* FOOTER */
-
-footer{
-  background:#10251e;
-  color:#dce9e4;
-  padding:40px 20px 80px;
-}
-
-.footer-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:30px;
-}
-
-footer h3{
-  margin-bottom:10px;
-}
-
-footer p,
-footer a{
-  color:#aebdb7;
-  font-size:13px;
-  text-decoration:none;
-}
-
-.footer-links{
-  display:grid;
-  gap:7px;
-}
-
-/* MOBILE */
-
-.bottom-nav{
-  display:none;
-}
-
-@media(max-width:900px){
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .emergency-cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .nav-links{
-    display:none;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .footer-inner{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:600px){
-  .hero{
-    padding:50px 15px 40px;
-  }
-
-  .hero h1{
-    letter-spacing:-2px;
-  }
-
-  .search-box{
-    flex-direction:column;
-  }
-
-  .search-btn{
-    padding:13px;
-  }
-
-  main{
-    padding:25px 15px 90px;
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .emergency-cards{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .blood-grid{
-    grid-template-columns:1fr;
-  }
-
-  .footer-inner{
-    grid-template-columns:1fr;
-  }
-
-  .bottom-nav{
+#game{
     position:fixed;
-    display:flex;
-    bottom:0;
-    left:0;
-    right:0;
-    height:64px;
-    background:rgba(255,255,255,.97);
-    border-top:1px solid var(--border);
-    z-index:999;
-    justify-content:space-around;
-    align-items:center;
-  }
+    inset:0;
+}
 
-  .bottom-nav a{
-    text-decoration:none;
-    color:#59655f;
-    font-size:11px;
+#hud{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    color:white;
+}
+
+#logo{
+    position:absolute;
+    top:18px;
+    left:18px;
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-shadow:0 2px 8px #000;
+}
+
+#logo span{
+    color:#00e5ff;
+}
+
+#stats{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:rgba(0,0,0,.45);
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:14px;
+}
+
+#healthBox{
+    position:absolute;
+    left:50%;
+    bottom:24px;
+    transform:translateX(-50%);
+    width:min(330px,70%);
+}
+
+#healthText{
+    font-weight:bold;
+    margin-bottom:5px;
     text-align:center;
-  }
+    text-shadow:0 2px 5px #000;
+}
 
-  .bottom-nav span{
-    display:block;
+#healthBar{
+    height:14px;
+    background:rgba(0,0,0,.6);
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.3);
+}
+
+#health{
+    width:100%;
+    height:100%;
+    background:#20e070;
+    transition:.15s;
+}
+
+#crosshair{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:28px;
+    text-shadow:0 2px 5px #000;
+}
+
+#message{
+    position:absolute;
+    left:50%;
+    top:15%;
+    transform:translateX(-50%);
     font-size:20px;
-  }
+    font-weight:bold;
+    text-align:center;
+    text-shadow:0 2px 8px #000;
+}
+
+#controls{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.control{
+    position:absolute;
+    width:64px;
+    height:64px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:50%;
+    background:rgba(0,0,0,.35);
+    color:white;
+    font-size:24px;
+    pointer-events:auto;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+#up{
+    left:82px;
+    bottom:130px;
+}
+
+#down{
+    left:82px;
+    bottom:25px;
+}
+
+#left{
+    left:12px;
+    bottom:78px;
+}
+
+#right{
+    left:152px;
+    bottom:78px;
+}
+
+#shoot{
+    right:25px;
+    bottom:75px;
+    width:82px;
+    height:82px;
+    background:rgba(0,229,255,.25);
+    border-color:#00e5ff;
+    font-size:30px;
+}
+
+#jump{
+    right:120px;
+    bottom:35px;
+}
+
+#start{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle at center,#123a4a,#03070a 65%);
+    z-index:10;
+    color:white;
+    text-align:center;
+}
+
+.start-card{
+    padding:30px;
+    max-width:420px;
+}
+
+.start-card h1{
+    font-size:48px;
+    letter-spacing:3px;
+}
+
+.start-card h1 span{
+    color:#00e5ff;
+}
+
+.start-card p{
+    color:#aaa;
+    margin:12px 0 25px;
+}
+
+#startButton{
+    border:0;
+    background:#00e5ff;
+    color:#001014;
+    padding:15px 35px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+@media(min-width:800px){
+    #controls{
+        display:none;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <nav class="navbar">
+<div id="game"></div>
 
-    <a class="logo" href="#home">
-      <div class="logo-icon">K</div>
-      <div class="logo-text">KERALA <span>ONE</span></div>
-    </a>
-
-    <div class="nav-links">
-      <a href="#emergency">Emergency</a>
-      <a href="#blood">Blood</a>
-      <a href="#health">Health</a>
-      <a href="#government">Government</a>
-      <a href="#students">Students</a>
-    </div>
-
-    <button class="menu-btn" onclick="scrollToSection('tools')">
-      Tools
-    </button>
-
-  </nav>
-</header>
-
-
-<section class="hero" id="home">
-
-  <div class="hero-inner">
-
-    <div class="badge">🌴 Made for Kerala</div>
-
-    <h1>KERALA <span>ONE</span></h1>
-
-    <p>
-      A simple public utility hub for Kerala —
-      emergency help, health, government services,
-      student resources and useful everyday tools.
-    </p>
-
-    <div class="search-box">
-
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Search Kerala ONE..."
-        onkeydown="handleSearchKey(event)"
-      >
-
-      <button class="search-btn" onclick="performSearch()">
-        Search
-      </button>
-
-    </div>
-
-    <div class="quick">
-      <button onclick="searchQuick('blood')">🩸 Blood</button>
-      <button onclick="searchQuick('hospital')">🏥 Hospital</button>
-      <button onclick="searchQuick('government')">🏛️ Government</button>
-      <button onclick="searchQuick('student')">🎓 Student</button>
-      <button onclick="searchQuick('emergency')">🚨 Emergency</button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<main>
-
-
-<!-- SEARCH RESULTS -->
-
-<section id="searchResults">
-
-  <div class="results-box">
-
-    <div class="section-heading">
-      <div>
-        <h2>Search Results</h2>
-        <p id="resultCount"></p>
-      </div>
-    </div>
-
-    <div id="resultsContainer"></div>
-
-  </div>
-
-</section>
-
-
-<!-- EMERGENCY -->
-
-<section class="section" id="emergency">
-
-  <div class="emergency">
-
-    <div class="section-heading">
-
-      <div>
-        <h2>🚨 Emergency</h2>
-        <p>Important emergency contacts</p>
-      </div>
-
-    </div>
-
-    <div class="emergency-cards">
-
-      <div class="emergency-card">
-        <strong>🚓 Police</strong>
-        <span>Emergency assistance</span>
-        <a href="tel:112">Call 112</a>
-      </div>
-
-      <div class="emergency-card">
-        <strong>🚑 Ambulance</strong>
-        <span>Medical emergency</span>
-        <a href="tel:108">Call 108</a>
-      </div>
-
-      <div class="emergency-card">
-        <strong>🚒 Fire & Rescue</strong>
-        <span>Fire emergency</span>
-        <a href="tel:101">Call 101</a>
-      </div>
-
-      <div class="emergency-card">
-        <strong>🆘 Emergency</strong>
-        <span>Unified emergency number</span>
-        <a href="tel:112">Call 112</a>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- BLOOD -->
-
-<section class="section" id="blood">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🩸 Blood Connect</h2>
-      <p>Prototype for community blood emergency requests</p>
-    </div>
-
-  </div>
-
-  <div class="blood-box">
-
-    <div class="blood-grid">
-
-      <div>
-
-        <h3 style="margin-bottom:12px;">
-          Create Blood Request
-        </h3>
-
-        <div class="form">
-
-          <select id="bloodGroup">
-            <option value="">Select blood group</option>
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>O+</option>
-            <option>O-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-          </select>
-
-          <input
-            id="bloodLocation"
-            placeholder="District / Location"
-          >
-
-          <input
-            id="bloodHospital"
-            placeholder="Hospital name"
-          >
-
-          <input
-            id="bloodContact"
-            placeholder="Contact number"
-            type="tel"
-          >
-
-          <button class="primary" onclick="createBloodRequest()">
-            Create Request
-          </button>
-
-        </div>
-
-        <p style="margin-top:12px;font-size:12px;color:#777;">
-          Demo only. Real emergency requests should be verified
-          with the hospital/blood bank.
+<div id="start">
+    <div class="start-card">
+        <h1>JOJ<span>IFY</span></h1>
+        <h2>CHAOS</h2>
+        <p>
+            3D Battle Island — V1
         </p>
 
-      </div>
+        <button id="startButton">
+            PLAY NOW 🎮
+        </button>
 
+        <p>
+            WASD / Arrow Keys · Mouse · Space · Click
+        </p>
+    </div>
+</div>
 
-      <div>
+<div id="hud">
 
-        <h3 style="margin-bottom:12px;">
-          Recent Requests
-        </h3>
-
-        <div id="requestList" class="request-list"></div>
-
-      </div>
-
+    <div id="logo">
+        JOJ<span>IFY</span> CHAOS
     </div>
 
-  </div>
-
-</section>
-
-
-<!-- HEALTH -->
-
-<section class="section" id="health">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🏥 Health</h2>
-      <p>Useful health-related directories</p>
+    <div id="stats">
+        👤 Players: <span id="players">10</span><br>
+        💀 Eliminations: <span id="kills">0</span>
     </div>
 
-  </div>
-
-  <div class="cards">
-
-    <div class="card" data-search="hospital health emergency">
-      <div class="card-icon">🏥</div>
-      <h3>Hospital Finder</h3>
-      <p>Find hospitals and healthcare information by location.</p>
-      <button onclick="showMessage('Hospital Finder will be connected to verified hospital data.')">
-        Open
-      </button>
+    <div id="message">
+        SURVIVE THE CHAOS
     </div>
 
-    <div class="card" data-search="blood blood bank">
-      <div class="card-icon">🩸</div>
-      <h3>Blood Banks</h3>
-      <p>Directory for blood banks and donation information.</p>
-      <button onclick="scrollToSection('blood')">
-        Open
-      </button>
+    <div id="crosshair">
+        +
     </div>
 
-    <div class="card" data-search="ambulance emergency">
-      <div class="card-icon">🚑</div>
-      <h3>Ambulance Help</h3>
-      <p>Quick access to emergency ambulance services.</p>
-      <button onclick="window.location.href='tel:108'">
-        Call 108
-      </button>
+    <div id="healthBox">
+        <div id="healthText">
+            ❤️ 100 HP
+        </div>
+
+        <div id="healthBar">
+            <div id="health"></div>
+        </div>
     </div>
-
-    <div class="card" data-search="health pharmacy medicine">
-      <div class="card-icon">💊</div>
-      <h3>Health Resources</h3>
-      <p>Useful links and verified healthcare resources.</p>
-      <button onclick="showMessage('Verified resources can be added here.')">
-        Open
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- GOVERNMENT -->
-
-<section class="section" id="government">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🏛️ Government Services</h2>
-      <p>Find the official service you need</p>
-    </div>
-
-  </div>
-
-  <div class="cards">
-
-    <div class="card" data-search="government birth certificate">
-      <div class="card-icon">📜</div>
-      <h3>Birth Certificate</h3>
-      <p>Find the appropriate official service for birth certificates.</p>
-      <button onclick="showMessage('Add the official Kerala government service link here.')">
-        Find Service
-      </button>
-    </div>
-
-    <div class="card" data-search="government income certificate">
-      <div class="card-icon">📄</div>
-      <h3>Income Certificate</h3>
-      <p>Find information and official application services.</p>
-      <button onclick="showMessage('Add the official service link here.')">
-        Find Service
-      </button>
-    </div>
-
-    <div class="card" data-search="government driving licence">
-      <div class="card-icon">🚗</div>
-      <h3>Driving Licence</h3>
-      <p>Access official driving licence-related services.</p>
-      <button onclick="showMessage('Add the official transport service link here.')">
-        Find Service
-      </button>
-    </div>
-
-    <div class="card" data-search="government passport">
-      <div class="card-icon">🛂</div>
-      <h3>Passport</h3>
-      <p>Find official passport application information.</p>
-      <button onclick="showMessage('Add the official passport service link here.')">
-        Find Service
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- STUDENTS -->
-
-<section class="section" id="students">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🎓 Student Help</h2>
-      <p>Useful tools for Kerala students</p>
-    </div>
-
-  </div>
-
-  <div class="cards">
-
-    <div class="card" data-search="student cgpa calculator">
-      <div class="card-icon">🧮</div>
-      <h3>CGPA Calculator</h3>
-      <p>Calculate your CGPA using your grades and credits.</p>
-      <button onclick="showMessage('CGPA calculator can be added as the next tool.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="student attendance calculator">
-      <div class="card-icon">📊</div>
-      <h3>Attendance Calculator</h3>
-      <p>Calculate attendance percentage and required classes.</p>
-      <button onclick="showMessage('Attendance calculator can be added next.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="student scholarship">
-      <div class="card-icon">🎓</div>
-      <h3>Scholarships</h3>
-      <p>Directory of scholarship information and official links.</p>
-      <button onclick="showMessage('Add verified scholarship sources here.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="student exam notes">
-      <div class="card-icon">📚</div>
-      <h3>Study Resources</h3>
-      <p>Notes, previous papers and study tools.</p>
-      <button onclick="showMessage('Study resources section ready to expand.')">
-        Open
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TOOLS -->
-
-<section class="section" id="tools">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🛠️ Everyday Tools</h2>
-      <p>Simple tools that work directly in your browser</p>
-    </div>
-
-  </div>
-
-  <div class="cards">
-
-    <div class="card" data-search="calculator percentage">
-      <div class="card-icon">%</div>
-      <h3>Percentage Calculator</h3>
-      <p>Quickly calculate percentages.</p>
-      <button onclick="showMessage('Percentage calculator coming next.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="timer study">
-      <div class="card-icon">⏱️</div>
-      <h3>Study Timer</h3>
-      <p>Simple focus timer for studying.</p>
-      <button onclick="showMessage('Study timer coming next.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="qr code">
-      <div class="card-icon">▦</div>
-      <h3>QR Generator</h3>
-      <p>Create QR codes for useful information.</p>
-      <button onclick="showMessage('QR generator coming next.')">
-        Open
-      </button>
-    </div>
-
-    <div class="card" data-search="text counter word counter">
-      <div class="card-icon">📝</div>
-      <h3>Text Counter</h3>
-      <p>Count words and characters instantly.</p>
-      <button onclick="showMessage('Text counter coming next.')">
-        Open
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-  <div class="footer-inner">
-
-    <div>
-      <h3>KERALA ONE</h3>
-      <p>
-        A community-focused public utility hub concept
-        designed to make useful Kerala resources easier to find.
-      </p>
-      <p style="margin-top:12px;">
-        Information should be verified with the relevant
-        official authority before important decisions.
-      </p>
-    </div>
-
-    <div>
-      <h3>Explore</h3>
-
-      <div class="footer-links">
-        <a href="#emergency">Emergency</a>
-        <a href="#blood">Blood</a>
-        <a href="#health">Health</a>
-        <a href="#government">Government</a>
-        <a href="#students">Students</a>
-      </div>
-
-    </div>
-
-    <div>
-      <h3>About</h3>
-
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#tools">Tools</a>
-        <a href="#home">Privacy</a>
-        <a href="#home">Contact</a>
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-<!-- MOBILE NAV -->
-
-<div class="bottom-nav">
-
-  <a href="#home">
-    <span>🏠</span>
-    Home
-  </a>
-
-  <a href="#emergency">
-    <span>🚨</span>
-    Emergency
-  </a>
-
-  <a href="#blood">
-    <span>🩸</span>
-    Blood
-  </a>
-
-  <a href="#health">
-    <span>🏥</span>
-    Health
-  </a>
-
-  <a href="#students">
-    <span>🎓</span>
-    Students
-  </a>
 
 </div>
 
+<div id="controls">
+
+    <button class="control" id="up">▲</button>
+    <button class="control" id="down">▼</button>
+    <button class="control" id="left">◀</button>
+    <button class="control" id="right">▶</button>
+
+    <button class="control" id="jump">
+        ⬆
+    </button>
+
+    <button class="control" id="shoot">
+        🔥
+    </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
 <script>
 
-/* -----------------------------
-   NAVIGATION
------------------------------ */
+let scene;
+let camera;
+let renderer;
+let player;
 
-function scrollToSection(id){
-  const element = document.getElementById(id);
+let started = false;
 
-  if(element){
-    element.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-  }
+let velocityY = 0;
+let health = 100;
+let kills = 0;
+
+const keys = {};
+
+const enemies = [];
+const bullets = [];
+
+const clock = new THREE.Clock();
+
+const WORLD_SIZE = 180;
+
+
+/* =========================
+   START GAME
+========================= */
+
+document
+.getElementById("startButton")
+.addEventListener("click",startGame);
+
+
+function startGame(){
+
+    document
+    .getElementById("start")
+    .style.display = "none";
+
+    started = true;
+
+    createGame();
 }
 
 
-/* -----------------------------
-   MESSAGE
------------------------------ */
+/* =========================
+   CREATE GAME
+========================= */
 
-function showMessage(message){
-  alert(message);
-}
+function createGame(){
 
+    scene = new THREE.Scene();
 
-/* -----------------------------
-   SEARCH
------------------------------ */
+    scene.background =
+        new THREE.Color(0x82c8e8);
 
-const searchItems = [
-
-  {
-    title:"Emergency",
-    description:"Emergency contacts and quick assistance.",
-    keywords:"emergency police ambulance fire 112 108 101",
-    section:"emergency"
-  },
-
-  {
-    title:"Blood Connect",
-    description:"Blood emergency request and volunteer system.",
-    keywords:"blood blood group donor donation emergency",
-    section:"blood"
-  },
-
-  {
-    title:"Hospital Finder",
-    description:"Find healthcare resources and hospitals.",
-    keywords:"hospital health doctor medical emergency",
-    section:"health"
-  },
-
-  {
-    title:"Government Services",
-    description:"Find government service information.",
-    keywords:"government certificate birth income passport licence",
-    section:"government"
-  },
-
-  {
-    title:"Student Help",
-    description:"Student tools, scholarships and study resources.",
-    keywords:"student college university scholarship exam study",
-    section:"students"
-  },
-
-  {
-    title:"CGPA Calculator",
-    description:"Calculate your academic CGPA.",
-    keywords:"cgpa grade marks student calculator",
-    section:"students"
-  },
-
-  {
-    title:"Attendance Calculator",
-    description:"Calculate attendance requirements.",
-    keywords:"attendance student college classes percentage",
-    section:"students"
-  },
-
-  {
-    title:"Study Timer",
-    description:"Focus timer for studying.",
-    keywords:"study timer pomodoro focus student",
-    section:"tools"
-  },
-
-  {
-    title:"QR Generator",
-    description:"Generate QR codes.",
-    keywords:"qr qr code generator utility",
-    section:"tools"
-  },
-
-  {
-    title:"Text Counter",
-    description:"Count words and characters.",
-    keywords:"text word character counter",
-    section:"tools"
-  }
-
-];
+    scene.fog =
+        new THREE.Fog(
+            0x82c8e8,
+            80,
+            260
+        );
 
 
-function performSearch(){
+    /* CAMERA */
 
-  const input =
-    document.getElementById("searchInput");
+    camera =
+        new THREE.PerspectiveCamera(
+            65,
+            innerWidth / innerHeight,
+            .1,
+            500
+        );
 
-  const query =
-    input.value.trim().toLowerCase();
 
-  const resultsBox =
-    document.getElementById("searchResults");
+    /* RENDERER */
 
-  const container =
-    document.getElementById("resultsContainer");
+    renderer =
+        new THREE.WebGLRenderer({
+            antialias:true
+        });
 
-  const count =
-    document.getElementById("resultCount");
-
-  if(!query){
-
-    resultsBox.style.display="none";
-
-    return;
-  }
-
-  const results =
-    searchItems.filter(item =>
-
-      (
-        item.title +
-        " " +
-        item.description +
-        " " +
-        item.keywords
-      )
-      .toLowerCase()
-      .includes(query)
-
+    renderer.setSize(
+        innerWidth,
+        innerHeight
     );
 
-  container.innerHTML="";
+    renderer.setPixelRatio(
+        Math.min(
+            devicePixelRatio,
+            2
+        )
+    );
 
-  count.textContent =
-    results.length +
-    (results.length === 1 ? " result" : " results");
+    renderer.shadowMap.enabled = true;
 
-  if(results.length === 0){
+    document
+    .getElementById("game")
+    .appendChild(renderer.domElement);
 
-    container.innerHTML = `
-      <div class="result">
-        <h3>No results found</h3>
-        <p>
-          Try another search such as blood,
-          hospital, emergency, student or government.
-        </p>
-      </div>
-    `;
 
-  }else{
+    /* LIGHT */
 
-    results.forEach(item => {
+    const ambient =
+        new THREE.HemisphereLight(
+            0xffffff,
+            0x335533,
+            2
+        );
 
-      const div =
-        document.createElement("div");
+    scene.add(ambient);
 
-      div.className="result";
 
-      div.innerHTML=`
+    const sun =
+        new THREE.DirectionalLight(
+            0xffffff,
+            3
+        );
 
-        <h3>${item.title}</h3>
+    sun.position.set(
+        60,
+        100,
+        30
+    );
 
-        <p>${item.description}</p>
+    sun.castShadow = true;
 
-        <button
-          onclick="scrollToSection('${item.section}')"
-        >
-          Open
-        </button>
+    scene.add(sun);
 
-      `;
 
-      container.appendChild(div);
+    /* ISLAND */
 
-    });
+    createIsland();
 
-  }
 
-  resultsBox.style.display="block";
+    /* PLAYER */
 
-  resultsBox.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+    createPlayer();
 
+
+    /* ENEMIES */
+
+    for(let i=0;i<9;i++){
+
+        createEnemy(
+            (Math.random()-.5)*120,
+            (Math.random()-.5)*120
+        );
+    }
+
+
+    /* CAMERA */
+
+    camera.position.set(
+        0,
+        8,
+        12
+    );
+
+
+    window.addEventListener(
+        "resize",
+        resize
+    );
+
+
+    setupKeyboard();
+
+    setupMobile();
+
+    animate();
 }
 
 
-function handleSearchKey(event){
+/* =========================
+   ISLAND
+========================= */
 
-  if(event.key === "Enter"){
-    performSearch();
-  }
+function createIsland(){
 
+    const groundGeometry =
+        new THREE.CylinderGeometry(
+            WORLD_SIZE/2,
+            WORLD_SIZE/2,
+            3,
+            64
+        );
+
+    const groundMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0x3c8c45
+        });
+
+    const ground =
+        new THREE.Mesh(
+            groundGeometry,
+            groundMaterial
+        );
+
+    ground.position.y = -1.5;
+
+    ground.receiveShadow = true;
+
+    scene.add(ground);
+
+
+    /* WATER */
+
+    const waterGeometry =
+        new THREE.CircleGeometry(
+            180,
+            64
+        );
+
+    const waterMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0x2185a0,
+            roughness:.4,
+            metalness:.1
+        });
+
+    const water =
+        new THREE.Mesh(
+            waterGeometry,
+            waterMaterial
+        );
+
+    water.rotation.x =
+        -Math.PI/2;
+
+    water.position.y = -3;
+
+    scene.add(water);
+
+
+    /* TREES */
+
+    for(let i=0;i<45;i++){
+
+        const x =
+            (Math.random()-.5)*150;
+
+        const z =
+            (Math.random()-.5)*150;
+
+        if(Math.hypot(x,z)<15)
+            continue;
+
+        createTree(x,z);
+    }
+
+
+    /* ROCKS */
+
+    for(let i=0;i<30;i++){
+
+        const x =
+            (Math.random()-.5)*150;
+
+        const z =
+            (Math.random()-.5)*150;
+
+        createRock(x,z);
+    }
+
+
+    /* BUILDINGS */
+
+    for(let i=0;i<8;i++){
+
+        const x =
+            (Math.random()-.5)*120;
+
+        const z =
+            (Math.random()-.5)*120;
+
+        createBuilding(x,z);
+    }
 }
 
 
-function searchQuick(query){
+/* =========================
+   TREE
+========================= */
 
-  document.getElementById("searchInput").value=query;
+function createTree(x,z){
 
-  performSearch();
+    const group =
+        new THREE.Group();
 
+
+    const trunk =
+        new THREE.Mesh(
+            new THREE.CylinderGeometry(
+                .35,
+                .5,
+                4,
+                8
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0x70452a
+            })
+        );
+
+    trunk.position.y = 2;
+
+    group.add(trunk);
+
+
+    const leaves =
+        new THREE.Mesh(
+            new THREE.SphereGeometry(
+                2.3,
+                10,
+                10
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0x176b2b
+            })
+        );
+
+    leaves.position.y = 5;
+
+    group.add(leaves);
+
+
+    group.position.set(
+        x,
+        0,
+        z
+    );
+
+    group.traverse(
+        o => o.castShadow = true
+    );
+
+    scene.add(group);
 }
 
 
-/* -----------------------------
-   BLOOD REQUEST DEMO
------------------------------ */
+/* =========================
+   ROCK
+========================= */
 
-function getRequests(){
+function createRock(x,z){
 
-  try{
+    const rock =
+        new THREE.Mesh(
+            new THREE.DodecahedronGeometry(
+                1 + Math.random()*1.5
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0x626b70
+            })
+        );
 
-    return JSON.parse(
-      localStorage.getItem("keralaOneBloodRequests")
-    ) || [];
+    rock.position.set(
+        x,
+        1,
+        z
+    );
 
-  }catch(error){
+    rock.scale.y =
+        .6 + Math.random()*.5;
 
-    return [];
+    rock.castShadow = true;
 
-  }
-
+    scene.add(rock);
 }
 
 
-function saveRequests(requests){
+/* =========================
+   BUILDING
+========================= */
 
-  localStorage.setItem(
-    "keralaOneBloodRequests",
-    JSON.stringify(requests)
-  );
+function createBuilding(x,z){
 
+    const building =
+        new THREE.Mesh(
+            new THREE.BoxGeometry(
+                8,
+                7,
+                8
+            ),
+            new THREE.MeshStandardMaterial({
+                color:
+                    Math.random()>.5
+                    ? 0x8e5c3d
+                    : 0x526575
+            })
+        );
+
+    building.position.set(
+        x,
+        3.5,
+        z
+    );
+
+    building.castShadow = true;
+
+    building.receiveShadow = true;
+
+    scene.add(building);
 }
 
 
-function createBloodRequest(){
+/* =========================
+   PLAYER
+========================= */
 
-  const group =
-    document.getElementById("bloodGroup").value;
+function createPlayer(){
 
-  const location =
-    document.getElementById("bloodLocation").value.trim();
+    player =
+        new THREE.Group();
 
-  const hospital =
-    document.getElementById("bloodHospital").value.trim();
 
-  const contact =
-    document.getElementById("bloodContact").value.trim();
+    const body =
+        new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+                .65,
+                1.3,
+                8,
+                16
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0x00d9ff
+            })
+        );
 
-  if(!group || !location || !hospital || !contact){
+    body.position.y = 1.4;
 
-    alert("Please fill all blood request details.");
+    body.castShadow = true;
 
-    return;
+    player.add(body);
 
-  }
 
-  const request = {
+    const head =
+        new THREE.Mesh(
+            new THREE.SphereGeometry(
+                .55,
+                16,
+                16
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0xf0b48a
+            })
+        );
 
-    id:Date.now(),
+    head.position.y = 2.65;
 
-    group,
+    head.castShadow = true;
 
-    location,
+    player.add(head);
 
-    hospital,
 
-    contact,
+    player.position.set(
+        0,
+        0,
+        0
+    );
 
-    time:new Date().toLocaleString()
-
-  };
-
-  const requests =
-    getRequests();
-
-  requests.unshift(request);
-
-  saveRequests(requests);
-
-  document.getElementById("bloodGroup").value="";
-  document.getElementById("bloodLocation").value="";
-  document.getElementById("bloodHospital").value="";
-  document.getElementById("bloodContact").value="";
-
-  renderRequests();
-
-  alert(
-    "Blood request created in this browser demo."
-  );
-
+    scene.add(player);
 }
 
 
-function renderRequests(){
+/* =========================
+   ENEMY
+========================= */
 
-  const list =
-    document.getElementById("requestList");
+function createEnemy(x,z){
 
-  const requests =
-    getRequests();
+    const enemy =
+        new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+                .65,
+                1.2,
+                8,
+                16
+            ),
+            new THREE.MeshStandardMaterial({
+                color:0xff3b3b
+            })
+        );
 
-  if(requests.length === 0){
+    enemy.position.set(
+        x,
+        1.2,
+        z
+    );
 
-    list.innerHTML=`
+    enemy.castShadow = true;
 
-      <div class="request">
+    enemy.userData.health = 100;
 
-        <strong>No requests yet</strong>
+    enemies.push(enemy);
 
-        <div style="font-size:12px;color:#777;">
-          Blood requests created on this device
-          will appear here.
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  list.innerHTML="";
-
-  requests.slice(0,8).forEach(request => {
-
-    const div =
-      document.createElement("div");
-
-    div.className="request";
-
-    div.innerHTML=`
-
-      <strong>${escapeHTML(request.group)} needed</strong>
-
-      <div>
-        📍 ${escapeHTML(request.location)}
-      </div>
-
-      <div>
-        🏥 ${escapeHTML(request.hospital)}
-      </div>
-
-      <div style="font-size:11px;color:#888;margin-top:5px;">
-        ${escapeHTML(request.time)}
-      </div>
-
-    `;
-
-    list.appendChild(div);
-
-  });
-
+    scene.add(enemy);
 }
 
 
-function escapeHTML(value){
+/* =========================
+   KEYBOARD
+========================= */
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function setupKeyboard(){
 
+    window.addEventListener(
+        "keydown",
+        e => {
+
+            keys[e.code] = true;
+
+            if(
+                e.code === "Space"
+            ){
+                jump();
+            }
+
+            if(
+                e.code === "Enter"
+            ){
+                shoot();
+            }
+        }
+    );
+
+
+    window.addEventListener(
+        "keyup",
+        e => {
+
+            keys[e.code] = false;
+        }
+    );
+
+
+    renderer.domElement.addEventListener(
+        "click",
+        shoot
+    );
 }
 
 
-/* -----------------------------
-   INITIALIZE
------------------------------ */
+/* =========================
+   MOBILE
+========================= */
 
-renderRequests();
+function setupMobile(){
+
+    const buttons = {
+
+        up:"KeyW",
+        down:"KeyS",
+        left:"KeyA",
+        right:"KeyD"
+
+    };
+
+
+    for(
+        const id in buttons
+    ){
+
+        const btn =
+            document.getElementById(id);
+
+        const key =
+            buttons[id];
+
+
+        btn.addEventListener(
+            "pointerdown",
+            e => {
+
+                e.preventDefault();
+
+                keys[key] = true;
+            }
+        );
+
+
+        btn.addEventListener(
+            "pointerup",
+            e => {
+
+                e.preventDefault();
+
+                keys[key] = false;
+            }
+        );
+
+
+        btn.addEventListener(
+            "pointercancel",
+            () => {
+
+                keys[key] = false;
+            }
+        );
+    }
+
+
+    document
+    .getElementById("jump")
+    .addEventListener(
+        "pointerdown",
+        jump
+    );
+
+
+    document
+    .getElementById("shoot")
+    .addEventListener(
+        "pointerdown",
+        shoot
+    );
+}
+
+
+/* =========================
+   JUMP
+========================= */
+
+function jump(){
+
+    if(
+        player &&
+        player.position.y <= .05
+    ){
+
+        velocityY = 11;
+    }
+}
+
+
+/* =========================
+   SHOOT
+========================= */
+
+function shoot(){
+
+    if(!started)
+        return;
+
+
+    const bullet =
+        new THREE.Mesh(
+            new THREE.SphereGeometry(
+                .15,
+                8,
+                8
+            ),
+            new THREE.MeshBasicMaterial({
+                color:0xffff00
+            })
+        );
+
+
+    bullet.position.copy(
+        player.position
+    );
+
+    bullet.position.y += 1.5;
+
+
+    const direction =
+        new THREE.Vector3(
+            0,
+            0,
+            -1
+        );
+
+
+    direction.applyQuaternion(
+        player.quaternion
+    );
+
+
+    bullet.userData.velocity =
+        direction.multiplyScalar(45);
+
+
+    bullet.userData.life = 2;
+
+    bullets.push(bullet);
+
+    scene.add(bullet);
+}
+
+
+/* =========================
+   UPDATE PLAYER
+========================= */
+
+function updatePlayer(delta){
+
+    let moveX = 0;
+    let moveZ = 0;
+
+
+    if(
+        keys["KeyW"] ||
+        keys["ArrowUp"]
+    ) moveZ -= 1;
+
+    if(
+        keys["KeyS"] ||
+        keys["ArrowDown"]
+    ) moveZ += 1;
+
+    if(
+        keys["KeyA"] ||
+        keys["ArrowLeft"]
+    ) moveX -= 1;
+
+    if(
+        keys["KeyD"] ||
+        keys["ArrowRight"]
+    ) moveX += 1;
+
+
+    const length =
+        Math.hypot(
+            moveX,
+            moveZ
+        );
+
+
+    if(length > 0){
+
+        moveX /= length;
+        moveZ /= length;
+
+
+        const speed = 18;
+
+        player.position.x +=
+            moveX * speed * delta;
+
+        player.position.z +=
+            moveZ * speed * delta;
+
+
+        player.rotation.y =
+            Math.atan2(
+                moveX,
+                moveZ
+            );
+    }
+
+
+    velocityY -=
+        25 * delta;
+
+    player.position.y +=
+        velocityY * delta;
+
+
+    if(
+        player.position.y < 0
+    ){
+
+        player.position.y = 0;
+
+        velocityY = 0;
+    }
+
+
+    const limit =
+        WORLD_SIZE/2 - 5;
+
+
+    player.position.x =
+        THREE.MathUtils.clamp(
+            player.position.x,
+            -limit,
+            limit
+        );
+
+    player.position.z =
+        THREE.MathUtils.clamp(
+            player.position.z,
+            -limit,
+            limit
+        );
+
+
+    /* CAMERA */
+
+    const cameraTarget =
+        new THREE.Vector3(
+            player.position.x,
+            player.position.y + 3,
+            player.position.z
+        );
+
+
+    const desiredCamera =
+        new THREE.Vector3(
+            player.position.x,
+            player.position.y + 9,
+            player.position.z + 13
+        );
+
+
+    camera.position.lerp(
+        desiredCamera,
+        .08
+    );
+
+
+    camera.lookAt(
+        cameraTarget
+    );
+}
+
+
+/* =========================
+   ENEMIES
+========================= */
+
+function updateEnemies(delta){
+
+    enemies.forEach(
+        enemy => {
+
+            if(
+                enemy.userData.health <= 0
+            )
+                return;
+
+
+            const distance =
+                enemy.position.distanceTo(
+                    player.position
+                );
+
+
+            if(
+                distance < 45
+            ){
+
+                enemy.lookAt(
+                    player.position.x,
+                    enemy.position.y,
+                    player.position.z
+                );
+
+
+                if(distance > 5){
+
+                    enemy.translateZ(
+                        -4 * delta
+                    );
+
+                }else{
+
+                    health -=
+                        12 * delta;
+
+                    updateHealth();
+
+                }
+            }
+        }
+    );
+}
+
+
+/* =========================
+   BULLETS
+========================= */
+
+function updateBullets(delta){
+
+    for(
+        let i=bullets.length-1;
+        i>=0;
+        i--
+    ){
+
+        const bullet =
+            bullets[i];
+
+
+        bullet.position.add(
+            bullet.userData.velocity
+            .clone()
+            .multiplyScalar(delta)
+        );
+
+
+        bullet.userData.life -=
+            delta;
+
+
+        let remove = false;
+
+
+        enemies.forEach(
+            enemy => {
+
+                if(
+                    enemy.userData.health <= 0
+                )
+                    return;
+
+
+                if(
+                    bullet.position.distanceTo(
+                        enemy.position
+                    ) < 1.5
+                ){
+
+                    enemy.userData.health -=
+                        50;
+
+                    remove = true;
+
+
+                    if(
+                        enemy.userData.health <= 0
+                    ){
+
+                        scene.remove(
+                            enemy
+                        );
+
+                        kills++;
+
+                        document
+                        .getElementById(
+                            "kills"
+                        )
+                        .textContent =
+                            kills;
+
+                    }
+                }
+            }
+        );
+
+
+        if(
+            bullet.userData.life <= 0
+        )
+            remove = true;
+
+
+        if(remove){
+
+            scene.remove(
+                bullet
+            );
+
+            bullets.splice(
+                i,
+                1
+            );
+        }
+    }
+}
+
+
+/* =========================
+   HEALTH
+========================= */
+
+function updateHealth(){
+
+    health =
+        Math.max(
+            0,
+            health
+        );
+
+
+    document
+    .getElementById("health")
+    .style.width =
+        health + "%";
+
+
+    document
+    .getElementById("healthText")
+    .textContent =
+        "❤️ " +
+        Math.round(health) +
+        " HP";
+
+
+    if(
+        health <= 0
+    ){
+
+        document
+        .getElementById("message")
+        .textContent =
+            "💀 YOU WERE ELIMINATED";
+
+        started = false;
+    }
+}
+
+
+/* =========================
+   RESIZE
+========================= */
+
+function resize(){
+
+    if(!camera || !renderer)
+        return;
+
+
+    camera.aspect =
+        innerWidth /
+        innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+        innerWidth,
+        innerHeight
+    );
+}
+
+
+/* =========================
+   GAME LOOP
+========================= */
+
+function animate(){
+
+    requestAnimationFrame(
+        animate
+    );
+
+
+    if(!started){
+
+        renderer.render(
+            scene,
+            camera
+        );
+
+        return;
+    }
+
+
+    const delta =
+        Math.min(
+            clock.getDelta(),
+            .05
+        );
+
+
+    updatePlayer(delta);
+
+    updateEnemies(delta);
+
+    updateBullets(delta);
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+}
 
 </script>
 
