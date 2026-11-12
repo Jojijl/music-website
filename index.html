@@ -1,346 +1,207 @@
 
-<!-- ==================================
-     JOJIFY CARE - MADE BY JOJI
-     30 DAY RECOVERY TRACKER
-=================================== -->
-
-<section id="jojify-care">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>JOJIFY STUDY | 15-Day Exam Rescue</title>
 <style>
-#jojify-care {
-  --bg:#101820;
-  --card:#182630;
-  --cyan:#00e5ff;
-  --text:#effaff;
-  --muted:#a9bdc5;
-  background:var(--bg);
-  color:var(--text);
-  padding:24px 15px;
-  border-radius:20px;
-  font-family:inherit;
-  max-width:950px;
-  margin:30px auto;
-}
-#jojify-care * {box-sizing:border-box}
-#jojify-care .header {
-  text-align:center;
-  padding:20px 5px;
-}
-#jojify-care h1 {
-  color:var(--cyan);
-  font-size:38px;
-  margin:10px 0;
-}
-#jojify-care h2 {font-size:20px}
-#jojify-care p {color:var(--muted);line-height:1.6}
-#jojify-care .card {
-  background:var(--card);
-  padding:18px;
-  border:1px solid #29414d;
-  border-radius:16px;
-  margin:15px 0;
-}
-#jojify-care .grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-#jojify-care input,
-#jojify-care select,
-#jojify-care textarea {
-  width:100%;
-  padding:12px;
-  margin:8px 0 14px;
-  background:#0e1b24;
-  border:1px solid #36515e;
-  color:white;
-  border-radius:9px;
-}
-#jojify-care button {
-  background:var(--cyan);
-  color:#07151b;
-  padding:12px 17px;
-  border:0;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-}
-#jojify-care button.secondary {
-  background:#29414d;
-  color:white;
-}
-#jojify-care .progress {
-  height:10px;
-  background:#30434d;
-  border-radius:20px;
-  overflow:hidden;
-}
-#jojify-care #care-fill {
-  height:100%;
-  width:0%;
-  background:var(--cyan);
-  transition:.3s;
-}
-#jojify-care .days {
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:8px;
-  margin-top:15px;
-}
-#jojify-care .day {
-  padding:12px 3px;
-  background:#253944;
-  color:white;
-  border:1px solid #36515e;
-  border-radius:9px;
-}
-#jojify-care .day.active {
-  background:#006b78;
-  border-color:var(--cyan);
-}
-#jojify-care .task {
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  margin:13px 0;
-  color:var(--text);
-}
-#jojify-care .task input {
-  width:auto;
-  margin:3px 0;
-}
-#jojify-care .note {
-  background:#102d37;
-  border-left:3px solid var(--cyan);
-  padding:12px;
-  border-radius:8px;
-  color:white;
-  line-height:1.6;
-}
-#jojify-care .small {
-  font-size:12px;
-  color:var(--muted);
-}
-@media(max-width:500px) {
-  #jojify-care .grid {grid-template-columns:1fr}
-  #jojify-care .days {grid-template-columns:repeat(5,1fr)}
+:root{--bg:#07111f;--panel:#101e30;--text:#eef6ff;--muted:#9bb0c8;--cyan:#42d9ef;--green:#55d6a0;--line:#263b53}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top right,#12314a 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.55 system-ui,sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:22px 16px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:900;letter-spacing:2px;color:var(--cyan);font-size:20px}
+.pill{border:1px solid #267a83;color:var(--cyan);border-radius:99px;padding:5px 11px;font-size:12px}
+.hero{margin:22px 0;padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(120deg,#10253b,#0c1929)}
+h1{font-size:clamp(27px,5vw,42px);line-height:1.1;margin:10px 0}
+p{color:var(--muted);margin:7px 0}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+.stat{background:#0a1727;padding:13px;border-radius:14px}
+.stat b{display:block;font-size:24px;color:var(--cyan)}
+.bar{height:9px;background:#23374c;border-radius:20px;overflow:hidden;margin-top:9px}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));width:0;transition:.2s}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px}
+.panel h2{font-size:18px;margin:0 0 12px}
+.days{display:grid;gap:7px;max-height:720px;overflow:auto}
+.daybtn{width:100%;text-align:left;background:#0b1929;color:var(--text);border:1px solid transparent;border-radius:12px;padding:11px;cursor:pointer}
+.daybtn.active{border-color:var(--cyan);background:#123047}
+.daybtn small{display:block;color:var(--muted);margin-top:2px}
+.daybtn.done:after{content:" ✓";color:var(--green);float:right}
+.tag{font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
+.topic{padding:12px;margin:9px 0;background:#0b1929;border:1px solid var(--line);border-radius:12px}
+.topic label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.topic input{accent-color:var(--green);margin-top:5px;width:17px;height:17px}
+.topic strong{display:block}
+.topic small{color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+button.action{background:var(--cyan);color:#04121c;border:0;border-radius:10px;padding:10px 14px;font-weight:750;cursor:pointer}
+button.secondary{background:#20364d;color:var(--text);border:1px solid var(--line)}
+.note{margin-top:14px;padding:13px;border-left:3px solid var(--cyan);background:#0b1929;border-radius:8px;color:var(--muted)}
+.routine{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.routine div{padding:12px;background:#0b1929;border-radius:12px}
+.routine b{color:var(--cyan);display:block}
+button:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:760px){
+.layout{grid-template-columns:1fr}
+.days{grid-template-columns:repeat(2,1fr);max-height:360px}
+.routine{grid-template-columns:1fr}
+.wrap{padding:15px 12px 40px}
 }
 </style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<div class="brand">JOJIFY STUDY</div>
+<span class="pill">EXAM MODE · 15 DAYS</span>
+</header>
 
-<div class="header">
-  <p>JOJIFY ONE • MADE BY JOJI</p>
-  <h1>JOJIFY CARE</h1>
-  <h3>Your Mind. Your Recovery. 💙</h3>
-  <p>30-Day Hair Pulling Recovery Journey</p>
+<section class="hero">
+<div class="tag">B.Sc. Radiography & Imaging Technology</div>
+<h1>15-Day Exam Rescue</h1>
+<p>Simple Malayalam understanding · Easy English answers · Daily progress</p>
+<div class="stats">
+<div class="stat"><b id="completed">0/15</b><span>Days completed</span></div>
+<div class="stat"><b id="tasks">0</b><span>Topics checked</span></div>
+</div>
+<div class="bar"><span id="progress"></span></div>
+</section>
+
+<main class="layout">
+<aside class="panel">
+<h2>Study calendar</h2>
+<div class="days" id="dayList"></div>
+</aside>
+
+<section class="panel" aria-live="polite">
+<div class="tag" id="dayLabel">DAY 1</div>
+<h2 id="dayTitle">Kidney and nephron</h2>
+<p id="dayDesc"></p>
+<div id="topicList"></div>
+
+<div class="note">
+<b>Study method:</b> Read the Malayalam explanation, learn the English headings, close your notes and recall the answer. Practise a labelled diagram where shown.
 </div>
 
-<div class="card">
-  <h2>🌱 Your Recovery Progress</h2>
-  <h3 id="care-count">0 / 30 days</h3>
-  <div class="progress">
-    <div id="care-fill"></div>
-  </div>
-  <p id="care-percent">0% completed</p>
-  <div class="days" id="care-days"></div>
+<h2 style="margin-top:22px">Daily revision routine</h2>
+<div class="routine">
+<div><b>Long-answer topics</b>Study important 10-mark questions</div>
+<div><b>Short break</b>Take a little rest</div>
+<div><b>5-mark topics</b>Learn important short essays</div>
+<div><b>Short break</b>Refresh yourself</div>
+<div><b>3-mark questions</b>Practise definitions and key points</div>
+<div><b>Quick revision</b>Recall what you learned without notes</div>
 </div>
 
-<div class="grid">
-  <div class="card">
-    <h2>🧠 Urge Tracker</h2>
-    <label>Hair pulling urge today</label>
-    <select id="care-urge">
-      <option value="0">No urge</option>
-      <option value="1">Very mild</option>
-      <option value="2">Mild</option>
-      <option value="3">Moderate</option>
-      <option value="4">Strong</option>
-      <option value="5">Very strong</option>
-    </select>
-
-    <label>Approximate pulling episodes</label>
-    <input id="care-pulls" type="number" min="0" placeholder="Number">
-
-    <label>Hair eating today</label>
-    <select id="care-eating">
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-    </select>
-
-    <label>Today's feelings</label>
-    <textarea id="care-notes" rows="3"
-      placeholder="Write your thoughts..."></textarea>
-
-    <button id="care-save">Save today's record</button>
-    <p id="care-message" aria-live="polite"></p>
-  </div>
-
-  <div class="card">
-    <h2>✋ Habit Reversal Practice</h2>
-    <p>Try these alternative actions when an urge appears.</p>
-
-    <label class="task">
-      <input type="checkbox"> Hold a stress ball.
-    </label>
-    <label class="task">
-      <input type="checkbox"> Keep both hands occupied.
-    </label>
-    <label class="task">
-      <input type="checkbox"> Move away from the pulling location.
-    </label>
-    <label class="task">
-      <input type="checkbox"> Notice the urge without acting on it.
-    </label>
-    <label class="task">
-      <input type="checkbox"> Ask someone supportive to stay with me.
-    </label>
-  </div>
+<div class="actions">
+<button class="action" id="prev">← Previous day</button>
+<button class="action" id="next">Next day →</button>
+<button class="action secondary" id="reset">Reset progress</button>
 </div>
-
-<div class="card">
-  <h2>📖 Daily Malayalam Reminder</h2>
-  <p id="care-reminder">
-    മുടി പറിക്കാനുള്ള തോന്നൽ വന്നാൽ ഉടൻ പ്രവർത്തിക്കേണ്ടതില്ല.
-    കുറച്ചുനേരം നിർത്തി മറ്റൊരു പ്രവർത്തനത്തിലേക്ക് ശ്രദ്ധ മാറ്റാം.
-  </p>
-  <button class="secondary" id="care-next">Next Reminder</button>
-</div>
-
-<div class="card">
-  <h2>📊 Recovery History</h2>
-  <div id="care-history"></div>
-</div>
-
-<div class="card">
-  <h2>💙 Remember</h2>
-  <p>
-    ഒരു ദിവസം മുടി പറിച്ചുപോയാൽ പോലും നീ പരാജയപ്പെട്ടിട്ടില്ല.
-    വീണ്ടും ശ്രമിക്കാം. പുരോഗതി പൂർണതയല്ല.
-  </p>
-  <div class="note">
-    Medical support matters. Hair pulling can be treated with
-    professional help, including Habit Reversal Training.
-  </div>
-  <p class="small">
-    JOJIFY CARE is a personal tracking tool, not a medical treatment.
-  </p>
+<p style="font-size:12px;margin-top:14px">Your checklist is saved on this device/browser.</p>
+</section>
+</main>
 </div>
 
 <script>
-(function () {
-  const root = document.getElementById("jojify-care");
-  if (!root || root.dataset.initialized) return;
-  root.dataset.initialized = "true";
+const plan = [
+["Kidney and nephron","Understand kidney structure and its functional unit.",["Kidney: location, external and internal structure (10 marks)","Nephron: parts and functions; practise labelled diagram (5 marks)","Functions of kidney (3 marks)","Renal blood supply – basic outline (5 marks)"]],
+["Urine formation and micturition","Understand the three main steps of urine formation.",["Urine formation: filtration, reabsorption and secretion (10 marks)","Micturition: reflex and control (5/10 marks)","Urinary bladder: structure and function (5 marks)","Define GFR and list functions of urine (3 marks)"]],
+["Heart anatomy","Learn the chambers, valves and major blood vessels.",["Anatomy of heart: location, coverings, chambers and valves (10 marks)","Blood supply of heart – coronary arteries (5 marks)","Layers of heart wall (3 marks)","Name the four chambers and four valves (3 marks)"]],
+["Cardiac cycle and circulation","Follow the flow of blood through the heart and body.",["Cardiac cycle: phases and events (10 marks)","Conducting system of heart (5 marks)","Pulmonary and systemic circulation (5 marks)","Cardiac output and stroke volume (3 marks)"]],
+["Respiratory system and lungs","Identify the air passages and the structure of lungs.",["Parts of respiratory system with diagram (10 marks)","Structure and functions of lungs (10 marks)","Pleura and its functions (5 marks)","Parts of respiratory tract (3 marks)"]],
+["Mechanism of breathing","Understand inspiration and expiration.",["Mechanism of respiration: inspiration and expiration (10 marks)","Role of diaphragm and intercostal muscles (5 marks)","Lung volumes and capacities (5 marks)","Define tidal volume (3 marks)"]],
+["Vertebral column, bones and joints","Revise the skeleton and major joint classifications.",["Vertebral column: regions, curves and functions (10 marks)","Axial and appendicular skeleton (5 marks)","Classification of joints with examples (5 marks)","Classification of bones (3 marks)"]],
+["Digestive system and stomach","Learn the alimentary canal and stomach functions.",["Parts of alimentary canal (5 marks)","Stomach: location, parts, structure and functions (10 marks)","Small intestine: parts and functions (5 marks)","Functions of large intestine (3 marks)"]],
+["Liver, bile and digestion","Focus on liver functions and digestive secretions.",["Liver: location, structure and functions (10 marks)","Bile: composition and functions (5 marks)","Digestion and absorption (5 marks)","Portal circulation (5 marks)"]],
+["Brain, cerebellum and CSF","Learn the main divisions of brain and cerebrospinal fluid.",["Brain: major parts and functions (10 marks)","Cerebellum: structure and functions (5 marks)","CSF: formation, circulation and functions (5 marks)","Cranial nerves – names (3 marks)"]],
+["Blood, anemia and jaundice","Revise blood components and common pathology topics.",["Composition and functions of blood (5 marks)","Anemia: definition, causes, types and features (10 marks)","Types of jaundice (5 marks)","Blood groups and Rh factor (5 marks)"]],
+["Endocrine system","Study the glands and the hormones they secrete.",["Endocrine glands and their hormones (10 marks)","Pituitary gland: hormones and functions (5 marks)","Thyroid gland and thyroid hormones (5 marks)","List hormones of pituitary gland (3 marks)"]],
+["Reproductive system","Revise male/female reproductive organs and menstrual cycle.",["Female reproductive system: parts and functions (10 marks)","Menstrual cycle: phases (5 marks)","Male reproductive system – main organs (5 marks)","Functions of ovary (3 marks)"]],
+["Muscle contraction and remaining topics","Finish muscle physiology and revise short-answer topics.",["Skeletal muscle contraction (10 marks)","Neuromuscular junction (5 marks)","Portal circulation, bile and skin – revise weak topics (5 marks)","Types of fractures and cranial nerves (3 marks)"]],
+["Full revision and mock exam","Use this day to test recall and revise important chapters.",["Revise all 10-mark answer headings","Practise nephron, heart, lungs, kidney and vertebral column diagrams","Revise 5-mark answers and 3-mark definitions","Write a mock paper and review mistakes"]]
+];
 
-  const storageKey = "jojify_care_v1";
-  const today = () => {
-    const d = new Date();
-    return [
-      d.getFullYear(),
-      String(d.getMonth()+1).padStart(2,"0"),
-      String(d.getDate()).padStart(2,"0")
-    ].join("-");
-  };
+let current = Number(localStorage.getItem("jojifyStudyDay") || 0);
+let checks = JSON.parse(localStorage.getItem("jojifyStudyChecks") || "{}");
 
-  let data = {};
-  try {
-    data = JSON.parse(localStorage.getItem(storageKey) || "{}");
-    if (!data || typeof data !== "object" || Array.isArray(data)) data = {};
-  } catch(e) { data = {}; }
+function save(){
+localStorage.setItem("jojifyStudyDay",current);
+localStorage.setItem("jojifyStudyChecks",JSON.stringify(checks));
+}
+function key(d,i){return d+"-"+i}
 
-  let selectedDay = 1;
+function render(){
+const list=document.getElementById("dayList");
+list.innerHTML="";
 
-  const el = id => root.querySelector("#" + id);
-  const save = () => {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(data));
-      return true;
-    } catch(e) {
-      alert("Could not save data. Check browser storage.");
-      return false;
-    }
-  };
+plan.forEach((p,d)=>{
+const done=p[2].every((_,i)=>checks[key(d,i)]);
+const b=document.createElement("button");
+b.className="daybtn"+(d===current?" active":"")+(done?" done":"");
+b.innerHTML=`Day ${d+1}<small>${p[0]}</small>`;
+b.onclick=()=>{current=d;save();render()};
+list.appendChild(b);
+});
 
-  function render() {
-    const completed = Object.values(data).filter(x => x && x.completed).length;
-    el("care-count").textContent = completed + " / 30 days";
-    el("care-percent").textContent = Math.round(completed/30*100) + "% completed";
-    el("care-fill").style.width = (completed/30*100) + "%";
+const p=plan[current];
+document.getElementById("dayLabel").textContent="DAY "+(current+1)+" OF 15";
+document.getElementById("dayTitle").textContent=p[0];
+document.getElementById("dayDesc").textContent=p[1];
 
-    el("care-days").innerHTML = "";
-    for(let i=1;i<=30;i++) {
-      const b = document.createElement("button");
-      b.className = "day" +
-        (data[i] && data[i].completed ? " active" : "");
-      b.textContent = "Day " + i;
-      b.addEventListener("click", () => {
-        selectedDay = i;
-        loadDay();
-      });
-      el("care-days").appendChild(b);
-    }
+const tl=document.getElementById("topicList");
+tl.innerHTML="";
 
-    el("care-history").innerHTML = "";
-    Object.keys(data).sort((a,b)=>Number(a)-Number(b)).forEach(day => {
-      const item = data[day];
-      if (!item) return;
-      const p = document.createElement("p");
-      p.textContent = "Day " + day + " • Urge: " +
-        item.urge + "/5 • Pulling episodes: " +
-        item.pulls + " • Hair eating: " + item.eating;
-      el("care-history").appendChild(p);
-    });
-  }
+p[2].forEach((t,i)=>{
+const div=document.createElement("div");
+div.className="topic";
+const label=document.createElement("label");
+const input=document.createElement("input");
+input.type="checkbox";
+input.checked=!!checks[key(current,i)];
+input.onchange=()=>{
+checks[key(current,i)]=input.checked;
+save();
+render();
+};
+const span=document.createElement("span");
+const strong=document.createElement("strong");
+strong.textContent=t;
+const small=document.createElement("small");
+small.textContent="Read · Understand · Recall";
+span.append(strong,small);
+label.append(input,span);
+div.append(label);
+tl.append(div);
+});
 
-  function loadDay() {
-    const item = data[selectedDay] || {};
-    el("care-urge").value = item.urge ?? "0";
-    el("care-pulls").value = item.pulls ?? "";
-    el("care-eating").value = item.eating ?? "no";
-    el("care-notes").value = item.notes ?? "";
-    el("care-message").textContent = "Editing Day " + selectedDay;
-  }
+const all=Object.keys(checks).filter(k=>checks[k]).length;
+const completed=plan.filter((p,d)=>p[2].every((_,i)=>checks[key(d,i)])).length;
 
-  el("care-save").addEventListener("click", () => {
-    const pulls = el("care-pulls").value;
-    if (pulls !== "" && (!Number.isSafeInteger(Number(pulls)) || Number(pulls)<0)) {
-      el("care-message").textContent = "Enter a valid episode count.";
-      return;
-    }
+document.getElementById("completed").textContent=completed+"/15";
+document.getElementById("tasks").textContent=all;
+document.getElementById("progress").style.width=(completed/15*100)+"%";
 
-    const item = {
-      date: today(),
-      urge: Number(el("care-urge").value),
-      pulls: pulls === "" ? "Not recorded" : Number(pulls),
-      eating: el("care-eating").value,
-      notes: el("care-notes").value,
-      completed: true
-    };
+document.getElementById("prev").disabled=current===0;
+document.getElementById("next").disabled=current===14;
+}
 
-    data[selectedDay] = item;
-    if (save()) {
-      el("care-message").textContent = "Progress saved 💙";
-      render();
-    }
-  });
+document.getElementById("prev").onclick=()=>{
+current=Math.max(0,current-1);save();render();
+};
+document.getElementById("next").onclick=()=>{
+current=Math.min(14,current+1);save();render();
+};
+document.getElementById("reset").onclick=()=>{
+if(confirm("Reset all study progress on this device?")){
+checks={};current=0;save();render();
+}
+};
 
-  const reminders = [
-    "മുടി പറിക്കാനുള്ള തോന്നൽ വന്നാൽ കൈകൾക്ക് മറ്റൊരു ജോലി നൽകൂ.",
-    "ഒരു urge വന്നതുകൊണ്ട് നീ പരാജയപ്പെട്ടിട്ടില്ല.",
-    "മുടി തിന്നുന്നത് ഒഴിവാക്കുക. ആവശ്യമെങ്കിൽ സഹായം തേടുക.",
-    "ചെറിയ മാറ്റങ്ങളും പുരോഗതിയാണ്.",
-    "നിന്നോട് തന്നെ കരുണ കാണിക്കുക."
-  ];
-  let reminderIndex = 0;
-
-  el("care-next").addEventListener("click", () => {
-    reminderIndex = (reminderIndex+1)%reminders.length;
-    el("care-reminder").textContent = reminders[reminderIndex];
-  });
-
-  // The journey starts at Day 1.
-  render();
-  loadDay();
-})();
+render();
 </script>
-</section>
-<!-- END JOJIFY CARE -->
+</body>
+</html>
