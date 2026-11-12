@@ -1,2127 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-<title>KROX — Mobile Multiplayer</title>
+<!-- ==================================
+     JOJIFY CARE - MADE BY JOJI
+     30 DAY RECOVERY TRACKER
+=================================== -->
+
+<section id="jojify-care">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    user-select:none;
-    -webkit-user-select:none;
+#jojify-care {
+  --bg:#101820;
+  --card:#182630;
+  --cyan:#00e5ff;
+  --text:#effaff;
+  --muted:#a9bdc5;
+  background:var(--bg);
+  color:var(--text);
+  padding:24px 15px;
+  border-radius:20px;
+  font-family:inherit;
+  max-width:950px;
+  margin:30px auto;
 }
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#050505;
-    font-family:Arial,sans-serif;
-    touch-action:none;
+#jojify-care * {box-sizing:border-box}
+#jojify-care .header {
+  text-align:center;
+  padding:20px 5px;
 }
-
-#game{
-    display:block;
-    width:100vw;
-    height:100vh;
-    background:#111;
+#jojify-care h1 {
+  color:var(--cyan);
+  font-size:38px;
+  margin:10px 0;
 }
-
-#menu{
-    position:absolute;
-    inset:0;
-    z-index:20;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-        radial-gradient(circle at center,#18252b 0,#080b0d 55%,#020202 100%);
-    color:white;
+#jojify-care h2 {font-size:20px}
+#jojify-care p {color:var(--muted);line-height:1.6}
+#jojify-care .card {
+  background:var(--card);
+  padding:18px;
+  border:1px solid #29414d;
+  border-radius:16px;
+  margin:15px 0;
 }
-
-.panel{
-    width:min(420px,90vw);
-    padding:28px;
-    border:1px solid #263238;
-    border-radius:22px;
-    background:rgba(10,14,16,.94);
-    text-align:center;
+#jojify-care .grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
 }
-
-.logo{
-    font-size:48px;
-    font-weight:900;
-    letter-spacing:7px;
+#jojify-care input,
+#jojify-care select,
+#jojify-care textarea {
+  width:100%;
+  padding:12px;
+  margin:8px 0 14px;
+  background:#0e1b24;
+  border:1px solid #36515e;
+  color:white;
+  border-radius:9px;
 }
-
-.logo span{
-    color:#00e5ff;
+#jojify-care button {
+  background:var(--cyan);
+  color:#07151b;
+  padding:12px 17px;
+  border:0;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.subtitle{
-    color:#8b969b;
-    margin:5px 0 25px;
+#jojify-care button.secondary {
+  background:#29414d;
+  color:white;
 }
-
-input{
-    width:100%;
-    padding:15px;
-    border:1px solid #30383d;
-    border-radius:12px;
-    background:#151a1d;
-    color:white;
-    outline:none;
-    margin-bottom:10px;
-    font-size:16px;
+#jojify-care .progress {
+  height:10px;
+  background:#30434d;
+  border-radius:20px;
+  overflow:hidden;
 }
-
-button{
-    border:0;
-    cursor:pointer;
+#jojify-care #care-fill {
+  height:100%;
+  width:0%;
+  background:var(--cyan);
+  transition:.3s;
 }
-
-.menuBtn{
-    width:100%;
-    padding:15px;
-    margin-top:8px;
-    border-radius:12px;
-    background:#00e5ff;
-    color:#001014;
-    font-weight:800;
-    font-size:15px;
+#jojify-care .days {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  margin-top:15px;
 }
-
-.secondary{
-    background:#20282c;
-    color:white;
+#jojify-care .day {
+  padding:12px 3px;
+  background:#253944;
+  color:white;
+  border:1px solid #36515e;
+  border-radius:9px;
 }
-
-#status{
-    min-height:20px;
-    color:#7defff;
-    font-size:13px;
-    margin-top:15px;
+#jojify-care .day.active {
+  background:#006b78;
+  border-color:var(--cyan);
 }
-
-#hud{
-    position:absolute;
-    inset:0;
-    z-index:5;
-    pointer-events:none;
-    display:none;
+#jojify-care .task {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:13px 0;
+  color:var(--text);
 }
-
-.top{
-    position:absolute;
-    left:14px;
-    right:14px;
-    top:12px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+#jojify-care .task input {
+  width:auto;
+  margin:3px 0;
 }
-
-.hudBox{
-    background:rgba(0,0,0,.55);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:12px;
-    padding:8px 12px;
-    color:white;
-    font-size:13px;
+#jojify-care .note {
+  background:#102d37;
+  border-left:3px solid var(--cyan);
+  padding:12px;
+  border-radius:8px;
+  color:white;
+  line-height:1.6;
 }
-
-#health{
-    color:#64ff7b;
-    font-weight:bold;
+#jojify-care .small {
+  font-size:12px;
+  color:var(--muted);
 }
-
-#roomLabel{
-    color:#00e5ff;
-}
-
-.controls{
-    position:absolute;
-    inset:0;
-}
-
-.joystick{
-    position:absolute;
-    left:25px;
-    bottom:28px;
-    width:125px;
-    height:125px;
-    border-radius:50%;
-    background:rgba(255,255,255,.07);
-    border:2px solid rgba(255,255,255,.14);
-    pointer-events:auto;
-}
-
-.stick{
-    position:absolute;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    left:31px;
-    top:31px;
-    background:rgba(0,229,255,.38);
-    border:2px solid rgba(0,229,255,.8);
-}
-
-.action{
-    position:absolute;
-    pointer-events:auto;
-    width:72px;
-    height:72px;
-    border-radius:50%;
-    color:white;
-    font-weight:bold;
-    background:rgba(255,255,255,.1);
-    border:2px solid rgba(255,255,255,.2);
-}
-
-#fire{
-    right:28px;
-    bottom:38px;
-    width:88px;
-    height:88px;
-    background:rgba(255,50,50,.45);
-    border-color:#ff6666;
-}
-
-#jump{
-    right:135px;
-    bottom:65px;
-}
-
-#grenade{
-    right:135px;
-    bottom:150px;
-    font-size:11px;
-}
-
-#leave{
-    position:absolute;
-    right:15px;
-    top:58px;
-    pointer-events:auto;
-    padding:8px 11px;
-    border-radius:8px;
-    background:#241414;
-    color:#ff7777;
-}
-
-#message{
-    position:absolute;
-    left:50%;
-    top:18%;
-    transform:translateX(-50%);
-    color:white;
-    background:rgba(0,0,0,.65);
-    padding:10px 18px;
-    border-radius:12px;
-    opacity:0;
-    transition:.2s;
-}
-
-@media (orientation:portrait){
-    #rotate{
-        display:flex;
-        position:absolute;
-        inset:0;
-        z-index:50;
-        align-items:center;
-        justify-content:center;
-        background:#050505;
-        color:white;
-        font-size:20px;
-        text-align:center;
-        padding:30px;
-    }
-}
-
-@media (orientation:landscape){
-    #rotate{
-        display:none;
-    }
+@media(max-width:500px) {
+  #jojify-care .grid {grid-template-columns:1fr}
+  #jojify-care .days {grid-template-columns:repeat(5,1fr)}
 }
 </style>
-</head>
 
-<body>
-
-<canvas id="game"></canvas>
-
-<div id="rotate">
-    📱 Rotate your phone to landscape mode
+<div class="header">
+  <p>JOJIFY ONE • MADE BY JOJI</p>
+  <h1>JOJIFY CARE</h1>
+  <h3>Your Mind. Your Recovery. 💙</h3>
+  <p>30-Day Hair Pulling Recovery Journey</p>
 </div>
 
-<div id="menu">
-
-    <div class="panel">
-
-        <div class="logo">
-            KR<span>O</span>X
-        </div>
-
-        <div class="subtitle">
-            MOBILE MULTIPLAYER ACTION
-        </div>
-
-        <input
-            id="name"
-            maxlength="14"
-            placeholder="Your player name"
-        >
-
-        <button
-            class="menuBtn"
-            id="create"
-        >
-            CREATE ROOM
-        </button>
-
-        <button
-            class="menuBtn secondary"
-            id="join"
-        >
-            JOIN ROOM
-        </button>
-
-        <input
-            id="room"
-            maxlength="30"
-            placeholder="Enter room ID"
-            style="display:none"
-        >
-
-        <button
-            class="menuBtn"
-            id="joinConfirm"
-            style="display:none"
-        >
-            JOIN
-        </button>
-
-        <div id="status"></div>
-
-    </div>
-
+<div class="card">
+  <h2>🌱 Your Recovery Progress</h2>
+  <h3 id="care-count">0 / 30 days</h3>
+  <div class="progress">
+    <div id="care-fill"></div>
+  </div>
+  <p id="care-percent">0% completed</p>
+  <div class="days" id="care-days"></div>
 </div>
 
-<div id="hud">
+<div class="grid">
+  <div class="card">
+    <h2>🧠 Urge Tracker</h2>
+    <label>Hair pulling urge today</label>
+    <select id="care-urge">
+      <option value="0">No urge</option>
+      <option value="1">Very mild</option>
+      <option value="2">Mild</option>
+      <option value="3">Moderate</option>
+      <option value="4">Strong</option>
+      <option value="5">Very strong</option>
+    </select>
 
-    <div class="top">
+    <label>Approximate pulling episodes</label>
+    <input id="care-pulls" type="number" min="0" placeholder="Number">
 
-        <div class="hudBox">
-            HP: <span id="health">100</span>
-        </div>
+    <label>Hair eating today</label>
+    <select id="care-eating">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
 
-        <div class="hudBox">
-            KROX • <span id="roomLabel">----</span>
-        </div>
+    <label>Today's feelings</label>
+    <textarea id="care-notes" rows="3"
+      placeholder="Write your thoughts..."></textarea>
 
-        <div class="hudBox">
-            KILLS: <span id="kills">0</span>
-        </div>
+    <button id="care-save">Save today's record</button>
+    <p id="care-message" aria-live="polite"></p>
+  </div>
 
-    </div>
+  <div class="card">
+    <h2>✋ Habit Reversal Practice</h2>
+    <p>Try these alternative actions when an urge appears.</p>
 
-    <button id="leave">
-        EXIT
-    </button>
-
-    <div id="message"></div>
-
-    <div class="controls">
-
-        <div
-            class="joystick"
-            id="joystick"
-        >
-            <div
-                class="stick"
-                id="stick"
-            ></div>
-        </div>
-
-        <button
-            class="action"
-            id="jump"
-        >
-            JUMP
-        </button>
-
-        <button
-            class="action"
-            id="grenade"
-        >
-            GRENADE
-        </button>
-
-        <button
-            class="action"
-            id="fire"
-        >
-            FIRE
-        </button>
-
-    </div>
-
+    <label class="task">
+      <input type="checkbox"> Hold a stress ball.
+    </label>
+    <label class="task">
+      <input type="checkbox"> Keep both hands occupied.
+    </label>
+    <label class="task">
+      <input type="checkbox"> Move away from the pulling location.
+    </label>
+    <label class="task">
+      <input type="checkbox"> Notice the urge without acting on it.
+    </label>
+    <label class="task">
+      <input type="checkbox"> Ask someone supportive to stay with me.
+    </label>
+  </div>
 </div>
 
-<!-- PeerJS -->
-<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<div class="card">
+  <h2>📖 Daily Malayalam Reminder</h2>
+  <p id="care-reminder">
+    മുടി പറിക്കാനുള്ള തോന്നൽ വന്നാൽ ഉടൻ പ്രവർത്തിക്കേണ്ടതില്ല.
+    കുറച്ചുനേരം നിർത്തി മറ്റൊരു പ്രവർത്തനത്തിലേക്ക് ശ്രദ്ധ മാറ്റാം.
+  </p>
+  <button class="secondary" id="care-next">Next Reminder</button>
+</div>
+
+<div class="card">
+  <h2>📊 Recovery History</h2>
+  <div id="care-history"></div>
+</div>
+
+<div class="card">
+  <h2>💙 Remember</h2>
+  <p>
+    ഒരു ദിവസം മുടി പറിച്ചുപോയാൽ പോലും നീ പരാജയപ്പെട്ടിട്ടില്ല.
+    വീണ്ടും ശ്രമിക്കാം. പുരോഗതി പൂർണതയല്ല.
+  </p>
+  <div class="note">
+    Medical support matters. Hair pulling can be treated with
+    professional help, including Habit Reversal Training.
+  </div>
+  <p class="small">
+    JOJIFY CARE is a personal tracking tool, not a medical treatment.
+  </p>
+</div>
 
 <script>
-"use strict";
+(function () {
+  const root = document.getElementById("jojify-care");
+  if (!root || root.dataset.initialized) return;
+  root.dataset.initialized = "true";
 
-/* =========================
-   CANVAS
-========================= */
+  const storageKey = "jojify_care_v1";
+  const today = () => {
+    const d = new Date();
+    return [
+      d.getFullYear(),
+      String(d.getMonth()+1).padStart(2,"0"),
+      String(d.getDate()).padStart(2,"0")
+    ].join("-");
+  };
 
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+  let data = {};
+  try {
+    data = JSON.parse(localStorage.getItem(storageKey) || "{}");
+    if (!data || typeof data !== "object" || Array.isArray(data)) data = {};
+  } catch(e) { data = {}; }
 
-let W = 1280;
-let H = 720;
+  let selectedDay = 1;
 
-function resize(){
+  const el = id => root.querySelector("#" + id);
+  const save = () => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      return true;
+    } catch(e) {
+      alert("Could not save data. Check browser storage.");
+      return false;
+    }
+  };
 
-    W = window.innerWidth;
-    H = window.innerHeight;
+  function render() {
+    const completed = Object.values(data).filter(x => x && x.completed).length;
+    el("care-count").textContent = completed + " / 30 days";
+    el("care-percent").textContent = Math.round(completed/30*100) + "% completed";
+    el("care-fill").style.width = (completed/30*100) + "%";
 
-    canvas.width = W;
-    canvas.height = H;
-}
+    el("care-days").innerHTML = "";
+    for(let i=1;i<=30;i++) {
+      const b = document.createElement("button");
+      b.className = "day" +
+        (data[i] && data[i].completed ? " active" : "");
+      b.textContent = "Day " + i;
+      b.addEventListener("click", () => {
+        selectedDay = i;
+        loadDay();
+      });
+      el("care-days").appendChild(b);
+    }
 
-window.addEventListener("resize",resize);
-resize();
-
-/* =========================
-   UI
-========================= */
-
-const menu = document.getElementById("menu");
-const hud = document.getElementById("hud");
-const statusText = document.getElementById("status");
-const nameInput = document.getElementById("name");
-const roomInput = document.getElementById("room");
-const joinConfirm = document.getElementById("joinConfirm");
-
-const healthUI = document.getElementById("health");
-const killsUI = document.getElementById("kills");
-const roomLabel = document.getElementById("roomLabel");
-const messageUI = document.getElementById("message");
-
-/* =========================
-   NETWORK
-========================= */
-
-let peer = null;
-let connections = [];
-let hostConnection = null;
-let isHost = false;
-let roomId = "";
-
-function setStatus(text){
-    statusText.textContent = text;
-}
-
-function sendToAll(data){
-
-    connections.forEach(c => {
-
-        if(c && c.open){
-            c.send(data);
-        }
-
+    el("care-history").innerHTML = "";
+    Object.keys(data).sort((a,b)=>Number(a)-Number(b)).forEach(day => {
+      const item = data[day];
+      if (!item) return;
+      const p = document.createElement("p");
+      p.textContent = "Day " + day + " • Urge: " +
+        item.urge + "/5 • Pulling episodes: " +
+        item.pulls + " • Hair eating: " + item.eating;
+      el("care-history").appendChild(p);
     });
-}
+  }
 
-/* =========================
-   GAME STATE
-========================= */
+  function loadDay() {
+    const item = data[selectedDay] || {};
+    el("care-urge").value = item.urge ?? "0";
+    el("care-pulls").value = item.pulls ?? "";
+    el("care-eating").value = item.eating ?? "no";
+    el("care-notes").value = item.notes ?? "";
+    el("care-message").textContent = "Editing Day " + selectedDay;
+  }
 
-let running = false;
-let playerId = "";
-let players = {};
-let bullets = [];
-let grenades = [];
-
-let localPlayer = null;
-
-const WORLD = {
-    width: 5000,
-    height: 1800
-};
-
-let cameraX = 0;
-let cameraY = 0;
-
-let kills = 0;
-
-/* =========================
-   PLAYER
-========================= */
-
-function makePlayer(id,name,x,y){
-
-    return {
-        id,
-        name,
-        x,
-        y,
-
-        vx:0,
-        vy:0,
-
-        width:34,
-        height:70,
-
-        health:100,
-
-        grounded:false,
-        facing:1,
-
-        shooting:false,
-
-        color:
-            id === playerId
-            ? "#00e5ff"
-            : "#ff4d67",
-
-        lastShot:0,
-        jetFuel:100,
-
-        respawn:0
-    };
-}
-
-/* =========================
-   CREATE ROOM
-========================= */
-
-document.getElementById("create").onclick = function(){
-
-    const name =
-        nameInput.value.trim() ||
-        "Player";
-
-    isHost = true;
-
-    roomId =
-        "KROX-" +
-        Math.random()
-            .toString(36)
-            .substring(2,7)
-            .toUpperCase();
-
-    playerId =
-        roomId +
-        "-" +
-        Math.random()
-            .toString(36)
-            .substring(2,7);
-
-    peer = new Peer(
-        roomId,
-        {
-            debug:0
-        }
-    );
-
-    peer.on("open",function(){
-
-        players = {};
-
-        localPlayer =
-            makePlayer(
-                playerId,
-                name,
-                500,
-                1000
-            );
-
-        players[playerId] =
-            localPlayer;
-
-        roomLabel.textContent =
-            roomId;
-
-        setStatus(
-            "Room created: " +
-            roomId
-        );
-
-        startGame();
-
-    });
-
-    peer.on("connection",function(conn){
-
-        connections.push(conn);
-
-        conn.on("open",function(){
-
-            conn.send({
-                type:"welcome",
-                hostPlayer:localPlayer,
-                players
-            });
-
-        });
-
-        conn.on("data",handleNetwork);
-
-        conn.on("close",function(){
-
-            connections =
-                connections.filter(
-                    c => c !== conn
-                );
-
-        });
-
-    });
-
-    peer.on("error",function(err){
-
-        setStatus(
-            "Connection error: " +
-            err.type
-        );
-
-    });
-
-};
-
-/* =========================
-   JOIN
-========================= */
-
-document.getElementById("join").onclick =
-function(){
-
-    roomInput.style.display = "block";
-    joinConfirm.style.display = "block";
-
-};
-
-joinConfirm.onclick = function(){
-
-    const id =
-        roomInput.value.trim();
-
-    if(!id){
-
-        setStatus(
-            "Enter the room ID."
-        );
-
-        return;
+  el("care-save").addEventListener("click", () => {
+    const pulls = el("care-pulls").value;
+    if (pulls !== "" && (!Number.isSafeInteger(Number(pulls)) || Number(pulls)<0)) {
+      el("care-message").textContent = "Enter a valid episode count.";
+      return;
     }
 
-    const name =
-        nameInput.value.trim() ||
-        "Player";
-
-    roomId = id.toUpperCase();
-
-    peer =
-        new Peer(
-            undefined,
-            {
-                debug:0
-            }
-        );
-
-    peer.on("open",function(id){
-
-        playerId = id;
-
-        hostConnection =
-            peer.connect(roomId);
-
-        hostConnection.on(
-            "open",
-            function(){
-
-                hostConnection.send({
-
-                    type:"join",
-
-                    player:{
-                        id:playerId,
-                        name:name
-                    }
-
-                });
-
-            }
-        );
-
-        hostConnection.on(
-            "data",
-            handleNetwork
-        );
-
-        hostConnection.on(
-            "close",
-            function(){
-
-                showMessage(
-                    "Host disconnected"
-                );
-
-                stopGame();
-
-            }
-        );
-
-    });
-
-    peer.on("error",function(err){
-
-        setStatus(
-            "Could not join room."
-        );
-
-        console.log(err);
-
-    });
-
-};
-
-/* =========================
-   NETWORK HANDLER
-========================= */
-
-function handleNetwork(data){
-
-    if(!data) return;
-
-    if(data.type === "welcome"){
-
-        players =
-            data.players || {};
-
-        localPlayer =
-            makePlayer(
-                playerId,
-                nameInput.value.trim() ||
-                "Player",
-                800,
-                1000
-            );
-
-        players[playerId] =
-            localPlayer;
-
-        roomLabel.textContent =
-            roomId;
-
-        startGame();
-
-        if(hostConnection){
-
-            hostConnection.send({
-                type:"joined",
-                player:localPlayer
-            });
-
-        }
-
-    }
-
-    if(data.type === "joined"){
-
-        if(!isHost) return;
-
-        players[data.player.id] =
-            data.player;
-
-        sendToAll({
-            type:"players",
-            players
-        });
-
-    }
-
-    if(data.type === "players"){
-
-        Object.keys(data.players)
-            .forEach(id => {
-
-                if(id === playerId)
-                    return;
-
-                players[id] =
-                    data.players[id];
-
-            });
-
-    }
-
-    if(data.type === "state"){
-
-        Object.keys(data.players)
-            .forEach(id => {
-
-                if(id === playerId)
-                    return;
-
-                players[id] =
-                    data.players[id];
-
-            });
-
-    }
-
-    if(data.type === "bullet"){
-
-        bullets.push(data.bullet);
-
-    }
-
-    if(data.type === "hit"){
-
-        if(data.target === playerId){
-
-            localPlayer.health =
-                Math.max(
-                    0,
-                    localPlayer.health -
-                    data.damage
-                );
-
-            if(localPlayer.health <= 0){
-
-                respawn();
-
-            }
-
-        }
-
-    }
-
-    if(data.type === "grenade"){
-
-        grenades.push(data.grenade);
-
-    }
-
-}
-
-/* =========================
-   START
-========================= */
-
-function startGame(){
-
-    running = true;
-
-    menu.style.display = "none";
-    hud.style.display = "block";
-
-    showMessage(
-        isHost
-        ? "Room ready — share your room ID"
-        : "Joined KROX"
-    );
-
-    requestAnimationFrame(loop);
-}
-
-/* =========================
-   STOP
-========================= */
-
-function stopGame(){
-
-    running = false;
-
-    hud.style.display = "none";
-    menu.style.display = "flex";
-
-    bullets = [];
-    grenades = [];
-    players = {};
-
-}
-
-/* =========================
-   MESSAGE
-========================= */
-
-let messageTimer = 0;
-
-function showMessage(text){
-
-    messageUI.textContent = text;
-    messageUI.style.opacity = "1";
-
-    clearTimeout(messageTimer);
-
-    messageTimer =
-        setTimeout(function(){
-
-            messageUI.style.opacity = "0";
-
-        },1800);
-
-}
-
-/* =========================
-   INPUT
-========================= */
-
-const keys = {};
-
-window.addEventListener(
-    "keydown",
-    e => {
-
-        keys[e.key.toLowerCase()] = true;
-
-        if(e.key === " ")
-            jump();
-
-        if(e.key.toLowerCase() === "f")
-            shoot();
-
-    }
-);
-
-window.addEventListener(
-    "keyup",
-    e => {
-
-        keys[e.key.toLowerCase()] = false;
-
-    }
-);
-
-/* =========================
-   JOYSTICK
-========================= */
-
-const joystick =
-    document.getElementById("joystick");
-
-const stick =
-    document.getElementById("stick");
-
-let joyX = 0;
-let joyY = 0;
-let joyPointer = null;
-
-function updateJoystick(e){
-
-    const rect =
-        joystick.getBoundingClientRect();
-
-    const cx =
-        rect.left +
-        rect.width / 2;
-
-    const cy =
-        rect.top +
-        rect.height / 2;
-
-    let dx =
-        e.clientX - cx;
-
-    let dy =
-        e.clientY - cy;
-
-    const max =
-        rect.width / 2 - 30;
-
-    const dist =
-        Math.hypot(dx,dy);
-
-    if(dist > max){
-
-        dx =
-            dx / dist * max;
-
-        dy =
-            dy / dist * max;
-
-    }
-
-    joyX = dx / max;
-    joyY = dy / max;
-
-    stick.style.transform =
-        `translate(${dx}px,${dy}px)`;
-
-}
-
-joystick.addEventListener(
-    "pointerdown",
-    e => {
-
-        joyPointer = e.pointerId;
-
-        joystick.setPointerCapture(
-            e.pointerId
-        );
-
-        updateJoystick(e);
-
-    }
-);
-
-joystick.addEventListener(
-    "pointermove",
-    e => {
-
-        if(e.pointerId === joyPointer)
-            updateJoystick(e);
-
-    }
-);
-
-function resetJoystick(){
-
-    joyPointer = null;
-
-    joyX = 0;
-    joyY = 0;
-
-    stick.style.transform =
-        "translate(0,0)";
-}
-
-joystick.addEventListener(
-    "pointerup",
-    resetJoystick
-);
-
-joystick.addEventListener(
-    "pointercancel",
-    resetJoystick
-);
-
-/* =========================
-   FIRE BUTTON
-========================= */
-
-const fire =
-    document.getElementById("fire");
-
-fire.addEventListener(
-    "pointerdown",
-    function(e){
-
-        e.preventDefault();
-
-        if(localPlayer){
-
-            localPlayer.shooting = true;
-
-            shoot();
-
-        }
-
-    }
-);
-
-fire.addEventListener(
-    "pointerup",
-    function(){
-
-        if(localPlayer)
-            localPlayer.shooting = false;
-
-    }
-);
-
-fire.addEventListener(
-    "pointercancel",
-    function(){
-
-        if(localPlayer)
-            localPlayer.shooting = false;
-
-    }
-);
-
-/* =========================
-   JUMP
-========================= */
-
-document.getElementById("jump")
-.addEventListener(
-    "pointerdown",
-    function(e){
-
-        e.preventDefault();
-        jump();
-
-    }
-);
-
-function jump(){
-
-    if(!localPlayer) return;
-
-    if(localPlayer.grounded){
-
-        localPlayer.vy =
-            -700;
-
-        localPlayer.grounded =
-            false;
-
-    }
-
-}
-
-/* =========================
-   SHOOT
-========================= */
-
-function shoot(){
-
-    if(!localPlayer ||
-       !running)
-        return;
-
-    const now =
-        performance.now();
-
-    if(now -
-       localPlayer.lastShot <
-       180)
-        return;
-
-    localPlayer.lastShot =
-        now;
-
-    const bullet = {
-
-        id:
-            Math.random()
-                .toString(36)
-                .slice(2),
-
-        owner:
-            playerId,
-
-        x:
-            localPlayer.x +
-            localPlayer.facing * 25,
-
-        y:
-            localPlayer.y + 28,
-
-        vx:
-            localPlayer.facing *
-            1100,
-
-        vy:0,
-
-        life:1.2
-
+    const item = {
+      date: today(),
+      urge: Number(el("care-urge").value),
+      pulls: pulls === "" ? "Not recorded" : Number(pulls),
+      eating: el("care-eating").value,
+      notes: el("care-notes").value,
+      completed: true
     };
 
-    bullets.push(bullet);
-
-    sendToAll({
-
-        type:"bullet",
-        bullet
-
-    });
-
-}
-
-/* =========================
-   GRENADE
-========================= */
-
-document.getElementById("grenade")
-.addEventListener(
-    "pointerdown",
-    function(){
-
-        if(!localPlayer)
-            return;
-
-        const grenade = {
-
-            id:
-                Math.random()
-                .toString(36)
-                .slice(2),
-
-            owner:
-                playerId,
-
-            x:
-                localPlayer.x,
-
-            y:
-                localPlayer.y,
-
-            vx:
-                localPlayer.facing *
-                450,
-
-            vy:
-                -500,
-
-            life:2.5
-
-        };
-
-        grenades.push(grenade);
-
-        sendToAll({
-
-            type:"grenade",
-            grenade
-
-        });
-
+    data[selectedDay] = item;
+    if (save()) {
+      el("care-message").textContent = "Progress saved 💙";
+      render();
     }
-);
-
-/* =========================
-   MOVEMENT
-========================= */
-
-function updatePlayer(dt){
-
-    if(!localPlayer)
-        return;
-
-    if(localPlayer.respawn > 0){
-
-        localPlayer.respawn -= dt;
-
-        if(localPlayer.respawn <= 0)
-            resetPlayer();
-
-        return;
-
-    }
-
-    let move =
-        joyX;
-
-    if(Math.abs(move) < .1){
-
-        if(keys["a"] ||
-           keys["arrowleft"])
-            move = -1;
-
-        if(keys["d"] ||
-           keys["arrowright"])
-            move = 1;
-
-    }
-
-    localPlayer.vx =
-        move * 380;
-
-    if(move !== 0)
-        localPlayer.facing =
-            move > 0 ? 1 : -1;
-
-    localPlayer.vy +=
-        1500 * dt;
-
-    localPlayer.x +=
-        localPlayer.vx * dt;
-
-    localPlayer.y +=
-        localPlayer.vy * dt;
-
-    const ground =
-        WORLD.height - 180;
-
-    if(localPlayer.y +
-       localPlayer.height >=
-       ground){
-
-        localPlayer.y =
-            ground -
-            localPlayer.height;
-
-        localPlayer.vy = 0;
-
-        localPlayer.grounded =
-            true;
-
-    }
-
-    localPlayer.x =
-        Math.max(
-            40,
-            Math.min(
-                WORLD.width - 40,
-                localPlayer.x
-            )
-        );
-
-}
-
-/* =========================
-   BULLETS
-========================= */
-
-function updateBullets(dt){
-
-    bullets.forEach(
-        bullet => {
-
-            bullet.x +=
-                bullet.vx * dt;
-
-            bullet.y +=
-                bullet.vy * dt;
-
-            bullet.life -= dt;
-
-            if(
-                bullet.owner ===
-                playerId
-            ){
-
-                Object.values(players)
-                    .forEach(target => {
-
-                        if(target.id === playerId)
-                            return;
-
-                        if(target.health <= 0)
-                            return;
-
-                        if(
-                            Math.abs(
-                                bullet.x -
-                                target.x
-                            ) < 25 &&
-                            Math.abs(
-                                bullet.y -
-                                (target.y + 30)
-                            ) < 45
-                        ){
-
-                            target.health -= 25;
-
-                            bullet.life = 0;
-
-                            if(target.health <= 0){
-
-                                kills++;
-
-                                killsUI.textContent =
-                                    kills;
-
-                                target.respawn =
-                                    3;
-
-                                sendToAll({
-
-                                    type:"hit",
-
-                                    target:
-                                        target.id,
-
-                                    damage:25
-
-                                });
-
-                            }
-
-                        }
-
-                    });
-
-            }
-
-        }
-    );
-
-    bullets =
-        bullets.filter(
-            b => b.life > 0
-        );
-
-}
-
-/* =========================
-   GRENADES
-========================= */
-
-function updateGrenades(dt){
-
-    grenades.forEach(g => {
-
-        g.vy +=
-            1100 * dt;
-
-        g.x +=
-            g.vx * dt;
-
-        g.y +=
-            g.vy * dt;
-
-        g.life -= dt;
-
-        const ground =
-            WORLD.height - 180;
-
-        if(g.y > ground){
-
-            g.y = ground;
-            g.vy *= -.45;
-            g.vx *= .75;
-
-        }
-
-    });
-
-    grenades =
-        grenades.filter(
-            g => g.life > 0
-        );
-
-}
-
-/* =========================
-   RESPAWN
-========================= */
-
-function respawn(){
-
-    localPlayer.health = 0;
-
-    localPlayer.respawn = 2.5;
-
-    showMessage("YOU DIED");
-
-}
-
-function resetPlayer(){
-
-    localPlayer.x =
-        500 +
-        Math.random() * 800;
-
-    localPlayer.y =
-        WORLD.height - 300;
-
-    localPlayer.vx = 0;
-    localPlayer.vy = 0;
-
-    localPlayer.health = 100;
-
-    localPlayer.respawn = 0;
-
-    showMessage("RESPAWN");
-
-}
-
-/* =========================
-   NETWORK SYNC
-========================= */
-
-let syncTimer = 0;
-
-function networkUpdate(dt){
-
-    syncTimer += dt;
-
-    if(syncTimer < .05)
-        return;
-
-    syncTimer = 0;
-
-    if(!localPlayer)
-        return;
-
-    const data = {
-
-        type:"state",
-
-        players:{
-
-            [playerId]:{
-                id:playerId,
-                name:localPlayer.name,
-                x:localPlayer.x,
-                y:localPlayer.y,
-                vx:localPlayer.vx,
-                vy:localPlayer.vy,
-                health:localPlayer.health,
-                facing:localPlayer.facing
-            }
-
-        }
-
-    };
-
-    if(isHost){
-
-        sendToAll(data);
-
-    }else if(hostConnection &&
-             hostConnection.open){
-
-        hostConnection.send(data);
-
-    }
-
-}
-
-/* =========================
-   CAMERA
-========================= */
-
-function updateCamera(){
-
-    if(!localPlayer)
-        return;
-
-    cameraX =
-        localPlayer.x -
-        W * .5;
-
-    cameraY =
-        localPlayer.y -
-        H * .55;
-
-    cameraX =
-        Math.max(
-            0,
-            Math.min(
-                WORLD.width - W,
-                cameraX
-            )
-        );
-
-    cameraY =
-        Math.max(
-            0,
-            Math.min(
-                WORLD.height - H,
-                cameraY
-            )
-        );
-
-}
-
-/* =========================
-   DRAW WORLD
-========================= */
-
-function drawWorld(){
-
-    ctx.fillStyle =
-        "#101a1f";
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-    ctx.save();
-
-    ctx.translate(
-        -cameraX,
-        -cameraY
-    );
-
-    /* SKY */
-
-    const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            WORLD.height
-        );
-
-    gradient.addColorStop(
-        0,
-        "#152b3b"
-    );
-
-    gradient.addColorStop(
-        1,
-        "#081014"
-    );
-
-    ctx.fillStyle =
-        gradient;
-
-    ctx.fillRect(
-        0,
-        0,
-        WORLD.width,
-        WORLD.height
-    );
-
-    /* MOUNTAINS */
-
-    ctx.fillStyle =
-        "#10252a";
-
-    for(let x=0;x<WORLD.width;x+=400){
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x,
-            WORLD.height - 180
-        );
-
-        ctx.lineTo(
-            x + 180,
-            850
-        );
-
-        ctx.lineTo(
-            x + 400,
-            WORLD.height - 180
-        );
-
-        ctx.closePath();
-
-        ctx.fill();
-
-    }
-
-    /* GROUND */
-
-    ctx.fillStyle =
-        "#17251d";
-
-    ctx.fillRect(
-        0,
-        WORLD.height - 180,
-        WORLD.width,
-        180
-    );
-
-    /* PLATFORM */
-
-    ctx.fillStyle =
-        "#39484c";
-
-    for(let x=100;x<WORLD.width;x+=650){
-
-        ctx.fillRect(
-            x,
-            WORLD.height - 400,
-            250,
-            24
-        );
-
-        ctx.fillRect(
-            x + 30,
-            WORLD.height - 376,
-            35,
-            196
-        );
-
-        ctx.fillRect(
-            x + 205,
-            WORLD.height - 376,
-            35,
-            196
-        );
-
-    }
-
-    /* TREES */
-
-    for(let x=200;x<WORLD.width;x+=700){
-
-        ctx.fillStyle =
-            "#583e25";
-
-        ctx.fillRect(
-            x,
-            WORLD.height - 380,
-            18,
-            200
-        );
-
-        ctx.fillStyle =
-            "#174f35";
-
-        for(let a=0;a<6;a++){
-
-            const angle =
-                a * Math.PI / 3;
-
-            ctx.beginPath();
-
-            ctx.moveTo(
-                x + 9,
-                WORLD.height - 380
-            );
-
-            ctx.lineTo(
-                x +
-                9 +
-                Math.cos(angle)*90,
-                WORLD.height -
-                380 +
-                Math.sin(angle)*50
-            );
-
-            ctx.lineTo(
-                x + 9,
-                WORLD.height - 360
-            );
-
-            ctx.fill();
-
-        }
-
-    }
-
-    ctx.restore();
-
-}
-
-/* =========================
-   DRAW PLAYER
-========================= */
-
-function drawPlayer(p){
-
-    if(p.respawn > 0)
-        return;
-
-    const x =
-        p.x -
-        cameraX;
-
-    const y =
-        p.y -
-        cameraY;
-
-    ctx.save();
-
-    ctx.translate(
-        x,
-        y
-    );
-
-    ctx.scale(
-        p.facing,
-        1
-    );
-
-    /* SHADOW */
-
-    ctx.fillStyle =
-        "rgba(0,0,0,.35)";
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-        0,
-        p.height + 5,
-        27,
-        7,
-        0,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-    /* LEGS */
-
-    ctx.strokeStyle =
-        "#c8d0d4";
-
-    ctx.lineWidth = 8;
-
-    ctx.lineCap =
-        "round";
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        -7,
-        45
-    );
-
-    ctx.lineTo(
-        -15,
-        68
-    );
-
-    ctx.moveTo(
-        7,
-        45
-    );
-
-    ctx.lineTo(
-        15,
-        68
-    );
-
-    ctx.stroke();
-
-    /* BODY */
-
-    ctx.fillStyle =
-        p.color;
-
-    ctx.beginPath();
-
-    ctx.roundRect(
-        -17,
-        14,
-        34,
-        37,
-        10
-    );
-
-    ctx.fill();
-
-    /* HEAD */
-
-    ctx.fillStyle =
-        "#e0b28f";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        0,
-        2,
-        16,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-    /* HELMET */
-
-    ctx.fillStyle =
-        "#26363c";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        0,
-        -2,
-        17,
-        Math.PI,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-    /* ARM */
-
-    ctx.strokeStyle =
-        "#e0b28f";
-
-    ctx.lineWidth = 8;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        8,
-        23
-    );
-
-    ctx.lineTo(
-        30,
-        32
-    );
-
-    ctx.stroke();
-
-    /* GUN */
-
-    ctx.strokeStyle =
-        "#17191a";
-
-    ctx.lineWidth = 7;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        25,
-        30
-    );
-
-    ctx.lineTo(
-        58,
-        30
-    );
-
-    ctx.stroke();
-
-    ctx.lineWidth = 3;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        38,
-        31
-    );
-
-    ctx.lineTo(
-        34,
-        44
-    );
-
-    ctx.stroke();
-
-    ctx.restore();
-
-    /* NAME */
-
-    ctx.font =
-        "bold 12px Arial";
-
-    ctx.textAlign =
-        "center";
-
-    ctx.fillStyle =
-        "white";
-
-    ctx.fillText(
-        p.name,
-        x,
-        y - 18
-    );
-
-    /* HEALTH BAR */
-
-    ctx.fillStyle =
-        "rgba(0,0,0,.6)";
-
-    ctx.fillRect(
-        x - 24,
-        y - 12,
-        48,
-        5
-    );
-
-    ctx.fillStyle =
-        p.health > 40
-        ? "#53ff70"
-        : "#ff4b4b";
-
-    ctx.fillRect(
-        x - 24,
-        y - 12,
-        48 *
-        Math.max(
-            0,
-            p.health / 100
-        ),
-        5
-    );
-
-}
-
-/* =========================
-   DRAW BULLETS
-========================= */
-
-function drawBullets(){
-
-    bullets.forEach(b => {
-
-        const x =
-            b.x - cameraX;
-
-        const y =
-            b.y - cameraY;
-
-        ctx.fillStyle =
-            "#fff36b";
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x,
-            y,
-            4,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    });
-
-}
-
-/* =========================
-   DRAW GRENADES
-========================= */
-
-function drawGrenades(){
-
-    grenades.forEach(g => {
-
-        const x =
-            g.x - cameraX;
-
-        const y =
-            g.y - cameraY;
-
-        ctx.fillStyle =
-            "#222";
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x,
-            y,
-            8,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-        ctx.fillStyle =
-            "#ff4b4b";
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x + 4,
-            y - 5,
-            2,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    });
-
-}
-
-/* =========================
-   LOOP
-========================= */
-
-let lastTime =
-    performance.now();
-
-function loop(now){
-
-    if(!running)
-        return;
-
-    const dt =
-        Math.min(
-            .033,
-            (now - lastTime) /
-            1000
-        );
-
-    lastTime = now;
-
-    updatePlayer(dt);
-
-    updateBullets(dt);
-
-    updateGrenades(dt);
-
-    networkUpdate(dt);
-
-    updateCamera();
-
-    drawWorld();
-
-    Object.values(players)
-        .forEach(drawPlayer);
-
-    drawBullets();
-
-    drawGrenades();
-
-    healthUI.textContent =
-        localPlayer
-        ? Math.max(
-            0,
-            Math.round(
-                localPlayer.health
-            )
-        )
-        : 100;
-
-    requestAnimationFrame(loop);
-
-}
-
-/* =========================
-   EXIT
-========================= */
-
-document.getElementById("leave")
-.addEventListener(
-    "click",
-    function(){
-
-        if(peer){
-
-            try{
-                peer.destroy();
-            }catch(e){}
-
-        }
-
-        stopGame();
-
-    }
-);
-
-/* =========================
-   PREVENT SCROLL / ZOOM
-========================= */
-
-document.addEventListener(
-    "touchmove",
-    function(e){
-
-        e.preventDefault();
-
-    },
-    {
-        passive:false
-    }
-);
-
-document.addEventListener(
-    "gesturestart",
-    function(e){
-
-        e.preventDefault();
-
-    }
-);
-
+  });
+
+  const reminders = [
+    "മുടി പറിക്കാനുള്ള തോന്നൽ വന്നാൽ കൈകൾക്ക് മറ്റൊരു ജോലി നൽകൂ.",
+    "ഒരു urge വന്നതുകൊണ്ട് നീ പരാജയപ്പെട്ടിട്ടില്ല.",
+    "മുടി തിന്നുന്നത് ഒഴിവാക്കുക. ആവശ്യമെങ്കിൽ സഹായം തേടുക.",
+    "ചെറിയ മാറ്റങ്ങളും പുരോഗതിയാണ്.",
+    "നിന്നോട് തന്നെ കരുണ കാണിക്കുക."
+  ];
+  let reminderIndex = 0;
+
+  el("care-next").addEventListener("click", () => {
+    reminderIndex = (reminderIndex+1)%reminders.length;
+    el("care-reminder").textContent = reminders[reminderIndex];
+  });
+
+  // The journey starts at Day 1.
+  render();
+  loadDay();
+})();
 </script>
-
-</body>
-</html>
+</section>
+<!-- END JOJIFY CARE -->
